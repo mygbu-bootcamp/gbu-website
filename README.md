@@ -28,7 +28,7 @@ college-website/
 
 ```bash
 git clone https://github.com/mygbu-bootcamp/gbu-website.git
-cd college-website
+cd gbu-website
 ```
 
 ### 2. Install dependencies
