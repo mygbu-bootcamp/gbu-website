@@ -1,20 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Landing from './components/Landing'
-import Navbar from './components/Navbar'
-
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import PreLoad from "./components/preLoad";
+import Landing from "./components/Landing";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showPreloader, setShowPreloader] = useState(true);
+
+  const handlePreloadComplete = () => {
+    setShowPreloader(false);
+  };
 
   return (
-    <>
-    <Navbar/>
-    <Landing/>
-    </>
-  )
+    <div className="App">
+      {showPreloader ? (
+        <PreLoad onComplete={handlePreloadComplete} />
+      ) : (
+        <>
+          <Navbar />
+          <Landing />
+        </>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
+
+// function App() {
+//   const [count, setCount] = useState(0);
+//
+//   return (
+//     <>
+//       <PreLoad />
+//       <navbar />
+//       <landing />
+//     </>
+//   );
+// }
+//
