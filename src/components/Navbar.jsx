@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Navbar = ({ hoverColor = '#FFFFFF', neighborColor = '#a5b4fc', normalColor = '#000000' }) => {
+const Navbar = ({ hoverColor = '#0b2887', neighborColor = '#a5b4fc', normalColor = '#0b2887' }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [academicOpen, setAcademicOpen] = useState(false);
 
