@@ -1,31 +1,18 @@
- import { useState } from "react";
-import { Outlet, useLocation } from 'react-router-dom';
-import "./App.css";
-import PreLoad from "./components/preLoad";
-import Landing from "./components/Landing";
-import Navbar from "./components/Navbar";
+ 
+import { useState } from "react";
+import Home from "./pages/Home.jsx";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PreLoad from "../src/component_home/preLoad.jsx"; 
+import AppRouter from "./routes/router.jsx";
 
 function App() {
-  const [showPreloader, setShowPreloader] = useState(true);
-  const location = useLocation();
-
-  const handlePreloadComplete = () => {
-    setShowPreloader(false);
-  };
+  const [isPreloadComplete, setIsPreloadComplete] = useState(false);
 
   return (
     <div className="App">
-      {showPreloader ? (
-        <PreLoad onComplete={handlePreloadComplete} />
-      ) : (
-        <>
-          <Navbar />
-          
-           
-
-          <Outlet /> {/* Other pages will render here */}
-        </>
-      )}
+      {!isPreloadComplete && <PreLoad onComplete={() => setIsPreloadComplete(true)} />}
+      {isPreloadComplete && 
+      <AppRouter/>}
     </div>
   );
 }
