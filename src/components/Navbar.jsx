@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor = '#FFFFFF' }) => {
+const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor = 'black' }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [academicOpen, setAcademicOpen] = useState(false);
 
@@ -10,7 +11,6 @@ const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor
 
   return (
     <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 h-20 w-[80%] bg-white/10 backdrop-blur-md border border-white/20 flex justify-between items-center px-6 rounded-xl z-50 shadow-xl">
-
       {/* University Logo + Name */}
       <div className="flex items-center gap-4">
         <img
@@ -28,12 +28,12 @@ const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor
 
       {/* Main Navigation */}
       <div className="flex space-x-4 items-center text-white text-base">
-        <a href="#" className={navLinkBase} style={{ color: normalColor }}>
+        <Link to="/" className={navLinkBase} style={{ color: normalColor }}>
           <span className={hoverBox}>Home</span>
-        </a>
-        <a href="#admission" className={navLinkBase} style={{ color: normalColor }}>
+        </Link>
+        <Link to="/admission" className={navLinkBase} style={{ color: normalColor }}>
           <span className={hoverBox}>Admission</span>
-        </a>
+        </Link>
 
         {/* About Us Dropdown */}
         <div
@@ -46,14 +46,24 @@ const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor
           </div>
           {aboutOpen && (
             <div className="absolute top-full left-0 mt-2 w-48 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-2 shadow-lg z-50">
-              {['Vision & Mission', 'Administration', 'Campus Life'].map((item) => (
-                <div
-                  key={item}
-                  className="py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md cursor-pointer transition"
-                >
-                  {item}
-                </div>
-              ))}
+              <Link
+                to="/vision-mission"
+                className="block py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md transition"
+              >
+                Vision & Mission
+              </Link>
+              <Link
+                to="/administration"
+                className="block py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md transition"
+              >
+                Administration
+              </Link>
+              <Link
+                to="/campus-life"
+                className="block py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md transition"
+              >
+                Campus Life
+              </Link>
             </div>
           )}
         </div>
@@ -69,32 +79,42 @@ const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor
           </div>
           {academicOpen && (
             <div className="absolute top-full left-0 mt-2 w-56 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-2 shadow-lg z-50">
-              {['Programs', 'Schools & Departments', 'Academic Calendar'].map((item) => (
-                <div
-                  key={item}
-                  className="py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md cursor-pointer transition"
-                >
-                  {item}
-                </div>
-              ))}
+              <Link
+                to="/programs"
+                className="block py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md transition"
+              >
+                Programs
+              </Link>
+              <Link
+                to="/schools-departments"
+                className="block py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md transition"
+              >
+                Schools & Departments
+              </Link>
+              <Link
+                to="/academic-calendar"
+                className="block py-2 px-3 font-bold hover:bg-white/20 hover:text-indigo-100 rounded-md transition"
+              >
+                Academic Calendar
+              </Link>
             </div>
           )}
         </div>
 
-        <a href="#placements" className={navLinkBase} style={{ color: normalColor }}>
+        <Link to="/placements" className={navLinkBase} style={{ color: normalColor }}>
           <span className={hoverBox}>Placements</span>
-        </a>
-        <a href="#contact" className={navLinkBase} style={{ color: normalColor }}>
+        </Link>
+        <Link to="/contact" className={navLinkBase} style={{ color: normalColor }}>
           <span className={hoverBox}>Contact</span>
-        </a>
+        </Link>
 
         {/* CTA Button */}
-        <a
-          href="#login"
+        <Link
+          to="/login"
           className="bg-indigo-600 text-white px-5 py-2 rounded-xl font-bold hover:bg-indigo-500 transition-all duration-300"
         >
           My GBU Login
-        </a>
+        </Link>
       </div>
     </nav>
   );
