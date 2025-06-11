@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { cn } from '../utils/cn';
+import { cn } from '../../utils/cn';
 
 function Landing() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
