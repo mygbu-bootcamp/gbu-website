@@ -10,36 +10,36 @@ export default function ExcellenceSection() {
       {
         title: 'Artificial Intelligence Center',
         description: 'Cutting-edge research in machine learning, deep learning, and AI applications across various domains.',
-        image: 'https://images.unsplash.com/photo-1608652763120-b9c5dd0c708e',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTZOVOqFN0zWMXadrJa3W4Mbd6aHWmKRX6XA&s',
       },
       {
         title: 'Drone Technology Hub',
         description: 'Advanced drone research facility focusing on autonomous systems and aerial robotics.',
-        image: 'https://images.unsplash.com/photo-1508610048659-a06b669e7b74',
+        image: 'https://images.forbesindia.com/media/images/2022/Apr/img_182733_drone.jpg',
       },
       {
         title: 'Cybersecurity Institute',
         description: 'State-of-the-art cybersecurity research and training center for digital security solutions.',
-        image: 'https://images.unsplash.com/photo-1581093588401-12d1d4e3e03c',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3And16FqajXrJoUP94YtPYoXy9i6786IyUQ&s',
       },
     ],
     'Research Labs': [
       {
         title: 'Bioinformatics Lab',
         description: 'Pioneering research at the intersection of biology and computational science.',
-        image: 'https://images.unsplash.com/photo-1581093588401-12d1d4e3e03c',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo96Izc69wFLw4mhNDxwlZMjOHtvSaPcgphA&s',
       },
       {
         title: 'Materials Research Facility',
         description: 'Innovative lab exploring new materials and nanotechnology applications.',
-        image: 'https://images.unsplash.com/photo-1559757175-0836fdba79e0',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2m_qWplwUNFaOixBPbZUsFoR5WfWjd4owaw&s',
       },
     ],
     'Infrastructure': [
       {
         title: 'High Performance Computing Center',
         description: 'Robust computational infrastructure supporting large-scale data processing.',
-        image: 'https://images.unsplash.com/photo-1581090700227-1e8a6b4c63d1',
+        image: 'https://www.purestorage.com/content/dam/purestorage/knowledge/what-is-high-performance-computing.jpg.imgo.jpg',
       },
       {
         title: 'Smart Campus Network',

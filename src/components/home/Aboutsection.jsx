@@ -32,7 +32,7 @@ export default function AboutSection() {
         {/* Right Image with Badge */}
         <div className="relative md:w-1/2 w-full mt-8 md:mt-0">
           <img
-            src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=600&h=400&fit=crop&crop=center"
+            src="https://architecture.live/wp-content/uploads/2022/09/5-scaled.jpg"
             alt="Library"
             className="rounded-xl shadow-xl w-full object-cover"
           />

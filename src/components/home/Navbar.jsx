@@ -89,10 +89,17 @@ const Navbar = () => {
           "Media Coverage",
         ])}
 
-        <li className="flex items-center gap-1 cursor-pointer hover:text-blue-600">
-          <GraduationCap size={16} />
-          Academics
-        </li>
+       {createMenu("Academics", <GraduationCap size={16} />, "academics", [
+  "Academic Calendar & Regulations",
+  "News, Events and Gallery",
+  "CBCS Curriculum Framework",
+  "Faculty Directory",
+  "Centers of Excellence",
+  "International Collaboration",
+  "Reports & Publications",
+  "Schools & Departments ▸",
+])}
+
 
         {createMenu("Admissions", <FileText size={16} />, "admissions", [
           "Admission Process",

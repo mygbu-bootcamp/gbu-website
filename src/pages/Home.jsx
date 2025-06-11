@@ -1,15 +1,15 @@
-import Footer from "../component_home/Footer.jsx";
-import Navbar from "../component_home/Navbar.jsx";
-import Primarynavbar from "../component_home/Primarynavbar.jsx";
-import WelcomePage from "../component_home/Homepage.jsx";
-import QuickAccess from "../component_home/Quicklink.jsx";
-import AboutSection from "../component_home/Aboutsection.jsx";
-import Glance from "../component_home/Glance.jsx";
-import VisionaryLeadership from "../component_home/Visionary.jsx";
-import LatestUpdates from "../component_home/Latest.jsx";
-import CampusGallery from "../component_home/Gallery.jsx";
-import ExcellenceSection from "../component_home/Education.jsx";
-import CampusLifeSection from "../component_home/Campus.jsx";
+import Footer from "../components/home/Footer.jsx";
+import Navbar from "../components/home/Navbar.jsx";
+import Primarynavbar from "../components/home/Primarynavbar.jsx";
+import WelcomePage from "../components/home/Homepage.jsx";
+import QuickAccess from "../components/home/Quicklink.jsx";
+import AboutSection from "../components/home/Aboutsection.jsx";
+import Glance from "../components/home/Glance.jsx";
+import VisionaryLeadership from "../components/home/Visionary.jsx";
+import LatestUpdates from "../components/home/Latest.jsx";
+import CampusGallery from "../components/home/Gallery.jsx";
+import ExcellenceSection from "../components/home/Education.jsx";
+import CampusLifeSection from "../components/home/Campus.jsx";
 
 function Home() {
  return (
@@ -28,7 +28,6 @@ function Home() {
       
       <main className="flex-grow">
       </main>
-      
       <Footer />
     </div>
   );

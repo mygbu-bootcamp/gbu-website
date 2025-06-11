@@ -16,7 +16,7 @@ export default function VisionaryLeadership() {
       <div className="flex flex-col md:flex-row justify-center items-center gap-8">
         {/* Chancellor Card */}
         <LeadershipCard
-          image="https://storage.googleapis.com/uxpilot-auth.appspot.com/9b60c2dd46-957b3b02a27ff4586526.png"
+          image="https://www.jagranimages.com/images/newimg/04032025/04_03_2025-live-5_76_23894617_192711447.webp"
           name="Yogi Adityanath"
           role="Hon'ble Chancellor"
           quote="A visionary leader guiding GBU with focus on holistic development and academic excellence."
@@ -24,7 +24,7 @@ export default function VisionaryLeadership() {
 
         {/* Vice-Chancellor Card */}
         <LeadershipCard
-          image="https://storage.googleapis.com/uxpilot-auth.appspot.com/b095364397-5cc29b829758bc2f8d51.png"
+          image="https://www.jnu.ac.in/sites/default/files/styles/medium/public/faculty_images/Rana%20P%20Singh.png?itok=zj1FEfLD"
           name="Dr. Rana P. Singh"
           role="Hon'ble Vice-Chancellor"
           quote="Over 20+ years of academic leadership. Key research areas: Stem Cells, Tumor Biology, Dosha balance, Microgravity biology."

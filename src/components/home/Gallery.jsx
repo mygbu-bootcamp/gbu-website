@@ -57,7 +57,7 @@ export default function CampusGallery() {
         <div className="flex-1 grid grid-cols-2 gap-4 w-full">
           <div className="col-span-2">
             <img
-              src="/your-path/convocation.jpg"
+              src="https://www.shikshahub.com/uploads/sliders/banner-ICT.jpg"
               alt="Annual Convocation 2025"
               className="rounded-lg object-cover w-full h-48 md:h-56"
               loading="lazy"
@@ -66,7 +66,7 @@ export default function CampusGallery() {
           </div>
           <div className="relative group">
             <img
-              src="/your-path/fitness.jpg"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeuRQVIfvaofw-BM3TZSHC4TNadbU_BvgKQ&s"
               alt="Fitness Event"
               className="rounded-lg w-full h-24 object-cover group-hover:brightness-75 transition"
               loading="lazy"
@@ -78,7 +78,7 @@ export default function CampusGallery() {
           </div>
           <div>
             <img
-              src="/your-path/graduates.jpg"
+              src="https://image-static.collegedunia.com/public/college_data/images/appImage/1497878229cvr.png?h=260&w=360&mode=crop"
               alt="Graduates Event"
               className="rounded-lg w-full h-24 object-cover"
               loading="lazy"

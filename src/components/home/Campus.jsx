@@ -4,28 +4,28 @@ export default function CampusLifeSection() {
   const testimonials = [
     {
       category: 'Student Life',
-      image: 'https://images.unsplash.com/photo-1588072432836-e10032774350',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb2Ip3xM-a7oM8SolLHbx6hmdyW8f9IxzKzw&s',
       quote: 'GBU has given me opportunities to grow both academically and personally. The diverse community here is amazing!',
       name: 'Priya Sharma',
       course: 'B.Tech CSE',
     },
     {
       category: 'Sports & Recreation',
-      image: 'https://images.unsplash.com/photo-1605296867304-46d5465a13f1',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyA74pNi2uzsF-Q1IdjrMjoXpvu1UNIZc7jw&s',
       quote: 'The sports facilities at GBU are world-class. Being part of the cricket team has been an incredible journey.',
       name: 'Rahul Kumar',
       course: 'M.Sc Physics',
     },
     {
       category: 'Cultural Activities',
-      image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728',
+      image: 'https://www.mitgurukul.com/video/landing-popup.jpg',
       quote: 'Events like the annual fest and cultural nights made my time at GBU unforgettable!',
       name: 'Sneha Verma',
       course: 'BBA',
     },
     {
       category: 'Hostel Life',
-      image: 'https://images.unsplash.com/photo-1560448070-c33454dca6ae',
+      image: 'https://www.datocms-assets.com/6737/1533822950-dorm-room-nomads-melbourne.jpg?auto=compress%2Cformat&fm=jpg',
       quote: 'Living in the hostel helped me form lifelong friendships and become more independent.',
       name: 'Amit Singh',
       course: 'MBA',

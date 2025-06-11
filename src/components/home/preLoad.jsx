@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import gbuFull from "../assets/gbuFull.png";
-import gbuHalf from "../assets/gbuHalf.png";
+import gbuFull from "../../assets/gbuFull.png";
+import gbuHalf from "../../assets/gbuHalf.png";
 
 // Load Saira Condensed font
 const loadFont = () => {
