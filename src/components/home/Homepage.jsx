@@ -5,13 +5,13 @@ export default function WelcomePage() {
     <>
       {/* Main welcome section */}
       <div
-        className="relative h-screen bg-cover bg-center flex flex-col justify-center"
-        style={{
-          backgroundImage: "url('/b263e8c4-d9ff-4ce7-acf3-625e414c0991.png')",
-        }}
-      >
+  className="relative h-screen bg-cover bg-center flex flex-col justify-center"
+  style={{
+    backgroundImage: 'url("https://architecture.live/wp-content/uploads/2022/09/1-1536x1086.jpg")',
+  }}
+>
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-40 z-0" />
+        <div className="absolute inset-0 bg-black/40 z-0" />
 
         {/* Content */}
         <div className="relative z-10 text-white max-w-3xl px-4 sm:pl-10 pb-24">
