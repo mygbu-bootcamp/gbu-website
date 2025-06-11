@@ -1,7 +1,9 @@
  import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor = 'black' }) => {
+
   const [aboutOpen, setAboutOpen] = useState(false);
   const [academicOpen, setAcademicOpen] = useState(false);
 
