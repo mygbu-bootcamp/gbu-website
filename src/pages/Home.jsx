@@ -10,7 +10,7 @@ import LatestUpdates from "../components/home/Latest.jsx";
 import CampusGallery from "../components/home/Gallery.jsx";
 import ExcellenceSection from "../components/home/Education.jsx";
 import CampusLifeSection from "../components/home/Campus.jsx";
-
+import HiringSection from "../components/home/Placement.jsx";
 function Home() {
  return (
     <div className="min-h-screen flex flex-col">
@@ -25,7 +25,7 @@ function Home() {
       <CampusGallery />
       <ExcellenceSection />
       <CampusLifeSection />
-      
+      <HiringSection/>
       <main className="flex-grow">
       </main>
       <Footer />
