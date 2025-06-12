@@ -38,6 +38,48 @@ const quickLinks = [
     icon: <FaBuilding className="text-white text-2xl" />,
     color: "bg-blue-700",
   },
+    {
+    title: "Schools",
+    desc: "Explore our academic schools",
+    icon: <FaUniversity className="text-white text-2xl" />,
+    color: "bg-green-600",
+  },
+  {
+    title: "Fees",
+    desc: "Fee structure and payment",
+    icon: <FaMoneyCheckAlt className="text-white text-2xl" />,
+    color: "bg-blue-800",
+  },
+  {
+    title: "Placements",
+    desc: "Career opportunities",
+    icon: <FaBriefcase className="text-white text-2xl" />,
+    color: "bg-orange-600",
+  },
+  {
+    title: "Courses Offered",
+    desc: "Academic programs",
+    icon: <FaBook className="text-white text-2xl" />,
+    color: "bg-green-700",
+  },
+  {
+    title: "Infrastructure",
+    desc: "Campus facilities",
+    icon: <FaBuilding className="text-white text-2xl" />,
+    color: "bg-blue-700",
+  },
+   {
+    title: "Courses Offered",
+    desc: "Academic programs",
+    icon: <FaBook className="text-white text-2xl" />,
+    color: "bg-green-700",
+  },
+  {
+    title: "Infrastructure",
+    desc: "Campus facilities",
+    icon: <FaBuilding className="text-white text-2xl" />,
+    color: "bg-blue-700",
+  },
 ];
 
 export default function QuickAccess() {

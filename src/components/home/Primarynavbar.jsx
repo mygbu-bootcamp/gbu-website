@@ -37,10 +37,10 @@ const Primarynavbar = () => {
           <a href="#" className="flex items-center gap-1 hover:underline">
             <CreditCard size={14} /> Online Fee Payment
           </a>
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href="https://uni-spark-dashboard.lovable.app/" className="flex items-center gap-1 hover:underline">
             <User size={14} /> Student Portal
           </a>
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href="https://mygbu-faculty-nexus-3d.lovable.app/" className="flex items-center gap-1 hover:underline">
             <LogIn size={14} /> Employee Login
           </a>
           <a href="#" className="flex items-center gap-1 hover:underline">

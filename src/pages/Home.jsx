@@ -11,6 +11,7 @@ import CampusGallery from "../components/home/Gallery.jsx";
 import ExcellenceSection from "../components/home/Education.jsx";
 import CampusLifeSection from "../components/home/Campus.jsx";
 import HiringSection from "../components/home/Placement.jsx";
+import VirtualTour from "../components/home/VirtualTour.jsx";
 function Home() {
  return (
     <div className="min-h-screen flex flex-col">
@@ -25,7 +26,9 @@ function Home() {
       <ExcellenceSection />
       <CampusLifeSection />
 
-      <HiringSection/>0
+      <HiringSection/>
+      <VirtualTour/>
+
     </div>
   );
 }

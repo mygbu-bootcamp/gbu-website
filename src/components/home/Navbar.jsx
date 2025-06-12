@@ -70,13 +70,18 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow px-4 md:px-16 py-3 flex flex-col md:flex-row items-center justify-between relative z-50">
       {/* Logo */}
-      <div className="flex items-center space-x-3">
-        <img
-          src="https://gbu-campus-gateway.lovable.app/lovable-uploads/5ae0d9ed-e0e0-4921-a0f1-8e17676824d6.png"
-          alt="GBU Logo"
-          className="w-64 h-12 mr-3"
-        />
-      </div>
+  <div
+  className="flex items-center space-x-3 cursor-pointer"
+  onClick={() => window.location.href = '/'}
+>
+  <img
+    src="https://gbu-campus-gateway.lovable.app/lovable-uploads/5ae0d9ed-e0e0-4921-a0f1-8e17676824d6.png"
+    alt="GBU Logo"
+    className="w-64 h-12 mr-3"
+  />
+</div>
+
+
 
       {/* Navigation */}
       <ul className="flex flex-wrap justify-center gap-6 mt-4 md:mt-0 text-sm text-gray-700 relative">

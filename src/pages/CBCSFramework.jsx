@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Layout from '../../components/Layout';
+
 import { Link } from 'react-router-dom';
 import { BookOpen, Target, Award, Users, CheckCircle, ArrowRight, GraduationCap, Star } from 'lucide-react';
 
@@ -91,7 +91,7 @@ const CBCSFramework = () => {
   ];
 
   return (
-    <Layout>
+<>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
@@ -298,7 +298,7 @@ const CBCSFramework = () => {
           </div>
         </div>
       </section>
-    </Layout>
+</>
   );
 };
 

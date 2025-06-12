@@ -2,14 +2,14 @@ import Home from "../pages/Home.jsx";
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
-// const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
-// const CentersOfExcellence = React.lazy(() => import('../pages/CentersOfExcellence'));
-// const Faculty = React.lazy(() => import('../pages/Faculty'));
-// const FacultyDetail = React.lazy(() => import('../pages/FacultyDetail'));
-// const InternationalCollaboration = React.lazy(() => import('../pages/InternationalCollaboration'));
-// const NewsEvents = React.lazy(() => import('../pages/NewsEvents'));
-// const ReportsPublications = React.lazy(() => import('../pages/ReportsPublications'));
-// const Schools = React.lazy(() => import('../pages/Schools'));
+const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
+const CentersOfExcellence = React.lazy(() => import('../pages/CentersOfExcellence'));
+const Faculty = React.lazy(() => import('../pages/Faculty'));
+const FacultyDetail = React.lazy(() => import('../pages/FacultyDetail'));
+const InternationalCollaboration = React.lazy(() => import('../pages/InternationalCollaboration'));
+const NewsEvents = React.lazy(() => import('../pages/NewsEvents'));
+const ReportsPublications = React.lazy(() => import('../pages/ReportsPublications'));
+const Schools = React.lazy(() => import('../pages/Schools'));
 // const SchoolsDetail = React.lazy(() => import('../pages/Schools.tsx'));
 
 const Disclosures = lazy(() => import('../pages/Disclosures'));
@@ -40,7 +40,7 @@ const ViceChancellor = lazy(() => import('../pages/ViceChancellor'));
         {/* Academics */}
         <Route path="/academics" element={<h1>Academics</h1>} />
         <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
-        {/* <Route path="/academics/cbcs-framework" element={<CBCSFramework />} />
+        <Route path="/academics/cbcs-framework" element={<CBCSFramework />} />
         <Route path="/academics/centers-of-excellence" element={<CentersOfExcellence />} />
         <Route path="/academics/faculty" element={<Faculty />} />
         <Route path="/academics/faculty/:id" element={<FacultyDetail />} />
@@ -48,7 +48,7 @@ const ViceChancellor = lazy(() => import('../pages/ViceChancellor'));
         <Route path="/academics/news-events" element={<NewsEvents />} />
         <Route path="/academics/reports-publications" element={<ReportsPublications />} />
         <Route path="/academics/schools" element={<Schools />} />
-        <Route path="/academics/schools/:id" element={<SchoolsDetail />} /> */}
+        {/* <Route path="/academics/schools/:id" element={<SchoolsDetail />} /> */}
         {/* Admissions Routes */}
         <Route path="/admissions/admission-process" element={<h1>Admission Process</h1>} />
         <Route path="/admissions/courses-offered" element={<h1>Courses Offered (UG | PG | PhD)</h1>} />
