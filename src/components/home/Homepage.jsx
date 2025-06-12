@@ -4,17 +4,25 @@ export default function WelcomePage() {
   return (
     <>
       {/* Main welcome section */}
-      <div
-  className="relative h-screen bg-cover bg-center flex flex-col justify-center"
-  style={{
-    backgroundImage: 'url("https://architecture.live/wp-content/uploads/2022/09/1-1536x1086.jpg")',
-  }}
->
+      <div className="relative h-screen flex flex-col justify-center overflow-hidden">
+
+        {/* Background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="public/assets/home.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-0" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
 
         {/* Content */}
-        <div className="relative z-10 text-white max-w-3xl px-4 sm:pl-10 pb-24">
+        <div className="relative z-20 text-white max-w-3xl px-4 sm:pl-10 pb-24">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-left">
             Welcome to <span className="text-orange-500">Gautam</span>{" "}
             <span className="text-orange-600">Buddha University</span>
@@ -51,8 +59,8 @@ export default function WelcomePage() {
           overflow: "hidden",
           position: "relative",
           padding: "10px 0",
-          height: "40px", // fixes container height so it occupies space
-          marginBottom: "30px", // spacing below ticker
+          height: "40px",
+          marginBottom: "30px",
         }}
       >
         <div

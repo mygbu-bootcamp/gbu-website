@@ -14,8 +14,7 @@ import HiringSection from "../components/home/Placement.jsx";
 function Home() {
  return (
     <div className="min-h-screen flex flex-col">
-      <Primarynavbar />
-      <Navbar />
+
       <WelcomePage />
       <QuickAccess />
       <AboutSection />
@@ -25,10 +24,8 @@ function Home() {
       <CampusGallery />
       <ExcellenceSection />
       <CampusLifeSection />
-      <HiringSection/>
-      <main className="flex-grow">
-      </main>
-      <Footer />
+
+      <HiringSection/>0
     </div>
   );
 }
