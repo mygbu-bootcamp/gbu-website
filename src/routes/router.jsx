@@ -1,5 +1,5 @@
 import Home from "../pages/Home.jsx";
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
 // const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
@@ -12,6 +12,15 @@ const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
 // const Schools = React.lazy(() => import('../pages/Schools'));
 // const SchoolsDetail = React.lazy(() => import('../pages/Schools.tsx'));
 
+const Disclosures = lazy(() => import('../pages/Disclosures'));
+const Policies = lazy(() => import('../pages/Policies'));
+const Vision = lazy(() => import('../pages/Vison'));
+const MediaCoverage = lazy(() => import('../pages/MediaCoverage'));
+const Stat = lazy(() => import('../pages/Stat'));
+const Chancellor = lazy(() => import('../pages/Chancellor'));
+const Governance = lazy(() => import('../pages/Governance'));
+const ViceChancellor = lazy(() => import('../pages/ViceChancellor'));
+
  export default function AppRouter() {
   return (
 
@@ -19,14 +28,14 @@ const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
       <Routes>
            {/* About Us Routes */}
         <Route path="/" element={ <Home/>} />
-        <Route path="/about-us/vision-mission" element={<h1>Vision & Mission</h1>} />
-        <Route path="/about-us/chancellor-message" element={<h1>Chancellor's Message</h1>} />
-        <Route path="/about-us/vice-chancellor-message" element={<h1>Vice-Chancellor's Message</h1>} />
-        <Route path="/about-us/governance-committees" element={<h1>Governance & Committees</h1>} />
-        <Route path="/about-us/strategic-perspective" element={<h1>GBU Strategic Perspective</h1>} />
-        <Route path="/about-us/policies-statutes-rti" element={<h1>Policies, Statutes & RTI</h1>} />
-        <Route path="/about-us/mandatory-disclosures" element={<h1>Mandatory Disclosures</h1>} />
-        <Route path="/about-us/media-coverage" element={<h1>Media Coverage</h1>} />
+        <Route path="/about-us/vision-mission" element={<Vision />} />
+        <Route path="/about-us/chancellor-message" element={<Chancellor />} />
+        <Route path="/about-us/vice-chancellor-message" element={<ViceChancellor />} />
+        <Route path="/about-us/governance-committees" element={<Governance />} />
+        <Route path="/about-us/strategic-perspective" element={<Stat />} />
+        <Route path="/about-us/policies-statutes-rti" element={<Policies />} />
+        <Route path="/about-us/mandatory-disclosures" element={<Disclosures />} />
+        <Route path="/about-us/media-coverage" element={<MediaCoverage />} />
 
         {/* Academics */}
         <Route path="/academics" element={<h1>Academics</h1>} />
