@@ -21,6 +21,14 @@ const Chancellor = lazy(() => import('../pages/Chancellor'));
 const Governance = lazy(() => import('../pages/Governance'));
 const ViceChancellor = lazy(() => import('../pages/ViceChancellor'));
 
+const FundedProjects = lazy(() => import('../pages/FundedProjects'));
+const StartUp = lazy(() => import('../pages/StartUp'));
+const Index = lazy(() => import('../pages/Index'));
+const Publications = lazy(() => import('../pages/Publications'));
+const Innovations = lazy(() => import('../pages/Innovations'));
+const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
+
+
  export default function AppRouter() {
   return (
 
@@ -57,13 +65,22 @@ const ViceChancellor = lazy(() => import('../pages/ViceChancellor'));
         <Route path="/admissions/international-admissions" element={<h1>International Admissions</h1>} />
 
         {/* Research Routes */}
-        <Route path="/research/research-centers" element={<h1>Research Centers and Labs</h1>} />
+        {/* <Route path="/research/research-centers" element={<h1>Research Centers and Labs</h1>} />
         <Route path="/research/publications-patents" element={<h1>Publications and Patents</h1>} />
         <Route path="/research/incubation-innovation" element={<h1>Incubation and Innovation</h1>} />
         <Route path="/research/startups" element={<h1>Startups</h1>} />
         <Route path="/research/funded-projects" element={<h1>Funded Projects</h1>} />
         <Route path="/research/irp-cell" element={<h1>IRP Cell</h1>} />
-        <Route path="/research/research-highlights" element={<h1>Research Highlights</h1>} />
+        <Route path="/research/research-highlights" element={<h1>Research Highlights</h1>} /> */}
+
+        <Route path="/research/research-centers" element={<ResearchCenters />} />
+        <Route path="/research/publications-patents" element={<Publications />} />
+        <Route path="/research/incubation-innovation" element={<Innovations />} />
+        <Route path="/research/startups" element={<StartUp />} />
+        <Route path="/research/funded-projects" element={<FundedProjects />} />
+        <Route path="/research/irp-cell" element={<Index />} />
+        <Route path="/research/research-highlights" element={<Index />} /> 
+      
 
         {/* Campus Life Routes */}
         <Route path="/campus-life/hostel-facilities" element={<h1>Hostel Facilities</h1>} />
