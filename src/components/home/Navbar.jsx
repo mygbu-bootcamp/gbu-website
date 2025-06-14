@@ -135,8 +135,8 @@ const Navbar = () => {
           <Link to="/campus-life/campus-events">Campus Events</Link>,
         ])}
 
-        {createMenu("Announcements", <Camera size={16} />, "announcements", [
-          <Link to="/announcements/news-updates">News & Updates</Link>,
+        {createMenu("Announcements", <Camera size={16} />, "https://announcements-two.vercel.app/", [
+          <Link to="https://announcements-two.vercel.app/news-notifications">News & Updates</Link>,
           <Link to="/announcements/event-calendar">Event Calendar</Link>,
           <Link to="/announcements/notices">Notices</Link>,
           <Link to="/announcements/press-releases">Press Releases</Link>,

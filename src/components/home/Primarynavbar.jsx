@@ -19,14 +19,14 @@ const Primarynavbar = () => {
       <div className="w-full py-2 flex flex-col md:flex-row justify-between items-center px-6 md:px-16 gap-2">
         {/* Left links */}
         <div className="flex flex-wrap gap-4 items-center">
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href="https://tender-navigator-portal.vercel.app/" className="flex items-center gap-1 hover:underline">
             <Send size={14} /> Tenders
           </a>
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
             <Send size={14} /> Recruitments
           </a>
-          <a href="#" className="hover:underline">Booking</a>
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href=" https://gbu-facility-bookings-39.lovable.app/" className="hover:underline">Booking</a>
+          <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
             <Info size={14} /> RTI
           </a>
           <a href="#" className="hover:underline">Sitemap</a>
@@ -34,7 +34,7 @@ const Primarynavbar = () => {
 
         {/* Right links */}
         <div className="flex flex-wrap gap-4 items-center">
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href="https://preview--fee-wise-campus-pay.lovable.app/" className="flex items-center gap-1 hover:underline">
             <CreditCard size={14} /> Online Fee Payment
           </a>
           <a href="https://uni-spark-dashboard.lovable.app/" className="flex items-center gap-1 hover:underline">
@@ -43,10 +43,10 @@ const Primarynavbar = () => {
           <a href="https://mygbu-faculty-nexus-3d.lovable.app/" className="flex items-center gap-1 hover:underline">
             <LogIn size={14} /> Employee Login
           </a>
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href="https://buddha-directory-glide-28.lovable.app" className="flex items-center gap-1 hover:underline">
             <Map size={14} /> Directory
           </a>
-          <a href="#" className="flex items-center gap-1 hover:underline">
+          <a href="http://gbu-contact-hub-banner.vercel.app" className="flex items-center gap-1 hover:underline">
             <Phone size={14} /> Contact Us
           </a>
         </div>
