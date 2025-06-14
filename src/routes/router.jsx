@@ -113,6 +113,18 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/alumni/become-mentor" element={<h1>Become a Mentor</h1>} />
 
 
+ {/* Primary Navbar links */}
+ <Route path="/tenders" element={<h1>tenders</h1>} />
+        <Route path="/recruitments" element={<h1> recruitments</h1>} />
+        <Route path="/booking" element={<h1>Booking</h1> } />
+        <Route path="/rti" element={ <h1>rti</h1>} />
+        <Route path="/sitemap" element={ <h1>sitemap</h1>} />
+        <Route path="/online-fee-payment" element={<h1>fee payment</h1> } />
+        <Route path="/student-portal" element={<h1>student portal</h1> } />
+        <Route path="/employee-login" element={<h1> employee login</h1> } />
+        <Route path="/directory" element= { <h1> directory</h1>} />
+        <Route path="/contact-us" element={ <h1>contact us</h1>} />
+
       </Routes>
 
 
