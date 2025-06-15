@@ -6,6 +6,7 @@ import CampusRecruiters from "../pages/Placement/CampusRecruiters.jsx";
 import PlacementStatistics from "../pages/Placement/PlacementStatistics.jsx";
 import PlacementBrochure from "../pages/Placement/PlacementBrochure.jsx";
 import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
+
 const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
 const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
 const CentersOfExcellence = React.lazy(() => import('../pages/CentersOfExcellence'));
@@ -32,6 +33,12 @@ const Index = lazy(() => import('../pages/Index'));
 const Publications = lazy(() => import('../pages/Publications'));
 const Innovations = lazy(() => import('../pages/Innovations'));
 const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
+
+
+import AlumniNetwork from "../pages/alumni/AlumniNetwork.jsx";
+import Events from "../pages/alumni/Events.jsx";
+import SuccessStories from "../pages/alumni/SuccessStories.jsx";
+import Registration from "../pages/alumni/Registration.jsx";
 
 
  export default function AppRouter() {
@@ -112,10 +119,10 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/placements/placement-statistics" element={<PlacementStatistics/>} />
 
         {/* Alumni Routes */}
-        <Route path="/alumni/alumni-network" element={<h1>Alumni Network</h1>} />
-        <Route path="/alumni/alumni-events" element={<h1>Alumni Events</h1>} />
-        <Route path="/alumni/alumni-achievements" element={<h1>Alumni Achievements</h1>} />
-        <Route path="/alumni/become-mentor" element={<h1>Become a Mentor</h1>} />
+        <Route path="/alumni/alumni-network" element={<AlumniNetwork/>}/>
+        <Route path="/alumni/alumni-events" element={<Events/>} />
+        <Route path="/alumni/alumni-achievements" element={<SuccessStories/>} />
+        <Route path="/alumni/become-mentor" element={<Registration/>} />
 
 
       </Routes>
