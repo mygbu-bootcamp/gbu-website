@@ -21,7 +21,7 @@ const RegisterPage = () => {
   const [errors, setErrors] = useState<any>({});
 
   const validateForm = () => {
-    const newErrors: any = {};
+    const newErrors={};
 
     if (!formData.fullName) newErrors.fullName = 'Full name is required';
     if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
@@ -43,7 +43,7 @@ const RegisterPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       console.log('Registration attempt:', formData);
@@ -51,10 +51,10 @@ const RegisterPage = () => {
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field , value ) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors((prev: any) => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: '' }));
     }
   };
 

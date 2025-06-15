@@ -108,6 +108,7 @@ const Navbar = () => {
         ])}
 
         {createMenu("Admissions", <FileText size={16} />, "admissions", [
+           <Link to="/admissions/admission-overview">Admission Overview</Link>,
           <Link to="/admissions/admission-process">Admission Process</Link>,
           <Link to="/admissions/courses-offered">Courses Offered (UG | PG | PhD)</Link>,
           <Link to="/admissions/eligibility-reservation">Eligibility & Reservation</Link>,

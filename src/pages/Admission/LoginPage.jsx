@@ -31,7 +31,7 @@ const LoginPage = () => {
   ];
 
   const validateForm = () => {
-    const newErrors: any = {};
+    const newErrors  = {};
 
     if (!formData.email) {
       newErrors.email = 'Email or Application Number is required';
@@ -55,7 +55,7 @@ const LoginPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e ) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -108,10 +108,10 @@ const LoginPage = () => {
     }, 1500);
   };
 
-  const handleInputChange = (field: string, value: string | boolean) => {
+  const handleInputChange = (field , value ) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors((prev: any) => ({ ...prev, [field]: '' }));
+      setErrors((prev ) => ({ ...prev, [field]: '' }));
     }
   };
 

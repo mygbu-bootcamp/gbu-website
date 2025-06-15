@@ -6,6 +6,10 @@ import CampusRecruiters from "../pages/Placement/CampusRecruiters.jsx";
 import PlacementStatistics from "../pages/Placement/PlacementStatistics.jsx";
 import PlacementBrochure from "../pages/Placement/PlacementBrochure.jsx";
 import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
+import CoursesOffered from "../pages/Admission/CoursesOffered.jsx";
+import FeeStructure from "../pages/Admission/FeeStructure.jsx";
+import InternationalAdmissions from "../pages/Admission/InternationalAdmissions.jsx";
+import AdmissionOverview from "../pages/Admission/AdmissionOverview.jsx"
 const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
 const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
 const CentersOfExcellence = React.lazy(() => import('../pages/CentersOfExcellence'));
@@ -33,7 +37,8 @@ const Publications = lazy(() => import('../pages/Publications'));
 const Innovations = lazy(() => import('../pages/Innovations'));
 const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
 
-
+const EligibilityReservation = lazy(()=> import ('../pages/Admission/EligibilityReservation.jsx'))
+const AdmissionProcess = lazy(()=> import ('../pages/Admission/AdmissionProcess.jsx'))
  export default function AppRouter() {
   return (
 
@@ -63,11 +68,12 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/academics/schools" element={<Schools />} />
         {/* <Route path="/academics/schools/:id" element={<SchoolsDetail />} /> */}
         {/* Admissions Routes */}
-        <Route path="/admissions/admission-process" element={<h1>Admission Process</h1>} />
-        <Route path="/admissions/courses-offered" element={<h1>Courses Offered (UG | PG | PhD)</h1>} />
-        <Route path="/admissions/eligibility-reservation" element={<h1>Eligibility & Reservation</h1>} />
-        <Route path="/admissions/fee-structure-prospectus" element={<h1>Fee Structure & Prospectus</h1>} />
-        <Route path="/admissions/international-admissions" element={<h1>International Admissions</h1>} />
+         <Route path="/admissions/admission-overview" element={<AdmissionOverview/>} />
+        <Route path="/admissions/admission-process" element={<AdmissionProcess/>} />
+        <Route path="/admissions/courses-offered" element={<CoursesOffered/>} />
+        <Route path="/admissions/eligibility-reservation" element={<EligibilityReservation/>} />
+        <Route path="/admissions/fee-structure-prospectus" element={<FeeStructure/>} />
+        <Route path="/admissions/international-admissions" element={<InternationalAdmissions/>} />
 
         {/* Research Routes */}
         {/* <Route path="/research/research-centers" element={<h1>Research Centers and Labs</h1>} />
@@ -117,6 +123,18 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/alumni/alumni-achievements" element={<h1>Alumni Achievements</h1>} />
         <Route path="/alumni/become-mentor" element={<h1>Become a Mentor</h1>} />
 
+
+ {/* Primary Navbar links */}
+ <Route path="/tenders" element={<h1>tenders</h1>} />
+        <Route path="/recruitments" element={<h1> recruitments</h1>} />
+        <Route path="/booking" element={<h1>Booking</h1> } />
+        <Route path="/rti" element={ <h1>rti</h1>} />
+        <Route path="/sitemap" element={ <h1>sitemap</h1>} />
+        <Route path="/online-fee-payment" element={<h1>fee payment</h1> } />
+        <Route path="/student-portal" element={<h1>student portal</h1> } />
+        <Route path="/employee-login" element={<h1> employee login</h1> } />
+        <Route path="/directory" element= { <h1> directory</h1>} />
+        <Route path="/contact-us" element={ <h1>contact us</h1>} />
 
       </Routes>
 
