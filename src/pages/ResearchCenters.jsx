@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ResearchCenters = () => {
   const centers = [
@@ -122,8 +123,8 @@ const ResearchCenters = () => {
           <div key={center.id} className="col-lg-6">
             <div className="card h-100 card-hover border-0 shadow">
               <div className="position-relative">
-                <img 
-                  src={center.image} 
+                <img
+                  src={center.image}
                   alt={center.name}
                   className="card-img-top"
                   style={{ height: '200px', objectFit: 'cover' }}
@@ -132,15 +133,15 @@ const ResearchCenters = () => {
                   <span className="badge bg-primary">Est. {center.established}</span>
                 </div>
               </div>
-              
+
               <div className="card-body d-flex flex-column">
                 <div className="mb-3">
                   <h5 className="card-title text-primary mb-1">{center.name}</h5>
                   <small className="text-muted">{center.shortName}</small>
                 </div>
-                
+
                 <p className="card-text text-muted mb-3">{center.description}</p>
-                
+
                 <div className="mb-3">
                   <div className="row g-2 text-sm">
                     <div className="col-12">
@@ -151,7 +152,7 @@ const ResearchCenters = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mb-3">
                   <h6 className="text-primary mb-2">Key Facilities:</h6>
                   <div className="d-flex flex-wrap gap-1">
@@ -162,7 +163,7 @@ const ResearchCenters = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="mb-4">
                   <h6 className="text-primary mb-2">Research Areas:</h6>
                   <div className="d-flex flex-wrap gap-1">
@@ -173,7 +174,7 @@ const ResearchCenters = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="mt-auto d-flex gap-2">
                   <button className="btn btn-primary btn-sm flex-fill">Visit Lab</button>
                   <button className="btn btn-outline-primary btn-sm flex-fill">Contact</button>
@@ -192,7 +193,7 @@ const ResearchCenters = () => {
               <div className="col-lg-8">
                 <h3 className="text-primary mb-3">Industry Collaborations & Partnerships</h3>
                 <p className="text-muted mb-4">
-                  Our research centers actively collaborate with leading industries, government organizations, 
+                  Our research centers actively collaborate with leading industries, government organizations,
                   and international institutions to drive innovation and translate research into real-world solutions.
                 </p>
                 <div className="row g-3">
@@ -235,7 +236,7 @@ const ResearchCenters = () => {
           <h3 className="text-primary">Research Infrastructure</h3>
           <p className="text-muted">State-of-the-art equipment and facilities</p>
         </div>
-        
+
         <div className="col-md-3 text-center mb-4">
           <div className="border rounded p-4 h-100">
             <i className="fas fa-microscope text-primary fs-2 mb-3"></i>
@@ -243,7 +244,7 @@ const ResearchCenters = () => {
             <p className="text-muted small">High-end analytical and characterization equipment</p>
           </div>
         </div>
-        
+
         <div className="col-md-3 text-center mb-4">
           <div className="border rounded p-4 h-100">
             <i className="fas fa-server text-success fs-2 mb-3"></i>
@@ -251,7 +252,7 @@ const ResearchCenters = () => {
             <p className="text-muted small">High-performance computing clusters and cloud resources</p>
           </div>
         </div>
-        
+
         <div className="col-md-3 text-center mb-4">
           <div className="border rounded p-4 h-100">
             <i className="fas fa-shield-alt text-info fs-2 mb-3"></i>
@@ -259,7 +260,7 @@ const ResearchCenters = () => {
             <p className="text-muted small">Comprehensive safety protocols and emergency systems</p>
           </div>
         </div>
-        
+
         <div className="col-md-3 text-center mb-4">
           <div className="border rounded p-4 h-100">
             <i className="fas fa-wifi text-warning fs-2 mb-3"></i>

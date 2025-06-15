@@ -1,15 +1,20 @@
 import Home from "../pages/Home.jsx";
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import InternshipProgrammes from "../pages/Placement/InternshipProgrammes.jsx";
+import CampusRecruiters from "../pages/Placement/CampusRecruiters.jsx";
+import PlacementStatistics from "../pages/Placement/PlacementStatistics.jsx";
+import PlacementBrochure from "../pages/Placement/PlacementBrochure.jsx";
+import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
 const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
-// const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
-// const CentersOfExcellence = React.lazy(() => import('../pages/CentersOfExcellence'));
-// const Faculty = React.lazy(() => import('../pages/Faculty'));
-// const FacultyDetail = React.lazy(() => import('../pages/FacultyDetail'));
-// const InternationalCollaboration = React.lazy(() => import('../pages/InternationalCollaboration'));
-// const NewsEvents = React.lazy(() => import('../pages/NewsEvents'));
-// const ReportsPublications = React.lazy(() => import('../pages/ReportsPublications'));
-// const Schools = React.lazy(() => import('../pages/Schools'));
+const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
+const CentersOfExcellence = React.lazy(() => import('../pages/CentersOfExcellence'));
+const Faculty = React.lazy(() => import('../pages/Faculty'));
+const FacultyDetail = React.lazy(() => import('../pages/FacultyDetail'));
+const InternationalCollaboration = React.lazy(() => import('../pages/InternationalCollaboration'));
+const NewsEvents = React.lazy(() => import('../pages/NewsEvents'));
+const ReportsPublications = React.lazy(() => import('../pages/ReportsPublications'));
+const Schools = React.lazy(() => import('../pages/Schools'));
 // const SchoolsDetail = React.lazy(() => import('../pages/Schools.tsx'));
 
 const Disclosures = lazy(() => import('../pages/Disclosures'));
@@ -48,7 +53,7 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         {/* Academics */}
         <Route path="/academics" element={<h1>Academics</h1>} />
         <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
-        {/* <Route path="/academics/cbcs-framework" element={<CBCSFramework />} />
+        <Route path="/academics/cbcs-framework" element={<CBCSFramework />} />
         <Route path="/academics/centers-of-excellence" element={<CentersOfExcellence />} />
         <Route path="/academics/faculty" element={<Faculty />} />
         <Route path="/academics/faculty/:id" element={<FacultyDetail />} />
@@ -56,7 +61,7 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/academics/news-events" element={<NewsEvents />} />
         <Route path="/academics/reports-publications" element={<ReportsPublications />} />
         <Route path="/academics/schools" element={<Schools />} />
-        <Route path="/academics/schools/:id" element={<SchoolsDetail />} /> */}
+        {/* <Route path="/academics/schools/:id" element={<SchoolsDetail />} /> */}
         {/* Admissions Routes */}
         <Route path="/admissions/admission-process" element={<h1>Admission Process</h1>} />
         <Route path="/admissions/courses-offered" element={<h1>Courses Offered (UG | PG | PhD)</h1>} />
@@ -79,8 +84,8 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/research/startups" element={<StartUp />} />
         <Route path="/research/funded-projects" element={<FundedProjects />} />
         <Route path="/research/irp-cell" element={<Index />} />
-        <Route path="/research/research-highlights" element={<Index />} /> 
-      
+        <Route path="/research/research-highlights" element={<Index />} />
+
 
         {/* Campus Life Routes */}
         <Route path="/campus-life/hostel-facilities" element={<h1>Hostel Facilities</h1>} />
@@ -100,11 +105,11 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/announcements/newsletter" element={<h1>Newsletter</h1>} />
 
         {/* Placements Routes */}
-        <Route path="/placements/placement-process" element={<h1>Placement Process</h1>} />
-        <Route path="/placements/top-recruiters" element={<h1>Top Recruiters</h1>} />
-        <Route path="/placements/internship-opportunities" element={<h1>Internship Opportunities</h1>} />
-        <Route path="/placements/career-counseling" element={<h1>Career Counseling</h1>} />
-        <Route path="/placements/placement-statistics" element={<h1>Placement Statistics</h1>} />
+        <Route path="/placements/placement-process" element={<PlacementBrochure/>} />
+        <Route path="/placements/top-recruiters" element={<CampusRecruiters/>} />
+        <Route path="/placements/internship-opportunities" element={<InternshipProgrammes/>} />
+        <Route path="/placements/career-counseling" element={<TrainingCareerServices/>} />
+        <Route path="/placements/placement-statistics" element={<PlacementStatistics/>} />
 
         {/* Alumni Routes */}
         <Route path="/alumni/alumni-network" element={<h1>Alumni Network</h1>} />
