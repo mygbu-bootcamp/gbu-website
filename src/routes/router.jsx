@@ -21,21 +21,9 @@ const InternationalCollaboration = React.lazy(() => import('../pages/Internation
 const NewsEvents = React.lazy(() => import('../pages/NewsEvents'));
 const ReportsPublications = React.lazy(() => import('../pages/ReportsPublications'));
 const Schools = React.lazy(() => import('../pages/Schools'));
-const AcademicCalendar = React.lazy(() => import("../pages/AcademicCalendar"));
-const CBCSFramework = React.lazy(() => import("../pages/CBCSFramework"));
-const CentersOfExcellence = React.lazy(() =>
-  import("../pages/CentersOfExcellence")
-);
-const Faculty = React.lazy(() => import("../pages/Faculty"));
-const FacultyDetail = React.lazy(() => import("../pages/FacultyDetail"));
-const InternationalCollaboration = React.lazy(() =>
-  import("../pages/InternationalCollaboration")
-);
-const NewsEvents = React.lazy(() => import("../pages/NewsEvents"));
-const ReportsPublications = React.lazy(() =>
-  import("../pages/ReportsPublications")
-);
-const Schools = React.lazy(() => import("../pages/Schools"));
+
+
+
 // const SchoolsDetail = React.lazy(() => import('../pages/Schools.tsx'));
 
 const Disclosures = lazy(() => import("../pages/Disclosures"));
@@ -221,5 +209,3 @@ export default function AppRouter() {
     </Routes>
   );
 }
-
-
