@@ -6,6 +6,17 @@ import CampusRecruiters from "../pages/Placement/CampusRecruiters.jsx";
 import PlacementStatistics from "../pages/Placement/PlacementStatistics.jsx";
 import PlacementBrochure from "../pages/Placement/PlacementBrochure.jsx";
 import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
+import AdmissionProcess from "../pages/Admission/AdmissionProcess.jsx";
+import CoursesOffered from "../pages/Admission/CoursesOffered.jsx";
+import EligibilityReservation from "../pages/Admission/EligibilityReservation.jsx";
+import FeeStructure from "../pages/Admission/FeeStructure.jsx";
+import InternationalAdmissions from "../pages/Admission/InternationalAdmissions.jsx";
+import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
+import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
+import PhotoGallery from "../pages/Announcements/PhotoGallery.jsx";
+import AlumniNetwork from "../pages/Alumni/AlumniNetwork.jsx";
+import EventsReunions from "../pages/Alumni/EventsReunions.jsx";
+import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
 
 const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
 const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
@@ -26,23 +37,26 @@ const Chancellor = lazy(() => import('../pages/Chancellor'));
 const Governance = lazy(() => import('../pages/Governance'));
 const ViceChancellor = lazy(() => import('../pages/ViceChancellor'));
 
-const FundedProjects = lazy(() => import("../pages/FundedProjects"));
-const StartUp = lazy(() => import("../pages/StartUp"));
-const Index = lazy(() => import("../pages/Index"));
-const Publications = lazy(() => import("../pages/Publications"));
-const Innovations = lazy(() => import("../pages/Innovations"));
-const ResearchCenters = lazy(() => import("../pages/ResearchCenters"));
+const FundedProjects = lazy(() => import('../pages/FundedProjects'));
+const StartUp = lazy(() => import('../pages/StartUp'));
+const Index = lazy(() => import('../pages/Index'));
+const Publications = lazy(() => import('../pages/Publications'));
+const Innovations = lazy(() => import('../pages/Innovations'));
+const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
 
-import HostelDining from "../pages/campusLife/HostelDining.jsx";
-import SportsCultural from "../pages/campusLife/SportsCultural.jsx";
-import ClubsCouncils from "../pages/campusLife/ClubsCouncils.jsx";
-import HealthWellness from "../pages/campusLife/HealthWellness.jsx";
-import UpcomingEvents from "../pages/campusLife/UpcomingEvents.jsx";
-import VirtualTour from "../components/home/VirtualTour.jsx";
-import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
-import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
-import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
-import PhotoGallery from "../pages/Announcements/PhotoGallery.jsx";
+// ICT School components (lazy loaded) - Update these paths according to your project structure
+const ICTPage = lazy(() => import('../pages/departments/ICTPage'));
+const ICTFaculty = lazy(() => import('../pages/departments/Faculty'));
+const CSE = lazy(() => import('../pages/departments/CSE'));
+const IT = lazy(() => import('../pages/departments/IT'));
+const ECE = lazy(() => import('../pages/departments/ECE'));
+const ICTContact = lazy(() => import('../pages/departments/Contact'));
+const ResearchArea = lazy(() => import('../pages/departments/Research_area'));
+const ResearchProjects = lazy(() => import('../pages/departments/Reasearch_project'));
+const ResearchScholars = lazy(() => import('../pages/departments/Reasearch_Scholar'));
+const TrainingConsultancy = lazy(() => import('../pages/departments/Training'));
+const Patents = lazy(() => import('../pages/departments/Patent'));
+
 
 export default function AppRouter() {
   return (
@@ -99,13 +113,12 @@ export default function AppRouter() {
         <Route path="/schools/ict/contact" element={<ICTContact />} />
 
         {/* Admissions Routes */}
-        <Route path="/admissions/admission-process" element={<h1>Admission Process</h1>} />
-        <Route path="/admissions/courses-offered" element={<h1>Courses Offered (UG | PG | PhD)</h1>} />
-        <Route path="/admissions/eligibility-reservation" element={<h1>Eligibility & Reservation</h1>} />
-        <Route path="/admissions/fee-structure-prospectus" element={<h1>Fee Structure & Prospectus</h1>} />
-        <Route path="/admissions/international-admissions" element={<h1>International Admissions</h1>} />
+        <Route path="/admissions/admission-process" element={<AdmissionProcess/>} />
+        <Route path="/admissions/courses-offered" element={<CoursesOffered/>} />
+        <Route path="/admissions/eligibility-reservation" element={<EligibilityReservation/>} />
+        <Route path="/admissions/fee-structure-prospectus" element={<FeeStructure/>} />
+        <Route path="/admissions/international-admissions" element={<InternationalAdmissions/>} />
 
-    
         {/* Research Routes */}
         {/* <Route path="/research/research-centers" element={<h1>Research Centers and Labs</h1>} />
 
@@ -135,25 +148,13 @@ export default function AppRouter() {
         <Route path="/campus-life/student-support-services" element={<h1>Student Support Services</h1>} />
         <Route path="/campus-life/campus-events" element={<h1>Campus Events</h1>} />
 
-      {/* Announcements Routes */}
-      <Route
-        path="/announcements/news-notifications"
-        element={<NewsNotifications/>}
-      />
-      <Route
-        path="/announcements/event-calendar"
-        element={<EventsCalendar/>}
-      />
-      <Route path="/announcements/notices" element={<h1>Notices</h1>} />
-      <Route
-        path="/announcements/press-releases"
-        element={<h1>Press Releases</h1>}
-      />
-      <Route
-        path="/announcements/media-gallery"
-        element={<PhotoGallery/>}/>
-
-      <Route path="/announcements/newsletter" element={<h1>Newsletter</h1>} />
+        {/* Announcements Routes */}
+        <Route path="/announcements/news-notifications" element={<NewsNotifications/>} />
+        <Route path="/announcements/event-calendar" element={<EventsCalendar/>} />
+        <Route path="/announcements/notices" element={<h1>iskaa bhi</h1>} />
+        <Route path="/announcements/press-releases" element={<MediaCoverage/>} />
+        <Route path="/announcements/media-gallery" element={<PhotoGallery/>} />
+        <Route path="/announcements/newsletter" element={<h1>koi elementnhi thaa iska</h1>} />
 
         {/* Placements Routes */}
         <Route path="/placements/placement-process" element={<PlacementBrochure/>} />
@@ -163,10 +164,10 @@ export default function AppRouter() {
         <Route path="/placements/placement-statistics" element={<PlacementStatistics/>} />
 
         {/* Alumni Routes */}
-        <Route path="/alumni/alumni-network" element={<h1>Alumni Network</h1>} />
-        <Route path="/alumni/alumni-events" element={<h1>Alumni Events</h1>} />
+        <Route path="/alumni/alumni-network" element={<AlumniNetwork/>} />
+        <Route path="/alumni/alumni-events" element={<EventsReunions/>} />
         <Route path="/alumni/alumni-achievements" element={<h1>Alumni Achievements</h1>} />
-        <Route path="/alumni/become-mentor" element={<h1>Become a Mentor</h1>} />
+        <Route path="/alumni/become-mentor" element={<AlumniRegistration/>} />
       </Routes>
     </Suspense>
   );

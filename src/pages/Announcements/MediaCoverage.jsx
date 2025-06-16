@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -57,10 +58,10 @@ const MediaCoverage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [yearFilter, setYearFilter] = useState("");
   const [monthFilter, setMonthFilter] = useState("");
-  const [archivedItems, setArchivedItems] = useState<string[]>([]);
+  const [archivedItems, setArchivedItems] = useState([]);
   const [showArchived, setShowArchived] = useState(false);
 
-  const handleArchiveToggle = (title: string) => {
+  const handleArchiveToggle = (title) => {
     setArchivedItems((prev) =>
       prev.includes(title)
         ? prev.filter((t) => t !== title)

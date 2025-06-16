@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, MapPin, Briefcase, Calendar, ExternalLink } from 'lucide-react';
-import { useAuth } from '@/contexts/AuthContext';
 
-// Sample alumni data
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Badge } from '../../components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+import { Search, MapPin, Briefcase, Calendar, ExternalLink } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
+
 const alumniData = [
   {
     id: 1,
@@ -59,10 +58,9 @@ const AlumniNetwork = () => {
   const [companyFilter, setCompanyFilter] = useState('');
   const [locationFilter, setLocationFilter] = useState('');
 
-  // If user is logged in, replace their data in the alumni list
-  const displayAlumniData = user 
-    ? alumniData.map(alumni => 
-        alumni.id === user.id 
+  const displayAlumniData = user
+    ? alumniData.map(alumni =>
+        alumni.id === user.id
           ? {
               ...alumni,
               name: user.name,
@@ -87,22 +85,25 @@ const AlumniNetwork = () => {
     );
   });
 
-  const getAvailabilityColor = (service: string) => {
+  const getAvailabilityColor = (service) => {
     switch (service) {
-      case 'Referrals': return 'bg-green-100 text-green-800 border-green-200';
-      case 'Mentoring': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'Resume Review': return 'bg-purple-100 text-purple-800 border-purple-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'Referrals':
+        return 'bg-green-100 text-green-800 border-green-200';
+      case 'Mentoring':
+        return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'Resume Review':
+        return 'bg-purple-100 text-purple-800 border-purple-200';
+      default:
+        return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      
-      {/* Hero Section */}
+
+
       <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute inset-0 bg-black opacity-20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Alumni Network</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
@@ -120,7 +121,6 @@ const AlumniNetwork = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Search and Filters */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="lg:col-span-1">
@@ -134,7 +134,7 @@ const AlumniNetwork = () => {
                 />
               </div>
             </div>
-            
+
             <Select value={batchFilter} onValueChange={setBatchFilter}>
               <SelectTrigger>
                 <SelectValue placeholder="Batch Year" />
@@ -165,7 +165,7 @@ const AlumniNetwork = () => {
               onChange={(e) => setCompanyFilter(e.target.value)}
             />
           </div>
-          
+
           <div className="mt-4">
             <Input
               placeholder="Location"
@@ -176,14 +176,12 @@ const AlumniNetwork = () => {
           </div>
         </div>
 
-        {/* Results Count */}
         <div className="mb-6">
           <p className="text-gray-600">
             Showing {filteredAlumni.length} of {displayAlumniData.length} alumni
           </p>
         </div>
 
-        {/* Alumni Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredAlumni.map((alumni) => (
             <Card key={alumni.id} className="hover:shadow-lg transition-shadow duration-300 border border-gray-200">
@@ -203,18 +201,18 @@ const AlumniNetwork = () => {
                   </div>
                 </div>
               </CardHeader>
-              
+
               <CardContent className="pt-0">
                 <div className="space-y-3">
                   <div className="flex items-center text-sm text-gray-600">
                     <Briefcase className="h-4 w-4 mr-2 text-blue-500" />
                     <span className="font-medium">{alumni.jobTitle}</span>
                   </div>
-                  
+
                   <div className="flex items-center text-sm text-gray-600">
                     <span className="font-medium text-blue-600">{alumni.company}</span>
                   </div>
-                  
+
                   <div className="flex items-center text-sm text-gray-600">
                     <MapPin className="h-4 w-4 mr-2 text-gray-400" />
                     <span>{alumni.location}</span>
@@ -224,9 +222,9 @@ const AlumniNetwork = () => {
                     <p className="text-xs font-medium text-gray-700 mb-2">Available for:</p>
                     <div className="flex flex-wrap gap-1">
                       {alumni.availableFor.map((service) => (
-                        <Badge 
-                          key={service} 
-                          variant="outline" 
+                        <Badge
+                          key={service}
+                          variant="outline"
                           className={`text-xs ${getAvailabilityColor(service)}`}
                         >
                           {service}
@@ -239,9 +237,9 @@ const AlumniNetwork = () => {
                     <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
                       Connect
                     </Button>
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
+                    <Button
+                      size="sm"
+                      variant="outline"
                       className="border-gray-300"
                       onClick={() => window.open(alumni.linkedin, '_blank')}
                     >

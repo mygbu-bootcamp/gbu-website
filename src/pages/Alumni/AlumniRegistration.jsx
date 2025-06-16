@@ -1,15 +1,15 @@
-
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
-import { toast } from '@/hooks/use-toast';
-import { Upload, CheckCircle, AlertCircle } from 'lucide-react';
+
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
+import { Textarea } from '../../components/ui/textarea';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+import { Checkbox } from '../../components/ui/checkbox';
+
+import { Upload, CheckCircle , AlertCircle} from 'lucide-react';
+import { toast } from '../../hooks/use-toast';
 
 const AlumniRegistration = () => {
   const [formData, setFormData] = useState({
@@ -26,20 +26,20 @@ const AlumniRegistration = () => {
     availableForReferrals: false,
     availableForResumeReview: false,
     availableForMentoring: false,
-    degreeProof: null as File | null
+    degreeProof: null
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      if (file.size > 5 * 1024 * 1024) {
         toast({
           title: "File too large",
           description: "Please upload a file smaller than 5MB.",
@@ -51,11 +51,10 @@ const AlumniRegistration = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Basic validation
     if (!formData.name || !formData.email || !formData.graduationYear || !formData.branch) {
       toast({
         title: "Missing required fields",
@@ -66,7 +65,6 @@ const AlumniRegistration = () => {
       return;
     }
 
-    // Simulate API call
     setTimeout(() => {
       setSubmitted(true);
       setIsSubmitting(false);
@@ -80,14 +78,13 @@ const AlumniRegistration = () => {
   if (submitted) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Navbar />
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Card className="text-center">
             <CardContent className="pt-8">
               <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Registration Submitted!</h2>
               <p className="text-gray-600 mb-6">
-                Thank you for registering! Your application is now under review by our admin team. 
+                Thank you for registering! Your application is now under review by our admin team.
                 You'll receive an email notification once your profile is approved and added to the alumni directory.
               </p>
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
@@ -108,10 +105,9 @@ const AlumniRegistration = () => {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+
       
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">

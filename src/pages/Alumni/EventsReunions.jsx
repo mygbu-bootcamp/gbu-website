@@ -1,17 +1,18 @@
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toast } from '@/hooks/use-toast';
+
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
+import { Textarea } from '../../components/ui/textarea';
+import { Badge } from '../../components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../../components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+
 import { Calendar, MapPin, Users, Clock, Camera, Plus, Heart, Star } from 'lucide-react';
+import { toast } from '../../hooks/use-toast';
 
 // Sample events data
 const upcomingEvents = [
@@ -90,7 +91,7 @@ const EventsReunions = () => {
     phone: '',
     dietaryRestrictions: ''
   });
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
   const [newEventData, setNewEventData] = useState({
     title: '',
     description: '',
@@ -103,7 +104,7 @@ const EventsReunions = () => {
   });
   const [showEventForm, setShowEventForm] = useState(false);
 
-  const handleRSVP = (event: any) => {
+  const handleRSVP = (event) => {
     setSelectedEvent(event);
   };
 
@@ -156,7 +157,7 @@ const EventsReunions = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+
       
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16">
