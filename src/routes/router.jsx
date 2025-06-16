@@ -6,6 +6,12 @@ import CampusRecruiters from "../pages/Placement/CampusRecruiters.jsx";
 import PlacementStatistics from "../pages/Placement/PlacementStatistics.jsx";
 import PlacementBrochure from "../pages/Placement/PlacementBrochure.jsx";
 import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
+import AdmissionProcess from "../pages/Admission/AdmissionProcess.jsx";
+import CoursesOffered from "../pages/Admission/CoursesOffered.jsx";
+import EligibilityReservation from "../pages/Admission/EligibilityReservation.jsx";
+import FeeStructure from "../pages/Admission/FeeStructure.jsx";
+import InternationalAdmissions from "../pages/Admission/InternationalAdmissions.jsx";
+
 const AcademicCalendar = React.lazy(() => import('../pages/AcademicCalendar'));
 const CBCSFramework = React.lazy(() => import('../pages/CBCSFramework'));
 const CentersOfExcellence = React.lazy(() => import('../pages/CentersOfExcellence'));
@@ -63,11 +69,11 @@ const ResearchCenters = lazy(() => import('../pages/ResearchCenters'));
         <Route path="/academics/schools" element={<Schools />} />
         {/* <Route path="/academics/schools/:id" element={<SchoolsDetail />} /> */}
         {/* Admissions Routes */}
-        <Route path="/admissions/admission-process" element={<h1>Admission Process</h1>} />
-        <Route path="/admissions/courses-offered" element={<h1>Courses Offered (UG | PG | PhD)</h1>} />
-        <Route path="/admissions/eligibility-reservation" element={<h1>Eligibility & Reservation</h1>} />
-        <Route path="/admissions/fee-structure-prospectus" element={<h1>Fee Structure & Prospectus</h1>} />
-        <Route path="/admissions/international-admissions" element={<h1>International Admissions</h1>} />
+        <Route path="/admissions/admission-process" element={<AdmissionProcess/>} />
+        <Route path="/admissions/courses-offered" element={<CoursesOffered/>} />
+        <Route path="/admissions/eligibility-reservation" element={<EligibilityReservation/>}/>
+        <Route path="/admissions/fee-structure-prospectus" element={<FeeStructure/>} />
+        <Route path="/admissions/international-admissions" element={<InternationalAdmissions/>} />
 
         {/* Research Routes */}
         {/* <Route path="/research/research-centers" element={<h1>Research Centers and Labs</h1>} />
