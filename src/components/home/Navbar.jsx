@@ -126,12 +126,12 @@ const Navbar = () => {
         ])}
 
         {createMenu("Campus Life", <Home size={16} />, "campus", [
+          <Link to="/campus-life/virtual-tour">Virtual Tour</Link>,
           <Link to="/campus-life/hostel-facilities">Hostel Facilities</Link>,
           <Link to="/campus-life/sports-fitness">Sports & Fitness</Link>,
           <Link to="/campus-life/cultural-activities">Cultural Activities</Link>,
           <Link to="/campus-life/clubs-societies">Clubs & Societies</Link>,
           <Link to="/campus-life/health-wellness">Health & Wellness</Link>,
-          <Link to="/campus-life/student-support-services">Student Support Services</Link>,
           <Link to="/campus-life/campus-events">Campus Events</Link>,
         ])}
 
