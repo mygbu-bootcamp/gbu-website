@@ -42,6 +42,7 @@ import VirtualTour from "../components/home/VirtualTour.jsx";
 import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
 import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
 import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
+import PhotoGallery from "../pages/Announcements/PhotoGallery.jsx";
 
 export default function AppRouter() {
   return (
@@ -150,8 +151,8 @@ export default function AppRouter() {
       />
       <Route
         path="/announcements/media-gallery"
-        element={}
-      />
+        element={<PhotoGallery/>}/>
+
       <Route path="/announcements/newsletter" element={<h1>Newsletter</h1>} />
 
         {/* Placements Routes */}
