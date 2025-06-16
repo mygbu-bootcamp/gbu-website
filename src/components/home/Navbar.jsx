@@ -75,7 +75,7 @@ const Navbar = () => {
   onClick={() => window.location.href = '/'}
 >
   <img
-    src="https://gbu-campus-gateway.lovable.app/lovable-uploads/5ae0d9ed-e0e0-4921-a0f1-8e17676824d6.png"
+    src="/assets/logo.png"
     alt="GBU Logo"
     className="w-64 h-12 mr-3"
   />
