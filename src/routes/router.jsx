@@ -64,6 +64,7 @@ const ResearchProjects = lazy(() => import('../pages/departments/Reasearch_proje
 const ResearchScholars = lazy(() => import('../pages/departments/Reasearch_Scholar'));
 const TrainingConsultancy = lazy(() => import('../pages/departments/Training'));
 const Patents = lazy(() => import('../pages/departments/Patent'));
+const BoardOfStudies = lazy(() => import('../pages/departments/BoardOfStudy'));
 
 
 export default function AppRouter() {
@@ -100,7 +101,7 @@ export default function AppRouter() {
         {/* ICT School - About Section */}
         <Route path="/schools/ict/about/coeidrone" element={<h1>COE Drone - Coming Soon</h1>} />
         <Route path="/schools/ict/about/coeiraem" element={<h1>COE IRAEM - Coming Soon</h1>} />
-        <Route path="/schools/ict/about/board" element={<h1>Advisory Board - Coming Soon</h1>} />
+        <Route path="/schools/ict/about/board" element={<BoardOfStudies />} />
         <Route path="/schools/ict/about/staff" element={<h1>Staff - Coming Soon</h1>} />
         <Route path="/schools/ict/about/labs" element={<h1>Labs - Coming Soon</h1>} />
         <Route path="/schools/ict/about/activities" element={<h1>Activities - Coming Soon</h1>} />
