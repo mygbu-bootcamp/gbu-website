@@ -44,6 +44,8 @@ import SportsCultural from "../pages/campusLife/SportsCultural.jsx";
 import ClubsCouncils from "../pages/campusLife/ClubsCouncils.jsx";
 import HealthWellness from "../pages/campusLife/HealthWellness.jsx";
 import UpcomingEvents from "../pages/campusLife/UpcomingEvents.jsx";
+import VirtualTour from "../components/home/VirtualTour.jsx";
+import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
 
 export default function AppRouter() {
   return (
@@ -128,23 +130,13 @@ export default function AppRouter() {
       {/* Campus Life Routes */}
       <Route path="/campus-life/hostel-facilities" element={<HostelDining />} />
       <Route path="/campus-life/sports-fitness" element={<SportsCultural />} />
-      <Route
-        path="/campus-life/cultural-activities"
-        element={<h1>Cultural Activities</h1>}
-      />
-      <Route path="/campus-life/clubs-societies" element={<ClubsCouncils />} />
-      <Route
-        path="/campus-life/health-wellness"
-        element={<HealthWellness/>}
-      />
-      <Route
-        path="/campus-life/student-support-services"
-        element={<h1>Student Support Services</h1>}
-      />
-      <Route
-        path="/campus-life/campus-events"
-        element={<UpcomingEvents/>}
-      />
+      <Route path="/campus-life/clubs-societies" element={<ClubsCouncils />}/>
+      <Route path="/campus-life/1-wellness" element={<HealthWellness/>}/>
+      <Route path="/campus-life/campus-events"element={<UpcomingEvents/>}/>
+      <Route path="/campus-life/meditation-center"element={<MeditationCenter/>}/>
+      <Route path="/campus-life/virtaul-tour"element={<VirtualTour/>}/>
+
+
 
       {/* Announcements Routes */}
       <Route
