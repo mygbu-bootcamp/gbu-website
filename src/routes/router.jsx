@@ -49,6 +49,9 @@ import HealthWellness from "../pages/campusLife/HealthWellness.jsx";
 import UpcomingEvents from "../pages/campusLife/UpcomingEvents.jsx";
 import VirtualTour from "../components/home/VirtualTour.jsx";
 import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
+import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
+import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
+import PhotoGallery from "../pages/Announcements/PhotoGallery.jsx";
 
 export default function AppRouter() {
   return (
@@ -131,14 +134,7 @@ export default function AppRouter() {
         element={<h1>International Admissions</h1>}
       />
 
-        {/* Research Routes */}
-        {/* <Route path="/research/research-centers" element={<h1>Research Centers and Labs</h1>} />
-        <Route path="/research/publications-patents" element={<h1>Publications and Patents</h1>} />
-        <Route path="/research/incubation-innovation" element={<h1>Incubation and Innovation</h1>} />
-        <Route path="/research/startups" element={<h1>Startups</h1>} />
-        <Route path="/research/funded-projects" element={<h1>Funded Projects</h1>} />
-        <Route path="/research/irp-cell" element={<h1>IRP Cell</h1>} />
-        <Route path="/research/research-highlights" element={<h1>Research Highlights</h1>} /> */}
+    
 
       <Route path="/research/research-centers" element={<ResearchCenters />} />
       <Route path="/research/publications-patents" element={<Publications />} />
@@ -161,12 +157,12 @@ export default function AppRouter() {
 
       {/* Announcements Routes */}
       <Route
-        path="/announcements/news-updates"
-        element={<h1>News & Updates</h1>}
+        path="/announcements/news-notifications"
+        element={<NewsNotifications/>}
       />
       <Route
         path="/announcements/event-calendar"
-        element={<h1>Event Calendar</h1>}
+        element={<EventsCalendar/>}
       />
       <Route path="/announcements/notices" element={<h1>Notices</h1>} />
       <Route
@@ -175,7 +171,7 @@ export default function AppRouter() {
       />
       <Route
         path="/announcements/media-gallery"
-        element={<h1>Media Gallery</h1>}
+        element={<PhotoGallery/>}
       />
       <Route path="/announcements/newsletter" element={<h1>Newsletter</h1>} />
 
