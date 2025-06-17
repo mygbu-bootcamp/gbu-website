@@ -67,6 +67,8 @@ const Patents = lazy(() => import('../pages/departments/Patent'));
 const BoardOfStudies = lazy(() => import('../pages/departments/BoardOfStudy'));
 import ICTLayout from '../components/departments/ICTlayout.jsx';
 import Dean from "../components/departments/Dean.jsx";
+import Conferences from "../pages/departments/Usict_activities.jsx";
+import LaboratoryCards from "../pages/departments/laboratries.jsx";
 
 export default function AppRouter() {
   return (
@@ -108,8 +110,8 @@ export default function AppRouter() {
   <Route path="about/coeiraem" element={<h1>COE IRAEM - Coming Soon</h1>} />
   <Route path="about/board" element={<BoardOfStudies />} />
   <Route path="about/staff" element={<h1>Staff - Coming Soon</h1>} />
-  <Route path="about/labs" element={<h1>Labs - Coming Soon</h1>} />
-  <Route path="about/activities" element={<h1>Activities - Coming Soon</h1>} />
+  <Route path="about/labs" element={<LaboratoryCards/>} />
+  <Route path="about/activities" element={<Conferences/>} />
 
   {/* Departments */}
   <Route path="departments/cse" element={<CSE />} />
