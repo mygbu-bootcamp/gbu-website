@@ -22,7 +22,7 @@ const StatItem = ({ icon, end, duration, suffix = "", separator = "", text, star
   return (
     <div className="text-center" ref={ref}>
       <img src={icon} className="w-10 h-10 mx-auto mb-3" alt="icon" />
-      <h3 className="text-3xl font-bold text-gray-900">
+      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
         {inView ? (
           <CountUp end={end} duration={duration} suffix={suffix} separator={separator} start={start ?? 0} />
         ) : (
@@ -30,7 +30,7 @@ const StatItem = ({ icon, end, duration, suffix = "", separator = "", text, star
         )}
         +
       </h3>
-      <p className="text-gray-600 text-sm mt-1">{text}</p>
+      <p className="text-gray-600 text-sm sm:text-base mt-1">{text}</p>
     </div>
   );
 };
@@ -42,7 +42,8 @@ const HiringSection = () => {
 
   useEffect(() => {
     const updateSize = () => {
-      setContainerWidth(window.innerWidth > 1280 ? 1200 : window.innerWidth - 40);
+      const width = window.innerWidth;
+      setContainerWidth(width > 1280 ? 1200 : width - 40);
     };
     updateSize();
     window.addEventListener("resize", updateSize);
@@ -61,18 +62,18 @@ const HiringSection = () => {
   const radius = containerWidth / 2.2;
 
   return (
-    <section className="relative bg-[#f5f9ff] py-40 overflow-hidden">
+    <section className="relative bg-[#f5f9ff] py-24 sm:py-32 overflow-hidden">
       {/* Heading */}
-      <div className="absolute top-2 left-0 w-full text-center px-4 z-10">
-        <h2 className="text-5xl font-bold text-gray-800 mb-4">Companies Hiring</h2>
-        <p className="text-gray-600 text-lg max-w-xl mx-auto">
+      <div className="absolute top-4 left-0 w-full text-center px-4 z-10">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Companies Hiring</h2>
+        <p className="text-gray-600 text-sm sm:text-lg max-w-xl mx-auto">
           Prestigious companies regularly hire students from Sharda University.
         </p>
       </div>
 
       {/* Animated Semicircle */}
       <div
-        className="relative mx-auto mt-32"
+        className="relative mx-auto mt-32 sm:mt-40"
         style={{
           width: containerWidth,
           height: radius / 2.5,
@@ -83,7 +84,6 @@ const HiringSection = () => {
           const total = companies.length;
           const offset = (time + i / total) % 1;
           const angle = Math.PI * offset;
-
           const x = radius * Math.cos(angle);
           const y = -radius * Math.sin(angle);
 
@@ -92,24 +92,42 @@ const HiringSection = () => {
               key={company.name}
               className="absolute transition-transform duration-75"
               style={{
-                left: `${containerWidth / 2 + x - 30}px`,
-                top: `${radius / 1.3 + y - 30}px`,
+                left: `${containerWidth / 2 + x - 20}px`,
+                top: `${radius / 1.3 + y - 70}px`,
               }}
             >
-              <div className="w-[60px] h-[60px] bg-white rounded-full shadow-md flex items-center justify-center">
-                <img src={company.logo} alt={company.name} className="w-10 h-10 object-contain" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full shadow-md flex items-center justify-center ">
+                <img src={company.logo} alt={company.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Stats Section with Shadow Box */}
-      <div className="w-full max-w-3xl mx-auto mt-24 bg-white shadow-lg rounded-xl p-8">
+      {/* Stats Section */}
+      <div className="w-[90vw] max-w-4xl mx-auto mt-24 sm:mt-28 bg-white shadow-xl rounded-2xl p-6 sm:p-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
-          <StatItem icon="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_256px.png" end={600} duration={2} text="Companies hiring worldwide" />
-          <StatItem icon="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_256px.png" end={30000} duration={3} separator="," text="Successful Alumni worldwide" />
-          <StatItem icon="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_256px.png" end={100} start={65} duration={2.5} suffix="%" text="Placement program wise" />
+          <StatItem
+            icon="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+            end={600}
+            duration={2}
+            text="Companies hiring worldwide"
+          />
+          <StatItem
+            icon="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+            end={30000}
+            duration={3}
+            separator=","
+            text="Successful Alumni worldwide"
+          />
+          <StatItem
+            icon="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+            end={100}
+            start={65}
+            duration={2.5}
+            suffix="%"
+            text="Placement program wise"
+          />
         </div>
       </div>
     </section>
