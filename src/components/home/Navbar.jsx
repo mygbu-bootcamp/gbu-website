@@ -75,7 +75,7 @@ const Navbar = () => {
   onClick={() => window.location.href = '/'}
 >
   <img
-    src="https://gbu-campus-gateway.lovable.app/lovable-uploads/5ae0d9ed-e0e0-4921-a0f1-8e17676824d6.png"
+    src="/assets/logo.png"
     alt="GBU Logo"
     className="w-64 h-12 mr-3"
   />
@@ -126,17 +126,17 @@ const Navbar = () => {
         ])}
 
         {createMenu("Campus Life", <Home size={16} />, "campus", [
+          <Link to="/campus-life/virtual-tour">Virtual Tour</Link>,
           <Link to="/campus-life/hostel-facilities">Hostel Facilities</Link>,
           <Link to="/campus-life/sports-fitness">Sports & Fitness</Link>,
           <Link to="/campus-life/cultural-activities">Cultural Activities</Link>,
           <Link to="/campus-life/clubs-societies">Clubs & Societies</Link>,
           <Link to="/campus-life/health-wellness">Health & Wellness</Link>,
-          <Link to="/campus-life/student-support-services">Student Support Services</Link>,
           <Link to="/campus-life/campus-events">Campus Events</Link>,
         ])}
 
-        {createMenu("Announcements", <Camera size={16} />, "https://announcements-two.vercel.app/", [
-          <Link to="https://announcements-two.vercel.app/news-notifications">News & Updates</Link>,
+        {createMenu("Announcements", <Camera size={16} />, "", [
+          <Link to="/announcements/news-notifications">News & Updates</Link>,
           <Link to="/announcements/event-calendar">Event Calendar</Link>,
           <Link to="/announcements/notices">Notices</Link>,
           <Link to="/announcements/press-releases">Press Releases</Link>,
