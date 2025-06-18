@@ -103,8 +103,45 @@ const CBCSFramework = () => {
         </div>
       </section>
 
-      {/* CBCS Overview */}
+            {/* Statistics */}
       <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div className="animate-fade-in">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <GraduationCap className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-2">20+</h3>
+              <p className="text-gray-600">Credit Points per Semester</p>
+            </div>
+            <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-2">200+</h3>
+              <p className="text-gray-600">Elective Courses</p>
+            </div>
+            <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-2">10</h3>
+              <p className="text-gray-600">Point Grading Scale</p>
+            </div>
+            <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Target className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-2">100%</h3>
+              <p className="text-gray-600">Choice Flexibility</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* CBCS Overview */}
+      <section className="pb-16 pt-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">What is CBCS?</h2>
@@ -121,7 +158,7 @@ const CBCSFramework = () => {
               return (
                 <div
                   key={index}
-                  className="text-center animate-fade-in"
+                  className="bg-white rounded-xl p-6 text-center animate-fade-in transition-shadow duration-300 hover:shadow-2xl shadow-md"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className={`w-16 h-16 rounded-full ${feature.color} flex items-center justify-center mx-auto mb-4`}>
@@ -135,8 +172,6 @@ const CBCSFramework = () => {
           </div>
         </div>
       </section>
-
-      {/* Course Categories */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -237,41 +272,6 @@ const CBCSFramework = () => {
         </div>
       </section>
 
-      {/* Statistics */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="animate-fade-in">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <GraduationCap className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">20+</h3>
-              <p className="text-gray-600">Credit Points per Semester</p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">200+</h3>
-              <p className="text-gray-600">Elective Courses</p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">10</h3>
-              <p className="text-gray-600">Point Grading Scale</p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="w-8 h-8 text-orange-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">100%</h3>
-              <p className="text-gray-600">Choice Flexibility</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action */}
       <section className="py-16 bg-indigo-600 text-white">
@@ -282,13 +282,13 @@ const CBCSFramework = () => {
             according to your interests and career aspirations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            {/* <Link
               to="/academics/schools"
               className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105 flex items-center space-x-2"
             >
               <span>Explore Programs</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </Link> */}
             <Link
               to="/admissions/process"
               className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors"

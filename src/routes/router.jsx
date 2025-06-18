@@ -32,7 +32,7 @@ const CentersOfExcellence = React.lazy(() => import('../pages/Academic/CentersOf
 const Faculty = React.lazy(() => import('../pages/Academic/Faculty.jsx'));
 const FacultyDetail = React.lazy(() => import('../pages/Academic/FacultyDetail.jsx'));
 const InternationalCollaboration = React.lazy(() => import('../pages/Academic/InternationalCollaboration.jsx'));
-const NewsEvents = React.lazy(() => import('../pages/Academic/NewsEvents.jsx'));
+// const NewsEvents = React.lazy(() => import('../pages/Academic/NewsEvents.jsx'));
 const ReportsPublications = React.lazy(() => import('../pages/Academic/ReportsPublications.jsx'));
 const Schools = React.lazy(() => import('../pages/Academic/Schools.jsx'));
 
@@ -90,7 +90,7 @@ export default function AppRouter() {
         <Route path="/academics/faculty" element={<Faculty />} />
         <Route path="/academics/faculty/:id" element={<FacultyDetail />} />
         <Route path="/academics/international-collaboration" element={<InternationalCollaboration />} />
-        <Route path="/academics/news-events" element={<NewsEvents />} />
+        {/* <Route path="/academics/news-events" element={<NewsEvents />} /> */}
         <Route path="/academics/reports-publications" element={<ReportsPublications />} />
         <Route path="/academics/schools" element={<Schools />} />
 
