@@ -74,12 +74,12 @@ export default function CampusGallery() {
 
       {/* Thumbnails */}
       <div className="w-full overflow-x-auto no-scrollbar pb-2">
-        <div className="flex gap-3 sm:gap-4">
+        <div className="flex justify-center flex-wrap gap-3 sm:gap-4">
           {allImages.map((image, index) => (
             <div
               key={index}
               onClick={() => handleThumbnailClick(image)}
-              className={`flex-shrink-0 cursor-pointer transition transform hover:scale-105 rounded-lg overflow-hidden ${
+              className={`cursor-pointer transition transform hover:scale-105 rounded-lg overflow-hidden ${
                 index === mainImageIndex ? 'ring-2 ring-blue-500 scale-105' : ''
               }`}
             >
@@ -87,7 +87,7 @@ export default function CampusGallery() {
                 src={image.src}
                 alt={image.alt}
                 onError={handleImageError}
-                className="w-24 h-16 sm:w-28 sm:h-20 object-cover rounded-md"
+                className="w-28 h-20 sm:w-32 sm:h-24 object-cover rounded-md"
               />
             </div>
           ))}

@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import { Eye, Target, Heart, Lightbulb, Users, Globe } from 'lucide-react';
 
 const AboutGBU = () => {
@@ -8,7 +8,7 @@ const AboutGBU = () => {
     "from-green-900 to-blue-800",
     "from-blue-800 to-purple-800"
   ];
-  
+
   const words = ["About", "Gautam", "Buddha", "University"];
 
   const values = [
@@ -22,14 +22,30 @@ const AboutGBU = () => {
 
   return (
     <div>
-      {/* Introduction Section*/}
-      <div className="w-full bg-white py-16 px-6 md:px-20 text-center "  >
-             {/* <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{
-            backgroundImage: 'url("https://architecture.live/wp-content/uploads/2022/09/7-2048x1448.jpg")'
-          }}
-        ></div> */}
+    {/* Hero Section */}
+<div
+  className="relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[50vh] bg-cover bg-center flex items-center justify-center"
+  style={{
+    backgroundImage: `url('https://architecture.live/wp-content/uploads/2022/09/7-2048x1448.jpg')`,
+  }}
+>
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+  {/* Content */}
+  <div className="relative z-10 text-center px-4">
+    <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug">
+      Welcome to Gautam Buddha University
+    </h1>
+    <p className="mt-4 text-white text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
+      Enlightening minds. Transforming futures. Rooted in values, driven by innovation.
+    </p>
+  </div>
+</div>
+
+
+      {/* Introduction Section */}
+      <div className="w-full bg-white py-16 px-6 md:px-20 text-center">
         <div className="w-full">
           <h2 className="text-3xl md:text-4xl font-bold">
             {words.map((word, i) => (
@@ -55,8 +71,8 @@ const AboutGBU = () => {
             <a className="border-2 border-blue-700 text-blue-700 px-4 py-1 rounded-md hover:bg-blue-500 hover:text-white hover:scale-110 transition" href="#mission">Our Mission</a>
           </div>
         </div>
-      </div> 
-  
+      </div>
+
       {/* Vision Section */}
       <section id="vision" className="py-16 bg-gradient-to-br from-blue-50 to-white">
         <div className="container mx-auto px-4">

@@ -1,4 +1,6 @@
 
 {
-  "logo":"src/assets/Hostel_Image.webp"
+  "logo":"src/assets/Hostel_Image.webp",
+  "yogi":"src/assets/Yogiji.jpg",
+  "Prof":"src/assets/Prof.jpeg"
 }

@@ -67,7 +67,7 @@ const HiringSection = () => {
       <div className="absolute top-4 left-0 w-full text-center px-4 z-10">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Companies Hiring</h2>
         <p className="text-gray-600 text-sm sm:text-lg max-w-xl mx-auto">
-          Prestigious companies regularly hire students from Sharda University.
+          Prestigious companies regularly hire students from G.B.U.
         </p>
       </div>
 
@@ -96,7 +96,7 @@ const HiringSection = () => {
                 top: `${radius / 1.3 + y - 70}px`,
               }}
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full shadow-md flex items-center justify-center ">
+              <div className="w-12 h-12 sm:w-14 sm:h-14  bg-white rounded-full shadow-md flex items-center justify-center ">
                 <img src={company.logo} alt={company.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </div>
             </div>
