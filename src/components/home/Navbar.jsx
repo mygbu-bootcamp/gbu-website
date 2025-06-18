@@ -98,7 +98,7 @@ const Navbar = () => {
 
         {createMenu("Academics", <GraduationCap size={16} />, "academics", [
           <Link to="/academics/academic-calendar">Academic Calendar & Regulations</Link>,
-          <Link to="/academics/news-events">News, Events and Gallery</Link>,
+          // <Link to="/academics/news-events">News, Events and Gallery</Link>,
           <Link to="/academics/cbcs-framework">CBCS Curriculum Framework</Link>,
           <Link to="/academics/faculty">Faculty Directory</Link>,
           <Link to="/academics/centers-of-excellence">Centers of Excellence</Link>,
