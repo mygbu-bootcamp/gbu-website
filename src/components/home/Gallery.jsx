@@ -14,17 +14,7 @@ export default function CampusGallery() {
 
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-
-  const getThumbnailImages = (startIndex) => {
-    const thumbnails = [];
-    for (let i = 1; i <= 5; i++) {
-      thumbnails.push(allImages[(startIndex + i) % allImages.length]);
-    }
-    return thumbnails;
-  };
-
   const mainImage = allImages[mainImageIndex];
-  const thumbnails = getThumbnailImages(mainImageIndex);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,57 +40,63 @@ export default function CampusGallery() {
   };
 
   return (
-    <div className="px-2 md:px-6 xl:px-20 py-10 max-w-screen-xl mx-auto">
-      {/* Title */}
-      <h2 className="text-center text-4xl font-bold mb-10 text-blue-700">
-        Campus Gallery
+    <div className="w-[95vw] max-w-screen-xl py-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
+      <h2 className="text-center text-3xl sm:text-4xl font-bold mb-10 text-blue-700">
+        Event Gallery
       </h2>
 
       {/* Main Image */}
-      <div className="relative rounded-xl overflow-hidden shadow-xl mb-4 mx-auto max-w-[1000px]">
+      <div className="relative w-full rounded-xl overflow-hidden shadow-xl mb-6">
         <img
           src={mainImage.src}
           alt={mainImage.alt}
           onError={handleImageError}
-          className={`w-full h-[35rem] object-cover transition-transform duration-1000 ease-in-out rounded-xl ${
+          className={`w-full h-[14rem] sm:h-[25rem] md:h-[30rem] lg:h-[35rem] object-cover transition-transform duration-1000 ease-in-out rounded-xl ${
             isTransitioning ? 'scale-105 opacity-90' : ''
           }`}
         />
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur-md px-6 py-3 rounded-md">
-          <h3 className="text-white text-xl font-semibold text-center">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur-md px-4 sm:px-6 py-2 sm:py-3 rounded-md">
+          <h3 className="text-white text-base sm:text-lg md:text-xl font-semibold text-center">
             {mainImage.alt}
           </h3>
         </div>
       </div>
 
       {/* Thumbnails */}
-      <div className="grid grid-cols-5 gap-4 mx-auto max-w-[1000px]">
-        {thumbnails.map((image, index) => {
-          const globalIndex = (mainImageIndex + index + 1) % allImages.length;
-          return (
+      <div className="w-full overflow-x-auto no-scrollbar pb-2">
+        <div className="flex justify-center flex-wrap gap-3 sm:gap-4">
+          {allImages.map((image, index) => (
             <div
-              key={globalIndex}
+              key={index}
               onClick={() => handleThumbnailClick(image)}
               className={`cursor-pointer transition transform hover:scale-105 rounded-lg overflow-hidden ${
-                globalIndex === mainImageIndex ? 'ring-2 ring-blue-500 scale-105' : ''
+                index === mainImageIndex ? 'ring-2 ring-blue-500 scale-105' : ''
               }`}
             >
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-20 object-cover rounded-md"
                 onError={handleImageError}
+                className="w-28 h-20 sm:w-32 sm:h-24 object-cover rounded-md"
               />
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
 
-      {/* View More Button (Just Display) */}
-      <div className="flex justify-center mt-12">
-        <button
-          className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-        >
+      {/* View More Button */}
+      <div className="flex justify-center mt-10">
+        <button className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm sm:text-base">
           View More
         </button>
       </div>
