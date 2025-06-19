@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import Prof from "../../assets/prof.jpeg"
+=======
+
+>>>>>>> 2556da78108bbdd440c45dc22f5cc0ddf2b6d348
 
 const ViceChancellor = () => {
   const [activeTab, setActiveTab] = useState('Overview');
@@ -112,7 +116,7 @@ const ViceChancellor = () => {
               <div className="bg-gray-300 h-64 rounded-lg mb-4 flex items-center justify-center">
                 {/* <span className="text-gray-600">Vice Chancellor's Photo</span> */}
                 <img
-                  src={Prof}
+                  src="/assets/prof.jpeg"
                   alt="Prof. R.K. Singh"
                   className="object-cover h-full w-full rounded-lg"
 />
