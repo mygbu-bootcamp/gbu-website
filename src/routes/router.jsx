@@ -28,6 +28,7 @@ import HealthWellness from "../pages/campusLife/HealthWellness.jsx";
 import UpcomingEvents from "../pages/campusLife/UpcomingEvents.jsx";
 import VirtualTour from "../pages/campusLife/VirtualTour.jsx";
 import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
+import Incubation from "../pages/Reasearch/incubations/Incubation.jsx";
 
 const AcademicCalendar = React.lazy(() => import('../pages/Academic/AcademicCalendar.jsx'));
 const CBCSFramework = React.lazy(() => import('../pages/Academic/CBCSFramework.jsx'));
@@ -152,7 +153,7 @@ export default function AppRouter() {
 
         <Route path="/research/research-centers" element={<ResearchCenters />} />
         <Route path="/research/publications-patents" element={<Publications />} />
-        <Route path="/research/incubation-innovation" element={<Innovations />} />
+        <Route path="/research/incubation-innovation" element={<Incubation/>} />
         <Route path="/research/startups" element={<StartUp />} />
         <Route path="/research/funded-projects" element={<FundedProjects />} />
         <Route path="/research/irp-cell" element={<Index />} />
