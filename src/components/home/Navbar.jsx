@@ -90,7 +90,7 @@ const Navbar = () => {
         <a href="/about-us/strategic-perspective">GBU Strategic Perspective</a>,
         <a href="/about-us/policies-statutes-rti">Policies, Statutes & RTI</a>,
         <a href="/about-us/mandatory-disclosures">Mandatory Disclosures</a>,
-        <a href="/about-us/media-coverage">Media Coverage</a>,
+        // <a href="/about-us/media-coverage">Media Coverage</a>,
       ],
     },
     {
@@ -102,7 +102,7 @@ const Navbar = () => {
         <a href="/academics/cbcs-framework">CBCS Curriculum Framework</a>,
         <a href="/academics/faculty">Faculty Directory</a>,
         <a href="/academics/centers-of-excellence">Centers of Excellence</a>,
-        <a href="/academics/international-collaboration">International Collaboration</a>,
+        <a href="/academics/international-collaboration">Collaboration</a>,
         <a href="/academics/reports-publications">Reports & Publications</a>,
         <a href="/academics/schools">Schools & Departments</a>,
       ],
@@ -157,7 +157,7 @@ const Navbar = () => {
         <a href="/announcements/notices">Notices</a>,
         <a href="/announcements/press-releases">Press Releases</a>,
         <a href="/announcements/media-gallery">Media Gallery</a>,
-        <a href="/announcements/newsletter">Newsletter</a>,
+        // <a href="/announcements/newsletter">Newsletter</a>,
       ],
     },
     {

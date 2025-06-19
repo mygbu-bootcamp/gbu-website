@@ -13,7 +13,8 @@ import FeeStructure from "../pages/Admission/FeeStructure.jsx";
 import InternationalAdmissions from "../pages/Admission/InternationalAdmissions.jsx";
 import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
 import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
-import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
+import Notice from "../pages/Announcements/Notice.jsx"
+// import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
 import MediaGallery from "../pages/Announcements/MediaGallery.jsx"
 const MediaCoverage = lazy(() => import('../pages/Announcements/MediaCoverage.jsx'));
 const Stat = lazy(() => import('../pages/Announcements/Stat.jsx'));
@@ -171,12 +172,12 @@ export default function AppRouter() {
         {/* Announcements Routes */}
         <Route path="/announcements/news-notifications" element={<NewsNotifications/>} />
         <Route path="/announcements/event-calendar" element={<EventsCalendar/>} />
-        <Route path="/announcements/notices" element={<h1>iskaa bhi</h1>} />
-        {/* <Route path="/announcements/press-releases" element={<MediaCoverage/>} /> */}
+        <Route path="/announcements/notices" element={<Notice/>} />
+        
         <Route path="/announcements/media-gallery" element={<MediaGallery/>} />
-        <Route path="/announcements/media-coverage" element={<MediaCoverage />} />
+        <Route path="/announcements/press-releases" element={<MediaCoverage />} />
 
-        <Route path="/announcements/newsletter" element={<NewsLetter/>} />
+        {/* <Route path="/announcements/newsletter" element={<NewsLetter/>} /> */}
         <Route path="/announcements/strategic-perspective" element={<Stat />} />
 
         {/* Placements Routes */}
