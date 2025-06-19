@@ -77,6 +77,70 @@ const Faculty = () => {
       researchAreas: ['Molecular Biology', 'Bioinformatics', 'Genetic Engineering']
     },
     {
+    id: 'rahul-mehta',
+    name: 'Dr. Rahul Mehta',
+    designation: 'Assistant Professor, Computer Science',
+    image: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=300&h=300&fit=crop&crop=face',
+    email: 'rahul.mehta@gbu.ac.in',
+    phone: '+91-120-2344204',
+    specialization: 'Artificial Intelligence, Data Mining',
+    experience: '5 years',
+    experienceYears: 5,
+    education: 'PhD Computer Science, IIT Delhi',
+    qualification: 'PhD',
+    publications: 18,
+    department: 'Computer Science',
+    researchAreas: ['AI', 'Machine Learning', 'Data Mining']
+  },
+  {
+    id: 'ananya-verma',
+    name: 'Dr. Ananya Verma',
+    designation: 'Assistant Professor, Psychology',
+    image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=300&h=300&fit=crop&crop=face',
+    email: 'ananya.verma@gbu.ac.in',
+    phone: '+91-120-2344205',
+    specialization: 'Cognitive Psychology, Behavioral Neuroscience',
+    experience: '4 years',
+    experienceYears: 4,
+    education: 'PhD Psychology, Delhi University',
+    qualification: 'PhD',
+    publications: 12,
+    department: 'Psychology',
+    researchAreas: ['Cognition', 'Behavioral Science', 'Mental Health']
+  },
+  {
+    id: 'deepak-sharma',
+    name: 'Dr. Deepak Sharma',
+    designation: 'Assistant Professor, Mechanical Engineering',
+    image: 'https://images.unsplash.com/photo-1613145993482-6ab8efed7b3e?w=300&h=300&fit=crop&crop=face',
+    email: 'deepak.sharma@gbu.ac.in',
+    phone: '+91-120-2344206',
+    specialization: 'Robotics, CAD/CAM',
+    experience: '6 years',
+    experienceYears: 6,
+    education: 'PhD Mechanical Engineering, IIT Kanpur',
+    qualification: 'PhD',
+    publications: 22,
+    department: 'Mechanical Engineering',
+    researchAreas: ['Automation', 'Robotics', 'Product Design']
+  },
+  {
+    id: 'nikita-das',
+    name: 'Dr. Nikita Das',
+    designation: 'Assistant Professor, Environmental Science',
+    image: 'https://images.unsplash.com/photo-1614284975992-0fba78b4fe05?w=300&h=300&fit=crop&crop=face',
+    email: 'nikita.das@gbu.ac.in',
+    phone: '+91-120-2344207',
+    specialization: 'Climate Change, Waste Management',
+    experience: '3 years',
+    experienceYears: 3,
+    education: 'PhD Environmental Science, BHU',
+    qualification: 'PhD',
+    publications: 10,
+    department: 'Environmental Science',
+    researchAreas: ['Climate Policy', 'Sustainability', 'Waste Management']
+  },
+    {
       id: 'rahul-verma',
       name: 'Dr. Rahul Verma',
       designation: 'Professor, Management Studies',
@@ -250,175 +314,171 @@ const Faculty = () => {
         </div>
       </section>
 
-      {/* Search and Filter Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto space-y-4">
-            {/* Search Bar */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search faculty by name, department, specialization, or research area..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
 
-            {/* Filter Toggle Button */}
-            <div className="flex justify-between items-center">
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center space-x-2 bg-white border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                <Filter className="w-4 h-4" />
-                <span>Filters</span>
-              </button>
+            
+{/* Filter + Search Section */}
+<section className="py-10 bg-gray-50">
+  <div className="container mx-auto px-4">
+    <div className="max-w-5xl mx-auto space-y-6">
 
-              {(selectedDepartment !== 'All Departments' || selectedExperience !== 'All' || selectedQualification !== 'All' || searchTerm) && (
-                <button
-                  onClick={clearFilters}
-                  className="flex items-center space-x-2 text-red-600 hover:text-red-700 transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                  <span>Clear All</span>
-                </button>
-              )}
-            </div>
+      {/* Search Input */}
+      <div className="relative">
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <input
+          type="text"
+          placeholder="Search by name, department, specialization, or research area"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+        />
+      </div>
 
-            {/* Filter Options */}
-            {showFilters && (
-              <div className="bg-white p-6 rounded-lg border border-gray-200 space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {/* Department Filter */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Department</label>
-                    <select
-                      value={selectedDepartment}
-                      onChange={(e) => setSelectedDepartment(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      {departments.map((dept) => (
-                        <option key={dept} value={dept}>{dept}</option>
-                      ))}
-                    </select>
-                  </div>
+      {/* Filters */}
+      <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Department Filter */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
+            <select
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+              className="w-full bg-gray-50 border border-gray-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
+            >
+              {departments.map((dept) => (
+                <option key={dept} value={dept}>{dept}</option>
+              ))}
+            </select>
+          </div>
 
-                  {/* Experience Filter */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Experience</label>
-                    <select
-                      value={selectedExperience}
-                      onChange={(e) => setSelectedExperience(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      {experienceRanges.map((range) => (
-                        <option key={range} value={range}>{range}</option>
-                      ))}
-                    </select>
-                  </div>
+          {/* Experience Filter */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Experience</label>
+            <select
+              value={selectedExperience}
+              onChange={(e) => setSelectedExperience(e.target.value)}
+              className="w-full bg-gray-50 border border-gray-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
+            >
+              {experienceRanges.map((range) => (
+                <option key={range} value={range}>{range}</option>
+              ))}
+            </select>
+          </div>
 
-                  {/* Qualification Filter */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Qualification</label>
-                    <select
-                      value={selectedQualification}
-                      onChange={(e) => setSelectedQualification(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      {qualifications.map((qual) => (
-                        <option key={qual} value={qual}>{qual}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Results Count */}
-            <div className="text-sm text-gray-600">
-              Showing {filteredFaculty.length} of {facultyMembers.length} faculty members
-            </div>
+          {/* Qualification Filter */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Qualification</label>
+            <select
+              value={selectedQualification}
+              onChange={(e) => setSelectedQualification(e.target.value)}
+              className="w-full bg-gray-50 border border-gray-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
+            >
+              {qualifications.map((qual) => (
+                <option key={qual} value={qual}>{qual}</option>
+              ))}
+            </select>
           </div>
         </div>
-      </section>
 
-      {/* Faculty Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          {filteredFaculty.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No faculty members found matching your criteria.</p>
-              <button
-                onClick={clearFilters}
-                className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Clear Filters
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredFaculty.map((faculty, index) => (
-                <Link
-                  key={faculty.id}
-                  to={`/academics/faculty/${faculty.id}`}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in group cursor-pointer"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="p-6">
-                    <div className="flex flex-col items-center text-center">
-                      <img
-                        src={faculty.image}
-                        alt={faculty.name}
-                        className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-blue-100 group-hover:border-blue-200 transition-colors"
-                      />
-                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">{faculty.name}</h3>
-                      <p className="text-blue-600 font-semibold mb-4">{faculty.designation}</p>
+        {/* Clear Filters Button */}
+        {(selectedDepartment !== 'All Departments' || selectedExperience !== 'All' || selectedQualification !== 'All' || searchTerm) && (
+          <div className="flex justify-end mt-6">
+            <button
+              onClick={clearFilters}
+              className="flex items-center gap-2 text-red-600 font-medium hover:text-red-700 transition"
+            >
+              <X className="w-4 h-4" />
+              Clear All Filters
+            </button>
+          </div>
+        )}
+      </div>
 
-                      <div className="w-full space-y-3 mb-6">
-                        <div className="bg-gray-50 rounded-lg p-3">
-                          <p className="text-sm font-semibold text-gray-600 mb-1">Specialization</p>
-                          <p className="text-gray-800">{faculty.specialization}</p>
+      {/* Results Count */}
+      <div className="text-sm text-gray-600 text-right">
+        Showing <span className="font-semibold text-gray-800">{filteredFaculty.length}</span> of {facultyMembers.length} faculty members
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 space-y-16">
+          {["Professor", "Associate Professor", "Assistant Professor"].map((role) => {
+            const group = filteredFaculty.filter((f) => f.designation.toLowerCase().includes(role.toLowerCase()));
+            if (group.length === 0) return null;
+
+            return (
+              <div key={role}>
+                <div className="flex justify-center mb-8">
+                  <h2 className="inline-block text-3xl font-extrabold text-black bg-clip-text bg-white tracking-tight shadow-lg px-8 py-2 rounded-xl border-b-4 border-blue-200 text-center transition-all duration-300">
+                    {role}s
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                  {group.map((faculty, index) => (
+                    <Link
+                      key={faculty.id}
+                      to={`/academics/faculty/${faculty.id}`}
+                      className="group bg-gradient-to-br from-white via-blue-50 to-blue-100 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-100 hover:border-blue-300"
+                    >
+                      <div className="p-8 flex flex-col items-center text-center">
+                        <div className="relative mb-4">
+                          <img
+                            src={faculty.image}
+                            alt={faculty.name}
+                            className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
+                          />
+                          <span className="absolute bottom-0 right-0 bg-gradient-to-tr from-blue-600 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow-lg font-semibold">
+                            {faculty.qualification}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-blue-700 transition">{faculty.name}</h3>
+                        <p className="text-base text-blue-500 font-medium mb-2">{faculty.designation}</p>
+
+                        <div className="mt-4 w-full text-sm text-gray-700 space-y-4">
+                          <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-3 rounded-xl shadow-sm">
+                            <strong className="text-gray-600 block text-xs mb-1">Specialization</strong>
+                            <span className="font-medium">{faculty.specialization}</span>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-gray-100 p-3 rounded-xl text-center shadow">
+                              <p className="text-blue-700 font-bold text-lg">{faculty.experience}</p>
+                              <p className="text-xs text-gray-500">Experience</p>
+                            </div>
+                            <div className="bg-gray-100 p-3 rounded-xl text-center shadow">
+                              <p className="text-green-600 font-bold text-lg">{faculty.publications}</p>
+                              <p className="text-xs text-gray-500">Publications</p>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-3 rounded-xl shadow-sm">
+                            <strong className="text-gray-600 block text-xs mb-1">Education</strong>
+                            <span className="font-medium">{faculty.education}</span>
+                          </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3">
-                          <div className="bg-blue-50 rounded-lg p-3 text-center">
-                            <p className="text-lg font-bold text-blue-600">{faculty.experience}</p>
-                            <p className="text-xs text-gray-600">Experience</p>
+                        <div className="mt-6 space-y-2 text-sm text-gray-600 w-full">
+                          <div className="flex items-center justify-center gap-2">
+                            <Mail className="w-4 h-4 text-blue-500" />
+                            <span className="truncate">{faculty.email}</span>
                           </div>
-                          <div className="bg-green-50 rounded-lg p-3 text-center">
-                            <p className="text-lg font-bold text-green-600">{faculty.publications}</p>
-                            <p className="text-xs text-gray-600">Publications</p>
+                          <div className="flex items-center justify-center gap-2">
+                            <Phone className="w-4 h-4 text-green-500" />
+                            <span>{faculty.phone}</span>
                           </div>
-                        </div>
-
-                        <div className="bg-gray-50 rounded-lg p-3">
-                          <p className="text-sm font-semibold text-gray-600 mb-1">Education</p>
-                          <p className="text-sm text-gray-800">{faculty.education}</p>
                         </div>
                       </div>
-
-                      <div className="w-full space-y-2">
-                        <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                          <Mail className="w-4 h-4" />
-                          <span>{faculty.email}</span>
-                        </div>
-                        <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                          <Phone className="w-4 h-4" />
-                          <span>{faculty.phone}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">Join Our Academic Community</h2>
