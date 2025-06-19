@@ -16,7 +16,7 @@ import Landing from "../../components/departments/Landing.jsx";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+
       <Landing />
       <AboutSection />
       <DeanMessage />
