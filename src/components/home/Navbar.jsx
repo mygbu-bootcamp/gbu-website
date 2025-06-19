@@ -118,8 +118,7 @@ const Navbar = () => {
         {createMenu("Research", <BookOpen size={16} />, "research", [
           <Link to="/research/research-centers">Research Centers and Labs</Link>,
           <Link to="/research/publications-patents">Publications and Patents</Link>,
-          <Link to="/research/incubation-innovation">Incubation and Innovation</Link>,
-          <Link to="/research/startups">Startups</Link>,
+          <Link to="/research/incubation-innovation">Incubation Centre</Link>,
           <Link to="/research/funded-projects">Funded Projects</Link>,
           <Link to="/research/irp-cell">IRP Cell</Link>,
           <Link to="/research/research-highlights">Research Highlights</Link>,
