@@ -32,19 +32,19 @@ const VisionaryLeadership = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % leaders.length);
-    }, 8000); // 8s delay
+    }, 8000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-100 via-white to-green-100 overflow-hidden">
-      <h2 className="text-4xl font-bold text-center text-blue-800 mb-12">
+    <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-100 via-white to-green-100">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-10 sm:mb-12">
         Visionary <span className="text-blue-800">Leadership</span>
-        <div className="w-24 h-1 bg-green-500 mx-auto mt-2 rounded-full"></div>
+        <div className="w-20 sm:w-24 h-1 bg-green-500 mx-auto mt-2 rounded-full"></div>
       </h2>
 
-      <div className="relative w-full max-w-4xl mx-auto px-4">
+      <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -53,21 +53,21 @@ const VisionaryLeadership = () => {
             animate="center"
             exit="exit"
             transition={{ duration: 0.8 }}
-            className="w-full h-[360px] bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-xl border border-blue-200 p-8 flex flex-col md:flex-row items-center gap-10"
+            className="w-full bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-xl border border-blue-200 p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10"
           >
             <img
               src={leaders[index].image}
               alt={leaders[index].name}
-              className="w-[220px] h-[300px] object-cover rounded-xl shadow-md flex-shrink-0"
+              className="w-40 h-56 sm:w-48 sm:h-64 md:w-[220px] md:h-[300px] object-cover rounded-xl shadow-md"
             />
-            <div className="text-center md:text-left max-w-2xl">
-              <h3 className="text-2xl md:text-3xl font-bold text-blue-900">
+            <div className="text-center md:text-left">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900">
                 {leaders[index].name}
               </h3>
-              <p className="text-sm text-gray-600 mb-3">
+              <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3">
                 {leaders[index].title}
               </p>
-              <p className="text-gray-700 text-base">
+              <p className="text-gray-700 text-sm sm:text-base">
                 {leaders[index].description}
               </p>
             </div>
