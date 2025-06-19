@@ -1,9 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import yogi from "../../assets/Yogiji.jpg"
-=======
-
->>>>>>> 2556da78108bbdd440c45dc22f5cc0ddf2b6d348
 const Chancellor = () => {
   return (
     <div className="min-h-screen bg-gray-50">

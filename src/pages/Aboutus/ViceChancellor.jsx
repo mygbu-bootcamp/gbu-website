@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import Prof from "../../assets/prof.jpeg"
-=======
-
->>>>>>> 2556da78108bbdd440c45dc22f5cc0ddf2b6d348
 
 const ViceChancellor = () => {
   const [activeTab, setActiveTab] = useState('Overview');
