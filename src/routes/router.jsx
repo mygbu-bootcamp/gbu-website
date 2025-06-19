@@ -13,7 +13,10 @@ import FeeStructure from "../pages/Admission/FeeStructure.jsx";
 import InternationalAdmissions from "../pages/Admission/InternationalAdmissions.jsx";
 import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
 import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
-import PhotoGallery from "../pages/Announcements/PhotoGallery.jsx";
+import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
+import MediaGallery from "../pages/Announcements/MediaGallery.jsx"
+const MediaCoverage = lazy(() => import('../pages/Announcements/MediaCoverage.jsx'));
+const Stat = lazy(() => import('../pages/Announcements/Stat.jsx'));
 import AlumniNetwork from "../pages/Alumni/AlumniNetwork.jsx";
 import EventsReunions from "../pages/Alumni/EventsReunions.jsx";
 import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
@@ -39,8 +42,7 @@ const Schools = React.lazy(() => import('../pages/Academic/Schools.jsx'));
 const Disclosures = lazy(() => import('../pages/Aboutus/Disclosures.jsx'));
 const Policies = lazy(() => import('../pages/Aboutus/Policies.jsx'));
 const Vision = lazy(() => import('../pages/Aboutus/Vison.jsx'));
-const MediaCoverage = lazy(() => import('../pages/Aboutus/MediaCoverage.jsx'));
-const Stat = lazy(() => import('../pages/Aboutus/Stat.jsx'));
+
 const Chancellor = lazy(() => import('../pages/Aboutus/Chancellor.jsx'));
 const Governance = lazy(() => import('../pages/Aboutus/Governance.jsx'));
 const ViceChancellor = lazy(() => import('../pages/Aboutus/ViceChancellor.jsx'));
@@ -77,11 +79,10 @@ export default function AppRouter() {
         <Route path="/about-us/chancellor-message" element={<Chancellor />} />
         <Route path="/about-us/vice-chancellor-message" element={<ViceChancellor />} />
         <Route path="/about-us/governance-committees" element={<Governance />} />
-        <Route path="/about-us/strategic-perspective" element={<Stat />} />
+        
         <Route path="/about-us/policies-statutes-rti" element={<Policies />} />
         <Route path="/about-us/mandatory-disclosures" element={<Disclosures />} />
-        <Route path="/about-us/media-coverage" element={<MediaCoverage />} />
-
+        
         {/* Academics */}
         <Route path="/academics" element={<h1>Academics</h1>} />
         <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
@@ -161,9 +162,12 @@ export default function AppRouter() {
         <Route path="/announcements/news-notifications" element={<NewsNotifications/>} />
         <Route path="/announcements/event-calendar" element={<EventsCalendar/>} />
         <Route path="/announcements/notices" element={<h1>iskaa bhi</h1>} />
-        <Route path="/announcements/press-releases" element={<MediaCoverage/>} />
-        <Route path="/announcements/media-gallery" element={<PhotoGallery/>} />
-        <Route path="/announcements/newsletter" element={<h1>koi elementnhi thaa iska</h1>} />
+        {/* <Route path="/announcements/press-releases" element={<MediaCoverage/>} /> */}
+        <Route path="/announcements/media-gallery" element={<MediaGallery/>} />
+        <Route path="/announcements/media-coverage" element={<MediaCoverage />} />
+
+        <Route path="/announcements/newsletter" element={<NewsLetter/>} />
+        <Route path="/announcements/strategic-perspective" element={<Stat />} />
 
         {/* Placements Routes */}
         <Route path="/placements/placement-process" element={<PlacementBrochure/>} />

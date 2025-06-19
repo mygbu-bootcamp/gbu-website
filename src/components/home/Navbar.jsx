@@ -90,10 +90,10 @@ const Navbar = () => {
           <Link to="/about-us/chancellor-message">Chancellor's Message</Link>,
           <Link to="/about-us/vice-chancellor-message">Vice-Chancellor's Message</Link>,
           <Link to="/about-us/governance-committees">Governance & Committees</Link>,
-          <Link to="/about-us/strategic-perspective">GBU Strategic Perspective</Link>,
+          
           <Link to="/about-us/policies-statutes-rti">Policies, Statutes & RTI</Link>,
           <Link to="/about-us/mandatory-disclosures">Mandatory Disclosures</Link>,
-          <Link to="/about-us/media-coverage">Media Coverage</Link>,
+          // <Link to="/about-us/media-coverage">Media Coverage</Link>,
         ])}
 
         {createMenu("Academics", <GraduationCap size={16} />, "academics", [
@@ -139,9 +139,10 @@ const Navbar = () => {
           <Link to="/announcements/news-notifications">News & Updates</Link>,
           <Link to="/announcements/event-calendar">Event Calendar</Link>,
           <Link to="/announcements/notices">Notices</Link>,
-          <Link to="/announcements/press-releases">Press Releases</Link>,
+          <Link to="/announcements/media-coverage">Media Coverage</Link>,
           <Link to="/announcements/media-gallery">Media Gallery</Link>,
           <Link to="/announcements/newsletter">Newsletter</Link>,
+          <Link to="/announcements/strategic-perspective">GBU Strategic Perspective</Link>,
         ])}
 
         {createMenu("Placements", <Briefcase size={16} />, "placements", [

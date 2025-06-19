@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Prof from "../assets/prof.jpeg"
+import Prof from "../../assets/prof.jpeg"
 
 const ViceChancellor = () => {
   const [activeTab, setActiveTab] = useState('Overview');
