@@ -13,10 +13,8 @@ import FeeStructure from "../pages/Admission/FeeStructure.jsx";
 import InternationalAdmissions from "../pages/Admission/InternationalAdmissions.jsx";
 import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
 import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
-import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
-import MediaGallery from "../pages/Announcements/MediaGallery.jsx"
-const MediaCoverage = lazy(() => import('../pages/Announcements/MediaCoverage.jsx'));
-const Stat = lazy(() => import('../pages/Announcements/Stat.jsx'));
+
+
 import AlumniNetwork from "../pages/Alumni/AlumniNetwork.jsx";
 import EventsReunions from "../pages/Alumni/EventsReunions.jsx";
 import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
@@ -28,7 +26,6 @@ import HealthWellness from "../pages/campusLife/HealthWellness.jsx";
 import UpcomingEvents from "../pages/campusLife/UpcomingEvents.jsx";
 import VirtualTour from "../pages/campusLife/VirtualTour.jsx";
 import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
-import Incubation from "../pages/Reasearch/incubations/Incubation.jsx";
 
 const AcademicCalendar = React.lazy(() => import('../pages/Academic/AcademicCalendar.jsx'));
 const CBCSFramework = React.lazy(() => import('../pages/Academic/CBCSFramework.jsx'));
@@ -36,7 +33,7 @@ const CentersOfExcellence = React.lazy(() => import('../pages/Academic/CentersOf
 const Faculty = React.lazy(() => import('../pages/Academic/Faculty.jsx'));
 const FacultyDetail = React.lazy(() => import('../pages/Academic/FacultyDetail.jsx'));
 const InternationalCollaboration = React.lazy(() => import('../pages/Academic/InternationalCollaboration.jsx'));
-// const NewsEvents = React.lazy(() => import('../pages/Academic/NewsEvents.jsx'));
+
 const ReportsPublications = React.lazy(() => import('../pages/Academic/ReportsPublications.jsx'));
 const Schools = React.lazy(() => import('../pages/Academic/Schools.jsx'));
 
@@ -44,16 +41,16 @@ const Disclosures = lazy(() => import('../pages/Aboutus/Disclosures.jsx'));
 const Policies = lazy(() => import('../pages/Aboutus/Policies.jsx'));
 const Vision = lazy(() => import('../pages/Aboutus/Vison.jsx'));
 
+
 const Chancellor = lazy(() => import('../pages/Aboutus/Chancellor.jsx'));
 const Governance = lazy(() => import('../pages/Aboutus/Governance.jsx'));
 const ViceChancellor = lazy(() => import('../pages/Aboutus/ViceChancellor.jsx'));
 
-const FundedProjects = lazy(() => import('../pages/Reasearch/researchhighlights/FundedProjects.jsx'));
- 
-const Index = lazy(() => import('../pages/Reasearch/researchhighlights/Index.jsx'));
-const Ipr = lazy(() => import('../pages/Reasearch/ipr/Ipr.jsx'));
-const Publications = lazy(() => import('../pages/Reasearch/researchhighlights/Publications.jsx'));
- 
+const FundedProjects = lazy(() => import('../pages/Reasearch/FundedProjects'));
+const StartUp = lazy(() => import('../pages/Reasearch/StartUp.jsx'));
+const Index = lazy(() => import('../pages/Reasearch/Index.jsx'));
+const Publications = lazy(() => import('../pages/Reasearch/Publications.jsx'));
+const Innovations = lazy(() => import('../pages/Reasearch/Innovations.jsx'));
 const ResearchCenters = lazy(() => import('../pages/Reasearch/ResearchCenters.jsx'));
 
 // ICT School components (lazy loaded) - Update these paths according to your project structure
@@ -73,6 +70,8 @@ import ICTLayout from '../components/departments/ICTlayout.jsx';
 import Dean from "../components/departments/Dean.jsx";
 import Conferences from "../pages/departments/Usict_activities.jsx";
 import LaboratoryCards from "../pages/departments/laboratries.jsx";
+import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
+import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx"
 
 export default function AppRouter() {
   return (
@@ -84,10 +83,11 @@ export default function AppRouter() {
         <Route path="/about-us/chancellor-message" element={<Chancellor />} />
         <Route path="/about-us/vice-chancellor-message" element={<ViceChancellor />} />
         <Route path="/about-us/governance-committees" element={<Governance />} />
-        
+
         <Route path="/about-us/policies-statutes-rti" element={<Policies />} />
         <Route path="/about-us/mandatory-disclosures" element={<Disclosures />} />
-        
+
+
         {/* Academics */}
         <Route path="/academics" element={<h1>Academics</h1>} />
         <Route path="/academics/academic-calendar" element={<AcademicCalendar />} />
@@ -96,7 +96,7 @@ export default function AppRouter() {
         <Route path="/academics/faculty" element={<Faculty />} />
         <Route path="/academics/faculty/:id" element={<FacultyDetail />} />
         <Route path="/academics/international-collaboration" element={<InternationalCollaboration />} />
-        {/* <Route path="/academics/news-events" element={<NewsEvents />} /> */}
+
         <Route path="/academics/reports-publications" element={<ReportsPublications />} />
         <Route path="/academics/schools" element={<Schools />} />
 
@@ -140,12 +140,14 @@ export default function AppRouter() {
         <Route path="/admissions/fee-structure-prospectus" element={<FeeStructure/>} />
         <Route path="/admissions/international-admissions" element={<InternationalAdmissions/>} />
 
+        
+
         <Route path="/research/research-centers" element={<ResearchCenters />} />
-        {/* <Route path="/research/publications-patents" element={<Publications />} /> */}
-        <Route path="/research/incubation-innovation" element={<Incubation/>} />
-         
-        {/* <Route path="/research/funded-projects" element={<FundedProjects />} /> */}
-        <Route path="/research/ipr-cell" element={<Ipr/>} />
+        <Route path="/research/publications-patents" element={<Publications />} />
+        <Route path="/research/incubation-innovation" element={<Innovations />} />
+        <Route path="/research/startups" element={<StartUp />} />
+        <Route path="/research/funded-projects" element={<FundedProjects />} />
+        <Route path="/research/irp-cell" element={<Index />} />
         <Route path="/research/research-highlights" element={<Index />} />
 
         {/* Campus Life Routes */}
@@ -161,12 +163,9 @@ export default function AppRouter() {
         <Route path="/announcements/news-notifications" element={<NewsNotifications/>} />
         <Route path="/announcements/event-calendar" element={<EventsCalendar/>} />
         <Route path="/announcements/notices" element={<h1>iskaa bhi</h1>} />
-        {/* <Route path="/announcements/press-releases" element={<MediaCoverage/>} /> */}
-        <Route path="/announcements/media-gallery" element={<MediaGallery/>} />
-        <Route path="/announcements/media-coverage" element={<MediaCoverage />} />
+        <Route path="/announcements/press-releases" element={<MediaCoverage/>} />
 
-        <Route path="/announcements/newsletter" element={<NewsLetter/>} />
-        <Route path="/announcements/strategic-perspective" element={<Stat />} />
+        <Route path="/announcements/newsletter" element={<h1>koi elementnhi thaa iska</h1>} />
 
         {/* Placements Routes */}
         <Route path="/placements/placement-process" element={<PlacementBrochure/>} />
