@@ -124,13 +124,13 @@ const Navbar = () => {
       label: "Research",
       icon: <BookOpen size={16} />,
       items: [
-        <a href="/research/research-centers">Research Centers and Labs</a>,
-        <a href="/research/publications-patents">Publications and Patents</a>,
-        <a href="/research/incubation-innovation">Incubation and Innovation</a>,
-        <a href="/research/startups">Startups</a>,
-        <a href="/research/funded-projects">Funded Projects</a>,
-        <a href="/research/irp-cell">IRP Cell</a>,
-        <a href="/research/research-highlights">Research Highlights</a>,
+         <a href="/research/research-highlights">Research Highlights</a>,
+        <a href="/research/research-centers">Centre of Excellence and Labs</a>,
+        // <a href="/research/publications-patents">Publications and Patents</a>,
+        <a href="/research/incubation-innovation">Incubation Centre</a>,
+        // <a href="/research/startups">Startups</a>,
+        // <a href="/research/funded-projects">Funded Projects</a>,
+        <a href="/research/ipr-cell">IPR Cell</a>
       ],
     },
     {

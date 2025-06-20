@@ -48,11 +48,12 @@ const Chancellor = lazy(() => import('../pages/Aboutus/Chancellor.jsx'));
 const Governance = lazy(() => import('../pages/Aboutus/Governance.jsx'));
 const ViceChancellor = lazy(() => import('../pages/Aboutus/ViceChancellor.jsx'));
 
-const FundedProjects = lazy(() => import('../pages/Reasearch/FundedProjects'));
-const StartUp = lazy(() => import('../pages/Reasearch/StartUp.jsx'));
-const Index = lazy(() => import('../pages/Reasearch/Index.jsx'));
-const Publications = lazy(() => import('../pages/Reasearch/Publications.jsx'));
-const Innovations = lazy(() => import('../pages/Reasearch/Innovations.jsx'));
+const FundedProjects = lazy(() => import('../pages/Reasearch/researchhighlights/FundedProjects.jsx'));
+ 
+const Index = lazy(() => import('../pages/Reasearch/researchhighlights/Index.jsx'));
+const Ipr = lazy(() => import('../pages/Reasearch/ipr/Ipr.jsx'));
+const Publications = lazy(() => import('../pages/Reasearch/researchhighlights/Publications.jsx'));
+ 
 const ResearchCenters = lazy(() => import('../pages/Reasearch/ResearchCenters.jsx'));
 
 // ICT School components (lazy loaded) - Update these paths according to your project structure
@@ -139,24 +140,12 @@ export default function AppRouter() {
         <Route path="/admissions/fee-structure-prospectus" element={<FeeStructure/>} />
         <Route path="/admissions/international-admissions" element={<InternationalAdmissions/>} />
 
-        {/* Research Routes */}
-        {/* <Route path="/research/research-centers" element={<h1>Research Centers and Labs</h1>} />
-
-        WHOSOEVER COMMENTED THIS CODE, DELETE THE EXTRA, USELESS CODE AFTER TESTING FOR BETTER CODE QUALITY
-
-        <Route path="/research/publications-patents" element={<h1>Publications and Patents</h1>} />
-        <Route path="/research/incubation-innovation" element={<h1>Incubation and Innovation</h1>} />
-        <Route path="/research/startups" element={<h1>Startups</h1>} />
-        <Route path="/research/funded-projects" element={<h1>Funded Projects</h1>} />
-        <Route path="/research/irp-cell" element={<h1>IRP Cell</h1>} />
-        <Route path="/research/research-highlights" element={<h1>Research Highlights</h1>} /> */}
-
         <Route path="/research/research-centers" element={<ResearchCenters />} />
-        <Route path="/research/publications-patents" element={<Publications />} />
+        {/* <Route path="/research/publications-patents" element={<Publications />} /> */}
         <Route path="/research/incubation-innovation" element={<Incubation/>} />
-        <Route path="/research/startups" element={<StartUp />} />
-        <Route path="/research/funded-projects" element={<FundedProjects />} />
-        <Route path="/research/irp-cell" element={<Index />} />
+         
+        {/* <Route path="/research/funded-projects" element={<FundedProjects />} /> */}
+        <Route path="/research/ipr-cell" element={<Ipr/>} />
         <Route path="/research/research-highlights" element={<Index />} />
 
         {/* Campus Life Routes */}
