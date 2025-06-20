@@ -131,36 +131,53 @@ const TrainingCareerServices = () => {
             </p>
           </div>
 
+          {/* Success Metrics */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+            {successMetrics.map((item, index) => (
+              <Card
+                key={index}
+                className="bg-white/80 pt-8 px-4 rounded-2xl backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 group"
+              >
+                <CardContent className="flex flex-col items-center">
+                  <div className="text-4xl font-extrabold text-red-600 mb-2 group-hover:scale-110 transition-transform duration-300">
+                    {item.metric}
+                  </div>
+                  <p className="text-gray-700 text-center">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
           {/* Training Programs */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Training Programs Offered</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {trainingPrograms.map((program, index) => (
-                <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale group">
+                <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 rounded-2xl  shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale group pt-5">
                   <CardContent className="p-6">
                     <div className={`w-16 h-16 bg-gradient-to-r ${program.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       <span className="text-2xl">{program.icon}</span>
                     </div>
 
                     <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">{program.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4 text-center">{program.description}</p>
+                    <p className="text-gray-800 text-sm mb-4 text-center">{program.description}</p>
 
                     <div className="flex justify-between items-center mb-4 text-sm">
                       <div className="flex items-center text-blue-600">
-                        <Clock className="h-4 w-4 mr-1" />
+                        <Clock className="h-4 w-4 mx-2" />
                         <span>{program.duration}</span>
                       </div>
                       <div className="flex items-center text-green-600">
-                        <Calendar className="h-4 w-4 mr-1" />
+                        <Calendar className="h-4 w-4 mx-2" />
                         <span>{program.frequency}</span>
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2 text-sm">Key Topics:</h4>
-                      <div className="flex flex-wrap gap-1">
+                      <h4 className="font-semibold text-gray-900 ml-2 mb-3 text-sm">Key Topics:</h4>
+                      <div className="flex flex-wrap gap-1.5">
                         {program.topics.map((topic, topicIndex) => (
-                          <span key={topicIndex} className="bg-red-100 text-red-700 px-2 py-1 rounded-md text-xs">
+                          <span key={topicIndex} className="bg-red-100 text-red-700 px-2 py-1 hover:bg-red-500 hover:text-white rounded-md text-xs">
                             {topic}
                           </span>
                         ))}
@@ -177,10 +194,10 @@ const TrainingCareerServices = () => {
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Career Services Offered</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {careerServices.map((service, index) => (
-                <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale">
+                <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl rounded-2xl pt-6 hover:shadow-2xl transition-all duration-300 hover-scale">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-red-100 to-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-red-100 hover:scale-110 to-orange-100 rounded-lg mt-2 flex items-center justify-center flex-shrink-0">
                         <span className="text-xl">{service.icon}</span>
                       </div>
                       <div className="flex-1">
@@ -207,18 +224,17 @@ const TrainingCareerServices = () => {
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Upcoming Workshops</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {upcomingWorkshops.map((workshop, index) => (
-                <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale">
+                <Card key={index} className="bg-white backdrop-blur-sm border-0 shadow-xl rounded-2xl pt-5 hover:shadow-2xl transition-all duration-300 hover-scale">
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-lg font-bold text-gray-900">{workshop.title}</h3>
-                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                        workshop.seats === 'Available' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'
-                      }`}>
+                      <span className={`px-2 mt-1 py-1 rounded-full text-xs font-semibold ${workshop.seats === 'Available' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'
+                        }`}>
                         {workshop.seats}
                       </span>
                     </div>
 
-                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                    <div className="space-y-2 text-sm text-gray-800 mb-4">
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-2 text-blue-600" />
                         <span>{workshop.date}</span>
@@ -246,32 +262,19 @@ const TrainingCareerServices = () => {
             </div>
           </div>
 
-          {/* Success Metrics */}
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl mb-16">
-            <CardContent className="p-8">
-              <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Our Impact</h2>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {successMetrics.map((item, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-4xl font-bold text-red-600 mb-2">{item.metric}</div>
-                    <p className="text-gray-700">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+
 
           {/* Registration CTA */}
           <div className="text-center">
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl inline-block">
+            <Card className="bg-white rounded-2xl w-4/5 pt-5 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl inline-block">
               <CardContent className="p-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Enhance Your Skills?</h2>
-                <p className="text-gray-600 mb-6">Join our training programs and career services to accelerate your professional growth</p>
+                <p className="text-gray-900 my-6">Join our training programs and career services to accelerate your professional growth</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
                     Register for Upcoming Workshop
                   </Button>
-                  <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 px-8 py-3 text-lg rounded-xl">
+                  <Button variant="outline" className="border-red-600 text-red-600 hover:shadow-xl hover:bg-red-500 hover:text-white px-8 py-3 text-lg rounded-xl">
                     Schedule Career Counseling
                   </Button>
                 </div>

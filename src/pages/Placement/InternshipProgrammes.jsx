@@ -72,7 +72,8 @@ const InternshipProgrammes = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-red-100 to-gray-200">
+
 
 
       {/* Hero Section */}
@@ -93,7 +94,7 @@ const InternshipProgrammes = () => {
           {/* Internship Types */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {internshipTypes.map((internship, index) => (
-              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale group">
+              <Card key={index} className="bg-white/80 pt-5  backdrop-blur-sm border-0 shadow-xl transition-all duration-300 hover-scale group">
                 <CardContent className="p-6">
                   <div className={`w-16 h-16 bg-gradient-to-r ${internship.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <span className="text-2xl">{internship.icon}</span>
@@ -155,7 +156,7 @@ const InternshipProgrammes = () => {
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Top Internship Providers</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {topProviders.map((provider, index) => (
-                <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale text-center">
+                <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl pt-5 transition-all duration-300 hover-scale text-center">
                   <CardContent className="p-6">
                     <div className="w-16 h-16 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
                       <span className="text-2xl">{provider.logo}</span>
@@ -164,7 +165,7 @@ const InternshipProgrammes = () => {
                     <p className="text-green-600 font-semibold mb-2">{provider.positions}</p>
                     <div className="flex flex-wrap gap-1 justify-center">
                       {provider.domains.map((domain, domainIndex) => (
-                        <span key={domainIndex} className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">
+                        <span key={domainIndex} className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm hover:text-white hover:bg-blue-700">
                           {domain}
                         </span>
                       ))}
@@ -198,15 +199,15 @@ const InternshipProgrammes = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl inline-block">
-              <CardContent className="p-8">
+            <Card className=" bg-white mt-5 rounded-2xl w-4/5 backdrop-blur-sm border-0 shadow-xl inline-block">
+              <CardContent className="p-8 pt-5">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Start Your Internship Journey?</h2>
                 <p className="text-gray-600 mb-6">Join thousands of students who have gained valuable industry experience</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
                     Apply for Internship
                   </Button>
-                  <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 px-8 py-3 text-lg rounded-xl">
+                  <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-500 hover:text-white px-8 py-3 text-lg rounded-xl">
                     Track Application Status
                   </Button>
                 </div>

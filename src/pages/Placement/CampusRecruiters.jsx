@@ -50,7 +50,7 @@ const CampusRecruiters = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-red-100 to-gray-300">
       {/* Navigation */}
 
       {/* Hero Section */}
@@ -65,8 +65,31 @@ const CampusRecruiters = () => {
             </p>
           </div>
 
+          {/* Past Recruitment Highlights */}
+          <div className="mt-20 bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">2024 Recruitment Highlights</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-blue-600 mb-2">45+</div>
+                <p className="text-gray-700">Students placed by TCS</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-green-600 mb-2">8</div>
+                <p className="text-gray-700">Google internship offers</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-purple-600 mb-2">25+</div>
+                <p className="text-gray-700">Deloitte consultancy roles</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-orange-600 mb-2">12+</div>
+                <p className="text-gray-700">DRDO research positions</p>
+              </div>
+            </div>
+            </div>
+
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-4 m-12">
             {categories.map((category) => (
               <Button
                 key={category.id}
@@ -88,7 +111,7 @@ const CampusRecruiters = () => {
             {getDisplayCompanies().map((company, index) => (
               <Card
                 key={index}
-                className="group bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale cursor-pointer"
+                className="group pt-3 bg-white/80 backdrop-blur-sm border-0 shadow-2xl transition-all duration-300 hover-scale cursor-pointer"
                 onMouseEnter={() => setHoveredCompany(company)}
                 onMouseLeave={() => setHoveredCompany(null)}
               >
@@ -144,7 +167,7 @@ const CampusRecruiters = () => {
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">What Our Recruiters Say</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+              <Card className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
@@ -159,7 +182,7 @@ const CampusRecruiters = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+              <Card className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
@@ -174,7 +197,7 @@ const CampusRecruiters = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+              <Card className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mr-4">
@@ -191,28 +214,8 @@ const CampusRecruiters = () => {
             </div>
           </div>
 
-          {/* Past Recruitment Highlights */}
-          <div className="mt-20 bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">2024 Recruitment Highlights</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600 mb-2">45+</div>
-                <p className="text-gray-700">Students placed by TCS</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-green-600 mb-2">8</div>
-                <p className="text-gray-700">Google internship offers</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-purple-600 mb-2">25+</div>
-                <p className="text-gray-700">Deloitte consultancy roles</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">12+</div>
-                <p className="text-gray-700">DRDO research positions</p>
-              </div>
-            </div>
-          </div>
+          
+        
         </div>
       </section>
     </div>

@@ -11,8 +11,8 @@ const PlacementBrochure = () => {
 
       {/* Hero Section */}
       <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+          <div className="text-center mb-12 ">
             <h1 className="text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
               Download Our Latest Placement Brochure
             </h1>
@@ -31,7 +31,7 @@ const PlacementBrochure = () => {
           {/* Quick Highlights */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
             <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale">
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 pt-3 text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <TrendingUp className="h-8 w-8 text-white" />
                 </div>
@@ -41,7 +41,7 @@ const PlacementBrochure = () => {
             </Card>
 
             <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale">
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 pt-3 text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-8 w-8 text-white" />
                 </div>
@@ -51,7 +51,7 @@ const PlacementBrochure = () => {
             </Card>
 
             <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale">
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 pt-3 text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Award className="h-8 w-8 text-white" />
                 </div>
@@ -61,7 +61,7 @@ const PlacementBrochure = () => {
             </Card>
 
             <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover-scale">
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 pt-3 text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BookOpen className="h-8 w-8 text-white" />
                 </div>
@@ -76,7 +76,7 @@ const PlacementBrochure = () => {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">What's Inside?</h2>
               <div className="space-y-4">
-                <div className="flex items-center space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
+                <div className="flex items-center shadow-2xl space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl">
                   <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-red-600 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold">📊</span>
                   </div>
@@ -86,7 +86,7 @@ const PlacementBrochure = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
+                <div className="flex items-center space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-2xl">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold">👥</span>
                   </div>
@@ -96,7 +96,7 @@ const PlacementBrochure = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
+                <div className="flex items-center space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-2xl">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-green-600 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold">💼</span>
                   </div>
@@ -106,7 +106,7 @@ const PlacementBrochure = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
+                <div className="flex items-center space-x-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-2xl">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold">🎯</span>
                   </div>
@@ -121,15 +121,15 @@ const PlacementBrochure = () => {
             {/* Brochure Preview */}
             <div className="text-center">
               <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl inline-block hover:shadow-3xl transition-all duration-300 hover-scale">
-                <div className="w-64 h-80 bg-gradient-to-b from-red-600 to-orange-600 rounded-lg flex items-center justify-center text-white shadow-xl">
+                <div className="w-64 h-80 bg-gradient-to-b from-red-600 to-orange-600 rounded-lg flex items-center justify-center text-white shadow-2xl">
                   <div className="text-center">
                     <BookOpen className="h-20 w-20 mx-auto mb-6" />
                     <div className="font-bold text-xl mb-2">Placement</div>
                     <div className="font-bold text-xl mb-2">Brochure</div>
-                    <div className="text-sm opacity-90">2024-25</div>
+                    <div className="text-md opacity-90">2024-25</div>
                   </div>
                 </div>
-                <p className="text-gray-600 mt-4 text-sm">Click to preview</p>
+                <p className="text-gray-800 mt-4 text-md">Click to preview</p>
               </div>
             </div>
           </div>
