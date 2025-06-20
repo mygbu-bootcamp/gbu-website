@@ -44,7 +44,7 @@ const VisionaryLeadership = () => {
         <div className="w-20 sm:w-24 h-1 bg-green-500 mx-auto mt-2 rounded-full"></div>
       </h2>
 
-      <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -58,7 +58,7 @@ const VisionaryLeadership = () => {
             <img
               src={leaders[index].image}
               alt={leaders[index].name}
-              className="w-40 h-56 sm:w-48 sm:h-64 md:w-[220px] md:h-[300px] object-cover rounded-xl shadow-md"
+              className="w-60 h-56 sm:w-48 sm:h-64 md:w-[220px] md:h-[300px] object-cover rounded-xl shadow-md"
             />
             <div className="text-center md:text-left">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900">
