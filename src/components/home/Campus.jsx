@@ -39,28 +39,34 @@ export default function CampusLifeSection() {
         Experience a vibrant campus life filled with learning, growth, and unforgettable memories. Our diverse community of students creates an environment where everyone can thrive.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6">
         {testimonials.map((item, index) => (
           <div
             key={index}
             tabIndex={0}
-            className="bg-white rounded-lg shadow hover:shadow-xl focus:shadow-xl transition-transform transform hover:scale-105 focus:scale-105 outline-none cursor-pointer overflow-hidden"
+            className="bg-white rounded-lg shadow hover:shadow-xl focus:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 hover:-translate-y-2 outline-none cursor-pointer overflow-hidden group w-full max-w-sm mx-auto"
+            style={{ aspectRatio: '1/1' }}
           >
-            <div className="relative">
+            <div className="relative h-3/5">
               <img
                 src={item.image}
                 alt={item.category}
-                className="w-full h-56 object-cover rounded-t-lg"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <span className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-3 py-1 rounded-full shadow select-none">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="absolute top-2 left-2 bg-orange-500 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full shadow select-none transform transition-transform duration-300 group-hover:scale-110">
                 {item.category}
               </span>
             </div>
-            <div className="p-5">
-              <p className="italic text-gray-700 leading-relaxed">"{item.quote}"</p>
-              <p className="mt-4 text-blue-800 font-semibold">
-                — {item.name}, <span className="italic">{item.course}</span>
+            <div className="p-3 sm:p-4 h-2/5 flex flex-col justify-between">
+              <p className="italic text-gray-700 leading-tight text-xs sm:text-sm transform transition-transform duration-300 group-hover:translate-x-1 overflow-hidden">
+                "{item.quote.length > 80 ? item.quote.slice(0, 80) + '...' : item.quote}"
+              </p>
+              <p className="text-blue-800 font-semibold text-xs sm:text-sm transform transition-all duration-300 group-hover:text-indigo-600 group-hover:translate-x-1 mt-2">
+                — {item.name}
+                <br />
+                <span className="italic text-xs">{item.course}</span>
               </p>
             </div>
           </div>
