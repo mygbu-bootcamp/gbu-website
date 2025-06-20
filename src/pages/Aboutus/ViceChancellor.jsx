@@ -111,7 +111,7 @@ const ViceChancellor = () => {
               <div className="bg-gray-300 h-64 rounded-lg mb-4 flex items-center justify-center">
                 {/* <span className="text-gray-600">Vice Chancellor's Photo</span> */}
                 <img
-                  src="/assets/prof.jpeg"
+                  src="../../../public/assets/prof.jpeg"
                   alt="Prof. R.K. Singh"
                   className="object-cover h-full w-full rounded-lg"
 />
