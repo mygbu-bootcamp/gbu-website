@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const ViceChancellor = () => {
   const [activeTab, setActiveTab] = useState('Overview');
 

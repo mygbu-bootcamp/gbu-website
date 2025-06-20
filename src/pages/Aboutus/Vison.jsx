@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import { Eye, Target, Heart, Lightbulb, Users, Globe } from 'lucide-react';
 
 const AboutGBU = () => {
@@ -8,7 +8,7 @@ const AboutGBU = () => {
     "from-green-900 to-blue-800",
     "from-blue-800 to-purple-800"
   ];
-  
+
   const words = ["About", "Gautam", "Buddha", "University"];
 
   const values = [
@@ -22,15 +22,16 @@ const AboutGBU = () => {
 
   return (
     <div>
-      {/* Introduction Section*/}
-      <div className="w-full bg-white py-16 px-6 md:px-20 text-center "  >
-             {/* <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
+      
+
+      <section className="relative h-[28rem] bg-gradient-to-r from-purple-100 via-indigo-100 to-blue-100 flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
             backgroundImage: 'url("https://architecture.live/wp-content/uploads/2022/09/7-2048x1448.jpg")'
           }}
-        ></div> */}
-        <div className="w-full">
+        ></div>
+        <div className="w-full text-center">
           <h2 className="text-3xl md:text-4xl font-bold">
             {words.map((word, i) => (
               <span
@@ -41,26 +42,22 @@ const AboutGBU = () => {
               </span>
             ))}
           </h2>
-          <p className="text-gray-700 mt-6 text-lg">
+          <p className="text-gray-900 mt-6 text-lg px-20">
             Established in 2008, Gautam Buddha University stands as a beacon of academic excellence in the National Capital Region.
             Named after Lord Buddha, the university embodies the principles of knowledge, wisdom, and enlightenment.
           </p>
-          <p className="text-gray-700 mt-4 text-lg">
+          <p className="text-gray-900 mt-4 text-lg px-20">
             With state-of-the-art infrastructure, world-class faculty, and innovative research programs, GBU is committed to nurturing
             global citizens who can contribute meaningfully to society and the nation.
           </p>
 
-          <div className="mt-8 flex justify-center gap-4 flex-wrap">
-            <a className="border-2 border-blue-700 text-blue-700 px-4 py-1 rounded-md hover:bg-blue-500 hover:text-white hover:scale-110 transition" href="#vision">Our Vision</a>
-            <a className="border-2 border-blue-700 text-blue-700 px-4 py-1 rounded-md hover:bg-blue-500 hover:text-white hover:scale-110 transition" href="#mission">Our Mission</a>
-          </div>
         </div>
-      </div> 
-  
+      </section>
+
       {/* Vision Section */}
-      <section id="vision" className="py-16 bg-gradient-to-br from-blue-50 to-white">
+      <section id="vision" className="pb-16 pt-10 bg-gradient-to-br from-blue-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="backdrop-blur-sm bg-white/70 rounded-3xl shadow-2xl p-12 border border-white/20">
+          <div className="backdrop-blur-sm bg-white/70 rounded-3xl shadow-2xl p-12 border-2 border-gray">
             <div className="flex items-center mb-8">
               <Eye className="w-12 h-12 text-blue-600 mr-4" />
               <h2 className="text-4xl font-bold text-gray-800">Our Vision</h2>
@@ -81,7 +78,7 @@ const AboutGBU = () => {
       {/* Mission Section */}
       <section id="mission" className="py-16 bg-gradient-to-br from-red-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="backdrop-blur-sm bg-white/70 rounded-3xl shadow-2xl p-12 border border-white/20">
+          <div className="backdrop-blur-sm bg-white/70 rounded-3xl shadow-2xl p-12 border-2 border-gray">
             <div className="flex items-center mb-8">
               <Target className="w-12 h-12 text-red-600 mr-4" />
               <h2 className="text-4xl font-bold text-gray-800">Our Mission</h2>
@@ -116,7 +113,7 @@ const AboutGBU = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-gradient-to-br from-green-50 to-white">
+      <section className="py-16 bg-gradient-to-br from-green-50 to-white border-2 border-gray-400">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">Our Core Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

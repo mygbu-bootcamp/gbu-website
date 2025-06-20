@@ -17,6 +17,7 @@ const quickLinks = [
     link: "/academics/schools",
     external: false,
   },
+ 
   {
     title: "Fees",
     desc: "Fee structure and payment",
@@ -34,7 +35,7 @@ const quickLinks = [
     external: true,
   },
   {
-    title: "Courses Offered",
+    title: "faculty",
     desc: "Academic programs",
     icon: <FaBook className="text-white text-2xl" />,
     color: "bg-green-700",

@@ -14,15 +14,13 @@ const companies = [
   { name: "Adani", logo: "data:image/png;base64,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" },
 
 ];
-
-
 const StatItem = ({ icon, end, duration, suffix = "", separator = "", text, start }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
 
   return (
     <div className="text-center" ref={ref}>
       <img src={icon} className="w-10 h-10 mx-auto mb-3" alt="icon" />
-      <h3 className="text-3xl font-bold text-gray-900">
+      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
         {inView ? (
           <CountUp end={end} duration={duration} suffix={suffix} separator={separator} start={start ?? 0} />
         ) : (
@@ -30,7 +28,7 @@ const StatItem = ({ icon, end, duration, suffix = "", separator = "", text, star
         )}
         +
       </h3>
-      <p className="text-gray-600 text-sm mt-1">{text}</p>
+      <p className="text-gray-600 text-sm sm:text-base mt-1">{text}</p>
     </div>
   );
 };
@@ -42,7 +40,8 @@ const HiringSection = () => {
 
   useEffect(() => {
     const updateSize = () => {
-      setContainerWidth(window.innerWidth > 1280 ? 1200 : window.innerWidth - 40);
+      const width = window.innerWidth;
+      setContainerWidth(width > 1280 ? 1200 : width - 40);
     };
     updateSize();
     window.addEventListener("resize", updateSize);
@@ -61,18 +60,18 @@ const HiringSection = () => {
   const radius = containerWidth / 2.2;
 
   return (
-    <section className="relative bg-[#f5f9ff] py-40 overflow-hidden">
+    <section className="relative bg-[#f5f9ff] py-24 sm:py-32 overflow-hidden">
       {/* Heading */}
-      <div className="absolute top-2 left-0 w-full text-center px-4 z-10">
-        <h2 className="text-5xl font-bold text-gray-800 mb-4">Companies Hiring</h2>
-        <p className="text-gray-600 text-lg max-w-xl mx-auto">
-          Prestigious companies regularly hire students from Sharda University.
+      <div className="absolute top-4 left-0 w-full text-center px-4 z-10">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Companies Hiring</h2>
+        <p className="text-gray-600 text-sm sm:text-lg max-w-xl mx-auto">
+          Prestigious companies regularly hire students from G.B.U.
         </p>
       </div>
 
       {/* Animated Semicircle */}
       <div
-        className="relative mx-auto mt-32"
+        className="relative mx-auto mt-32 sm:mt-40"
         style={{
           width: containerWidth,
           height: radius / 2.5,
@@ -83,7 +82,6 @@ const HiringSection = () => {
           const total = companies.length;
           const offset = (time + i / total) % 1;
           const angle = Math.PI * offset;
-
           const x = radius * Math.cos(angle);
           const y = -radius * Math.sin(angle);
 
@@ -92,24 +90,74 @@ const HiringSection = () => {
               key={company.name}
               className="absolute transition-transform duration-75"
               style={{
-                left: `${containerWidth / 2 + x - 30}px`,
-                top: `${radius / 1.3 + y - 30}px`,
+                left: `${containerWidth / 2 + x - 20}px`,
+                top: `${radius / 1.3 + y - 70}px`,
               }}
             >
-              <div className="w-[60px] h-[60px] bg-white rounded-full shadow-md flex items-center justify-center">
-                <img src={company.logo} alt={company.name} className="w-10 h-10 object-contain" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14  bg-white rounded-full shadow-md flex items-center justify-center ">
+                <img src={company.logo} alt={company.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </div>
             </div>
           );
         })}
+
       </div>
 
-      {/* Stats Section with Shadow Box */}
-      <div className="w-full max-w-3xl mx-auto mt-24 bg-white shadow-lg rounded-xl p-8">
+      {/* Placement Button Above Stats */}
+      <div className="text-center mt-16 sm:mt-20">
+        <button 
+          onClick={() => {
+            // Add your navigation logic here
+            console.log('View Placements clicked!');
+            // Example: window.location.href = '/placements';
+          }}
+          className="relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 group overflow-hidden animate-pulse"
+        >
+          {/* Animated background glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 animate-ping"></div>
+          
+          {/* Button text with subtle animation */}
+          <span className="relative z-10 flex items-center gap-2">
+            View Placements
+            <svg 
+              className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+          
+          {/* Ripple effect on click */}
+          <div className="absolute inset-0 rounded-full opacity-0 group-active:opacity-30 bg-white animate-ping group-active:animate-pulse"></div>
+        </button>
+      </div>
+
+      {/* Stats Section */}
+      <div className="w-[90vw] max-w-4xl mx-auto mt-24 sm:mt-28 bg-white shadow-xl rounded-2xl p-6 sm:p-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
-          <StatItem icon="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_256px.png" end={600} duration={2} text="Companies hiring worldwide" />
-          <StatItem icon="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_256px.png" end={30000} duration={3} separator="," text="Successful Alumni worldwide" />
-          <StatItem icon="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_256px.png" end={100} start={65} duration={2.5} suffix="%" text="Placement program wise" />
+          <StatItem
+            icon="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+            end={600}
+            duration={2}
+            text="Companies hiring worldwide"
+          />
+          <StatItem
+            icon="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+            end={30000}
+            duration={3}
+            separator=","
+            text="Successful Alumni worldwide"
+          />
+          <StatItem
+            icon="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+            end={100}
+            start={65}
+            duration={2.5}
+            suffix="%"
+            text="Placement program wise"
+          />
         </div>
       </div>
     </section>
