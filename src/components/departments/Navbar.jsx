@@ -20,7 +20,7 @@ const DropdownItem = ({ title, items }) => {
               key={index}
               to={item.href}
               className="block px-5 py-2 text-sm text-gray-700 hover:bg-purple-50"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(false)} // Close dropdown on link click
             >
               {item.label}
             </Link>
@@ -32,11 +32,12 @@ const DropdownItem = ({ title, items }) => {
 };
 
 const Navbar = () => {
+  // Define routes object locally to match your integrated routing structure
   const routes = {
-    home: "/schools/ict",
+    home: "/schools/ict", // ICT School home page
     faculty: "/schools/ict/faculty",
     about: {
-      dean: "/schools/ict/about/dean",
+      dean: "/schools/ict/about/dean", // This route is missing HodMessage component
       coeidrone: "/schools/ict/about/coeidrone",
       coeiraem: "/schools/ict/about/coeiraem",
       board: "/schools/ict/about/board",
@@ -66,7 +67,10 @@ const Navbar = () => {
           <Link to={routes.home} className="text-black hover:text-purple-700">
             Home
           </Link>
-          <Link to={routes.faculty} className="text-black hover:text-purple-700">
+          <Link
+            to={routes.faculty}
+            className="text-black hover:text-purple-700"
+          >
             Faculty
           </Link>
 
