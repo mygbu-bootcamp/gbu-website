@@ -1,3 +1,4 @@
+
 // import type React from "react";
 
 // import { useState } from "react"
@@ -20,6 +21,32 @@
 //   Eye,
 //   Download,
 // } from "lucide-react"
+
+import  React from "react";
+
+import { useState } from "react"
+ 
+import { Button, buttonVariants } from "../../components/ui/button"
+ 
+import { Input } from "../../components/ui/input"
+import { Badge } from "../../components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar"
+import {
+  Search,
+  Calendar,
+  Users,
+  BookOpen,
+  Award,
+  TrendingUp,
+  Mail,
+  ArrowRight,
+  Filter,
+  Star,
+  Eye,
+  Download,
+} from "lucide-react"
+
 
 // function NewsLetter() {
 //   const [searchTerm, setSearchTerm] = useState("")

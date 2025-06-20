@@ -24,7 +24,7 @@ const Chancellor = () => {
             <div className="bg-yellow-100 p-6 rounded-lg shadow-lg">
               <div className="bg-gray-300 h-64 rounded-lg mb-4 overflow-hidden flex items-center justify-center">
                 <img
-                  src="/assets/yogiji.jpg" // 🔁 Make sure the path is correct relative to /public
+                  src="../../../public/assets/Yogiji.jpg" // 🔁 Make sure the path is correct relative to /public
                   alt="Yogi Adityanath"
                   className="object-cover h-full w-full"
                 />
