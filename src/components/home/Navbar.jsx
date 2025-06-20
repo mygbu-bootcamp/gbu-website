@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   User,
   GraduationCap,
@@ -83,14 +84,14 @@ const Navbar = () => {
       label: "About Us",
       icon: <User size={16} />,
       items: [
-        <a href="/about-us/vision-mission">Vision & Mission</a>,
-        <a href="/about-us/chancellor-message">Chancellor's Message</a>,
-        <a href="/about-us/vice-chancellor-message">Vice-Chancellor's Message</a>,
-        <a href="/about-us/governance-committees">Governance & Committees</a>,
-        <a href="/about-us/strategic-perspective">GBU Strategic Perspective</a>,
-        <a href="/about-us/policies-statutes-rti">Policies, Statutes & RTI</a>,
-        <a href="/about-us/mandatory-disclosures">Mandatory Disclosures</a>,
-        <a href="/about-us/media-coverage">Media Coverage</a>,
+        <Link to="/about-us/vision-mission">Vision & Mission</Link>,
+        <Link to="/about-us/chancellor-message">Chancellor's Message</Link>,
+        <Link to="/about-us/vice-chancellor-message">Vice-Chancellor's Message</Link>,
+        <Link to="/about-us/governance-committees">Governance & Committees</Link>,
+        <Link to="/about-us/strategic-perspective">GBU Strategic Perspective</Link>,
+        <Link to="/about-us/policies-statutes-rti">Policies, Statutes & RTI</Link>,
+        <Link to="/about-us/mandatory-disclosures">Mandatory Disclosures</Link>,
+        <Link to="/about-us/media-coverage">Media Coverage</Link>,
       ],
     },
     {
@@ -98,13 +99,13 @@ const Navbar = () => {
       label: "Academics",
       icon: <GraduationCap size={16} />,
       items: [
-        <a href="/academics/academic-calendar">Academic Calendar & Regulations</a>,
-        <a href="/academics/cbcs-framework">CBCS Curriculum Framework</a>,
-        <a href="/academics/faculty">Faculty Directory</a>,
-        <a href="/academics/centers-of-excellence">Centers of Excellence</a>,
-        <a href="/academics/international-collaboration">International Collaboration</a>,
-        <a href="/academics/reports-publications">Reports & Publications</a>,
-        <a href="/academics/schools">Schools & Departments</a>,
+        <Link to="/academics/academic-calendar">Academic Calendar & Regulations</Link>,
+        <Link to="/academics/cbcs-framework">CBCS Curriculum Framework</Link>,
+        <Link to="/academics/faculty">Faculty Directory</Link>,
+        <Link to="/academics/centers-of-excellence">Centers of Excellence</Link>,
+        <Link to="/academics/international-collaboration">International Collaboration</Link>,
+        <Link to="/academics/reports-publications">Reports & Publications</Link>,
+        <Link to="/academics/schools">Schools & Departments</Link>,
       ],
     },
     {
@@ -112,11 +113,11 @@ const Navbar = () => {
       label: "Admissions",
       icon: <FileText size={16} />,
       items: [
-        <a href="/admissions/admission-process">Admission Process</a>,
-        <a href="/admissions/courses-offered">Courses Offered (UG | PG | PhD)</a>,
-        <a href="/admissions/eligibility-reservation">Eligibility & Reservation</a>,
-        <a href="/admissions/fee-structure-prospectus">Fee Structure & Prospectus</a>,
-        <a href="/admissions/international-admissions">International Admissions</a>,
+        <Link to="/admissions/admission-process">Admission Process</Link>,
+        <Link to="/admissions/courses-offered">Courses Offered (UG | PG | PhD)</Link>,
+        <Link to="/admissions/eligibility-reservation">Eligibility & Reservation</Link>,
+        <Link to="/admissions/fee-structure-prospectus">Fee Structure & Prospectus</Link>,
+        <Link to="/admissions/international-admissions">International Admissions</Link>,
       ],
     },
     {
@@ -124,13 +125,13 @@ const Navbar = () => {
       label: "Research",
       icon: <BookOpen size={16} />,
       items: [
-        <a href="/research/research-centers">Research Centers and Labs</a>,
-        <a href="/research/publications-patents">Publications and Patents</a>,
-        <a href="/research/incubation-innovation">Incubation and Innovation</a>,
-        <a href="/research/startups">Startups</a>,
-        <a href="/research/funded-projects">Funded Projects</a>,
-        <a href="/research/irp-cell">IRP Cell</a>,
-        <a href="/research/research-highlights">Research Highlights</a>,
+        <Link to="/research/research-centers">Research Centers and Labs</Link>,
+        <Link to="/research/publications-patents">Publications and Patents</Link>,
+        <Link to="/research/incubation-innovation">Incubation and Innovation</Link>,
+        <Link to="/research/startups">Startups</Link>,
+        <Link to="/research/funded-projects">Funded Projects</Link>,
+        <Link to="/research/irp-cell">IRP Cell</Link>,
+        <Link to="/research/research-highlights">Research Highlights</Link>,
       ],
     },
     {
@@ -138,13 +139,13 @@ const Navbar = () => {
       label: "Campus Life",
       icon: <Home size={16} />,
       items: [
-        <a href="/campus-life/virtual-tour">Virtual Tour</a>,
-        <a href="/campus-life/hostel-facilities">Hostel Facilities</a>,
-        <a href="/campus-life/sports-fitness">Sports & Fitness</a>,
-        <a href="/campus-life/cultural-activities">Cultural Activities</a>,
-        <a href="/campus-life/clubs-societies">Clubs & Societies</a>,
-        <a href="/campus-life/health-wellness">Health & Wellness</a>,
-        <a href="/campus-life/campus-events">Campus Events</a>,
+        <Link to="/campus-life/virtual-tour">Virtual Tour</Link>,
+        <Link to="/campus-life/hostel-facilities">Hostel Facilities</Link>,
+        <Link to="/campus-life/sports-fitness">Sports & Fitness</Link>,
+        <Link to="/campus-life/cultural-activities">Cultural Activities</Link>,
+        <Link to="/campus-life/clubs-societies">Clubs & Societies</Link>,
+        <Link to="/campus-life/health-wellness">Health & Wellness</Link>,
+        <Link to="/campus-life/campus-events">Campus Events</Link>,
       ],
     },
     {
@@ -152,12 +153,12 @@ const Navbar = () => {
       label: "Announcements",
       icon: <Camera size={16} />,
       items: [
-        <a href="/announcements/news-notifications">News & Updates</a>,
-        <a href="/announcements/event-calendar">Event Calendar</a>,
-        <a href="/announcements/notices">Notices</a>,
-        <a href="/announcements/press-releases">Press Releases</a>,
-        <a href="/announcements/media-gallery">Media Gallery</a>,
-        <a href="/announcements/newsletter">Newsletter</a>,
+        <Link to="/announcements/news-notifications">News & Updates</Link>,
+        <Link to="/announcements/event-calendar">Event Calendar</Link>,
+        <Link to="/announcements/notices">Notices</Link>,
+        <Link to="/announcements/press-releases">Press Releases</Link>,
+        <Link to="/announcements/media-gallery">Media Gallery</Link>,
+        <Link to="/announcements/newsletter">Newsletter</Link>,
       ],
     },
     {
@@ -165,11 +166,11 @@ const Navbar = () => {
       label: "Placements",
       icon: <Briefcase size={16} />,
       items: [
-        <a href="/placements/placement-process">Placement Process</a>,
-        <a href="/placements/top-recruiters">Top Recruiters</a>,
-        <a href="/placements/internship-opportunities">Internship Opportunities</a>,
-        <a href="/placements/career-counseling">Career Counseling</a>,
-        <a href="/placements/placement-statistics">Placement Statistics</a>,
+        <Link to="/placements/placement-process">Placement Process</Link>,
+        <Link to="/placements/top-recruiters">Top Recruiters</Link>,
+        <Link to="/placements/internship-opportunities">Internship Opportunities</Link>,
+        <Link to="/placements/career-counseling">Career Counseling</Link>,
+        <Link to="/placements/placement-statistics">Placement Statistics</Link>,
       ],
     },
     {
@@ -177,17 +178,16 @@ const Navbar = () => {
       label: "Alumni",
       icon: <Users size={16} />,
       items: [
-        <a href="/alumni/alumni-network">Alumni Network</a>,
-        <a href="/alumni/alumni-events">Alumni Events</a>,
-        <a href="/alumni/alumni-achievements">Alumni Achievements</a>,
-        <a href="/alumni/become-mentor">Become a Mentor</a>,
+        <Link to="/alumni/alumni-network">Alumni Network</Link>,
+        <Link to="/alumni/alumni-events">Alumni Events</Link>,
+        <Link to="/alumni/alumni-achievements">Alumni Achievements</Link>,
+        <Link to="/alumni/become-mentor">Become a Mentor</Link>,
       ],
     },
   ];
 
   return (
     <nav className="bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between relative z-50">
-      {/* Logo */}
       <div
         className="flex items-center space-x-3 cursor-pointer"
         onClick={() => (window.location.href = "/")}
@@ -209,11 +209,7 @@ const Navbar = () => {
             strokeWidth="2"
             viewBox="0 0 24 24"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
@@ -238,9 +234,7 @@ const Navbar = () => {
                   onClick={() => toggleMobileMenu(key)}
                   className="w-full flex justify-between items-center py-2 px-2 text-left hover:text-blue-600"
                 >
-                  <span className="flex items-center gap-2">
-                    {icon} {label}
-                  </span>
+                  <span className="flex items-center gap-2">{icon} {label}</span>
                   {mobileOpenMenus[key] ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </button>
                 {mobileOpenMenus[key] && (
