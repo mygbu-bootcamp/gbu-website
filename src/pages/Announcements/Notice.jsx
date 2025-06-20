@@ -218,7 +218,7 @@ const Notice = () => {
               New
             </span>
           </span> */}
-          <h1 className="text-6xl sm:text-5xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-white via-red-500 to-lime-500 bg-clip-text text-transparent animate-gradient">
+          <h1 className="text-6xl sm:text-5xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-white via-amber-200 to-lime-400 bg-clip-text text-transparent animate-gradient">
             Notice Board
           </h1>
           <p className="mt-5 text-white text-3xl font-semibold animate-fade-in-slow">
