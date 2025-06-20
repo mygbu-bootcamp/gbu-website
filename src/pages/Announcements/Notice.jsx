@@ -198,37 +198,37 @@ const Notice = () => {
   const paginatedNotices = filtered.slice(start, start + noticesPerPage);
 
   return (
-    <div className="w-full bg-gradient-to-br pb-10 from-blue-50 via-white to-blue-100 sm:px-4 font-[Inter] relative overflow-x-hidden">
+    <div className="w-full bg-gradient-to-br pb-10 from-blue-200 via-white to-blue-100 sm:px-4 font-[Inter] relative overflow-x-hidden">
       {/* Decorative Sparkles */}
       <Sparkles className="absolute top-8 left-8 text-blue-200 opacity-60 w-16 h-16 pointer-events-none animate-sparkle" />
       <Sparkles className="absolute bottom-10 right-10 text-blue-100 opacity-40 w-20 h-20 pointer-events-none animate-sparkle2" />
 
       {/* Hero Section */}
-      <div className="relative h-[20rem] rounded-2xl overflow-hidden shadow-2xl mb-10  animate-fade-in border border-blue-100">
-        <img
+      <div className="relative h-[22rem] rounded-2xl overflow-hidden shadow-2xl mb-10  animate-fade-in border border-blue-100">
+        {/* <img
           src="https://images.unsplash.com/photo-1741636174602-252cd7bb233c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dW5pdmVyc2l0eSUyMG5vdGljZSUyMGJvYXJkfGVufDB8fDB8fHww"
           alt="Notice Board"
           className="absolute w-full h-full object-cover object-center blur-xs opacity-100 transition-transform duration-700 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/60 via-white/40 to-blue-200/60 z-0" />
+        /> */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-700 to-blue-800 z-0" />
         <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-gray-800">
-          <span className="relative inline-block">
+          {/* <span className="relative inline-block">
             <Bell className="w-16 h-16 text-blue-700 mb-3 animate-bounce drop-shadow-xl" />
             <span className="absolute -top-6 -right-2 bg-blue-900 text-white text-xs px-2 py-0.5 rounded-full shadow animate-pulse">
               New
             </span>
-          </span>
-          <h1 className="text-6xl sm:text-5xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-blue-950 via-blue-800 to-purple-950 bg-clip-text text-transparent animate-gradient">
-            University Notice Board
+          </span> */}
+          <h1 className="text-6xl sm:text-5xl font-extrabold tracking-tight drop-shadow-lg bg-gradient-to-r from-white via-red-500 to-lime-500 bg-clip-text text-transparent animate-gradient">
+            Notice Board
           </h1>
-          <p className="mt-3 text-gray-900 text-3xl sm:text-lg font-semibold animate-fade-in-slow">
+          <p className="mt-5 text-white text-3xl font-semibold animate-fade-in-slow">
             Stay informed with the latest announcements, academic alerts, and placement updates.
           </p>
         </div>
       </div>
 
       {/* Tabs and Search */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center w-3/5 mx-auto mb-8 gap-4">
         <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
           {categories.map((cat) => (
             <button
@@ -268,7 +268,7 @@ const Notice = () => {
       </div>
 
       {/* Notices Grid */}
-      <div className="grid gap-8">
+      <div className="grid w-3/5 text-center mx-auto gap-8">
         {paginatedNotices.map((notice, idx) => (
           <div
             key={notice.id}
