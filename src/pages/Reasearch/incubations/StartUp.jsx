@@ -48,40 +48,43 @@ const StartUp = () => {
     },
   ];
   return (
-    <div className="max-w-7xl mx-auto mt-24 mb-12 px-4">
+    <div className="max-w-7xl mx-auto mt-15 mb-12 px-4">
       {/* Header */}
 
       {/* Stats */}
 
-      <div className="py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {/* Research Projects */}
-            <div className="bg-blue-600 text-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <h3 className="text-3xl font-bold">50+</h3>
-              <p className="mt-2 text-sm">Startups Incubated</p>
-            </div>
-
-            {/* Research Centers */}
-            <div className="bg-green-600 text-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <h3 className="text-3xl font-bold">₹25Cr+</h3>
-              <p className="mt-2 text-sm">Funding Raised</p>
-            </div>
-
-            {/* Publications */}
-            <div className="bg-cyan-600 text-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <h3 className="text-3xl font-bold">200+</h3>
-              <p className="mt-2 text-sm">Jobs Created</p>
-            </div>
-
-            {/* Patents Filed */}
-            <div className="bg-yellow-500 text-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <h3 className="text-3xl font-bold">75%</h3>
-              <p className="mt-2 text-sm">Success Rate</p>
-            </div>
-          </div>
-        </div>
+    <div className="py-12 mb-10 bg-gradient-to-b from-white to-gray-50">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      
+      {/* Startups Incubated */}
+      <div className="bg-white shadow-sm hover:shadow-md transition rounded-lg p-6 text-center border-t-4 border-blue-600">
+        <div className="text-4xl font-bold text-blue-700">50+</div>
+        <p className="text-gray-600 mt-2 text-sm font-medium tracking-wide">Startups Incubated</p>
       </div>
+
+      {/* Funding Raised */}
+      <div className="bg-white shadow-sm hover:shadow-md transition rounded-lg p-6 text-center border-t-4 border-green-600">
+        <div className="text-4xl font-bold text-green-700">₹25Cr+</div>
+        <p className="text-gray-600 mt-2 text-sm font-medium tracking-wide">Funding Raised</p>
+      </div>
+
+      {/* Jobs Created */}
+      <div className="bg-white shadow-sm hover:shadow-md transition rounded-lg p-6 text-center border-t-4 border-cyan-600">
+        <div className="text-4xl font-bold text-cyan-700">200+</div>
+        <p className="text-gray-600 mt-2 text-sm font-medium tracking-wide">Jobs Created</p>
+      </div>
+
+      {/* Success Rate */}
+      <div className="bg-white shadow-sm hover:shadow-md transition rounded-lg p-6 text-center border-t-4 border-yellow-500">
+        <div className="text-4xl font-bold text-yellow-600">75%</div>
+        <p className="text-gray-600 mt-2 text-sm font-medium tracking-wide">Success Rate</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
       
       
       

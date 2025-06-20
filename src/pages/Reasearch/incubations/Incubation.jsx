@@ -2,7 +2,11 @@
 import Focus from "./Focus";
 import Services from "./Services";
 import StartupsCarousel from "./StartupsCarousel";
+
 import StartUp from "../StartUp";
+
+
+
 import Team from "./Team";
 import ImageGallery from "./ImageGallery";
 import EventSlider from "./EventSlider";
@@ -32,6 +36,19 @@ const Incubation = () => {
           </div>
         </div>
       </section>
+ 
+    <div className="bg-yellow-400 flex items-center justify-center py-1">
+  <p className="text-black font-semibold mr-4 text-lg">
+    Click Here for Idea Submission
+  </p>
+
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLSc2dX1NwPluJ1A1-2cHY39ck3CYhrdCskgIQZUxCj981eDwew/viewform"
+    className="bg-gray-500 text-white px-6 py-2 rounded-full font-bold hover:bg-gray-800 transition-colors"
+  >
+    Click Here!
+  </a>
+</div>
 
       {/* Sticky Navigation Header */}
       <IncubationNav />
