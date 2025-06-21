@@ -112,12 +112,6 @@ const UpcomingEvents = () => {
             </div>
           ))}
         </div>
-        
-        <div className="text-center mt-12">
-          <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">
-            View All Events
-          </button>
-        </div>
       </div>
     </section>
   );

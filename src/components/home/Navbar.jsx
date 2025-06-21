@@ -55,9 +55,8 @@ const Navbar = () => {
       <button
         type="button"
         onClick={() => toggleMenu(menuKey)}
-        className={`flex items-center gap-1 cursor-pointer ${
-          openMenu === menuKey ? "text-red-600" : "hover:text-red-600"
-        }`}
+        className={`flex items-center gap-1 cursor-pointer ${openMenu === menuKey ? "text-red-600" : "hover:text-red-600"
+          }`}
       >
         {icon}
         {label} ▾
@@ -139,13 +138,15 @@ const Navbar = () => {
       label: "Campus Life",
       icon: <Home size={16} />,
       items: [
-        <Link to="/campus-life/virtual-tour">Virtual Tour</Link>,
-        <Link to="/campus-life/hostel-facilities">Hostel Facilities</Link>,
-        <Link to="/campus-life/sports-fitness">Sports & Fitness</Link>,
-        <Link to="/campus-life/cultural-activities">Cultural Activities</Link>,
-        <Link to="/campus-life/clubs-societies">Clubs & Societies</Link>,
-        <Link to="/campus-life/health-wellness">Health & Wellness</Link>,
-        <Link to="/campus-life/campus-events">Campus Events</Link>,
+        <Link to="/campus-life/hero">Overview</Link>,
+
+        <Link to="/campus-life/hostel-facilities">Hostels</Link>,
+        <Link to="/campus-life/sports-fitness">Sports</Link>,
+        <Link to="/campus-life/clubs-societies">Clubs and Societies</Link>,
+        <Link to="/campus-life/meditation-center">Meditation Centre</Link>,
+        <Link to="/campus-life/NSS">National Service Scheme(NSS)</Link>,
+        <Link to="/campus-life/NCC">National Cadet Corps(NCC)</Link>,
+        
       ],
     },
     {
