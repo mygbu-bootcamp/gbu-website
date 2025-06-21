@@ -22,10 +22,11 @@ import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
 import HostelDining from "../pages/campusLife/HostelDining.jsx";
 import SportsCultural from "../pages/campusLife/SportsCultural.jsx";
 import ClubsCouncils from "../pages/campusLife/ClubsCouncils.jsx";
-import HealthWellness from "../pages/campusLife/HealthWellness.jsx";
-import UpcomingEvents from "../pages/campusLife/UpcomingEvents.jsx";
-import VirtualTour from "../pages/campusLife/VirtualTour.jsx";
-import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
+import NSS from "../pages/campusLife/NSS.jsx";
+import NCC from "../pages/campusLife/NCC.jsx";
+import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx"
+import Overview from "../pages/campusLife/Overview.jsx";
+
 
 const AcademicCalendar = React.lazy(() => import('../pages/Academic/AcademicCalendar.jsx'));
 const CBCSFramework = React.lazy(() => import('../pages/Academic/CBCSFramework.jsx'));
@@ -46,11 +47,11 @@ const Chancellor = lazy(() => import('../pages/Aboutus/Chancellor.jsx'));
 const Governance = lazy(() => import('../pages/Aboutus/Governance.jsx'));
 const ViceChancellor = lazy(() => import('../pages/Aboutus/ViceChancellor.jsx'));
 
-const FundedProjects = lazy(() => import('../pages/Reasearch/FundedProjects'));
-const StartUp = lazy(() => import('../pages/Reasearch/StartUp.jsx'));
-const Index = lazy(() => import('../pages/Reasearch/Index.jsx'));
-const Publications = lazy(() => import('../pages/Reasearch/Publications.jsx'));
-const Innovations = lazy(() => import('../pages/Reasearch/Innovations.jsx'));
+const FundedProjects = lazy(() => import('../pages/Reasearch/researchhighlights/FundedProjects'));
+const StartUp = lazy(() => import('../pages/Reasearch/incubations/StartUp.jsx'));
+const Index = lazy(() => import('../pages/Reasearch/researchhighlights/Index.jsx'));
+const Publications = lazy(() => import('../pages/Reasearch/researchhighlights/Publications.jsx'));
+// const Innovations = lazy(() => import('../pages/Reasearch/Innovations.jsx'));
 const ResearchCenters = lazy(() => import('../pages/Reasearch/ResearchCenters.jsx'));
 
 // ICT School components (lazy loaded) - Update these paths according to your project structure
@@ -70,7 +71,7 @@ import ICTLayout from '../components/departments/ICTlayout.jsx';
 import Dean from "../components/departments/Dean.jsx";
 import Conferences from "../pages/departments/Usict_activities.jsx";
 import LaboratoryCards from "../pages/departments/laboratries.jsx";
-import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
+// import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
 import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx"
 
 export default function AppRouter() {
@@ -78,7 +79,7 @@ export default function AppRouter() {
     <Suspense fallback={<div className="flex justify-center items-center h-screen">Loading...</div>}>
       <Routes>
         {/* About Us Routes */}
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
         <Route path="/about-us/vision-mission" element={<Vision />} />
         <Route path="/about-us/chancellor-message" element={<Chancellor />} />
         <Route path="/about-us/vice-chancellor-message" element={<ViceChancellor />} />
@@ -100,85 +101,86 @@ export default function AppRouter() {
         <Route path="/academics/reports-publications" element={<ReportsPublications />} />
         <Route path="/academics/schools" element={<Schools />} />
 
-<Route path="/schools/ict" element={<ICTLayout />}>
-  {/* ICT Home Page */}
-  <Route index element={<ICTPage />} />
+        <Route path="/schools/ict" element={<ICTLayout />}>
+          {/* ICT Home Page */}
+          <Route index element={<ICTPage />} />
 
-  {/* Faculty */}
-  <Route path="faculty" element={<ICTFaculty />} />
+          {/* Faculty */}
+          <Route path="faculty" element={<ICTFaculty />} />
 
-  {/* About Section */}
-  <Route path="about/coeidrone" element={<h1>COE Drone - Coming Soon</h1>} />
-  <Route path="about/dean" element={<Dean/>} />
-  <Route path="about/coeiraem" element={<h1>COE IRAEM - Coming Soon</h1>} />
-  <Route path="about/board" element={<BoardOfStudies />} />
-  <Route path="about/staff" element={<h1>Staff - Coming Soon</h1>} />
-  <Route path="about/labs" element={<LaboratoryCards/>} />
-  <Route path="about/activities" element={<Conferences/>} />
+          {/* About Section */}
+          <Route path="about/coeidrone" element={<h1>COE Drone - Coming Soon</h1>} />
+          <Route path="about/dean" element={<Dean />} />
+          <Route path="about/coeiraem" element={<h1>COE IRAEM - Coming Soon</h1>} />
+          <Route path="about/board" element={<BoardOfStudies />} />
+          <Route path="about/staff" element={<h1>Staff - Coming Soon</h1>} />
+          <Route path="about/labs" element={<LaboratoryCards />} />
+          <Route path="about/activities" element={<Conferences />} />
 
-  {/* Departments */}
-  <Route path="departments/cse" element={<CSE />} />
-  <Route path="departments/it" element={<IT />} />
-  <Route path="departments/ece" element={<ECE />} />
+          {/* Departments */}
+          <Route path="departments/cse" element={<CSE />} />
+          <Route path="departments/it" element={<IT />} />
+          <Route path="departments/ece" element={<ECE />} />
 
-  {/* Research Section */}
-  <Route path="research/profile" element={<ResearchArea />} />
-  <Route path="research/consultancy" element={<TrainingConsultancy />} />
-  <Route path="research/scholars" element={<ResearchScholars />} />
-  <Route path="research/projects" element={<ResearchProjects />} />
-  <Route path="research/patents" element={<Patents />} />
+          {/* Research Section */}
+          <Route path="research/profile" element={<ResearchArea />} />
+          <Route path="research/consultancy" element={<TrainingConsultancy />} />
+          <Route path="research/scholars" element={<ResearchScholars />} />
+          <Route path="research/projects" element={<ResearchProjects />} />
+          <Route path="research/patents" element={<Patents />} />
 
-  {/* Contact Page */}
-  <Route path="contact" element={<ICTContact />} />
-</Route>
+          {/* Contact Page */}
+          <Route path="contact" element={<ICTContact />} />
+        </Route>
 
 
         {/* Admissions Routes */}
-        <Route path="/admissions/admission-process" element={<AdmissionProcess/>} />
-        <Route path="/admissions/courses-offered" element={<CoursesOffered/>} />
-        <Route path="/admissions/eligibility-reservation" element={<EligibilityReservation/>} />
-        <Route path="/admissions/fee-structure-prospectus" element={<FeeStructure/>} />
-        <Route path="/admissions/international-admissions" element={<InternationalAdmissions/>} />
+        <Route path="/admissions/admission-process" element={<AdmissionProcess />} />
+        <Route path="/admissions/courses-offered" element={<CoursesOffered />} />
+        <Route path="/admissions/eligibility-reservation" element={<EligibilityReservation />} />
+        <Route path="/admissions/fee-structure-prospectus" element={<FeeStructure />} />
+        <Route path="/admissions/international-admissions" element={<InternationalAdmissions />} />
 
-        
+
 
         <Route path="/research/research-centers" element={<ResearchCenters />} />
         <Route path="/research/publications-patents" element={<Publications />} />
-        <Route path="/research/incubation-innovation" element={<Innovations />} />
+        {/* <Route path="/research/incubation-innovation" element={<Innovations />} /> */}
         <Route path="/research/startups" element={<StartUp />} />
         <Route path="/research/funded-projects" element={<FundedProjects />} />
         <Route path="/research/irp-cell" element={<Index />} />
         <Route path="/research/research-highlights" element={<Index />} />
 
         {/* Campus Life Routes */}
-  <Route path="/campus-life/hostel-facilities" element={<HostelDining />} />
-      <Route path="/campus-life/sports-fitness" element={<SportsCultural />} />
-      <Route path="/campus-life/clubs-societies" element={<ClubsCouncils />}/>
-      <Route path="/campus-life/health-wellness" element={<HealthWellness/>}/>
-      <Route path="/campus-life/campus-events"element={<UpcomingEvents/>}/>
-      <Route path="/campus-life/meditation-center"element={<MeditationCenter/>}/>
-      <Route path="/campus-life/virtual-tour"element={<VirtualTour/>}/>
-
+        <Route path="/campus-life/hostel-facilities" element={<HostelDining />} />
+        <Route path="/campus-life/hero" element={<Overview />} />
+        <Route path="/campus-life/sports-fitness" element={<SportsCultural />} />
+        <Route path="/campus-life/clubs-societies" element={<ClubsCouncils />} />
+        <Route path="/campus-life/NSS" element={<NSS />} />
+        <Route path="/campus-life/NCC" element={<NCC />} />
+        
+        <Route path="/campus-life/meditation-center" element={<MeditationCenter />} />
+        
         {/* Announcements Routes */}
-        <Route path="/announcements/news-notifications" element={<NewsNotifications/>} />
-        <Route path="/announcements/event-calendar" element={<EventsCalendar/>} />
+        <Route path="/announcements/news-notifications" element={<NewsNotifications />} />
+        <Route path="/announcements/event-calendar" element={<EventsCalendar />} />
         <Route path="/announcements/notices" element={<h1>iskaa bhi</h1>} />
-        <Route path="/announcements/press-releases" element={<MediaCoverage/>} />
+        <Route path="/announcements/press-releases" element={<MediaCoverage />} />
 
         <Route path="/announcements/newsletter" element={<h1>koi elementnhi thaa iska</h1>} />
 
         {/* Placements Routes */}
-        <Route path="/placements/placement-process" element={<PlacementBrochure/>} />
-        <Route path="/placements/top-recruiters" element={<CampusRecruiters/>} />
-        <Route path="/placements/internship-opportunities" element={<InternshipProgrammes/>} />
-        <Route path="/placements/career-counseling" element={<TrainingCareerServices/>} />
-        <Route path="/placements/placement-statistics" element={<PlacementStatistics/>} />
+        <Route path="/placements/placement-process" element={<PlacementBrochure />} />
+        <Route path="/placements/top-recruiters" element={<CampusRecruiters />} />
+        <Route path="/placements/internship-opportunities" element={<InternshipProgrammes />} />
+        <Route path="/placements/career-counseling" element={<TrainingCareerServices />} />
+        <Route path="/placements/placement-statistics" element={<PlacementStatistics />} />
 
         {/* Alumni Routes */}
-        <Route path="/alumni/alumni-network" element={<AlumniNetwork/>} />
-        <Route path="/alumni/alumni-events" element={<EventsReunions/>} />
+        <Route path="/alumni/alumni-network" element={<AlumniNetwork />} />
+        <Route path="/alumni/alumni-events" element={<EventsReunions />} />
         <Route path="/alumni/alumni-achievements" element={<h1>Alumni Achievements</h1>} />
-        <Route path="/alumni/become-mentor" element={<AlumniRegistration/>} />
+        <Route path="/alumni/become-mentor" element={<AlumniRegistration />} />
       </Routes>
     </Suspense>
   );
