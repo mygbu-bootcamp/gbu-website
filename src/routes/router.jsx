@@ -27,6 +27,19 @@ import NCC from "../pages/campusLife/NCC.jsx";
 import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx"
 import Overview from "../pages/campusLife/Overview.jsx";
 
+import GrievanceMain from "../pages/grievance/GrievanceMain.jsx";
+import { AuthProvider } from "../components/Grievance/contexts/AuthContext";
+import ProtectedRoute from "../components/Grievance/ProtectedRoute";
+import StudentDashboard from "../pages/grievance/StudentDashboard";
+import StaffDashboard from "../pages/grievance/StaffDashboard";
+import AdminDashboard from "../pages/grievance/AdminDashboard";
+import Login from "../pages/grievance/Login";
+import TrackComplaint from "../pages/grievance/TrackComplaint";
+import FAQ from "../pages/grievance/FAQ";
+import Contact from "../pages/grievance/Contact";
+import EscalationPolicy from "../pages/grievance/EscalationPolicy";
+import ComplaintDetail from "../pages/grievance/ComplaintDetail";
+import FacultyDashboard from "../pages/grievance/FacultyDashboard";
 
 const AcademicCalendar = React.lazy(() => import('../pages/Academic/AcademicCalendar.jsx'));
 const CBCSFramework = React.lazy(() => import('../pages/Academic/CBCSFramework.jsx'));
@@ -77,6 +90,7 @@ import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx"
 export default function AppRouter() {
   return (
     <Suspense fallback={<div className="flex justify-center items-center h-screen">Loading...</div>}>
+      <AuthProvider>
       <Routes>
         {/* About Us Routes */}
         <Route path="/" element={<Home />} />
@@ -181,7 +195,48 @@ export default function AppRouter() {
         <Route path="/alumni/alumni-events" element={<EventsReunions />} />
         <Route path="/alumni/alumni-achievements" element={<h1>Alumni Achievements</h1>} />
         <Route path="/alumni/become-mentor" element={<AlumniRegistration />} />
-      </Routes>
+
+        {/* Grievance  */}
+        <Route path="/grievance" element={<GrievanceMain />} />
+        <Route path="/login/:role" element={<Login />} />
+              <Route 
+                path="/student" 
+                element={
+                  <ProtectedRoute allowedRoles={['student']}>
+                    <StudentDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/staff" 
+                element={
+                  <ProtectedRoute allowedRoles={['staff']}>
+                    <StaffDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/admin" 
+                element={
+                  <ProtectedRoute allowedRoles={['admin']}>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/faculty-dashboard" 
+                element={
+                  <ProtectedRoute allowedRoles={['faculty']}>
+                    <FacultyDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route path="/complaint/:id" element={<ComplaintDetail />} />
+              <Route path="/track" element={<TrackComplaint />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/escalation-policy" element={<EscalationPolicy />} />
+      </Routes></AuthProvider>
     </Suspense>
   );
 }
