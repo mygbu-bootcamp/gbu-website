@@ -1,6 +1,68 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
+// Custom Card, CardHeader, CardTitle, CardDescription, CardContent, and Button components
+
+const Card = ({ className = "", children, ...props }) => (
+  <div
+    className={`rounded-2xl bg-white shadow-lg border border-gray-200 ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+const CardHeader = ({ className = "", children, ...props }) => (
+  <div className={`px-6 pt-6 ${className}`} {...props}>
+    {children}
+  </div>
+);
+
+const CardTitle = ({ className = "", children, ...props }) => (
+  <h3 className={`font-bold text-xl mb-2 ${className}`} {...props}>
+    {children}
+  </h3>
+);
+
+const CardDescription = ({ className = "", children, ...props }) => (
+  <p className={`text-gray-500 text-base mb-2 ${className}`} {...props}>
+    {children}
+  </p>
+);
+
+const CardContent = ({ className = "", children, ...props }) => (
+  <div className={`px-6 pb-6 ${className}`} {...props}>
+    {children}
+  </div>
+);
+
+const Button = ({
+  children,
+  className = "",
+  variant = "default",
+  size = "md",
+  ...props
+}) => {
+  const base =
+    "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400";
+  const variants = {
+    default:
+      "bg-emerald-600 text-white hover:bg-emerald-700 shadow-md",
+    outline:
+      "bg-white border border-emerald-300 text-emerald-700 hover:bg-emerald-50",
+  };
+  const sizes = {
+    md: "px-5 py-2 text-base",
+    lg: "px-7 py-3 text-lg",
+    sm: "px-3 py-1.5 text-sm",
+  };
+  return (
+    <button
+      className={`${base} ${variants[variant] || ""} ${sizes[size] || ""} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 import { Users, Award, BookOpen, Lightbulb, Globe, Server, Smartphone, Shield, GraduationCap, Brain, Code, Trophy, Star, User, Medal, Target } from "lucide-react";
 
 const IT = () => {
