@@ -1,49 +1,81 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function WelcomePage() {
+  const [bannerData, setBannerData] = useState(null);
+
+  // Read from .env: VITE_HOST=http://147.93.105.208:8000/
+  const BANNER = import.meta.env.VITE_HOST;
+  const BASE = (BANNER || "").replace(/\/$/, "");
+
+  useEffect(() => {
+    fetch(`${BASE}/landing/banner/`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setBannerData(data[0]);
+        }
+      })
+      .catch((error) =>
+        console.error("Error fetching banner data:", error)
+      );
+  }, [BASE]);
+
+  if (!bannerData) return <div className="text-center py-20">Loading...</div>;
+
+  const videoSrc = bannerData.video?.endsWith(".mp4")
+    ? `${BASE}/media/${bannerData.video}`
+    : `${BASE}/${bannerData.video}`;
+
   return (
     <>
       {/* Main welcome section */}
       <div className="relative h-screen flex flex-col justify-center overflow-hidden">
-
-        {/* Background video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/assets/home.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {/* Background video or image */}
+        {bannerData.video?.endsWith(".mp4") ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <img
+            src={videoSrc}
+            alt="Banner"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          />
+        )}
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 z-10" />
 
         {/* Content */}
         <div className="relative z-20 text-white max-w-3xl px-4 sm:pl-10 pb-24">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-left">
-            Welcome to <span className="text-orange-500">Gautam</span>{" "}
-            <span className="text-orange-600">Buddha University</span>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-left capitalize">
+            {bannerData.title}
           </h1>
-          <p className="text-lg md:text-xl mb-8">
-            Empowering minds, shaping futures through excellence in education,
-            research, and innovation.
-          </p>
+          <p className="text-lg md:text-xl mb-8">{bannerData.content}</p>
           <div className="flex flex-col sm:flex-row justify-start gap-4">
-            <button
+            <a
+              href={bannerData.button1_url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded shadow focus:outline-none focus:ring-2 focus:ring-green-400"
-              type="button"
             >
-              Explore Programs
-            </button>
-            <button
+              {bannerData.button1_text}
+            </a>
+            <a
+              href={bannerData.button2_url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-lime-500 hover:bg-lime-600 text-white font-semibold py-2 px-6 rounded shadow focus:outline-none focus:ring-2 focus:ring-lime-400"
-              type="button"
             >
-              Virtual Tour
-            </button>
+              {bannerData.button2_text}
+            </a>
           </div>
         </div>
       </div>
