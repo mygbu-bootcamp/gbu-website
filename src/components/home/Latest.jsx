@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 export default function LatestUpdates() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
@@ -152,8 +151,6 @@ export default function LatestUpdates() {
     </div>
   );
 
-  const quickLinks = ['All Notices', 'Academic Events', 'Press Releases'];
-
   return (
     <section className="px-4 md:px-8 lg:px-16 py-12 bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30 min-h-screen">
       <style jsx>{`
@@ -212,35 +209,6 @@ export default function LatestUpdates() {
           Stay informed with the latest news, events, and important announcements from our institution
         </p>
         <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full shadow-lg"></div>
-      </div>
-
-      {/* Quick Links */}
-      <div className={`max-w-4xl mx-auto mb-12 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {quickLinks.map((link, index) => (
-            <div 
-              key={index} 
-              className={`group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl border border-white/20 hover:border-blue-200 transition-all duration-300 transform hover:scale-105 cursor-pointer overflow-hidden ${
-                activeTab === index ? 'ring-2 ring-blue-500 shadow-blue-200' : ''
-              }`}
-              onClick={() => setActiveTab(index)}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/5 group-hover:to-purple-600/5 transition-all duration-300"></div>
-              <div className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-700 font-semibold group-hover:text-blue-700 transition-colors duration-200">
-                    {link}
-                  </span>
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                    <svg className="w-5 h-5 text-white transform group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Main Content */}
