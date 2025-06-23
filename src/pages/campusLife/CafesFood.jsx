@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 // import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '../../components/ui/button';
+
 import { Badge } from '../../components/ui/badge';
 import { Coffee } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../../components/ui/dialog';
@@ -10,6 +10,22 @@ import { Label } from '../../components/ui/label';
 import { Textarea } from '../../components/ui/textarea';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../components/ui/carousel';
 import { useToast } from '../../hooks/use-toast';
+
+const Button = ({ children, className = '', variant = 'default', ...props }) => {
+  const baseStyle =
+    'px-4 py-2 rounded-lg font-semibold transition-all duration-300 focus:outline-none';
+  const variants = {
+    default: 'bg-red-600 text-white hover:bg-red-700',
+    outline: 'border border-red-600 text-red-600 hover:bg-red-600 hover:text-white',
+  };
+  return (
+    <button className={`${baseStyle} ${variants[variant]} ${className}`} {...props}>
+      {children}
+    </button>
+  );
+};
+
+
 
 const Card = ({ className = "", children, ...props }) => (
   <div

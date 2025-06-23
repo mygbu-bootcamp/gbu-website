@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
+import * as TabsPrimitive from "@ra"
 function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }

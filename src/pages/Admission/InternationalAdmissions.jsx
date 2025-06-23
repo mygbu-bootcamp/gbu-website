@@ -1,10 +1,7 @@
 
 import React from 'react';
 
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Badge } from '../../components/ui/badge';
-import { Button } from '../../components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+
 import { 
   Globe, 
   Users, 
@@ -19,6 +16,70 @@ import {
   Phone,
   Mail
 } from 'lucide-react';
+const Card = ({ children, className }) => (
+  <div className={`rounded-lg shadow bg-white border ${className || ""}`}>{children}</div>
+);
+const CardHeader = ({ children }) => <div className="p-4 border-b">{children}</div>;
+const CardTitle = ({ children, className }) => (
+  <h3 className={`text-lg font-semibold ${className || ""}`}>{children}</h3>
+);
+const CardContent = ({ children, className }) => (
+  <div className={`p-4 ${className || ""}`}>{children}</div>
+);
+
+const Badge = ({ children, variant = "default" }) => {
+  const variants = {
+    outline: "border border-gray-300 text-gray-700 bg-white",
+    secondary: "bg-gray-200 text-gray-700",
+    default: "bg-blue-600 text-white"
+  };
+  return <span className={`text-xs px-2 py-1 rounded ${variants[variant]}`}>{children}</span>;
+};
+
+const Button = ({ children, size = "md", variant = "default", className }) => {
+  const sizes = {
+    lg: "px-6 py-2 text-lg",
+    md: "px-4 py-2 text-base",
+    sm: "px-3 py-1 text-sm"
+  };
+  const variants = {
+    default: "bg-blue-600 text-white hover:bg-blue-700",
+    outline: "border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+  };
+  return (
+    <button className={`${sizes[size]} ${variants[variant]} rounded ${className || ""}`}>
+      {children}
+    </button>
+  );
+};
+
+const Tabs = ({ children }) => <div>{children}</div>;
+const TabsList = ({ children, className }) => (
+  <div className={`flex flex-wrap gap-2 ${className || ""}`}>{children}</div>
+);
+const TabsTrigger = ({ children, value }) => (
+  <button className="px-4 py-2 border rounded">{children}</button>
+);
+const TabsContent = ({ children, value, className }) => (
+  <div className={className || ""}>{children}</div>
+);
+
+// Replace with real Lucide icons or your own
+const Icon = (name, className = "w-5 h-5") => <div className={className}>{name}</div>;
+const icons = {
+  Globe: (props) => Icon("🌐", props.className),
+  Users: (props) => Icon("👥", props.className),
+  FileText: (props) => Icon("📄", props.className),
+  CreditCard: (props) => Icon("💳", props.className),
+  Plane: (props) => Icon("✈️", props.className),
+  Home: (props) => Icon("🏠", props.className),
+  GraduationCap: (props) => Icon("🎓", props.className),
+  Clock: (props) => Icon("🕒", props.className),
+  CheckCircle: (props) => Icon("✅", props.className),
+  AlertCircle: (props) => Icon("⚠️", props.className),
+  Phone: (props) => Icon("📞", props.className),
+  Mail: (props) => Icon("✉️", props.className)
+};
 
 const InternationalAdmissions = () => {
   const eligibilityRequirements = [

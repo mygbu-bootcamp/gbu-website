@@ -1,9 +1,6 @@
+
+
 import React from 'react';
-
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Badge } from '../../components/ui/badge';
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { 
   Download, 
   CreditCard, 
@@ -12,7 +9,76 @@ import {
   Award
 } from 'lucide-react';
 
-// Dummy data placeholders — replace with real ones
+// --- Reusable UI Components ---
+const Card = ({ children, className = '' }) => (
+  <div className={`rounded-xl overflow-hidden bg-white ${className}`}>
+    {children}
+  </div>
+);
+
+const CardHeader = ({ children, className = '' }) => (
+  <div className={`p-4 border-b border-gray-200 ${className}`}>{children}</div>
+);
+
+const CardTitle = ({ children, className = '' }) => (
+  <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
+);
+
+const CardContent = ({ children, className = '' }) => (
+  <div className={`p-4 ${className}`}>{children}</div>
+);
+
+const Badge = ({ children, className = '' }) => (
+  <span className={`inline-block text-xs font-medium rounded-full px-3 py-1 ${className}`}>
+    {children}
+  </span>
+);
+
+const Button = ({ children, className = '', variant = 'default', size = 'default', ...props }) => {
+  const base = 'inline-flex items-center justify-center rounded-md font-medium transition';
+  const variants = {
+    default: 'bg-red-600 text-white hover:bg-red-700',
+    outline: 'border border-red-600 text-red-600 hover:bg-red-600 hover:text-white',
+  };
+  const sizes = {
+    default: 'px-4 py-2 text-sm',
+    sm: 'px-3 py-1 text-xs',
+  };
+  return (
+    <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props}>
+      {children}
+    </button>
+  );
+};
+
+const Tabs = ({ children, defaultValue, className = '' }) => (
+  <div className={className}>{children}</div>
+);
+
+const TabsList = ({ children, className = '' }) => (
+  <div className={`flex space-x-2 ${className}`}>{children}</div>
+);
+
+const TabsTrigger = ({ children, value }) => (
+  <button
+    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100"
+    onClick={() => {
+      const content = document.getElementById(`tab-${value}`);
+      document.querySelectorAll('[id^=tab-]').forEach(tab => tab.style.display = 'none');
+      if (content) content.style.display = 'block';
+    }}
+  >
+    {children}
+  </button>
+);
+
+const TabsContent = ({ children, value, className = '' }) => (
+  <div id={`tab-${value}`} className={`${className}`} style={{ display: value === 'fees' ? 'block' : 'none' }}>
+    {children}
+  </div>
+);
+
+// --- Data Constants ---
   const ugFees = [
     {
       course: "B.Tech",
@@ -178,73 +244,55 @@ import {
     }
   ];
 
+// --- FeeCard Component ---
 const FeeCard = ({ course }) => (
-  <Card className="bg-white shadow-sm border border-gray-200">
+  <Card className="border border-gray-200">
     <CardHeader className="flex flex-row justify-between items-center pb-2">
-      <CardTitle className="text-lg font-semibold text-gray-900">
-        {course.course}
-      </CardTitle>
-      <Badge className="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">
-        {course.totalFee}
-      </Badge>
+      <CardTitle>{course.course}</CardTitle>
+      <Badge className="bg-green-100 text-green-800">{course.totalFee}</Badge>
     </CardHeader>
-
     <CardContent className="pt-0 space-y-4">
+      {/* Yearly & Total */}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <p className="text-sm text-gray-500">Yearly Fee</p>
-          <p className="text-base font-semibold text-gray-800">{course.yearlyFee}</p>
+          <p className="font-semibold text-gray-800">{course.yearlyFee}</p>
         </div>
         <div>
           <p className="text-sm text-gray-500">Total Program Fee</p>
-          <p className="text-base font-semibold text-gray-800">{course.totalFee}</p>
+          <p className="font-semibold text-gray-800">{course.totalFee}</p>
         </div>
       </div>
-
+      {/* Breakdown */}
       <div>
         <p className="text-sm font-medium text-gray-700 mb-1">Fee Breakdown (Yearly):</p>
         <div className="space-y-1 text-sm text-gray-600">
-          <div className="flex justify-between">
-            <span>Tuition Fee</span><span>{course.breakdown.tuition}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Hostel Fee</span><span>{course.breakdown.hostel}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Mess Fee</span><span>{course.breakdown.mess}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Other Charges</span><span>{course.breakdown.other}</span>
-          </div>
+          <div className="flex justify-between"><span>Tuition</span><span>{course.breakdown.tuition}</span></div>
+          <div className="flex justify-between"><span>Hostel</span><span>{course.breakdown.hostel}</span></div>
+          <div className="flex justify-between"><span>Mess</span><span>{course.breakdown.mess}</span></div>
+          <div className="flex justify-between"><span>Other</span><span>{course.breakdown.other}</span></div>
         </div>
       </div>
-
+      {/* Scholarship */}
       {course.scholarships && (
-        <div className="pt-3 border-t border-gray-200">
-          <div className="flex items-center gap-2 text-sm text-blue-600 font-medium">
-            <Award className="w-4 h-4" />
-            {course.scholarships}
-          </div>
+        <div className="pt-3 border-t border-gray-200 flex items-center gap-2 text-sm text-blue-600 font-medium">
+          <Award className="w-4 h-4" />
+          {course.scholarships}
         </div>
       )}
     </CardContent>
   </Card>
 );
 
+// --- FeeStructure Page ---
 const FeeStructure = () => {
   return (
     <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">Fee Structure & Prospectus</h1>
+        <p className="text-xl text-gray-600 mb-8">Complete fee details, payment options, and downloadable prospectus</p>
 
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Fee Structure & Prospectus</h1>
-          <p className="text-xl text-gray-600">
-            Complete fee details, payment options, and downloadable prospectus
-          </p>
-        </div>
-
-        <Card className="mb-8 border-l-4 border-l-blue-500 bg-blue-50">
+        <Card className="mb-8 border-l-4 border-blue-500 bg-blue-50">
           <CardContent className="p-6">
             <div className="flex items-start space-x-3">
               <AlertCircle className="w-6 h-6 text-blue-600 mt-0.5" />
@@ -261,140 +309,84 @@ const FeeStructure = () => {
           </CardContent>
         </Card>
 
-        <Tabs defaultValue="fees" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
+        <Tabs defaultValue="fees">
+          <TabsList className="grid grid-cols-4 gap-2 mb-6">
             <TabsTrigger value="fees">Fee Structure</TabsTrigger>
             <TabsTrigger value="payment">Payment Options</TabsTrigger>
             <TabsTrigger value="scholarships">Scholarships</TabsTrigger>
             <TabsTrigger value="prospectus">Prospectus</TabsTrigger>
           </TabsList>
 
+          {/* Fee Structure */}
           <TabsContent value="fees" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Undergraduate Programs</h3>
-                {ugFees.map((course, index) => (
-                  <FeeCard key={index} course={course} />
-                ))}
+                <h3 className="text-xl font-semibold mb-3">Undergraduate Programs</h3>
+                {ugFees.map((c, i) => <FeeCard key={i} course={c} />)}
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Postgraduate Programs</h3>
-                {pgFees.map((course, index) => (
-                  <FeeCard key={index} course={course} />
-                ))}
+                <h3 className="text-xl font-semibold mb-3">Postgraduate Programs</h3>
+                {pgFees.map((c, i) => <FeeCard key={i} course={c} />)}
               </div>
             </div>
           </TabsContent>
 
+          {/* Payment Options */}
           <TabsContent value="payment" className="space-y-6">
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Payment Methods</h3>
-              <p className="text-gray-600 mb-6">
-                Multiple payment options are available for your convenience. Choose the method that works best for you.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {paymentOptions.map((option, index) => (
-                <Card key={index}>
+            <h3 className="text-xl font-semibold">Payment Methods</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {paymentOptions.map((p, i) => (
+                <Card key={i}>
                   <CardContent className="p-6 text-center">
-                    <option.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <h4 className="font-semibold text-gray-900 mb-2">{option.method}</h4>
-                    <p className="text-gray-600 text-sm mb-2">{option.description}</p>
-                    <p className="text-xs text-gray-500">{option.charges}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <Card className="mt-8">
-              <CardHeader>
-                <CardTitle>Payment Schedule</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between py-2 border-b">
-                    <span className="font-medium">At the time of Admission</span>
-                    <span className="text-green-600">50% of Annual Fee</span>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b">
-                    <span className="font-medium">Before Mid-term Exams</span>
-                    <span className="text-green-600">Remaining 50%</span>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="font-medium">Late Payment Penalty</span>
-                    <span className="text-red-600">₹100 per day</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="scholarships" className="space-y-6">
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Available Scholarships</h3>
-              <p className="text-gray-600 mb-6">
-                We offer various scholarships to support deserving students. Apply early to increase your chances.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {scholarships.map((scholarship, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <CardTitle className="text-lg">{scholarship.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div>
-                        <p className="font-medium text-gray-900">Eligibility</p>
-                        <p className="text-gray-600 text-sm">{scholarship.eligibility}</p>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Amount</p>
-                        <p className="text-green-600 font-semibold">{scholarship.amount}</p>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Duration</p>
-                        <p className="text-gray-600 text-sm">{scholarship.duration}</p>
-                      </div>
-                    </div>
+                    <p.icon className="w-10 h-10 text-blue-600 mx-auto mb-3" />
+                    <h4 className="font-semibold">{p.method}</h4>
+                    <p className="text-sm text-gray-600">{p.description}</p>
+                    <p className="text-xs text-gray-500 mt-1">{p.charges}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
           </TabsContent>
 
-          <TabsContent value="prospectus" className="space-y-6">
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Download Prospectus</h3>
-              <p className="text-gray-600 mb-6">
-                Download our comprehensive prospectus and related documents for detailed information about our programs.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {prospectusLinks.map((doc, index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <FileText className="w-8 h-8 text-blue-600 mt-1" />
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-2">{doc.title}</h4>
-                        <p className="text-gray-600 text-sm mb-3">{doc.description}</p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex space-x-4 text-xs text-gray-500">
-                            <span>{doc.size}</span>
-                            <span>{doc.pages}</span>
-                          </div>
-                          <Button size="sm">
-                            <Download className="w-4 h-4 mr-2" />
-                            Download
-                          </Button>
-                        </div>
+          {/* Scholarships */}
+          <TabsContent value="scholarships" className="grid md:grid-cols-2 gap-6">
+            {scholarships.map((s, i) => (
+              <Card key={i}>
+                <CardHeader>
+                  <CardTitle>{s.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm"><strong>Eligibility:</strong> {s.eligibility}</p>
+                  <p className="text-sm"><strong>Amount:</strong> {s.amount}</p>
+                  <p className="text-sm"><strong>Duration:</strong> {s.duration}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </TabsContent>
+
+          {/* Prospectus */}
+          <TabsContent value="prospectus" className="grid md:grid-cols-2 gap-6">
+            {prospectusLinks.map((d, i) => (
+              <Card key={i}>
+                <CardContent className="p-6 flex items-start space-x-4">
+                  <FileText className="w-8 h-8 text-blue-600 mt-1" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-gray-900 mb-1">{d.title}</h4>
+                    <p className="text-sm text-gray-600 mb-2">{d.description}</p>
+                    <div className="flex justify-between items-center">
+                      <div className="text-xs text-gray-500 space-x-3">
+                        <span>{d.size}</span>
+                        <span>{d.pages}</span>
                       </div>
+                      <Button size="sm">
+                        <Download className="w-4 h-4 mr-2" />
+                        Download
+                      </Button>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </TabsContent>
         </Tabs>
       </div>

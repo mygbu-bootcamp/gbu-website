@@ -1,87 +1,65 @@
 
 import { useState } from 'react';
 
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Label } from '../../components/ui/label';
-import { Textarea } from '../../components/ui/textarea';
-import { Badge } from '../../components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../../components/ui/dialog';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+
+
+
+
 
 import { Calendar, MapPin, Users, Clock, Camera, Plus, Heart, Star } from 'lucide-react';
 import { toast } from '../../hooks/use-toast';
 
 // Sample events data
-const upcomingEvents = [
-  {
-    id: 1,
-    title: "Class of 2019 - 5 Year Reunion",
-    date: "2024-07-15",
-    time: "18:00",
-    location: "Grand Ballroom, Smart Campus",
-    description: "Join your classmates for an evening of networking, memories, and celebration. Dinner included.",
-    organizer: "Alumni Relations Team",
-    attendees: 45,
-    maxCapacity: 100,
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&h=200&fit=crop",
-    tags: ["Reunion", "Networking", "Dinner"],
-    price: "Free for alumni"
-  },
-  {
-    id: 2,
-    title: "Tech Alumni Networking Meetup",
-    date: "2024-06-30",
-    time: "19:00",
-    location: "Tech Hub, Downtown",
-    description: "Connect with fellow tech alumni working in the industry. Presentations on latest tech trends.",
-    organizer: "Sarah Johnson (CS '18)",
-    attendees: 28,
-    maxCapacity: 50,
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop",
-    tags: ["Networking", "Tech", "Career"],
-    price: "$15 (includes refreshments)"
-  },
-  {
-    id: 3,
-    title: "Alumni Golf Tournament",
-    date: "2024-08-10",
-    time: "09:00",
-    location: "Riverside Golf Club",
-    description: "Annual alumni golf tournament followed by lunch and prizes. All skill levels welcome.",
-    organizer: "Michael Chen (ME '19)",
-    attendees: 32,
-    maxCapacity: 64,
-    image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=400&h=200&fit=crop",
-    tags: ["Sports", "Tournament", "Lunch"],
-    price: "$50 (includes green fees & lunch)"
-  }
-];
 
-const pastEvents = [
-  {
-    id: 4,
-    title: "Annual Alumni Gala 2024",
-    date: "2024-03-20",
-    location: "Smart Campus Auditorium",
-    attendees: 150,
-    images: [
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=300&h=200&fit=crop",
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop",
-      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=300&h=200&fit=crop",
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&h=200&fit=crop",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop",
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=300&h=200&fit=crop"
-    ],
-    highlights: [
-      "Outstanding Alumni Awards ceremony",
-      "Networking sessions with 5 different industries",
-      "Fundraising for student scholarships raised $50,000"
-    ]
-  }
-];
+  const Input = ({ id, ...props }) => (
+    <input
+      id={id}
+      className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      {...props}
+    />
+  );
+
+  const Textarea = ({ id, ...props }) => (
+    <textarea
+      id={id}
+      className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      {...props}
+    />
+  );
+
+  const Button = ({ children, className = '', ...props }) => (
+    <button
+      className={`rounded-md px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 text-sm ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+
+  const Label = ({ htmlFor, children }) => (
+    <label htmlFor={htmlFor} className="block text-sm font-medium text-gray-700 mb-1">
+      {children}
+    </label>
+  );
+
+  const Badge = ({ children, className = '' }) => (
+    <span className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${className}`}>
+      {children}
+    </span>
+  );
+
+  const Card = ({ children, className = '' }) => (
+    <div className={`rounded-lg bg-white shadow-sm p-4 ${className}`}>
+      {children}
+    </div>
+  );
+
+  const CardHeader = ({ children }) => <div className="mb-4">{children}</div>;
+
+  const CardTitle = ({ children }) => <h3 className="text-lg font-semibold">{children}</h3>;
+
+  const CardContent = ({ children }) => <div className="space-y-4">{children}</div>;
+
 
 const EventsReunions = () => {
   const [rsvpData, setRsvpData] = useState({
@@ -610,3 +588,71 @@ const EventsReunions = () => {
 };
 
 export default EventsReunions;
+
+const upcomingEvents = [
+  {
+    id: 1,
+    title: "Class of 2019 - 5 Year Reunion",
+    date: "2024-07-15",
+    time: "18:00",
+    location: "Grand Ballroom, Smart Campus",
+    description: "Join your classmates for an evening of networking, memories, and celebration. Dinner included.",
+    organizer: "Alumni Relations Team",
+    attendees: 45,
+    maxCapacity: 100,
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&h=200&fit=crop",
+    tags: ["Reunion", "Networking", "Dinner"],
+    price: "Free for alumni"
+  },
+  {
+    id: 2,
+    title: "Tech Alumni Networking Meetup",
+    date: "2024-06-30",
+    time: "19:00",
+    location: "Tech Hub, Downtown",
+    description: "Connect with fellow tech alumni working in the industry. Presentations on latest tech trends.",
+    organizer: "Sarah Johnson (CS '18)",
+    attendees: 28,
+    maxCapacity: 50,
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop",
+    tags: ["Networking", "Tech", "Career"],
+    price: "$15 (includes refreshments)"
+  },
+  {
+    id: 3,
+    title: "Alumni Golf Tournament",
+    date: "2024-08-10",
+    time: "09:00",
+    location: "Riverside Golf Club",
+    description: "Annual alumni golf tournament followed by lunch and prizes. All skill levels welcome.",
+    organizer: "Michael Chen (ME '19)",
+    attendees: 32,
+    maxCapacity: 64,
+    image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=400&h=200&fit=crop",
+    tags: ["Sports", "Tournament", "Lunch"],
+    price: "$50 (includes green fees & lunch)"
+  }
+];
+
+const pastEvents = [
+  {
+    id: 4,
+    title: "Annual Alumni Gala 2024",
+    date: "2024-03-20",
+    location: "Smart Campus Auditorium",
+    attendees: 150,
+    images: [
+      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=300&h=200&fit=crop",
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop",
+      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=300&h=200&fit=crop",
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&h=200&fit=crop",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop",
+      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=300&h=200&fit=crop"
+    ],
+    highlights: [
+      "Outstanding Alumni Awards ceremony",
+      "Networking sessions with 5 different industries",
+      "Fundraising for student scholarships raised $50,000"
+    ]
+  }
+];

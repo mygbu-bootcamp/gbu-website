@@ -1,28 +1,117 @@
 import React, { useState } from 'react';
-// import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '../../components/ui/button';
-import { Badge } from '../../components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../components/ui/dialog';
-import { Input } from '../../components/ui/input';
-import { Label } from '../../components/ui/label';
-import { Textarea } from '../../components/ui/textarea';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../components/ui/carousel';
 import { useToast } from '../../hooks/use-toast';
 
-const Card = ({ className = "", children, ...props }) => (
-  <div
-    className={`rounded-lg border bg-white text-black shadow-sm ${className}`}
+// ====== UI COMPONENTS (INLINE) ======
+
+// Button
+export const Button = ({ children, className = '', ...props }) => (
+  <button
+    className={`px-4 py-2 rounded-md font-medium focus:outline-none ${className}`}
     {...props}
   >
+    {children}
+  </button>
+);
+
+// Badge
+export const Badge = ({ children, className = '', ...props }) => (
+  <span
+    className={`inline-block text-sm font-semibold px-3 py-1 rounded-full text-white ${className}`}
+    {...props}
+  >
+    {children}
+  </span>
+);
+
+// Dialog Components
+export const Dialog = ({ open, onOpenChange, children }) => {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => onOpenChange(false)}>
+      <div onClick={(e) => e.stopPropagation()}>{children}</div>
+    </div>
+  );
+};
+
+export const DialogContent = ({ children, className = '' }) => (
+  <div className={`bg-white p-6 rounded-lg shadow-xl w-full ${className}`}>
     {children}
   </div>
 );
 
-const CardContent = ({ className = "", children, ...props }) => (
+export const DialogHeader = ({ children }) => (
+  <div className="mb-4">{children}</div>
+);
+
+export const DialogTitle = ({ children }) => (
+  <h2 className="text-xl font-bold">{children}</h2>
+);
+
+// Input
+export const Input = ({ className = '', ...props }) => (
+  <input
+    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+    {...props}
+  />
+);
+
+// Label
+export const Label = ({ htmlFor, children }) => (
+  <label htmlFor={htmlFor} className="block text-sm font-medium mb-1">
+    {children}
+  </label>
+);
+
+// Textarea
+export const Textarea = ({ className = '', ...props }) => (
+  <textarea
+    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+    rows={4}
+    {...props}
+  />
+);
+
+// Carousel Components (basic logic)
+export const Carousel = ({ children, className = '' }) => (
+  <div className={`relative overflow-hidden ${className}`}>{children}</div>
+);
+
+export const CarouselContent = ({ children, className = '' }) => (
+  <div className={`flex gap-4 transition-transform duration-500 ${className}`}>
+    {children}
+  </div>
+);
+
+export const CarouselItem = ({ children, className = '' }) => (
+  <div className={`shrink-0 ${className}`}>{children}</div>
+);
+
+export const CarouselPrevious = ({ onClick, className = '' }) => (
+  <button onClick={onClick} className={`absolute left-0 top-1/2 transform -translate-y-1/2 ${className}`}>
+    ◀
+  </button>
+);
+
+export const CarouselNext = ({ onClick, className = '' }) => (
+  <button onClick={onClick} className={`absolute right-0 top-1/2 transform -translate-y-1/2 ${className}`}>
+    ▶
+  </button>
+);
+
+// Card Components
+export const Card = ({ children, className = '', ...props }) => (
+  <div className={`rounded-lg border bg-white text-black shadow-sm ${className}`} {...props}>
+    {children}
+  </div>
+);
+
+export const CardContent = ({ children, className = '', ...props }) => (
   <div className={`p-6 pt-0 ${className}`} {...props}>
     {children}
   </div>
 );
+
+
 
 const ClubsCouncils = () => {
   const [selectedClub, setSelectedClub] = useState(null);
