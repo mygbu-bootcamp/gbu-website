@@ -2,7 +2,44 @@
 import React, { useState } from 'react';
 // import { Card, CardContent } from '@/components/ui/card';
 import { Clock, Wifi, Globe, BookOpen, Book } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../components/ui/dialog';
+// Dialog components defined locally for modal functionality and responsiveness
+const Dialog = ({ open, onOpenChange, children }) => {
+  if (!open) return null;
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      onClick={onOpenChange}
+      aria-modal="true"
+      role="dialog"
+    >
+      <div
+        className="relative w-full max-w-2xl mx-4 sm:mx-auto"
+        onClick={e => e.stopPropagation()}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
+
+const DialogContent = ({ className = "", children, ...props }) => (
+  <div
+    className={`bg-white rounded-lg shadow-lg p-6 sm:p-8 ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+const DialogHeader = ({ children }) => (
+  <div className="mb-4">{children}</div>
+);
+
+const DialogTitle = ({ className = "", children, ...props }) => (
+  <h2 className={`text-xl sm:text-2xl font-bold ${className}`} {...props}>
+    {children}
+  </h2>
+);
 
 const Card = ({ className = "", children, ...props }) => (
   <div

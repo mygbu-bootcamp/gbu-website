@@ -2,13 +2,144 @@
 import React, { useState } from 'react';
 // import { Card, CardContent } from '@/components/ui/card';
 
-import { Badge } from '../../components/ui/badge';
+// Badge component
+const Badge = ({ children, className = '', variant = '', ...props }) => {
+  const base =
+    'inline-block px-2 py-1 rounded-full text-xs font-semibold';
+  const variants = {
+    outline: 'border border-orange-600 text-orange-600 bg-white',
+    secondary: 'bg-gray-200 text-gray-800',
+    default: 'bg-orange-600 text-white',
+  };
+  return (
+    <span
+      className={`${base} ${variants[variant] || variants.default} ${className}`}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+};
+
+// Dialog components (basic modal)
+const DialogContext = React.createContext();
+
+const Dialog = ({ open, onOpenChange, children }) => {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isControlled = typeof open === 'boolean';
+  const actualOpen = isControlled ? open : internalOpen;
+  const setOpen = isControlled ? onOpenChange : setInternalOpen;
+
+  return (
+    <DialogContext.Provider value={{ open: actualOpen, setOpen }}>
+      {children}
+      {actualOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+          onClick={() => setOpen && setOpen(false)}
+        />
+      )}
+    </DialogContext.Provider>
+  );
+};
+
+const DialogTrigger = ({ asChild, children }) => {
+  const { setOpen } = React.useContext(DialogContext);
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children, {
+      onClick: (e) => {
+        if (children.props.onClick) children.props.onClick(e);
+        setOpen && setOpen(true);
+      },
+    });
+  }
+  return (
+    <button onClick={() => setOpen && setOpen(true)}>
+      {children}
+    </button>
+  );
+};
+
+const DialogContent = ({ children, className = '' }) => {
+  const { open, setOpen } = React.useContext(DialogContext);
+  if (!open) return null;
+  return (
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center`}
+      style={{ pointerEvents: 'none' }}
+    >
+      <div
+        className={`relative z-50 ${className}`}
+        style={{ pointerEvents: 'auto' }}
+        onClick={e => e.stopPropagation()}
+      >
+        <button
+          className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
+          onClick={() => setOpen && setOpen(false)}
+          aria-label="Close"
+        >
+          ×
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+const DialogHeader = ({ children }) => (
+  <div className="mb-4">{children}</div>
+);
+
+const DialogTitle = ({ children }) => (
+  <h3 className="text-lg font-bold mb-2">{children}</h3>
+);
+
+// Input component
+const Input = React.forwardRef(({ className = '', ...props }, ref) => (
+  <input
+    ref={ref}
+    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 ${className}`}
+    {...props}
+  />
+));
+
+// Label component
+const Label = ({ htmlFor, children, className = '' }) => (
+  <label
+    htmlFor={htmlFor}
+    className={`block text-sm font-medium text-gray-700 mb-1 ${className}`}
+  >
+    {children}
+  </label>
+);
+
+// Textarea component
+const Textarea = React.forwardRef(({ className = '', ...props }, ref) => (
+  <textarea
+    ref={ref}
+    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 ${className}`}
+    {...props}
+  />
+));
+
+// Carousel components (basic horizontal scroll)
+const Carousel = ({ children, className = '' }) => (
+  <div className={`relative ${className}`}>{children}</div>
+);
+
+const CarouselContent = ({ children }) => (
+  <div className="flex overflow-x-auto gap-4 pb-2">{children}</div>
+);
+
+const CarouselItem = ({ children, className = '' }) => (
+  <div className={`flex-shrink-0 ${className}`}>{children}</div>
+);
+
+const CarouselPrevious = () => null;
+const CarouselNext = () => null;
+
 import { Coffee } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../../components/ui/dialog';
-import { Input } from '../../components/ui/input';
-import { Label } from '../../components/ui/label';
-import { Textarea } from '../../components/ui/textarea';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../components/ui/carousel';
+
 import { useToast } from '../../hooks/use-toast';
 
 const Button = ({ children, className = '', variant = 'default', ...props }) => {
