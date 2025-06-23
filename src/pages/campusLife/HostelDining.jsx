@@ -1,25 +1,66 @@
 import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../components/ui/dialog';
-import { useToast } from '../../hooks/use-toast';
-import { Input } from '../../components/ui/input';
-import { Label } from '../../components/ui/label';
-import { Textarea } from '../../components/ui/textarea';
-import { Button } from '../../components/ui/button';
 
-const Card = ({ className = "", children, ...props }) => (
-  <div
-    className={`rounded-lg border bg-white text-black shadow-sm ${className}`}
-    {...props}
-  >
+import { useToast } from '../../hooks/use-toast';
+
+
+
+// Minimal UI replacements
+const Button = ({ children, className = '', ...props }) => (
+  <button className={`px-4 py-2 rounded-md font-medium ${className}`} {...props}>
+    {children}
+  </button>
+);
+
+const Input = ({ className = '', ...props }) => (
+  <input className={`w-full p-2 border rounded-md ${className}`} {...props} />
+);
+
+const Textarea = ({ className = '', ...props }) => (
+  <textarea className={`w-full p-2 border rounded-md ${className}`} {...props} />
+);
+
+const Label = ({ htmlFor, children }) => (
+  <label htmlFor={htmlFor} className="block mb-1 text-sm font-medium text-gray-700">
+    {children}
+  </label>
+);
+
+const Card = ({ children, className = '', ...props }) => (
+  <div className={`rounded-lg border bg-white shadow-sm ${className}`} {...props}>
     {children}
   </div>
 );
 
-const CardContent = ({ className = "", children, ...props }) => (
+const CardContent = ({ children, className = '', ...props }) => (
   <div className={`p-6 pt-0 ${className}`} {...props}>
     {children}
   </div>
 );
+
+// Custom Dialog
+const Dialog = ({ open, onOpenChange, children }) => {
+  if (!open) return null;
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      onClick={() => onOpenChange(false)}
+    >
+      <div onClick={(e) => e.stopPropagation()}>{children}</div>
+    </div>
+  );
+};
+
+const DialogContent = ({ className = '', children }) => (
+  <div className={`bg-white rounded-lg shadow-xl p-6 ${className}`}>{children}</div>
+);
+
+const DialogHeader = ({ children }) => <div className="mb-4">{children}</div>;
+
+const DialogTitle = ({ children, className = '' }) => (
+  <h2 className={`text-lg font-bold ${className}`}>{children}</h2>
+);
+
+
 
 
 const HostelBookingModal = ({ isOpen, onClose, hostel, onSubmit }) => {

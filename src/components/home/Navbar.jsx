@@ -45,215 +45,223 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const createMenu = (label, icon, menuKey, items) => (
-    <li
-      className="relative"
-      ref={(el) => (menuRefs.current[menuKey] = el)}
-      aria-haspopup="true"
-      aria-expanded={openMenu === menuKey}
-    >
-      <button
-        type="button"
-        onClick={() => toggleMenu(menuKey)}
-        className={`flex items-center gap-1 cursor-pointer ${openMenu === menuKey ? "text-red-600" : "hover:text-red-600"
-          }`}
-      >
-        {icon}
-        {label} ▾
-      </button>
-      {openMenu === menuKey && (
-        <ul className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg border rounded-lg z-40 p-2 text-left">
-          {items.map((item, idx) => (
-            <li
-              key={idx}
-              className="px-3 py-1 rounded cursor-pointer transition hover:bg-blue-50 hover:text-blue-600"
-              onClick={() => setOpenMenu(null)}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      )}
-    </li>
-  );
-
   const menus = [
     {
       key: "about",
       label: "About Us",
       icon: <User size={16} />,
       items: [
-        <Link to="/about-us/vision-mission">Vision & Mission</Link>,
-        <Link to="/about-us/chancellor-message">Chancellor's Message</Link>,
-        <Link to="/about-us/vice-chancellor-message">Vice-Chancellor's Message</Link>,
-        <Link to="/about-us/governance-committees">Governance & Committees</Link>,
-        <Link to="/about-us/strategic-perspective">GBU Strategic Perspective</Link>,
-        <Link to="/about-us/policies-statutes-rti">Policies, Statutes & RTI</Link>,
-        <Link to="/about-us/mandatory-disclosures">Mandatory Disclosures</Link>,
-        <Link to="/about-us/media-coverage">Media Coverage</Link>,
-      ],
+        "vision-mission",
+        "chancellor-message",
+        "vice-chancellor-message",
+        "governance-committees",
+        "strategic-perspective",
+        "policies-statutes-rti",
+        "mandatory-disclosures",
+        "media-coverage",
+      ].map((slug) => (
+        <Link to={`/about-us/${slug}`} key={slug}>{slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())}</Link>
+      )),
     },
     {
       key: "academics",
       label: "Academics",
       icon: <GraduationCap size={16} />,
       items: [
-        <Link to="/academics/academic-calendar">Academic Calendar & Regulations</Link>,
-        <Link to="/academics/cbcs-framework">CBCS Curriculum Framework</Link>,
-        <Link to="/academics/faculty">Faculty Directory</Link>,
-        <Link to="/academics/centers-of-excellence">Centers of Excellence</Link>,
-        <Link to="/academics/international-collaboration">International Collaboration</Link>,
-        <Link to="/academics/reports-publications">Reports & Publications</Link>,
-        <Link to="/academics/schools">Schools & Departments</Link>,
-      ],
+        ["academic-calendar", "Academic Calendar & Regulations"],
+        ["cbcs-framework", "CBCS Curriculum Framework"],
+        ["faculty", "Faculty Directory"],
+        ["centers-of-excellence", "Centers of Excellence"],
+        ["international-collaboration", "International Collaboration"],
+        ["reports-publications", "Reports & Publications"],
+        ["schools", "Schools & Departments"],
+      ].map(([slug, text]) => <Link to={`/academics/${slug}`} key={slug}>{text}</Link>),
     },
     {
       key: "admissions",
       label: "Admissions",
       icon: <FileText size={16} />,
       items: [
-        <Link to="/admissions/admission-process">Admission Process</Link>,
-        <Link to="/admissions/courses-offered">Courses Offered (UG | PG | PhD)</Link>,
-        <Link to="/admissions/eligibility-reservation">Eligibility & Reservation</Link>,
-        <Link to="/admissions/fee-structure-prospectus">Fee Structure & Prospectus</Link>,
-        <Link to="/admissions/international-admissions">International Admissions</Link>,
-      ],
+        ["admission-process", "Admission Process"],
+        ["courses-offered", "Courses Offered (UG | PG | PhD)"],
+        ["eligibility-reservation", "Eligibility & Reservation"],
+        ["fee-structure-prospectus", "Fee Structure & Prospectus"],
+        ["international-admissions", "International Admissions"],
+      ].map(([slug, text]) => <Link to={`/admissions/${slug}`} key={slug}>{text}</Link>),
     },
     {
       key: "research",
       label: "Research",
       icon: <BookOpen size={16} />,
       items: [
-        <Link to="/research/research-centers">Research Centers and Labs</Link>,
-        <Link to="/research/publications-patents">Publications and Patents</Link>,
-        <Link to="/research/incubation-innovation">Incubation and Innovation</Link>,
-        <Link to="/research/startups">Startups</Link>,
-        <Link to="/research/funded-projects">Funded Projects</Link>,
-        <Link to="/research/irp-cell">IRP Cell</Link>,
-        <Link to="/research/research-highlights">Research Highlights</Link>,
-      ],
+        ["research-centers", "Research Centers and Labs"],
+        ["publications-patents", "Publications and Patents"],
+        ["incubation-innovation", "Incubation and Innovation"],
+        ["startups", "Startups"],
+        ["funded-projects", "Funded Projects"],
+        ["irp-cell", "IRP Cell"],
+        ["research-highlights", "Research Highlights"],
+      ].map(([slug, text]) => <Link to={`/research/${slug}`} key={slug}>{text}</Link>),
     },
     {
       key: "campus",
       label: "Campus Life",
       icon: <Home size={16} />,
       items: [
-        <Link to="/campus-life/hero">Overview</Link>,
-
-        <Link to="/campus-life/hostel-facilities">Hostels</Link>,
-        <Link to="/campus-life/sports-fitness">Sports</Link>,
-        <Link to="/campus-life/clubs-societies">Clubs and Societies</Link>,
-        <Link to="/campus-life/meditation-center">Meditation Centre</Link>,
-        <Link to="/campus-life/NSS">National Service Scheme(NSS)</Link>,
-        <Link to="/campus-life/NCC">National Cadet Corps(NCC)</Link>,
-        
-      ],
+        ["hero", "Overview"],
+        ["hostel-facilities", "Hostels"],
+        ["sports-fitness", "Sports"],
+        ["clubs-societies", "Clubs and Societies"],
+        ["meditation-center", "Meditation Centre"],
+        ["NSS", "National Service Scheme (NSS)"],
+        ["NCC", "National Cadet Corps (NCC)"],
+      ].map(([slug, text]) => <Link to={`/campus-life/${slug}`} key={slug}>{text}</Link>),
     },
     {
       key: "announcements",
       label: "Announcements",
       icon: <Camera size={16} />,
       items: [
-        <Link to="/announcements/news-notifications">News & Updates</Link>,
-        <Link to="/announcements/event-calendar">Event Calendar</Link>,
-        <Link to="/announcements/notices">Notices</Link>,
-        <Link to="/announcements/press-releases">Press Releases</Link>,
-        <Link to="/announcements/media-gallery">Media Gallery</Link>,
-        <Link to="/announcements/newsletter">Newsletter</Link>,
-      ],
+        ["news-notifications", "News & Updates"],
+        ["event-calendar", "Event Calendar"],
+        ["notices", "Notices"],
+        ["press-releases", "Press Releases"],
+        ["media-gallery", "Media Gallery"],
+        ["newsletter", "Newsletter"],
+      ].map(([slug, text]) => <Link to={`/announcements/${slug}`} key={slug}>{text}</Link>),
     },
     {
       key: "placements",
       label: "Placements",
       icon: <Briefcase size={16} />,
-      items: [
-        <Link to="/placements/placement-process">Placement Process</Link>,
-        <Link to="/placements/top-recruiters">Top Recruiters</Link>,
-        <Link to="/placements/internship-opportunities">Internship Opportunities</Link>,
-        <Link to="/placements/career-counseling">Career Counseling</Link>,
-        <Link to="/placements/placement-statistics">Placement Statistics</Link>,
-      ],
+      path: "/placements",
     },
     {
       key: "alumni",
       label: "Alumni",
       icon: <Users size={16} />,
       items: [
-        <Link to="/alumni/alumni-network">Alumni Network</Link>,
-        <Link to="/alumni/alumni-events">Alumni Events</Link>,
-        <Link to="/alumni/alumni-achievements">Alumni Achievements</Link>,
-        <Link to="/alumni/become-mentor">Become a Mentor</Link>,
-      ],
+        ["alumni-network", "Alumni Network"],
+        ["alumni-events", "Alumni Events"],
+        ["alumni-achievements", "Alumni Achievements"],
+        ["become-mentor", "Become a Mentor"],
+      ].map(([slug, text]) => <Link to={`/alumni/${slug}`} key={slug}>{text}</Link>),
     },
   ];
 
+  const createMenu = (label, icon, menuKey, items, path) => {
+    if (path) {
+      return (
+        <li key={menuKey}>
+          <Link to={path} className="flex items-center gap-1 hover:text-red-600">
+            {icon} {label}
+          </Link>
+        </li>
+      );
+    }
+
+    return (
+      <li
+        key={menuKey}
+        className="relative"
+        ref={(el) => (menuRefs.current[menuKey] = el)}
+        aria-haspopup="true"
+        aria-expanded={openMenu === menuKey}
+      >
+        <button
+          type="button"
+          onClick={() => toggleMenu(menuKey)}
+          className={`flex items-center gap-1 cursor-pointer ${openMenu === menuKey ? "text-red-600" : "hover:text-red-600"}`}
+        >
+          {icon}
+          {label} ▾
+        </button>
+        {openMenu === menuKey && (
+          <ul className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg border rounded-lg z-40 p-2 text-left">
+            {items.map((item, idx) => (
+              <li
+                key={idx}
+                className="px-3 py-1 rounded cursor-pointer transition hover:bg-blue-50 hover:text-blue-600"
+                onClick={() => setOpenMenu(null)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    );
+  };
+
   return (
     <nav className="bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between relative z-50">
-      <div
-        className="flex items-center space-x-3 cursor-pointer"
-        onClick={() => (window.location.href = "/")}
-      >
+      <div className="flex items-center space-x-3 cursor-pointer" onClick={() => (window.location.href = "/")}>
         <img src="/assets/logo.png" alt="GBU Logo" className="w-64 h-12 mr-3" />
       </div>
 
-      {/* Hamburger Menu Button */}
+      {/* Hamburger Menu */}
       <div className="md:hidden">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="text-gray-700 focus:outline-none"
-          aria-label="Toggle Menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
 
-      {/* Desktop Navigation */}
+      {/* Desktop Nav */}
       <ul className="hidden md:flex flex-wrap justify-center gap-6 text-sm text-gray-700 relative">
-        {menus.map(({ key, label, icon, items }) =>
-          createMenu(label, icon, key, items)
+        {menus.map(({ key, label, icon, items, path }) =>
+          createMenu(label, icon, key, items, path)
         )}
         <li className="flex items-center gap-1 cursor-pointer hover:text-blue-600">
           <Search size={16} />
         </li>
       </ul>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Nav */}
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden z-50 px-4 py-4">
           <ul className="flex flex-col gap-2 text-sm text-gray-700">
-            {menus.map(({ key, label, icon, items }) => (
+            {menus.map(({ key, label, icon, items, path }) => (
               <li key={key}>
-                <button
-                  onClick={() => toggleMobileMenu(key)}
-                  className="w-full flex justify-between items-center py-2 px-2 text-left hover:text-blue-600"
-                >
-                  <span className="flex items-center gap-2">{icon} {label}</span>
-                  {mobileOpenMenus[key] ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                </button>
-                {mobileOpenMenus[key] && (
-                  <ul className="pl-6 flex flex-col gap-1 mt-1">
-                    {items.map((item, idx) => (
-                      <li key={idx}>
-                        <div
-                          onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            setMobileOpenMenus({});
-                          }}
-                          className="block py-1 hover:text-red-600"
-                        >
-                          {item}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                {path ? (
+                  <Link
+                    to={path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-2 py-2 px-2 hover:text-red-600"
+                  >
+                    {icon} {label}
+                  </Link>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => toggleMobileMenu(key)}
+                      className="w-full flex justify-between items-center py-2 px-2 text-left hover:text-blue-600"
+                    >
+                      <span className="flex items-center gap-2">{icon} {label}</span>
+                      {mobileOpenMenus[key] ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                    </button>
+                    {mobileOpenMenus[key] && (
+                      <ul className="pl-6 flex flex-col gap-1 mt-1">
+                        {items.map((item, idx) => (
+                          <li key={idx}>
+                            <div
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setMobileOpenMenus({});
+                              }}
+                              className="block py-1 hover:text-red-600"
+                            >
+                              {item}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
                 )}
               </li>
             ))}

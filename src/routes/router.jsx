@@ -2,9 +2,9 @@ import Home from "../pages/Aboutus/Home.jsx";
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import InternshipProgrammes from "../pages/Placement/InternshipProgrammes.jsx";
-import CampusRecruiters from "../pages/Placement/CampusRecruiters.jsx";
+
 import PlacementStatistics from "../pages/Placement/PlacementStatistics.jsx";
-import PlacementBrochure from "../pages/Placement/PlacementBrochure.jsx";
+const PlacementBrochure = React.lazy(() => import("../pages/Placement/PlacementBrochure"));
 import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
 import AdmissionProcess from "../pages/Admission/AdmissionProcess.jsx";
 import CoursesOffered from "../pages/Admission/CoursesOffered.jsx";
@@ -86,6 +86,8 @@ import Conferences from "../pages/departments/Usict_activities.jsx";
 import LaboratoryCards from "../pages/departments/laboratries.jsx";
 // import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
 import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx"
+import Placement_home from "../pages/Placement/Placement_home.jsx";
+
 
 export default function AppRouter() {
   return (
@@ -184,11 +186,7 @@ export default function AppRouter() {
         <Route path="/announcements/newsletter" element={<h1>koi elementnhi thaa iska</h1>} />
 
         {/* Placements Routes */}
-        <Route path="/placements/placement-process" element={<PlacementBrochure />} />
-        <Route path="/placements/top-recruiters" element={<CampusRecruiters />} />
-        <Route path="/placements/internship-opportunities" element={<InternshipProgrammes />} />
-        <Route path="/placements/career-counseling" element={<TrainingCareerServices />} />
-        <Route path="/placements/placement-statistics" element={<PlacementStatistics />} />
+        <Route path="/placements" element={<Placement_home />} />
 
         {/* Alumni Routes */}
         <Route path="/alumni/alumni-network" element={<AlumniNetwork />} />

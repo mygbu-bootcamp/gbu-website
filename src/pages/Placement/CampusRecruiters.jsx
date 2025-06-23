@@ -1,10 +1,5 @@
-
 import { useState } from 'react';
 import { ArrowLeft, Building, Users, Calendar, MapPin } from 'lucide-react';
-import { Card, CardContent } from '../../components/ui/card';
-
-import { Link } from 'react-router-dom';
-import { Button } from '../../components/ui/button';
 
 const CampusRecruiters = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -51,13 +46,11 @@ const CampusRecruiters = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-100 to-gray-300">
-      {/* Navigation */}
-
       {/* Hero Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Our Esteemed Campus Recruiters
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -86,36 +79,35 @@ const CampusRecruiters = () => {
                 <p className="text-gray-700">DRDO research positions</p>
               </div>
             </div>
-            </div>
+          </div>
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 m-12">
             {categories.map((category) => (
-              <Button
+              <button
                 key={category.id}
-                variant={selectedCategory === category.id ? "default" : "outline"}
                 className={`px-6 py-3 rounded-xl transition-all duration-300 ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-red-50 hover:text-red-600'
+                    : 'bg-white text-gray-700 hover:bg-red-50 hover:text-red-600 border border-gray-200'
                 }`}
                 onClick={() => setSelectedCategory(category.id)}
               >
                 {category.name} ({category.count})
-              </Button>
+              </button>
             ))}
           </div>
 
           {/* Company Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {getDisplayCompanies().map((company, index) => (
-              <Card
+              <div
                 key={index}
-                className="group pt-3 bg-white/80 backdrop-blur-sm border-0 shadow-2xl transition-all duration-300 hover-scale cursor-pointer"
+                className="group pt-3 bg-white/80 backdrop-blur-sm border-0 shadow-2xl rounded-lg transition-all duration-300 transform hover:scale-105 cursor-pointer"
                 onMouseEnter={() => setHoveredCompany(company)}
                 onMouseLeave={() => setHoveredCompany(null)}
               >
-                <CardContent className="p-6 text-center relative overflow-hidden">
+                <div className="p-6 text-center relative overflow-hidden">
                   {/* Background Effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-red-400/10 to-orange-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
@@ -158,8 +150,8 @@ const CampusRecruiters = () => {
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
 
@@ -167,8 +159,8 @@ const CampusRecruiters = () => {
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">What Our Recruiters Say</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl">
-                <CardContent className="p-6">
+              <div className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl rounded-lg">
+                <div className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
                       <span className="text-white font-bold">TCS</span>
@@ -179,11 +171,11 @@ const CampusRecruiters = () => {
                     </div>
                   </div>
                   <p className="text-gray-700 italic">"GBU students consistently demonstrate excellent technical skills and adaptability. We've hired 45+ students in 2024 alone."</p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl">
-                <CardContent className="p-6">
+              <div className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl rounded-lg">
+                <div className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
                       <span className="text-white font-bold">D</span>
@@ -194,11 +186,11 @@ const CampusRecruiters = () => {
                     </div>
                   </div>
                   <p className="text-gray-700 italic">"The quality of graduates from GBU is exceptional. Their problem-solving abilities and professional attitude make them ideal candidates."</p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl">
-                <CardContent className="p-6">
+              <div className="bg-white/80 backdrop-blur-sm pt-4 border-0 shadow-xl rounded-lg">
+                <div className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mr-4">
                       <span className="text-white font-bold">I</span>
@@ -209,13 +201,10 @@ const CampusRecruiters = () => {
                     </div>
                   </div>
                   <p className="text-gray-700 italic">"GBU has been a reliable partner in our talent acquisition. The students are well-prepared and ready to contribute from day one."</p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
-
-          
-        
         </div>
       </section>
     </div>

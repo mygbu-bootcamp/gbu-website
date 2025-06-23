@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , Suspense } from "react";
 import AppRouter from "./routes/router";
 import PreLoad from "../src/components/home/preLoad.jsx";
 import Primarynavbar from "../src/components/home/Primarynavbar.jsx";
@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div className="App">
+      <Suspense fallback={<div>Loading...</div>}>
       {!isPreloadComplete ? (
         <PreLoad onComplete={() => setIsPreloadComplete(true)} />
       ) : (
@@ -29,6 +30,7 @@ function App() {
 
         </>
       )}
+      </Suspense>
     </div>
   );
 }

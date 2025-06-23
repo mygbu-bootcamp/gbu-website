@@ -1,15 +1,88 @@
 import { useState } from 'react';
 
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Label } from '../../components/ui/label';
-import { Textarea } from '../../components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
-import { Checkbox } from '../../components/ui/checkbox';
+
+
+
 
 import { Upload, CheckCircle , AlertCircle} from 'lucide-react';
 import { toast } from '../../hooks/use-toast';
+
+// Minimal versions of reused UI components
+const Button = ({ children, ...props }) => (
+  <button {...props} className={`rounded-md font-medium ${props.className}`}>
+    {children}
+  </button>
+);
+
+const Input = ({ ...props }) => (
+  <input
+    {...props}
+    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+);
+
+const Textarea = ({ ...props }) => (
+  <textarea
+    {...props}
+    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+);
+
+const Label = ({ children, htmlFor, className }) => (
+  <label htmlFor={htmlFor} className={`block mb-1 font-medium text-sm text-gray-700 ${className}`}>
+    {children}
+  </label>
+);
+
+const Card = ({ children, className }) => (
+  <div className={`bg-white rounded-lg shadow-md p-6 ${className}`}>{children}</div>
+);
+
+const CardContent = ({ children, className }) => (
+  <div className={`mt-4 ${className}`}>{children}</div>
+);
+
+const CardHeader = ({ children }) => <div className="mb-4">{children}</div>;
+
+const CardTitle = ({ children, className }) => (
+  <h2 className={`text-xl font-semibold ${className}`}>{children}</h2>
+);
+
+const Select = ({ value, onValueChange, children }) => (
+  <div className="relative w-full">
+    <select
+      className="w-full px-4 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+      value={value}
+      onChange={(e) => onValueChange(e.target.value)}
+    >
+      {children}
+    </select>
+  </div>
+);
+
+const SelectTrigger = ({ children }) => <>{children}</>;
+
+const SelectValue = ({ placeholder }) => (
+  <option disabled value="">
+    {placeholder}
+  </option>
+);
+
+const SelectContent = ({ children }) => <>{children}</>;
+
+const SelectItem = ({ children, value }) => (
+  <option value={value}>{children}</option>
+);
+
+const Checkbox = ({ id, checked, onCheckedChange }) => (
+  <input
+    id={id}
+    type="checkbox"
+    checked={checked}
+    onChange={(e) => onCheckedChange(e.target.checked)}
+    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+  />
+);
 
 const AlumniRegistration = () => {
   const [formData, setFormData] = useState({

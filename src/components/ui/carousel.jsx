@@ -1,8 +1,19 @@
 import * as React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Button } from "./button";
 
+// Minimal Button Component
+const Button = ({ children, className = '', disabled, ...props }) => (
+  <button
+    className={`inline-flex items-center justify-center border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none ${className}`}
+    disabled={disabled}
+    {...props}
+  >
+    {children}
+  </button>
+);
+
+// Utility function
 function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }

@@ -1,12 +1,75 @@
 import { useState } from 'react';
 
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Badge } from '../../components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+
+
 import { Search, MapPin, Briefcase, Calendar, ExternalLink } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+
+const Card = ({ children, className = "" }) => (
+  <div className={`bg-white rounded-lg shadow border ${className}`}>{children}</div>
+);
+const CardHeader = ({ children, className = "" }) => (
+  <div className={`p-4 border-b ${className}`}>{children}</div>
+);
+const CardContent = ({ children, className = "" }) => (
+  <div className={`p-4 ${className}`}>{children}</div>
+);
+const CardTitle = ({ children, className = "" }) => (
+  <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
+);
+
+const Badge = ({ children, className = "", variant = "default" }) => {
+  const base = "px-2 py-1 rounded text-xs font-medium inline-block";
+  const styles = {
+    outline: "border border-gray-300 text-gray-700 bg-white",
+    secondary: "bg-gray-100 text-gray-700",
+    default: "bg-blue-600 text-white"
+  };
+  return <span className={`${base} ${styles[variant]} ${className}`}>{children}</span>;
+};
+
+const Button = ({ children, size = "md", variant = "default", className = "", ...props }) => {
+  const sizes = {
+    sm: "px-3 py-1 text-sm",
+    md: "px-4 py-2 text-base",
+    lg: "px-6 py-2 text-lg"
+  };
+  const variants = {
+    default: "bg-blue-600 text-white hover:bg-blue-700",
+    outline: "border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+  };
+  return (
+    <button className={`rounded ${sizes[size]} ${variants[variant]} ${className}`} {...props}>
+      {children}
+    </button>
+  );
+};
+
+const Input = ({ className = "", ...props }) => (
+  <input
+    className={`w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+    {...props}
+  />
+);
+
+// Mocked Select components for filtering
+const Select = ({ value, onValueChange, children }) => {
+  return <div>{children({ value, onValueChange })}</div>;
+};
+const SelectTrigger = ({ children }) => (
+  <div className="border px-3 py-2 rounded text-gray-600 bg-white cursor-pointer">{children}</div>
+);
+const SelectContent = ({ children }) => <div className="mt-2">{children}</div>;
+const SelectItem = ({ value, children, onClick }) => (
+  <div
+    onClick={() => onClick(value)}
+    className="cursor-pointer px-3 py-1 hover:bg-blue-100 rounded"
+  >
+    {children}
+  </div>
+);
+const SelectValue = ({ placeholder }) => <span>{placeholder}</span>;
+
 
 const alumniData = [
   {
