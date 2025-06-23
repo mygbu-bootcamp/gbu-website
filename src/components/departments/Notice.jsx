@@ -1,3 +1,7 @@
+
+
+
+
 import { Calendar } from "lucide-react";
 
 // Card Components
@@ -113,80 +117,78 @@ const NoticeEvents = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-white to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-blue-900 mb-3">Campus Life</h2>
+          <h2 className="text-4xl font-bold text-blue-900 mb-3">
+            Campus Life
+          </h2>
           <p className="text-xl text-gray-600">
             Stay updated with latest notices and events
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mt-4 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mt-4 rounded-full" />
         </div>
 
+        {/* Main Grid */}
         <div className="grid lg:grid-cols-10 gap-10">
           {/* Notice Board */}
           <div className="lg:col-span-3">
-            <Card className="rounded-xl shadow-lg border-0 bg-white">
-              <CardHeader>
-                <CardTitle className="text-blue-800 flex items-center gap-2">
-                  <Calendar size={20} />
-                  Notice Board
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {notices.map((notice, index) => (
-                    <div
-                      key={index}
-                      className="border-l-4 border-blue-500 pl-4 py-2"
-                    >
-                      <div className="flex items-start justify-between mb-1">
-                        <h4 className="font-semibold text-sm text-blue-900">
-                          {notice.title}
-                        </h4>
-                        <Badge className="text-xs px-2 py-0.5 capitalize bg-blue-100 text-blue-800">
-                          {notice.type}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-gray-500">{notice.date}</p>
+            <div className="rounded-xl shadow-lg border-0 bg-white p-6">
+              <div className="text-blue-800 text-lg font-bold flex items-center gap-2 mb-4">
+                <Calendar size={20} />
+                Notice Board
+              </div>
+              <div className="space-y-4">
+                {notices.map((notice, index) => (
+                  <div
+                    key={index}
+                    className="border-l-4 border-blue-500 pl-4 py-2"
+                  >
+                    <div className="flex items-start justify-between mb-1">
+                      <h4 className="font-semibold text-sm text-blue-900">
+                        {notice.title}
+                      </h4>
+                      <Badge className="text-xs px-2 py-0.5 capitalize bg-blue-100 text-blue-800">
+                        {notice.type}
+                      </Badge>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <p className="text-xs text-gray-500">{notice.date}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Event Gallery */}
           <div className="lg:col-span-7">
-            <Card className="rounded-xl shadow-lg border-0 bg-white">
-              <CardHeader>
-                <CardTitle className="text-blue-800">Event Gallery</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {events.map((event, index) => (
-                    <div key={index} className="group cursor-pointer">
-                      <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100">
-                        <img
-                          src={event.image}
-                          alt={event.title}
-                          className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 rounded-lg" />
-                      </div>
-                      <h4 className="font-semibold text-blue-900 text-sm mb-1">
-                        {event.title}
-                      </h4>
-                      <p className="text-xs text-gray-600 mb-1">
-                        {event.description}
-                      </p>
-                      <p className="text-xs text-blue-600 font-medium">
-                        {event.date}
-                      </p>
+            <div className="rounded-xl shadow-lg border-0 bg-white p-6">
+              <h3 className="text-blue-800 text-lg font-bold mb-4">
+                Event Gallery
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {events.map((event, index) => (
+                  <div key={index} className="group cursor-pointer">
+                    <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 rounded-lg" />
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <h4 className="font-semibold text-blue-900 text-sm mb-1">
+                      {event.title}
+                    </h4>
+                    <p className="text-xs text-gray-600 mb-1">
+                      {event.description}
+                    </p>
+                    <p className="text-xs text-blue-600 font-medium">
+                      {event.date}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "../ui/button";
 
 const RecentPlacements = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -61,7 +59,7 @@ const RecentPlacements = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide(
-        (prev) => (prev + 1) % Math.ceil(recentPlacements.length / 2),
+        (prev) => (prev + 1) % Math.ceil(recentPlacements.length / 2)
       );
     }, 4000);
     return () => clearInterval(timer);
@@ -69,7 +67,7 @@ const RecentPlacements = () => {
 
   const nextSlide = () => {
     setCurrentSlide(
-      (prev) => (prev + 1) % Math.ceil(recentPlacements.length / 2),
+      (prev) => (prev + 1) % Math.ceil(recentPlacements.length / 2)
     );
   };
 
@@ -77,7 +75,7 @@ const RecentPlacements = () => {
     setCurrentSlide(
       (prev) =>
         (prev - 1 + Math.ceil(recentPlacements.length / 2)) %
-        Math.ceil(recentPlacements.length / 2),
+        Math.ceil(recentPlacements.length / 2)
     );
   };
 
@@ -100,16 +98,16 @@ const RecentPlacements = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Card Slider */}
-        <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-sm relative overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-green-50 to-blue-50 border-b border-gray-200">
-            <CardTitle className="flex items-center justify-center text-blue-800 text-lg font-bold">
+        {/* Content Card */}
+        <div className="rounded-xl shadow-2xl border-0 bg-white/90 backdrop-blur-sm relative overflow-hidden">
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 border-b border-gray-200 p-4 text-center">
+            <h3 className="flex justify-center items-center text-blue-800 text-lg font-bold">
               <div className="w-2 h-8 bg-gradient-to-b from-green-500 to-blue-500 rounded-full mr-3" />
               Success Stories
-            </CardTitle>
-          </CardHeader>
+            </h3>
+          </div>
 
-          <CardContent className="p-8">
+          <div className="p-8">
             <div className="relative">
               <div className="grid md:grid-cols-2 gap-8">
                 {getCurrentPlacements().map((placement, index) => (
@@ -144,22 +142,18 @@ const RecentPlacements = () => {
               </div>
 
               {/* Arrows */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full"
+              <button
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full p-2"
                 onClick={prevSlide}
               >
                 <ChevronLeft className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full"
+              </button>
+              <button
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full p-2"
                 onClick={nextSlide}
               >
                 <ChevronRight className="h-5 w-5" />
-              </Button>
+              </button>
             </div>
 
             {/* Dots */}
@@ -178,8 +172,8 @@ const RecentPlacements = () => {
                 />
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

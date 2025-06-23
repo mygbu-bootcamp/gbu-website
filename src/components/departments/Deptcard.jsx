@@ -1,56 +1,5 @@
 import { Link } from "react-router-dom";
 
-// Card Components
-const Card = ({ children, className = "", ...props }) => {
-  return (
-    <div
-      className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
-
-const CardHeader = ({ children, className = "", ...props }) => {
-  return (
-    <div className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>
-      {children}
-    </div>
-  );
-};
-
-const CardTitle = ({ children, className = "", ...props }) => {
-  return (
-    <h3
-      className={`text-2xl font-semibold leading-none tracking-tight ${className}`}
-      {...props}
-    >
-      {children}
-    </h3>
-  );
-};
-
-const CardContent = ({ children, className = "", ...props }) => {
-  return (
-    <div className={`p-6 pt-0 ${className}`} {...props}>
-      {children}
-    </div>
-  );
-};
-
-// Button Component
-const Button = ({ children, className = "", ...props }) => {
-  return (
-    <button
-      className={`inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
-
 const DepartmentsSection = () => {
   const departments = [
     {
@@ -101,7 +50,7 @@ const DepartmentsSection = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
+        {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
             Our Departments
@@ -113,12 +62,12 @@ const DepartmentsSection = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-300 mx-auto mt-6 rounded-full"></div>
         </div>
 
-        {/* Cards */}
+        {/* Department Cards */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {departments.map((dept, index) => (
-            <Card
+            <div
               key={index}
-              className="flex flex-col min-h-[600px] bg-white/90 backdrop-blur-md border border-gray-200 shadow hover:shadow-xl transition-all group overflow-hidden"
+              className="flex flex-col min-h-[600px] bg-white/90 backdrop-blur-md border border-gray-200 shadow hover:shadow-xl transition-all group overflow-hidden rounded-xl"
             >
               <div className="relative">
                 <img
@@ -134,13 +83,13 @@ const DepartmentsSection = () => {
                 </div>
               </div>
 
-              <CardHeader>
-                <CardTitle className="text-blue-900 group-hover:text-blue-600 transition-colors">
+              <div className="px-6 pt-4">
+                <h3 className="text-xl font-bold text-blue-900 group-hover:text-blue-600 transition-colors">
                   {dept.name}
-                </CardTitle>
-              </CardHeader>
+                </h3>
+              </div>
 
-              <CardContent className="flex flex-col gap-6 flex-grow">
+              <div className="px-6 pb-6 pt-4 flex flex-col gap-6 flex-grow">
                 <p className="text-gray-700">{dept.description}</p>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -177,15 +126,15 @@ const DepartmentsSection = () => {
 
                 <div className="mt-auto">
                   <Link to={dept.link}>
-                    <Button
-                      className={`w-full bg-gradient-to-r ${dept.gradient} hover:brightness-110 transition text-white`}
+                    <div
+                      className={`text-center w-full py-2 rounded-lg font-medium bg-gradient-to-r ${dept.gradient} text-white hover:brightness-110 transition`}
                     >
                       Learn More
-                    </Button>
+                    </div>
                   </Link>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>
