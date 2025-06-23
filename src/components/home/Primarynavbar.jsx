@@ -11,6 +11,8 @@ import {
   X,
 } from "lucide-react";
 
+import { Link } from "react-router-dom";
+
 const Primarynavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -59,6 +61,14 @@ const Primarynavbar = () => {
             <a href="https://buddha-directory-glide-28.lovable.app" className="flex items-center gap-1 hover:underline">
               <Map size={14} /> Directory
             </a>
+
+            <Link
+              to="/grievance"
+              className="flex items-center gap-1 hover:underline"
+            >
+              <Map size={14} /> Grievance Portal
+            </Link>
+
             <a href="http://gbu-contact-hub-banner.vercel.app" className="flex items-center gap-1 hover:underline">
               <Phone size={14} /> Contact Us
             </a>
@@ -125,6 +135,13 @@ const Primarynavbar = () => {
                 <a href="https://buddha-directory-glide-28.lovable.app" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Directory
                 </a>
+
+                <Link
+                  to="/grievance"
+                  className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                >
+                  Grievance Portal
+                </Link>
                 <a href="http://gbu-contact-hub-banner.vercel.app" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Contact Us
                 </a>

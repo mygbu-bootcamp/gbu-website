@@ -5,7 +5,6 @@ import HostelDining from "./HostelDining"
 import StudentTestimonials from './StudentTestimonials';
 import VirtualTour from "./VirtualTour";
 import Header from "./Header";
-import UpcomingEvents from './UpcomingEvents';
 import ClubsCouncils from './ClubsCouncils';
 import Library from './Library';
 import SportsCultural from "./SportsCultural";
@@ -27,7 +26,6 @@ const Overview = () => {
       <CafesFood/>
       <EcoCampus/>
       <StudentTestimonials />
-      <UpcomingEvents />
       </main>
     </div>
   );
