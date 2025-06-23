@@ -1,5 +1,3 @@
-import { Card, CardContent } from "../ui/card";
-
 const PlacementsSection = () => {
   const placementStats = [
     { label: "Placement Rate", value: "95%", color: "bg-green-500" },
@@ -38,21 +36,19 @@ const PlacementsSection = () => {
         {/* Stats */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {placementStats.map((stat, index) => (
-            <Card
+            <div
               key={index}
-              className="text-center group bg-white shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="text-center group bg-white shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:scale-105 p-6 rounded-xl"
             >
-              <CardContent className="p-6">
-                <div
-                  className={`w-20 h-20 ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-md group-hover:scale-110 transition-transform duration-300`}
-                >
-                  {stat.value}
-                </div>
-                <h3 className="font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">
-                  {stat.label}
-                </h3>
-              </CardContent>
-            </Card>
+              <div
+                className={`w-20 h-20 ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-md group-hover:scale-110 transition-transform duration-300`}
+              >
+                {stat.value}
+              </div>
+              <h3 className="font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">
+                {stat.label}
+              </h3>
+            </div>
           ))}
         </div>
       </div>

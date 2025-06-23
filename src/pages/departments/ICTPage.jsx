@@ -1,16 +1,17 @@
 Landing;
 import Navbar from "../../components/departments/Navbar";
 import AboutSection from "../../components/departments/AboutIct";
-import DeanMessage from "../../components/departments/Dean";
+import LeadershipCard from "../../components/departments/Dean";
 import ProgramsShowcase from "../../components/departments/Program";
 import DepartmentsSection from "../../components/departments/Deptcard";
+import FacultyCarousel from "../../components/departments/faculty_rotating.jsx";
 import NoticeEvents from "../../components/departments/Notice.jsx";
 import PlacementsSection from "../../components/departments/Placement.jsx";
 import RecentPlacements from "../../components/departments/Recent_Placement.jsx";
 import RecruitersShowcase from "../../components/departments/Recuritor_showcase";
 import ClubsAchievements from "../../components/departments/Clubs_activevment.jsx";
 import StudentAchievements from "../../components/departments/Student_achievements.jsx";
-import IncubationCenter from "../../components/departments/Incubations.jsx";
+import StudentStartup from "../../components/departments/Startup.jsx";
 import Landing from "../../components/departments/Landing.jsx";
 
 const Index = () => {
@@ -19,16 +20,17 @@ const Index = () => {
 
       <Landing />
       <AboutSection />
-      <DeanMessage />
+      <LeadershipCard />
       <ProgramsShowcase />
       <DepartmentsSection />
+      <FacultyCarousel />
       <NoticeEvents />
       <PlacementsSection />
       <RecentPlacements />
       <RecruitersShowcase />
       <ClubsAchievements />
       <StudentAchievements />
-      <IncubationCenter />
+      <StudentStartup />
     </div>
   );
 };
