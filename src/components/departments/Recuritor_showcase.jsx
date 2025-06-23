@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "../ui/button";
 
 const RecruitersShowcase = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -17,10 +15,7 @@ const RecruitersShowcase = () => {
     { name: "Accenture", logo: "https://logo.clearbit.com/accenture.com" },
     { name: "Cognizant", logo: "https://logo.clearbit.com/cognizant.com" },
     { name: "HCL", logo: "https://logo.clearbit.com/hcltech.com" },
-    {
-      name: "Tech Mahindra",
-      logo: "https://logo.clearbit.com/techmahindra.com",
-    },
+    { name: "Tech Mahindra", logo: "https://logo.clearbit.com/techmahindra.com" },
     { name: "Oracle", logo: "https://logo.clearbit.com/oracle.com" },
     { name: "Intel", logo: "https://logo.clearbit.com/intel.com" },
     { name: "Qualcomm", logo: "https://logo.clearbit.com/qualcomm.com" },
@@ -54,24 +49,27 @@ const RecruitersShowcase = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-college-navy mb-4 bg-gradient-to-r from-college-navy to-college-blue bg-clip-text text-transparent">
             Our Recruiters
           </h2>
-          <p className="text-xl text-gray-600">
-            Industry leaders who trust our talent
-          </p>
+          <p className="text-xl text-gray-600">Industry leaders who trust our talent</p>
           <div className="w-24 h-1 bg-gradient-to-r from-college-blue to-college-gold mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-sm relative overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-100">
-            <CardTitle className="text-college-navy flex items-center justify-center">
+        {/* Showcase Container */}
+        <div className="rounded-xl shadow-2xl border-0 bg-white/90 backdrop-blur-sm relative overflow-hidden">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-100 p-4 text-center">
+            <h3 className="text-college-navy flex items-center justify-center font-bold text-lg">
               <div className="w-2 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3"></div>
               Industry Partners
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-8">
+            </h3>
+          </div>
+
+          {/* Grid */}
+          <div className="p-8">
             <div className="relative">
               <div className="grid grid-cols-4 gap-6">
                 {getCurrentRecruiters().map((company, index) => (
@@ -91,24 +89,22 @@ const RecruitersShowcase = () => {
                 ))}
               </div>
 
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full"
+              {/* Arrows */}
+              <button
                 onClick={prevSlide}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full p-2"
               >
                 <ChevronLeft className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full"
+              </button>
+              <button
                 onClick={nextSlide}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white/80 hover:bg-white shadow-lg rounded-full p-2"
               >
                 <ChevronRight className="h-5 w-5" />
-              </Button>
+              </button>
             </div>
 
+            {/* Dots */}
             <div className="flex justify-center mt-8 space-x-2">
               {Array.from({ length: totalSlides }).map((_, index) => (
                 <button
@@ -122,8 +118,8 @@ const RecruitersShowcase = () => {
                 />
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );
