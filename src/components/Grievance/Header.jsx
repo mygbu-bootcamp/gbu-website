@@ -136,22 +136,11 @@ const Header = () => {
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo and Title */}
-          <div className="flex items-center space-x-4">
-            {/* <img 
-              src="/placeholder.svg" 
-              alt="GBU Logo" 
-              className="h-10 w-10"
-            /> */}
-            <div>
-              <h1 className="text-xl font-bold text-gray-900">GBU Portal</h1>
-              <p className="text-xs text-gray-600">Grievance Redressal System</p>
-            </div>
-          </div>
+         <div className="flex items-center justify-between h-11">
+           
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex pl-28 items-center space-x-6">
             <a href="/grievance" className="text-gray-700 hover:text-blue-600">Home</a>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -176,7 +165,7 @@ const Header = () => {
           <div className="hidden md:block">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">
+                <Button variant="outline" className="h-8 hover:bg-gray-500 hover:text-white">
                   <User className="w-4 h-4 mr-2" />
                   Login
                 </Button>
