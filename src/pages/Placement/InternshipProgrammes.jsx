@@ -1,8 +1,34 @@
 
 import { ArrowLeft, Users, Building, Calendar, MapPin, Clock, Star, Target, Award, TrendingUp } from 'lucide-react';
-import { Card, CardContent } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
+
+
 import { Link } from 'react-router-dom';
+
+const Card = ({ children, className = '' }) => (
+  <div className={`rounded-xl overflow-hidden ${className}`}>
+    {children}
+  </div>
+);
+
+const CardContent = ({ children, className = '' }) => (
+  <div className={`p-4 ${className}`}>
+    {children}
+  </div>
+);
+
+const Button = ({ children, className = '', variant = 'default', ...props }) => {
+  const baseStyle =
+    'px-4 py-2 rounded-lg font-semibold transition-all duration-300 focus:outline-none';
+  const variants = {
+    default: 'bg-red-600 text-white hover:bg-red-700',
+    outline: 'border border-red-600 text-red-600 hover:bg-red-600 hover:text-white',
+  };
+  return (
+    <button className={`${baseStyle} ${variants[variant]} ${className}`} {...props}>
+      {children}
+    </button>
+  );
+};
 
 const InternshipProgrammes = () => {
   const internshipTypes = [
@@ -17,7 +43,7 @@ const InternshipProgrammes = () => {
       opportunities: "600+ annually",
       deadline: "March 31, 2024",
       companies: ["Google", "Microsoft", "Amazon", "Adobe"]
-    },
+    }, 
     {
       title: "Industrial Training",
       description: "Hands-on experience with DRDO, IBM, and government agencies",
