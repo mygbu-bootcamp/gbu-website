@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "../ui/button";
 
 const Landing = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,7 +8,7 @@ const Landing = () => {
     {
       image:
         "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=1080&fit=crop",
-      title: "Excellence in Engineering Education",
+      title: "School Of ICT",
       subtitle: "Shaping Tomorrow's Engineers Today",
     },
     {
@@ -75,34 +74,30 @@ const Landing = () => {
       ))}
 
       {/* Navigation buttons */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 backdrop-blur-sm rounded-full w-10 h-10 transition-all duration-300"
+      <button
         onClick={prevSlide}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 backdrop-blur-sm rounded-full w-10 h-10 transition-all duration-300 flex items-center justify-center"
       >
         <ChevronLeft size={20} />
-      </Button>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 backdrop-blur-sm rounded-full w-10 h-10 transition-all duration-300"
+      </button>
+      <button
         onClick={nextSlide}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 backdrop-blur-sm rounded-full w-10 h-10 transition-all duration-300 flex items-center justify-center"
       >
         <ChevronRight size={20} />
-      </Button>
+      </button>
 
       {/* Slide indicators */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
           <button
             key={index}
+            onClick={() => setCurrentSlide(index)}
             className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
               index === currentSlide
                 ? "bg-white shadow-md scale-110"
                 : "bg-white/50 hover:bg-white/75"
             }`}
-            onClick={() => setCurrentSlide(index)}
           />
         ))}
       </div>
