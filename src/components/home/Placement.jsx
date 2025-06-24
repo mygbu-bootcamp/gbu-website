@@ -28,7 +28,7 @@ const HiringSection = () => {
   const animationRef = useRef();
 
   const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
-  const API_URL = `${BASE}/landing/companies/`;
+  const API_URL = `${BASE}/landing/companies-hiring/`;
 
   useEffect(() => {
     const fetchCompanyData = async () => {

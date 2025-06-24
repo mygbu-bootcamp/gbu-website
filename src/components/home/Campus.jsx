@@ -4,7 +4,7 @@ export default function CampusLifeSection() {
   const [testimonials, setTestimonials] = useState([]);
 
   const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
-  const CAMPUS_LIFE_API = `${BASE}/landing/campus_life/`;
+  const CAMPUS_LIFE_API = `${BASE}/landing/campus-life/`;
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -47,7 +47,8 @@ export default function CampusLifeSection() {
             >
               <div className="relative h-3/5">
                 <img
-                  src={`${BASE}/media/${item.image}`}
+                  src={item.image}
+
                   alt={category}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"

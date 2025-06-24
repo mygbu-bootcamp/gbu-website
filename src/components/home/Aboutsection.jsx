@@ -8,7 +8,7 @@ export default function AboutSection() {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/landing/aboutus/`);
+        const res = await fetch(`${BASE_URL}/landing/about/`);
         const data = await res.json();
         console.log("Fetched aboutData:", data);
         setAboutData(data[0]); // ✅ first object from array
@@ -64,7 +64,7 @@ export default function AboutSection() {
           <img
             src={
               aboutData.image
-                ? `${BASE_URL}/media/${aboutData.image}`
+                ? `{aboutData.image}`
                 : "https://via.placeholder.com/600x400?text=No+Image"
             }
             alt={aboutData.title || "About Section"}

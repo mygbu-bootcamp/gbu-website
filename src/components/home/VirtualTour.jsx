@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
-const VIRTUAL_TOUR_API = `${BASE}/landing/virtual_experience/`;
+const VIRTUAL_TOUR_API = `${BASE}/landing/virtual-experience/`;
 
 function VirtualTour() {
   const [data, setData] = useState(null);

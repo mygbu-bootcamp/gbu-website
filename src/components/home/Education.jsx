@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
-const EXCELLENCE_API = `${BASE}/landing/excellence_education/`;
+const EXCELLENCE_API = `${BASE}/landing/excellence-in-education/`;
 
 const categoryMap = {
   'Centers of Excellence': 'centers of excellence',

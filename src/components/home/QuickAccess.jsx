@@ -25,7 +25,7 @@ const QuickAccess = () => {
   useEffect(() => {
     const fetchQuickAccess = async () => {
       try {
-        const res = await fetch(`${BASE}/api/quickaccess`);
+        const res = await fetch(`${BASE}/landing/quick-access`);
         const data = await res.json();
         if (Array.isArray(data)) {
           setItems(data);
