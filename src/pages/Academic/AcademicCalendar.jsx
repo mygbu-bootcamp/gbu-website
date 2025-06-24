@@ -1,93 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, BookOpen, FileText, Download, Bell, Search } from 'lucide-react';
 
 const AcademicCalendar = () => {
-  const academicEvents = [
-    {
-      id: 1,
-      title: 'Admission Applications Open',
-      date: '2024-03-01',
-      type: 'admission',
-      description: 'Online application portal opens for all undergraduate and postgraduate programs.',
-      status: 'completed',
-    },
-    {
-      id: 2,
-      title: 'Mid-Semester Examinations',
-      date: '2024-04-15',
-      type: 'examination',
-      description: 'Mid-semester examinations for all schools and departments.',
-      status: 'upcoming',
-    },
-    {
-      id: 3,
-      title: 'Summer Break Begins',
-      date: '2024-05-20',
-      type: 'break',
-      description: 'Summer vacation period begins for all students.',
-      status: 'upcoming',
-    },
-    {
-      id: 4,
-      title: 'New Academic Session',
-      date: '2024-07-01',
-      type: 'academic',
-      description: 'Commencement of new academic year 2024-25.',
-      status: 'upcoming',
-    },
-    {
-      id: 5,
-      title: 'Independence Day',
-      date: '2024-08-15',
-      type: 'holiday',
-      description: 'University remains closed in observance of Independence Day.',
-      status: 'upcoming',
-    }
-  ];
+  const [events, setEvents] = useState([]);
+  const [regulations, setRegulations] = useState([]);
+  const [stats, setStats] = useState([]);
+  const [cta, setCta] = useState(null);
+  const [filterType, setFilterType] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const regulations = [
-    {
-      title: 'Academic Regulations 2024-25',
-      description: 'Complete academic regulations governing examination, grading, and course completion.',
-      downloadUrl: '#',
-      lastUpdated: '2024-01-15',
-    },
-    {
-      title: 'Student Code of Conduct',
-      description: 'Guidelines for student behavior, disciplinary procedures, and academic integrity.',
-      downloadUrl: '#',
-      lastUpdated: '2024-01-10',
-    },
-    {
-      title: 'Examination Guidelines',
-      description: 'Detailed examination procedures, assessment methods, and evaluation criteria.',
-      downloadUrl: '#',
-      lastUpdated: '2024-02-01',
-    },
-  ];
+  const HOST = import.meta.env.VITE_HOST;
+
+  useEffect(() => {
+    fetch(`${HOST}/academic/events`)
+      .then(res => res.json())
+      .then(setEvents)
+      .catch(err => console.error("Error fetching events:", err));
+
+    fetch(`${HOST}/academic/regulations`)
+      .then(res => res.json())
+      .then(setRegulations)
+      .catch(err => console.error("Error fetching regulations:", err));
+
+    fetch(`${HOST}/academic/hero/`)
+      .then(res => res.json())
+      .then(setStats)
+      .catch(err => console.error("Error fetching stats:", err));
+
+    fetch(`${HOST}/academic/stayupdated/`)
+      .then(res => res.json())
+      .then(data => setCta(data[0])) // Assuming only 1 item
+      .catch(err => console.error("Error fetching CTA:", err));
+  }, []);
 
   const getEventTypeColor = (type) => {
     switch (type) {
       case 'admission': return 'bg-blue-100 text-blue-800';
-      case 'examination': return 'bg-red-100 text-red-800';
+      case 'exam': return 'bg-red-100 text-red-800';
       case 'break': return 'bg-green-100 text-green-800';
       case 'academic': return 'bg-purple-100 text-purple-800';
+      case 'holiday': return 'bg-yellow-100 text-yellow-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
-  const [filterType, setFilterType] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const filteredEvents = events.filter(event =>
+    (filterType === 'all' || event.category === filterType) &&
+    event.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  const filteredEvents = academicEvents.filter((event) => {
-    const matchesType = filterType === 'all' || event.type.includes(filterType);
-    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesType && matchesSearch;
-  });
-
-
-  // Group Events by Month
   const groupedEvents = filteredEvents.reduce((acc, event) => {
     const monthYear = new Date(event.date).toLocaleString('default', {
       month: 'long',
@@ -98,9 +60,8 @@ const AcademicCalendar = () => {
     return acc;
   }, {});
 
-  // Export as PDF (placeholder)
   const handleDownload = () => {
-    alert('Export to PDF functionality can be integrated with jsPDF or html2pdf.');
+    alert('Export to PDF functionality can be integrated using jsPDF or html2pdf.');
   };
 
   return (
@@ -108,7 +69,7 @@ const AcademicCalendar = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6 animate-fade-in ">Academic Calendar & Regulations</h1>
+          <h1 className="text-5xl font-bold mb-6 animate-fade-in">Academic Calendar & Regulations</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in">
             Stay informed with important academic dates, examination schedules, and institutional regulations
             governing academic life at Gautam Buddha University.
@@ -120,66 +81,64 @@ const AcademicCalendar = () => {
       <section className="py-15 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="animate-fade-in">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calendar className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">2</h3>
-              <p className="text-gray-600">Academic Semesters</p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">180</h3>
-              <p className="text-gray-600">Teaching Days</p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">4</h3>
-              <p className="text-gray-600">Examination Periods</p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FileText className="w-8 h-8 text-orange-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">15+</h3>
-              <p className="text-gray-600">Academic Regulations</p>
-            </div>
+            {stats.length === 0 ? (
+              <p className="text-gray-500">Loading statistics...</p>
+            ) : (
+              stats.map((stat, index) => (
+                <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                    style={{ backgroundColor: stat.background_color || '#e0e7ff' }}>
+                    {stat.icon_class === 'calendar' && <Calendar className="w-8 h-8 text-blue-600" />}
+                    {stat.icon_class === 'clock' && <Clock className="w-8 h-8 text-green-600" />}
+                    {stat.icon_class === 'book' && <BookOpen className="w-8 h-8 text-purple-600" />}
+                    {stat.icon_class === 'file' && <FileText className="w-8 h-8 text-orange-600" />}
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                    {{
+                      'calendar': stat.ssemester_count,
+                      'clock': stat.teaching_days,
+                      'book': stat.examination_periods,
+                      'file': stat.academic_regulations
+                    }[stat.icon_class] || '--'}
+                  </h3>
+                  <p className="text-gray-600">{stat.icon_text}</p>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
 
-        <section className="py-14 bg-gray-50">
-          <div className="container mx-auto px-4">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-1 mb-10">
-          <div className="flex-1 flex flex-col items-center">
-            <h2 className="text-4xl sm:text-2xl font-bold text-gray-800 text-center">Academic Calendar 2024–25</h2>
-            <p className="text-lg text-gray-600 text-center pt-2">Timeline of academic milestones</p>
-          </div>
-          <button
-            onClick={handleDownload}
-            className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-          >
-            <Download className="w-4 h-4" />
-            <span>Download PDF</span>
-          </button>
+      {/* Calendar Section */}
+      <section className="py-14 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 mb-10">
+            <div className="flex-1 flex flex-col items-center">
+              <h2 className="text-4xl sm:text-2xl font-bold text-gray-800 text-center">
+                {events[0]?.heading || 'Academic Calendar'}
+              </h2>
+              <p className="text-lg text-gray-600 text-center pt-2">
+                {events[0]?.desc || 'Timeline of academic milestones'}
+              </p>
             </div>
+            <button
+              onClick={handleDownload}
+              className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download PDF</span>
+            </button>
+          </div>
 
-            {/* Filters & Search */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
             <div className="flex space-x-2">
-              {['all', 'admission', 'exam', 'holiday'].map((type) => (
+              {['all', 'admission', 'exam', 'holiday'].map(type => (
                 <button
                   key={type}
                   onClick={() => setFilterType(type)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium ${filterType === type
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    } transition`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium ${
+                    filterType === type ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  } transition`}
                 >
                   {type === 'all' ? 'All' : type.charAt(0).toUpperCase() + type.slice(1)}
                 </button>
@@ -197,7 +156,6 @@ const AcademicCalendar = () => {
             </div>
           </div>
 
-          {/* Timeline */}
           <div className="relative border-l-4 border-blue-600 ml-4 pl-6 space-y-12">
             {Object.entries(groupedEvents).length === 0 ? (
               <p className="text-gray-500 text-center">No events found.</p>
@@ -224,8 +182,8 @@ const AcademicCalendar = () => {
                               })}
                             </span>
                           </div>
-                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getEventTypeColor(event.type)}`}>
-                            {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getEventTypeColor(event.category)}`}>
+                            {event.category.charAt(0).toUpperCase() + event.category.slice(1)}
                           </span>
                         </div>
                         <h4 className="text-lg font-bold text-gray-800">{event.title}</h4>
@@ -246,7 +204,7 @@ const AcademicCalendar = () => {
         </div>
       </section>
 
-      {/* Academic Regulations */}
+      {/* Academic Regulations Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -263,13 +221,15 @@ const AcademicCalendar = () => {
               >
                 <div className="flex items-center justify-between mb-4">
                   <FileText className="w-8 h-8 text-blue-600" />
-                  <Download className="w-5 h-5 text-gray-400 hover:text-blue-600 cursor-pointer transition-colors" />
+                  <a href={`${HOST}${regulation.document}`} download>
+                    <Download className="w-5 h-5 text-gray-400 hover:text-blue-600 cursor-pointer transition-colors" />
+                  </a>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-2">{regulation.title}</h3>
                 <p className="text-gray-600 mb-4 text-sm">{regulation.description}</p>
                 <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span>Last updated: {new Date(regulation.lastUpdated).toLocaleDateString()}</span>
-                  <Link to={regulation.downloadUrl} className="text-blue-600 hover:text-blue-800 font-medium">
+                  <span>Last updated: {new Date(regulation.last_updated).toLocaleDateString()}</span>
+                  <Link to={`${HOST}${regulation.document}`} className="text-blue-600 hover:text-blue-800 font-medium">
                     Download PDF
                   </Link>
                 </div>
@@ -279,29 +239,29 @@ const AcademicCalendar = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Stay Updated</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Subscribe to our academic calendar notifications and never miss important dates and deadlines.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/student-portal"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105"
-            >
-              Student Portal
-            </Link>
-            <Link
-              to="/announcements"
-              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
-            >
-              View Announcements
-            </Link>
+      {/* CTA Section */}
+      {cta && (
+        <section className="py-16 text-white" style={{ backgroundColor: cta.background_color }}>
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-6">{cta.title}</h2>
+            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">{cta.description}</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={cta.url1}
+                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105"
+              >
+                {cta.button1_text}
+              </a>
+              <a
+                href={cta.url2}
+                className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              >
+                {cta.button2_text}
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 };
