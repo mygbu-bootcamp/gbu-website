@@ -8,7 +8,7 @@ export default function WelcomePage() {
   const BASE = (BANNER || "").replace(/\/$/, "");
 
   useEffect(() => {
-    fetch(`${BASE}/backend/landing/banner/`)
+    fetch(`${BASE}/landing/banner/`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
