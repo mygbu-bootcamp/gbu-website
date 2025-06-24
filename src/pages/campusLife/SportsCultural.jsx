@@ -1,8 +1,79 @@
 
 import React, { useState } from 'react';
 // import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../components/ui/carousel';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../components/ui/dialog';
+// Carousel Components
+const Carousel = ({ className = "", children }) => (
+  <div className={`relative ${className}`}>{children}</div>
+);
+
+const CarouselContent = ({ className = "", children }) => (
+  <div className={`flex overflow-x-auto scrollbar-hide ${className}`}>{children}</div>
+);
+
+const CarouselItem = ({ className = "", children }) => (
+  <div className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2 ${className}`}>{children}</div>
+);
+
+const CarouselPrevious = ({ onClick }) => (
+  <button
+    type="button"
+    aria-label="Previous"
+    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-green-600 hover:text-white text-green-600 rounded-full shadow p-2 transition-all"
+    onClick={() => {
+      const container = document.querySelector('.overflow-x-auto');
+      if (container) container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' });
+      if (onClick) onClick();
+    }}
+  >
+    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+);
+
+const CarouselNext = ({ onClick }) => (
+  <button
+    type="button"
+    aria-label="Next"
+    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-green-600 hover:text-white text-green-600 rounded-full shadow p-2 transition-all"
+    onClick={() => {
+      const container = document.querySelector('.overflow-x-auto');
+      if (container) container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' });
+      if (onClick) onClick();
+    }}
+  >
+    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+);
+
+// Dialog Components
+const Dialog = ({ open, onOpenChange, children }) => {
+  React.useEffect(() => {
+    if (open) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onOpenChange}>
+      <div className="relative" onClick={e => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+const DialogContent = ({ className = "", children }) => (
+  <div className={`bg-white rounded-lg shadow-xl p-6 ${className}`}>
+    {children}
+  </div>
+);
+
+const DialogHeader = ({ children }) => (
+  <div className="mb-4">{children}</div>
+);
+
+const DialogTitle = ({ className = "", children }) => (
+  <h2 className={`font-bold text-xl ${className}`}>{children}</h2>
+);
 
 const Card = ({ className = "", children, ...props }) => (
   <div
