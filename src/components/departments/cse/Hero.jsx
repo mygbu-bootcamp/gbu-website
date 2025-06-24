@@ -1,6 +1,27 @@
- import React from 'react';
+import React from 'react';
 import { ArrowRight, Code, Cpu, Database } from "lucide-react";
-import { Button } from "../../ui/button";
+
+// Inline Button Component
+const Button = ({ children, className = "", variant = "default", size = "md", ...props }) => {
+  const baseClasses = "inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
+  const sizeClasses = {
+    sm: "px-3 py-1.5 text-sm",
+    md: "px-4 py-2 text-base",
+    lg: "px-6 py-3 text-lg"
+  };
+  const variantClasses = {
+    default: "bg-blue-600 text-white hover:bg-blue-700",
+    outline: "border border-blue-300 text-blue-700 hover:bg-blue-50"
+  };
+  return (
+    <button
+      className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 
 const HeroSection = () => {
   return (
@@ -40,7 +61,7 @@ const HeroSection = () => {
               Explore Programs
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+            <Button variant="outline" size="lg">
               Research Areas
             </Button>
           </div>
