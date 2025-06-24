@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 export default function WelcomePage() {
   const [bannerData, setBannerData] = useState(null);
 
-  // Read from .env: VITE_HOST=http://147.93.105.208:8000/
+
   const BANNER = import.meta.env.VITE_HOST;
   const BASE = (BANNER || "").replace(/\/$/, "");
 
   useEffect(() => {
-    fetch(`${BASE}/landing/banner/`)
+    fetch(`${BASE}/backend/landing/banner/`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
