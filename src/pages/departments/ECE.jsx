@@ -1,7 +1,54 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
+
+
 import { Users, Award, BookOpen, Lightbulb, Cpu, Zap, Radio, Microchip, GraduationCap, Brain, Beaker, Trophy, Star, User, Medal, Target } from "lucide-react";
+
+const Card = ({ children, className = "" }) => (
+  <div className={`bg-white rounded-xl shadow-lg border ${className}`}>{children}</div>
+);
+
+const CardHeader = ({ children, className = "" }) => (
+  <div className={`p-6 border-b ${className}`}>{children}</div>
+);
+
+const CardTitle = ({ children, className = "" }) => (
+  <h3 className={`text-xl font-bold text-foreground ${className}`}>{children}</h3>
+);
+
+const CardDescription = ({ children, className = "" }) => (
+  <p className={`text-muted-foreground text-sm ${className}`}>{children}</p>
+);
+
+const CardContent = ({ children, className = "" }) => (
+  <div className={`p-6 ${className}`}>{children}</div>
+);
+
+
+const Button = ({ children, variant = "default", size = "md", className = "", ...props }) => {
+  const baseStyle = "inline-flex items-center justify-center font-medium rounded-lg transition duration-300";
+
+  const sizeStyles = {
+    sm: "px-3 py-1.5 text-sm",
+    md: "px-4 py-2 text-base",
+    lg: "px-6 py-3 text-lg",
+  };
+
+  const variantStyles = {
+    default: "bg-emerald-600 text-white hover:bg-emerald-700",
+    outline: "border border-emerald-300 text-emerald-700 hover:bg-emerald-50",
+    ghost: "text-emerald-700 hover:bg-emerald-100",
+  };
+
+  return (
+    <button
+      className={`${baseStyle} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
 
 const ECE = () => {
   const stats = [
