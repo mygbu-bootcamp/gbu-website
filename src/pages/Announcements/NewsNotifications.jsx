@@ -154,8 +154,8 @@ const NewsNotifications = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      <header className="sticky h-[12rem] top-0 z-30 bg-gradient-to-r from-purple-100 via-pink-50 to-blue-100 backdrop-blur border-b border-purple-200/40 shadow-md">
-        <div className="max-w-5xl mx-auto flex flex-col items-center gap-2 px-6 py-7 text-center">
+      <header className="sticky h-[20rem] top-0 z-30 bg-gradient-to-r from-purple-100 via-pink-50 to-blue-100 backdrop-blur border-b border-purple-200/40 shadow-md">
+        <div className="max-w-5xl mx-auto flex flex-col items-center gap-3 px-8 pt-20 pb-7 text-center">
           <h1 className="text-3xl pt-4 md:text-4xl font-extrabold bg-gradient-to-r from-purple-700 via-pink-600 to-blue-600 bg-clip-text text-transparent drop-shadow-sm tracking-tight animate-fade-in">
             University News & Updates
           </h1>
@@ -228,7 +228,7 @@ const NewsNotifications = () => {
         </section>
         
         <section>
-          <div className="relative">
+          <div className="relative w-3/5 text-center mx-auto">
             <div className="absolute left-8 md:left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-200 via-purple-200 to-pink-200 rounded-full z-0"></div>
             <div className="space-y-10 relative z-10">
               {filteredNews.length === 0 && (
