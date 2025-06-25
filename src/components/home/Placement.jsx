@@ -2,12 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
+// Helper to safely build image URLs
+const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
+const getImageUrl = (path) => {
+  if (!path) return "https://via.placeholder.com/100x100?text=No+Logo";
+  return path.includes("http")
+    ? path
+    : `${BASE}/${path.startsWith("media") ? "" : "media/"}${path}`;
+};
+
 const StatItem = ({ icon, end, duration, suffix = "", separator = "", text, start }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
 
   return (
     <div className="text-center" ref={ref}>
-      <img src={icon} className="w-10 h-10 mx-auto mb-3" alt="icon" />
+      <img src={getImageUrl(icon)} className="w-10 h-10 mx-auto mb-3" alt="icon" />
       <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
         {inView ? (
           <CountUp end={end} duration={duration} suffix={suffix} separator={separator} start={start ?? 0} />
@@ -27,7 +36,6 @@ const HiringSection = () => {
   const [time, setTime] = useState(0);
   const animationRef = useRef();
 
-  const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
   const API_URL = `${BASE}/landing/companies-hiring/`;
 
   useEffect(() => {
@@ -66,8 +74,6 @@ const HiringSection = () => {
   }, []);
 
   const radius = containerWidth / 2.2;
-
-  // Use the first item for static text and stats
   const first = companyData[0];
 
   return (
@@ -107,7 +113,7 @@ const HiringSection = () => {
             >
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full shadow-md flex items-center justify-center">
                 <img
-                  src={`${BASE}/media/${company.logo}`}
+                  src={getImageUrl(company.logo)}
                   alt={`Company ${company.id}`}
                   className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 />
@@ -145,20 +151,20 @@ const HiringSection = () => {
       <div className="w-[90vw] max-w-4xl mx-auto mt-24 sm:mt-28 bg-white shadow-xl rounded-2xl p-6 sm:p-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
           <StatItem
-            icon={`${BASE}/media/${first?.logo || ""}`}
+            icon={first?.logo}
             end={parseInt(first?.Companies_hiring?.replace(/\D/g, "") || 0)}
             duration={2}
             text="Companies hiring worldwide"
           />
           <StatItem
-            icon={`${BASE}/media/${first?.logo || ""}`}
+            icon={first?.logo}
             end={parseInt(first?.alumini_count?.replace(/\D/g, "") || 0)}
             duration={3}
             separator=","
             text="Successful Alumni worldwide"
           />
           <StatItem
-            icon={`${BASE}/media/${first?.logo || ""}`}
+            icon={first?.logo}
             end={parseInt(first?.placement_rate?.replace(/\D/g, "") || 0)}
             start={65}
             duration={2.5}

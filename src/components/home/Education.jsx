@@ -70,6 +70,14 @@ export default function ExcellenceSection() {
 
   const tabs = Object.keys(categoryMap);
 
+  const getImageUrl = (imgPath) => {
+  if (!imgPath) return "https://via.placeholder.com/600x400?text=No+Image";
+  return imgPath.includes("http")
+    ? imgPath
+    : `${BASE}/${imgPath.startsWith("media") ? "" : "media/"}${imgPath}`;
+};
+
+
   return (
     <div className="relative bg-gray-50 overflow-hidden">
       {/* Animated Background Elements */}
@@ -127,12 +135,14 @@ export default function ExcellenceSection() {
               <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
 
               <div className="relative h-48 overflow-hidden">
+                
                 <img
-                  src={`${BASE}/media/${item.image}`}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
+  src={getImageUrl(item.image)}
+  alt={item.title}
+  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+  loading="lazy"
+/>
+
                 <div className={`absolute inset-0 bg-gradient-to-t ${item.gradient} opacity-60 group-hover:opacity-40 transition-opacity duration-500`}></div>
                 <div className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-2xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                   {item.icon}

@@ -47,7 +47,10 @@ const VisionaryLeadership = () => {
   }
 
   const current = leaders[index];
-  const fullImageUrl = `${BASE_URL}/media/${current.photo}`;
+  const fullImageUrl = current.photo?.includes("http")
+  ? current.photo
+  : `${BASE_URL}/${current.photo.startsWith("media") ? "" : "media/"}${current.photo}`;
+
 
   return (
     <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-100 via-white to-green-100">

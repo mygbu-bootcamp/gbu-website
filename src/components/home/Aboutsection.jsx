@@ -22,6 +22,11 @@ export default function AboutSection() {
 
   if (!aboutData) return <div className="text-center py-10">Loading...</div>;
 
+  const imageSrc = aboutData.image?.includes("http")
+  ? aboutData.image
+  : `${BASE_URL}/${aboutData.image.startsWith("media") ? "" : "media/"}${aboutData.image}`;
+
+
   return (
     <div className="bg-white py-12 px-6 sm:py-16 sm:px-10 md:px-20">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
@@ -62,14 +67,11 @@ export default function AboutSection() {
         {/* Right Image */}
         <div className="md:w-1/2 relative flex justify-center">
           <img
-            src={
-              aboutData.image
-                ? `{aboutData.image}`
-                : "https://via.placeholder.com/600x400?text=No+Image"
-            }
-            alt={aboutData.title || "About Section"}
-            className="rounded-xl shadow-xl w-full object-cover"
-          />
+  src={aboutData.image ? imageSrc : "https://via.placeholder.com/600x400?text=No+Image"}
+  alt={aboutData.title || "About Section"}
+  className="rounded-xl shadow-xl w-full object-cover"
+/>
+
           <div className="absolute bottom-4 right-4 bg-orange-600 text-white text-center px-5 py-3 rounded-lg shadow-lg text-sm sm:text-base">
             <div className="text-xl sm:text-2xl font-bold">15+</div>
             <div>Years of Excellence</div>

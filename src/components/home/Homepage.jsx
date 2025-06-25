@@ -25,9 +25,11 @@ export default function WelcomePage() {
   if (!bannerData)
     return <div className="text-center py-20">Loading...</div>;
 
-  const videoSrc = bannerData.video?.endsWith(".mp4")
-    ? `${BASE}/media/${bannerData.video}`
-    : `${BASE}/${bannerData.video}`;
+
+  const videoSrc = bannerData.video?.includes("http")
+    ? bannerData.video
+    : `${BASE}/${bannerData.video.startsWith("media") ? "" : "media/"}${bannerData.video}`;
+
 
   return (
     <>
