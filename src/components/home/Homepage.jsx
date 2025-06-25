@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function WelcomePage() {
   const [bannerData, setBannerData] = useState(null);
-
 
   const BANNER = import.meta.env.VITE_HOST;
   const BASE = (BANNER || "").replace(/\/$/, "");
@@ -10,8 +10,8 @@ export default function WelcomePage() {
   useEffect(() => {
     const fetchBannerData = async () => {
       try {
-        const res = await fetch(`${BASE}/landing/banner/`);
-        const data = await res.json();
+        const res = await axios.get(`${BASE}/landing/banner/`);
+        const data = res.data;
         if (Array.isArray(data) && data.length > 0) {
           setBannerData(data[0]);
         }
@@ -26,11 +26,9 @@ export default function WelcomePage() {
   if (!bannerData)
     return <div className="text-center py-20">Loading...</div>;
 
-
   const videoSrc = bannerData.video?.includes("http")
     ? bannerData.video
     : `${BASE}/${bannerData.video.startsWith("media") ? "" : "media/"}${bannerData.video}`;
-
 
   return (
     <>

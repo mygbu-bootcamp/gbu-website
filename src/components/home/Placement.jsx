@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import axios from "axios"; // <-- Added axios import
 
 // Helper to safely build image URLs
 const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
@@ -41,8 +42,8 @@ const HiringSection = () => {
   useEffect(() => {
     const fetchCompanyData = async () => {
       try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
+        const res = await axios.get(API_URL); // <-- Use axios
+        const data = res.data;
         if (Array.isArray(data)) {
           setCompanyData(data);
         }
