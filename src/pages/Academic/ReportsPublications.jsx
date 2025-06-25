@@ -1,79 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, Download, Calendar, Eye, BookOpen, TrendingUp, Users } from 'lucide-react';
+import {
+  FileText, Download, Calendar, Eye, BookOpen,
+  TrendingUp, Users
+} from 'lucide-react';
 
 const ReportsPublications = () => {
-  const reports = [
-    {
-      id: 1,
-      title: 'Annual Institutional Report 2023-24',
-      type: 'Institutional Report',
-      description: 'Comprehensive overview of institutional achievements, initiatives, and progress.',
-      publishDate: '2024-03-15',
-      pages: 150,
-      downloads: 1800,
-      format: 'PDF',
-      size: '18.5 MB',
-      category: 'Institutional'
-    },
-    {
-      id: 2,
-      title: 'Accreditation & Rankings Report 2023',
-      type: 'Accreditation Report',
-      description: 'Details of accreditations, rankings, and quality benchmarks achieved.',
-      publishDate: '2024-02-10',
-      pages: 70,
-      downloads: 950,
-      format: 'PDF',
-      size: '8.2 MB',
-      category: 'Accreditation'
-    },
-    {
-      id: 3,
-      title: 'Annual Financial Statement 2023',
-      type: 'Financial Report',
-      description: 'Summary of financial performance and audited statements for the year.',
-      publishDate: '2024-01-25',
-      pages: 55,
-      downloads: 1200,
-      format: 'PDF',
-      size: '6.7 MB',
-      category: 'Finance'
-    },
-    {
-      id: 4,
-      title: 'Student Achievements & Activities 2023',
-      type: 'Student Report',
-      description: 'Highlights of student achievements, events, and extracurricular activities.',
-      publishDate: '2024-01-10',
-      pages: 100,
-      downloads: 1050,
-      format: 'PDF',
-      size: '11.4 MB',
-      category: 'Student'
-    }
-  ];
+  const [hero, setHero] = useState(null);
+  const [reports, setReports] = useState([]);
 
-  const highlights = [
-    {
-      metric: '10+',
-      label: 'Institutional Reports',
-      description: 'Published annually for transparency and progress',
-      icon: <TrendingUp className="w-10 h-10 text-blue-600" />
-    },
-    {
-      metric: '5',
-      label: 'National Accreditations',
-      description: 'Recognized by top accreditation bodies',
-      icon: <FileText className="w-10 h-10 text-green-600" />
-    },
-    {
-      metric: '200+',
-      label: 'Student Achievements',
-      description: 'Awards and recognitions in various fields',
-      icon: <Users className="w-10 h-10 text-purple-600" />
-    }
-  ];
+  const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
 
   const categories = ['All', 'Institutional', 'Accreditation', 'Finance', 'Student'];
 
@@ -92,28 +28,69 @@ const ReportsPublications = () => {
     }
   };
 
-  // Modern: Add search and filter state (not fully functional, just UI)
+  useEffect(() => {
+    const fetchReportsData = async () => {
+      try {
+        const [heroRes, listRes] = await Promise.all([
+          fetch(`${BASE}/academic/reports/hero/`),
+          fetch(`${BASE}/academic/reports/list/`)
+        ]);
+
+        const heroData = await heroRes.json();
+        const listData = await listRes.json();
+
+        setHero(heroData[0]);
+        setReports(listData);
+      } catch (error) {
+        console.error('Error fetching reports data:', error);
+      }
+    };
+
+    fetchReportsData();
+  }, [BASE]);
+
+  if (!hero) return <div className="text-center py-20">Loading...</div>;
+
   return (
     <>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6 animate-fade-in">Institutional Reports</h1>
+          <h1 className="text-5xl font-bold mb-6 animate-fade-in">{hero.title}</h1>
           <p className="text-xl text-emerald-100 max-w-3xl mx-auto animate-fade-in">
-            Explore our institutional reports, accreditations, financial statements, and student achievements.
+            {hero.description}
           </p>
         </div>
       </section>
 
-      {/* Institutional Reports Highlights */}
+      {/* Highlights Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Institutional Reports at a Glance</h2>
-            <p className="text-xl text-gray-600">Key statistics about our institutional progress</p>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{hero.sub_title}</h2>
+            <p className="text-xl text-gray-600">{hero.sub_description}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {highlights.map((highlight, index) => (
+            {[
+              {
+                metric: `${hero.reprts_count}+`,
+                label: 'Institutional Reports',
+                description: 'Published annually for transparency and progress',
+                icon: <TrendingUp className="w-10 h-10 text-blue-600" />
+              },
+              {
+                metric: `${hero.accreditation_count}`,
+                label: 'National Accreditations',
+                description: 'Recognized by top accreditation bodies',
+                icon: <FileText className="w-10 h-10 text-green-600" />
+              },
+              {
+                metric: `${hero.acheivements_counts}+`,
+                label: 'Student Achievements',
+                description: 'Awards and recognitions in various fields',
+                icon: <Users className="w-10 h-10 text-purple-600" />
+              }
+            ].map((highlight, index) => (
               <div
                 key={index}
                 className="text-center animate-fade-in"
@@ -131,15 +108,15 @@ const ReportsPublications = () => {
         </div>
       </section>
 
-      {/* Institutional Reports */}
+      {/* Report List */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Institutional Reports</h2>
-            <p className="text-xl text-gray-600">Official institutional reports, accreditations, and updates</p>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{hero.title}</h2>
+            <p className="text-xl text-gray-600">{hero.description}</p>
           </div>
 
-          {/* Filter Categories & Search */}
+          {/* Filter Category UI - non-functional for now */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {categories.map((category, index) => (
               <button
@@ -156,7 +133,7 @@ const ReportsPublications = () => {
             <input
               type="text"
               placeholder="Search reports..."
-              className="ml-4 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm"
+              className="ml-4 px-4 py-2 rounded-full border border-gray-300 border-solid focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm"
               style={{ minWidth: 200 }}
               disabled
             />
@@ -175,21 +152,21 @@ const ReportsPublications = () => {
                       <FileText className="w-6 h-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-800 mb-1">{report.title}</h3>
+                      <h3 className="text-xl font-bold text-gray-800 mb-1">{report.card_title}</h3>
                       <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(report.category)}`}>
-                        {report.type}
+                        {report.category}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-4">{report.description}</p>
+                <p className="text-gray-600 mb-4">{report.card_desc}</p>
 
                 <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
                   <div className="flex items-center space-x-2">
                     <Calendar className="w-4 h-4 text-gray-500" />
                     <span className="text-gray-600">
-                      {new Date(report.publishDate).toLocaleDateString('en-US', {
+                      {new Date(report.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
@@ -205,7 +182,7 @@ const ReportsPublications = () => {
                     <span className="text-gray-600">{report.pages} pages</span>
                   </div>
                   <div className="text-gray-600">
-                    {report.format} • {report.size}
+                    PDF • {report.file_size_mb} MB
                   </div>
                 </div>
 
@@ -216,10 +193,15 @@ const ReportsPublications = () => {
                   >
                     View Details
                   </Link>
-                  <button className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                  <a
+                    href={`${BASE}/${report.file}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
                     <Download className="w-4 h-4" />
                     <span>Download</span>
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
