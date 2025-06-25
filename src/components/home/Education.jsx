@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const BASE = (import.meta.env.VITE_HOST || '').replace(/\/$/, '');
 const EXCELLENCE_API = `${BASE}/landing/excellence-in-education/`;
@@ -35,8 +36,8 @@ export default function ExcellenceSection() {
 
     const fetchData = async () => {
       try {
-        const res = await fetch(EXCELLENCE_API);
-        const json = await res.json();
+        const res = await axios.get(EXCELLENCE_API);
+        const json = res.data;
 
         const grouped = {
           'Centers of Excellence': [],

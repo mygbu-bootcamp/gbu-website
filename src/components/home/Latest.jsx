@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function LatestUpdates() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,8 +16,8 @@ export default function LatestUpdates() {
 
   const fetchNotices = async () => {
     try {
-      const res = await fetch(NOTICE_API);
-      const json = await res.json();
+      const res = await axios.get(NOTICE_API);
+      const json = res.data;
       setData(json);
 
       // Get unique categories from fetched data
