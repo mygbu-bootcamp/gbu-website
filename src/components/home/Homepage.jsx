@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function WelcomePage() {
   const [bannerData, setBannerData] = useState(null);
 
+
   const BANNER = import.meta.env.VITE_HOST;
   const BASE = (BANNER || "").replace(/\/$/, "");
 
