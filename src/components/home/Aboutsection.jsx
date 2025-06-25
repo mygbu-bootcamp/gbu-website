@@ -1,31 +1,36 @@
 import { useEffect, useState } from "react";
 
-const ABOUT_API = import.meta.env.VITE_ABOUT_API;
+const BASE_URL = import.meta.env.VITE_HOST || "";
 
 export default function AboutSection() {
   const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
-    fetch(ABOUT_API)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Fetched Data:", data);
-        setAboutData(data);
-      })
-      .catch((error) => console.error("Error fetching about data:", error));
+    const fetchAboutData = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/landing/about/`);
+        const data = await res.json();
+        console.log("Fetched aboutData:", data);
+        setAboutData(data[0]); // ✅ first object from array
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    };
+
+    fetchAboutData();
   }, []);
 
-  if (!aboutData) {
-    return <div className="text-center py-10">Loading...</div>;
-  }
+  if (!aboutData) return <div className="text-center py-10">Loading...</div>;
 
-  // Extract base URL for media
-  const mediaBaseUrl = ABOUT_API.replace("/landing/aboutus/", "");
+  const imageSrc = aboutData.image?.includes("http")
+  ? aboutData.image
+  : `${BASE_URL}/${aboutData.image.startsWith("media") ? "" : "media/"}${aboutData.image}`;
+
 
   return (
     <div className="bg-white py-12 px-6 sm:py-16 sm:px-10 md:px-20">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        
+
         {/* Left Text Content */}
         <div className="md:w-1/2 text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-blue-700 to-red-500 mb-6">
@@ -39,8 +44,8 @@ export default function AboutSection() {
               </p>
             ))}
 
-          <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-            {aboutData.button1_url && aboutData.button1_text && (
+          <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-4">
+            {aboutData.button1_text && aboutData.button1_url && (
               <a
                 href={aboutData.button1_url}
                 target="_blank"
@@ -62,14 +67,11 @@ export default function AboutSection() {
         {/* Right Image */}
         <div className="md:w-1/2 relative flex justify-center">
           <img
-            src={
-              aboutData.image
-                ? `${mediaBaseUrl}/media/${aboutData.image}`
-                : "https://via.placeholder.com/600x400?text=No+Image"
-            }
-            alt={aboutData.title || "About Section"}
-            className="rounded-xl shadow-xl w-full object-cover"
-          />
+  src={aboutData.image ? imageSrc : "https://via.placeholder.com/600x400?text=No+Image"}
+  alt={aboutData.title || "About Section"}
+  className="rounded-xl shadow-xl w-full object-cover"
+/>
+
           <div className="absolute bottom-4 right-4 bg-orange-600 text-white text-center px-5 py-3 rounded-lg shadow-lg text-sm sm:text-base">
             <div className="text-xl sm:text-2xl font-bold">15+</div>
             <div>Years of Excellence</div>

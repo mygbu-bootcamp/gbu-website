@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-
-
 import { Search, MapPin, Briefcase, Calendar, ExternalLink } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 

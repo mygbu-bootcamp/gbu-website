@@ -3,28 +3,33 @@ import React, { useEffect, useState } from "react";
 export default function WelcomePage() {
   const [bannerData, setBannerData] = useState(null);
 
-  // Read from .env: VITE_HOST=http://147.93.105.208:8000/
   const BANNER = import.meta.env.VITE_HOST;
   const BASE = (BANNER || "").replace(/\/$/, "");
 
   useEffect(() => {
-    fetch(`${BASE}/landing/banner/`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchBannerData = async () => {
+      try {
+        const res = await fetch(`${BASE}/landing/banner/`);
+        const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
           setBannerData(data[0]);
         }
-      })
-      .catch((error) =>
-        console.error("Error fetching banner data:", error)
-      );
+      } catch (error) {
+        console.error("Error fetching banner data:", error);
+      }
+    };
+
+    fetchBannerData();
   }, [BASE]);
 
-  if (!bannerData) return <div className="text-center py-20">Loading...</div>;
+  if (!bannerData)
+    return <div className="text-center py-20">Loading...</div>;
 
-  const videoSrc = bannerData.video?.endsWith(".mp4")
-    ? `${BASE}/media/${bannerData.video}`
-    : `${BASE}/${bannerData.video}`;
+
+  const videoSrc = bannerData.video?.includes("http")
+    ? bannerData.video
+    : `${BASE}/${bannerData.video.startsWith("media") ? "" : "media/"}${bannerData.video}`;
+
 
   return (
     <>

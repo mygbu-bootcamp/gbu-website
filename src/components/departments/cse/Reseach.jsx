@@ -1,4 +1,38 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+// Custom Card components with modern glassmorphism and subtle effects
+
+const Card = ({ className = "", children }) => (
+  <div
+    className={
+      `rounded-2xl shadow-lg border border-white/20 bg-white/10 backdrop-blur-md transition-all duration-300 ${className}`
+    }
+  >
+    {children}
+  </div>
+);
+
+const CardHeader = ({ children }) => (
+  <div className="p-5 border-b border-white/10">
+    {children}
+  </div>
+);
+
+const CardTitle = ({ className = "", children }) => (
+  <h3 className={`font-semibold text-xl mb-1 ${className}`}>
+    {children}
+  </h3>
+);
+
+const CardDescription = ({ className = "", children }) => (
+  <p className={`text-gray-300 text-base ${className}`}>
+    {children}
+  </p>
+);
+
+const CardContent = ({ children }) => (
+  <div className="p-5">
+    {children}
+  </div>
+);
 import { Brain, Shield, Database, Cloud, Smartphone, Globe } from "lucide-react";
 
 const Research = () => {

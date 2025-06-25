@@ -1,13 +1,115 @@
 import { useState } from 'react';
 
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Badge } from '../../components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../components/ui/dialog';
-import { Textarea } from '../../components/ui/textarea';
-import { Label } from '../../components/ui/label';
+// Minimal UI components using Tailwind CSS, matching usage in this file
+
+export const Button = ({ children, className = '', variant, size, ...props }) => {
+  let base = "inline-flex items-center justify-center rounded-md font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-500";
+  let variants = {
+    outline: "border border-gray-300 bg-white text-gray-800 hover:bg-gray-50",
+    ghost: "bg-transparent hover:bg-gray-100 text-gray-700",
+    secondary: "bg-gray-100 text-gray-800 hover:bg-gray-200",
+    destructive: "bg-red-600 text-white hover:bg-red-700",
+    default: "bg-blue-600 text-white hover:bg-blue-700"
+  };
+  let sizes = {
+    sm: "px-3 py-1.5 text-xs",
+    md: "px-4 py-2 text-sm",
+    lg: "px-6 py-3 text-base"
+  };
+  return (
+    <button
+      className={`${base} ${variants[variant] || variants.default} ${sizes[size] || sizes.md} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export const Input = ({ className = '', ...props }) => (
+  <input
+    className={`block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${className}`}
+    {...props}
+  />
+);
+
+export const Badge = ({ children, className = '', variant, ...props }) => {
+  let base = "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold border";
+  let variants = {
+    outline: "bg-white border-gray-300 text-gray-800",
+    secondary: "bg-gray-100 border-gray-200 text-gray-700"
+  };
+  return (
+    <span className={`${base} ${variants[variant] || variants.outline} ${className}`} {...props}>
+      {children}
+    </span>
+  );
+};
+
+export const Card = ({ children, className = '', ...props }) => (
+  <div className={`bg-white rounded-lg shadow border ${className}`} {...props}>{children}</div>
+);
+export const CardHeader = ({ children, className = '', ...props }) => (
+  <div className={`p-4 border-b border-gray-100 ${className}`} {...props}>{children}</div>
+);
+export const CardTitle = ({ children, className = '', ...props }) => (
+  <h2 className={`font-semibold text-lg ${className}`} {...props}>{children}</h2>
+);
+export const CardContent = ({ children, className = '', ...props }) => (
+  <div className={`p-4 ${className}`} {...props}>{children}</div>
+);
+
+export const Select = ({ value, onValueChange, children }) => (
+  <div className="relative">{children}</div>
+);
+export const SelectTrigger = ({ children, ...props }) => (
+  <button className="w-full flex items-center justify-between border border-gray-300 rounded-md px-3 py-2 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" {...props}>
+    {children}
+  </button>
+);
+export const SelectValue = ({ placeholder }) => (
+  <span className="text-gray-500">{placeholder}</span>
+);
+export const SelectContent = ({ children }) => (
+  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg">{children}</div>
+);
+export const SelectItem = ({ value, children, ...props }) => (
+  <div className="px-4 py-2 hover:bg-blue-50 cursor-pointer" {...props} data-value={value}>
+    {children}
+  </div>
+);
+
+export const Dialog = ({ open, onOpenChange, children }) => (
+  open ? (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => onOpenChange(false)}>
+      <div className="bg-white rounded-lg shadow-lg max-w-lg w-full" onClick={e => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>
+  ) : null
+);
+export const DialogContent = ({ children, className = '', ...props }) => (
+  <div className={`p-6 ${className}`} {...props}>{children}</div>
+);
+export const DialogHeader = ({ children }) => (
+  <div className="mb-4">{children}</div>
+);
+export const DialogTitle = ({ children }) => (
+  <h3 className="text-xl font-semibold">{children}</h3>
+);
+
+export const Textarea = ({ className = '', ...props }) => (
+  <textarea
+    className={`block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${className}`}
+    {...props}
+  />
+);
+
+export const Label = ({ children, htmlFor, className = '', ...props }) => (
+  <label htmlFor={htmlFor} className={`block text-sm font-medium text-gray-700 ${className}`} {...props}>
+    {children}
+  </label>
+);
 import { toast } from '../../hooks/use-toast';
 import {
   Search, MapPin, Briefcase, Calendar,

@@ -1,4 +1,21 @@
-import { Card, CardContent,  } from '../../components/ui/Card';
+// Simple Card and CardContent components with modern UI and effects
+
+const Card = ({ children, className = '', ...props }) => (
+  <div
+    className={
+      `rounded-2xl shadow-lg bg-white/80 backdrop-blur-md border border-gray-200 hover:shadow-2xl transition-all duration-300 ${className}`
+    }
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+const CardContent = ({ children, className = '', ...props }) => (
+  <div className={`flex flex-col items-center justify-center ${className}`} {...props}>
+    {children}
+  </div>
+);
 
 const AboutSection = () => {
   const stats = [

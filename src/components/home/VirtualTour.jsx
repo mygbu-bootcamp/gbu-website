@@ -1,13 +1,42 @@
- import React from 'react'
- 
- function VirtualTour() {
-   return (
-     <div>
-       <section
+import React, { useEffect, useState } from 'react';
+
+const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
+const VIRTUAL_TOUR_API = `${BASE}/landing/virtual-experience/`;
+
+function VirtualTour() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchVirtualTourData = async () => {
+      try {
+        const response = await fetch(VIRTUAL_TOUR_API);
+        const json = await response.json();
+        if (Array.isArray(json) && json.length > 0) {
+          setData(json[0]);
+        }
+      } catch (error) {
+        console.error('Error fetching virtual tour data:', error);
+      }
+    };
+
+    fetchVirtualTourData();
+  }, []);
+
+  if (!data) {
+    return (
+      <div className="flex justify-center items-center min-h-[80vh]">
+        <p className="text-lg font-semibold">Loading virtual experience...</p>
+      </div>
+    );
+  }
+
+  return (
+    <section
       className="relative bg-cover bg-center text-white"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80')",
+        backgroundColor: data.background_color || '#000',
         minHeight: '80vh',
         display: 'flex',
         alignItems: 'center',
@@ -17,22 +46,19 @@
       }}
     >
       <div className="bg-black/50 p-6 rounded-lg max-w-3xl">
-        <h2 className="text-5xl font-extrabold mb-6">Experience GBU in 360°</h2>
-        <p className="text-lg mb-8 leading-relaxed">
-          Take an immersive 360-degree tour of our state-of-the-art facilities, beautiful campus grounds, 
-          and modern infrastructure. Explore every corner of our world-class university from anywhere in the world.
-        </p>
-        <button
-          size="lg"
-          className="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full"
+        <h2 className="text-5xl font-extrabold mb-6">{data.title}</h2>
+        <p className="text-lg mb-8 leading-relaxed">{data.desc}</p>
+        <a
+          href={data.video_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full inline-block"
         >
-          Start 360° Virtual Tour
-        </button>
+          {data.button1_text}
+        </a>
       </div>
     </section>
-     </div>
-   )
- }
- 
- export default VirtualTour
- 
+  );
+}
+
+export default VirtualTour;
