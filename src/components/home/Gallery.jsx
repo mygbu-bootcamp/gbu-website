@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function CampusGallery() {
   const [galleryData, setGalleryData] = useState([]);
@@ -11,9 +12,8 @@ export default function CampusGallery() {
   useEffect(() => {
     const fetchGalleryData = async () => {
       try {
-        const res = await fetch(API_URL);
-        const json = await res.json();
-        setGalleryData(json);
+        const res = await axios.get(API_URL);
+        setGalleryData(res.data);
       } catch (err) {
         console.error('Error fetching campus gallery:', err);
       }

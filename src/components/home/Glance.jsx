@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Glance = () => {
   const [counts, setCounts] = useState([]);
@@ -18,8 +19,8 @@ const Glance = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
+        const res = await axios.get(API_URL);
+        const data = res.data;
         if (data.length === 0) return;
 
         const item = data[0];

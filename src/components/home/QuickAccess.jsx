@@ -4,6 +4,7 @@ import {
   Landmark, BookOpenCheck, Briefcase, Users, Building, University
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 // Mapping backend icon strings to Lucide icons
 const iconMap = {
@@ -25,8 +26,8 @@ const QuickAccess = () => {
   useEffect(() => {
     const fetchQuickAccess = async () => {
       try {
-        const res = await fetch(`${BASE}/landing/quick-access`);
-        const data = await res.json();
+        const res = await axios.get(`${BASE}/landing/quick-access`);
+        const data = res.data;
         if (Array.isArray(data)) {
           setItems(data);
           if (data.length > 0 && data[0].title) {
