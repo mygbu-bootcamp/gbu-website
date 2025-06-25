@@ -40,7 +40,7 @@ const Primarynavbar = () => {
             <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Recruitments
             </a>
-            <a href="https://gbu-facility-bookings-39.lovable.app/" className="hover:underline">Booking</a>
+            <a href="mygbu-smart-booking.vercel.app" className="hover:underline">Booking</a>
             <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Info size={14} /> RTI
             </a>
@@ -52,7 +52,7 @@ const Primarynavbar = () => {
             <a href="https://preview--fee-wise-campus-pay.lovable.app/" className="flex items-center gap-1 hover:underline">
               <CreditCard size={14} /> Online Fee Payment
             </a>
-            <a href="https://uni-spark-dashboard.lovable.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://dashboard-roan-two-92.vercel.app/" className="flex items-center gap-1 hover:underline">
               <User size={14} /> Student Portal
             </a>
             <a href="https://mygbu-faculty-nexus-3d.lovable.app/" className="flex items-center gap-1 hover:underline">
