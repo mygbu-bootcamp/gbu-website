@@ -64,7 +64,7 @@ export default function CampusGallery() {
 
         <div className="text-center mb-6 sm:mb-8 lg:mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 mb-2">
-            Event Gallery
+            Ongoing Events
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
         </div>
