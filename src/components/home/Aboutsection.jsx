@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const BASE_URL = import.meta.env.VITE_HOST || "";
 
@@ -8,8 +9,8 @@ export default function AboutSection() {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/landing/about/`);
-        const data = await res.json();
+        const res = await axios.get(`${BASE_URL}/landing/about/`);
+        const data = res.data;
         console.log("Fetched aboutData:", data);
         setAboutData(data[0]); // ✅ first object from array
       } catch (error) {
@@ -23,9 +24,8 @@ export default function AboutSection() {
   if (!aboutData) return <div className="text-center py-10">Loading...</div>;
 
   const imageSrc = aboutData.image?.includes("http")
-  ? aboutData.image
-  : `${BASE_URL}/${aboutData.image.startsWith("media") ? "" : "media/"}${aboutData.image}`;
-
+    ? aboutData.image
+    : `${BASE_URL}/${aboutData.image.startsWith("media") ? "" : "media/"}${aboutData.image}`;
 
   return (
     <div className="bg-white py-12 px-6 sm:py-16 sm:px-10 md:px-20">
@@ -67,10 +67,10 @@ export default function AboutSection() {
         {/* Right Image */}
         <div className="md:w-1/2 relative flex justify-center">
           <img
-  src={aboutData.image ? imageSrc : "https://via.placeholder.com/600x400?text=No+Image"}
-  alt={aboutData.title || "About Section"}
-  className="rounded-xl shadow-xl w-full object-cover"
-/>
+            src={aboutData.image ? imageSrc : "https://via.placeholder.com/600x400?text=No+Image"}
+            alt={aboutData.title || "About Section"}
+            className="rounded-xl shadow-xl w-full object-cover"
+          />
 
           <div className="absolute bottom-4 right-4 bg-orange-600 text-white text-center px-5 py-3 rounded-lg shadow-lg text-sm sm:text-base">
             <div className="text-xl sm:text-2xl font-bold">15+</div>

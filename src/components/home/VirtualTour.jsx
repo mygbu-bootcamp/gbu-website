@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
 const VIRTUAL_TOUR_API = `${BASE}/landing/virtual-experience/`;
@@ -9,8 +10,8 @@ function VirtualTour() {
   useEffect(() => {
     const fetchVirtualTourData = async () => {
       try {
-        const response = await fetch(VIRTUAL_TOUR_API);
-        const json = await response.json();
+        const response = await axios.get(VIRTUAL_TOUR_API);
+        const json = response.data;
         if (Array.isArray(json) && json.length > 0) {
           setData(json[0]);
         }

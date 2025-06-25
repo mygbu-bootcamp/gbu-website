@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function CampusLifeSection() {
   const [testimonials, setTestimonials] = useState([]);
@@ -9,8 +10,8 @@ export default function CampusLifeSection() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch(CAMPUS_LIFE_API);
-        const data = await response.json();
+        const response = await axios.get(CAMPUS_LIFE_API);
+        const data = response.data;
         if (Array.isArray(data)) {
           setTestimonials(data);
         }
@@ -48,7 +49,6 @@ export default function CampusLifeSection() {
               <div className="relative h-3/5">
                 <img
                   src={item.image}
-
                   alt={category}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
