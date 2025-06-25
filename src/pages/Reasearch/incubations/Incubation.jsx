@@ -3,7 +3,7 @@ import Focus from "./Focus";
 import Services from "./Services";
 import StartupsCarousel from "./StartupsCarousel";
 
-import StartUp from "../StartUp";
+import StartUp from "./StartUp";
 
 
 

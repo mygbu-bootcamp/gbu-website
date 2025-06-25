@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-
-
 import { Search, MapPin, Briefcase, Calendar, ExternalLink } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -53,9 +51,10 @@ const Input = ({ className = "", ...props }) => (
 );
 
 // Mocked Select components for filtering
-const Select = ({ value, onValueChange, children }) => {
-  return <div>{children({ value, onValueChange })}</div>;
+ const Select = ({ children }) => {
+  return <div>{children}</div>;
 };
+
 const SelectTrigger = ({ children }) => (
   <div className="border px-3 py-2 rounded text-gray-600 bg-white cursor-pointer">{children}</div>
 );

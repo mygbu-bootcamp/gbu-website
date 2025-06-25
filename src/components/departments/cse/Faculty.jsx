@@ -1,5 +1,43 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/Card";
+// Custom Card components with modern UI and subtle effects
+
+const Card = ({ children, className = "", ...props }) => (
+  <div
+    className={
+      `rounded-2xl bg-white border border-gray-200 shadow-md transition-all duration-300 ${className}`
+    }
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+const CardHeader = ({ children, className = "", ...props }) => (
+  <div
+    className={`px-6 pt-6 pb-2 bg-gradient-to-r from-gray-50 via-white to-gray-100 rounded-t-2xl ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+const CardTitle = ({ children, className = "", ...props }) => (
+  <h3
+    className={`font-semibold text-lg md:text-xl tracking-tight ${className}`}
+    {...props}
+  >
+    {children}
+  </h3>
+);
+
+const CardContent = ({ children, className = "", ...props }) => (
+  <div
+    className={`px-6 pb-6 pt-2 ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
 import { Mail, BookOpen, Award } from "lucide-react";
 
 const Faculty = () => {
