@@ -78,6 +78,10 @@ export default function ExcellenceSection() {
   };
 
 
+  const EDU = import.meta.env.VITE_HOST;
+  const BASE = (EDU).replace(/\/$/, "");
+
+
   return (
     <div className="relative bg-gray-50 overflow-hidden">
       {/* Animated Background Elements */}

@@ -1,5 +1,6 @@
- import React from 'react';
+import React from 'react';
 import { ArrowRight, Code, Cpu, Database } from "lucide-react";
+
 // Custom Button component with gradient and outline variants
 const Button = ({
   children,
@@ -30,6 +31,7 @@ const Button = ({
   return (
     <button
       className={`${base} ${sizes[size] || sizes.md} ${variantClass} ${className}`}
+
       {...props}
     >
       {children}
@@ -75,7 +77,7 @@ const HeroSection = () => {
               Explore Programs
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+            <Button variant="outline" size="lg">
               Research Areas
             </Button>
           </div>

@@ -1,3 +1,4 @@
+
 // Custom Card components with modern UI, shadow, and smooth transitions
 
 const Card = ({ className = "", children, ...props }) => (
@@ -28,7 +29,29 @@ const CardContent = ({ className = "", children, ...props }) => (
     {children}
   </div>
 );
+
 import { Phone, Mail, MapPin, Clock, User, Building } from "lucide-react";
+
+const Card = ({ children, className = "" }) => (
+  <div className={`bg-white rounded-xl shadow-lg border ${className}`}>{children}</div>
+);
+
+const CardHeader = ({ children, className = "" }) => (
+  <div className={`p-6 border-b ${className}`}>{children}</div>
+);
+
+const CardTitle = ({ children, className = "" }) => (
+  <h3 className={`text-xl font-bold text-foreground ${className}`}>{children}</h3>
+);
+
+const CardDescription = ({ children, className = "" }) => (
+  <p className={`text-muted-foreground text-sm ${className}`}>{children}</p>
+);
+
+const CardContent = ({ children, className = "" }) => (
+  <div className={`p-6 ${className}`}>{children}</div>
+);
+
 
 const Contact = () => {
   const departments = [

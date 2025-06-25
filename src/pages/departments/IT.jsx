@@ -1,4 +1,5 @@
 
+
 // Custom Card, CardHeader, CardTitle, CardDescription, CardContent, and Button components
 
 const Card = ({ className = "", children, ...props }) => (
@@ -63,136 +64,57 @@ const Button = ({
     </button>
   );
 };
+
 import { Users, Award, BookOpen, Lightbulb, Globe, Server, Smartphone, Shield, GraduationCap, Brain, Code, Trophy, Star, User, Medal, Target } from "lucide-react";
 
+const Card = ({ children, className = "" }) => (
+  <div className={`bg-white rounded-xl shadow-lg border ${className}`}>{children}</div>
+);
+
+const CardHeader = ({ children, className = "" }) => (
+  <div className={`p-6 border-b ${className}`}>{children}</div>
+);
+
+const CardTitle = ({ children, className = "" }) => (
+  <h3 className={`text-xl font-bold text-foreground ${className}`}>{children}</h3>
+);
+
+const CardDescription = ({ children, className = "" }) => (
+  <p className={`text-muted-foreground text-sm ${className}`}>{children}</p>
+);
+
+const CardContent = ({ children, className = "" }) => (
+  <div className={`p-6 ${className}`}>{children}</div>
+);
+
+
+const Button = ({ children, variant = "default", size = "md", className = "", ...props }) => {
+  const baseStyle = "inline-flex items-center justify-center font-medium rounded-lg transition duration-300";
+
+  const sizeStyles = {
+    sm: "px-3 py-1.5 text-sm",
+    md: "px-4 py-2 text-base",
+    lg: "px-6 py-3 text-lg",
+  };
+
+  const variantStyles = {
+    default: "bg-emerald-600 text-white hover:bg-emerald-700",
+    outline: "border border-emerald-300 text-emerald-700 hover:bg-emerald-50",
+    ghost: "text-emerald-700 hover:bg-emerald-100",
+  };
+
+  return (
+    <button
+      className={`${baseStyle} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+
 const IT = () => {
-  const stats = [
-    { icon: Users, label: "Students", value: "700+", color: "bg-emerald-600" },
-    { icon: GraduationCap, label: "Faculty", value: "40+", color: "bg-teal-600" },
-    { icon: Brain, label: "Research Projects", value: "100+", color: "bg-cyan-600" },
-    { icon: Trophy, label: "Patents Filed", value: "20+", color: "bg-blue-600" },
-  ];
-
-  const programs = [
-    {
-      title: "B.Tech Information Technology",
-      duration: "4 Years",
-      intake: "120 Students",
-      description: "Comprehensive program covering software development, web technologies, and information systems.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=400&q=80",
-      gradient: "from-emerald-600 to-teal-600",
-      curriculum: [
-        "Data Structures & Algorithms",
-        "Web Development (Full Stack)",
-        "Database Management Systems",
-        "Software Engineering",
-        "Computer Networks",
-        "Information Security",
-        "Mobile App Development",
-        "Cloud Computing"
-      ]
-    },
-    {
-      title: "M.Tech Information Technology",
-      duration: "2 Years",
-      intake: "50 Students",
-      description: "Advanced program with specializations in software engineering, data analytics, and IT management.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80",
-      gradient: "from-teal-600 to-cyan-600",
-      curriculum: [
-        "Advanced Software Engineering",
-        "Big Data Analytics",
-        "Machine Learning",
-        "DevOps & Automation",
-        "Enterprise Architecture",
-        "IT Project Management",
-        "Research Methodology",
-        "Dissertation Project"
-      ]
-    }
-  ];
-
-  const researchAreas = [
-    {
-      title: "Data Science & Analytics",
-      description: "Advanced research in machine learning, data mining, and predictive analytics for business intelligence.",
-      icon: Brain,
-      projects: ["Predictive Healthcare Analytics", "Financial Data Mining", "Social Media Sentiment Analysis"],
-      color: "text-emerald-600"
-    },
-    {
-      title: "Web Technologies",
-      description: "Modern web development frameworks, progressive web apps, and user experience research.",
-      icon: Globe,
-      projects: ["Progressive Web Applications", "Real-time Web Systems", "Accessibility Research"],
-      color: "text-teal-600"
-    },
-    {
-      title: "Cloud Computing",
-      description: "Distributed systems, serverless computing, and cloud-native application development.",
-      icon: Server,
-      projects: ["Microservices Architecture", "Serverless Computing", "Container Orchestration"],
-      color: "text-cyan-600"
-    },
-    {
-      title: "Mobile Computing",
-      description: "Cross-platform mobile development, IoT integration, and mobile security research.",
-      icon: Smartphone,
-      projects: ["Cross-Platform Mobile Apps", "IoT Mobile Integration", "Mobile Security Frameworks"],
-      color: "text-blue-600"
-    }
-  ];
-
-  const topAchievers = [
-    {
-      name: "Arjun Kumar",
-      year: "B.Tech IT 2024",
-      achievement: "Microsoft Student Partner, Full Stack Developer Intern at Google",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80",
-      skills: ["React", "Node.js", "Azure", "Machine Learning"]
-    },
-    {
-      name: "Priya Sharma",
-      year: "M.Tech IT 2023",
-      achievement: "Best Research Paper Award, Published 5 papers in international journals",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b8cc?auto=format&fit=crop&w=300&q=80",
-      skills: ["Data Science", "Python", "TensorFlow", "Research"]
-    },
-    {
-      name: "Rahul Singh",
-      year: "B.Tech IT 2024",
-      achievement: "Winner of Smart India Hackathon 2023, Founder of tech startup",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-      skills: ["Mobile Development", "Entrepreneurship", "UI/UX", "Leadership"]
-    }
-  ];
-
-  const achievements = [
-    {
-      title: "ACM Student Chapter",
-      description: "Largest ACM chapter with 300+ members",
-      icon: Award,
-      color: "text-emerald-600"
-    },
-    {
-      title: "Open Source Projects",
-      description: "200+ student-led projects on GitHub",
-      icon: Code,
-      color: "text-teal-600"
-    },
-    {
-      title: "Tech Partnerships",
-      description: "Collaborations with major IT companies",
-      icon: Lightbulb,
-      color: "text-cyan-600"
-    },
-    {
-      title: "Career Success",
-      description: "98% placement rate in top IT firms",
-      icon: GraduationCap,
-      color: "text-blue-600"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -555,3 +477,130 @@ const IT = () => {
 };
 
 export default IT;
+  const stats = [
+    { icon: Users, label: "Students", value: "700+", color: "bg-emerald-600" },
+    { icon: GraduationCap, label: "Faculty", value: "40+", color: "bg-teal-600" },
+    { icon: Brain, label: "Research Projects", value: "100+", color: "bg-cyan-600" },
+    { icon: Trophy, label: "Patents Filed", value: "20+", color: "bg-blue-600" },
+  ];
+
+  const programs = [
+    {
+      title: "B.Tech Information Technology",
+      duration: "4 Years",
+      intake: "120 Students",
+      description: "Comprehensive program covering software development, web technologies, and information systems.",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=400&q=80",
+      gradient: "from-emerald-600 to-teal-600",
+      curriculum: [
+        "Data Structures & Algorithms",
+        "Web Development (Full Stack)",
+        "Database Management Systems",
+        "Software Engineering",
+        "Computer Networks",
+        "Information Security",
+        "Mobile App Development",
+        "Cloud Computing"
+      ]
+    },
+    {
+      title: "M.Tech Information Technology",
+      duration: "2 Years",
+      intake: "50 Students",
+      description: "Advanced program with specializations in software engineering, data analytics, and IT management.",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80",
+      gradient: "from-teal-600 to-cyan-600",
+      curriculum: [
+        "Advanced Software Engineering",
+        "Big Data Analytics",
+        "Machine Learning",
+        "DevOps & Automation",
+        "Enterprise Architecture",
+        "IT Project Management",
+        "Research Methodology",
+        "Dissertation Project"
+      ]
+    }
+  ];
+
+  const researchAreas = [
+    {
+      title: "Data Science & Analytics",
+      description: "Advanced research in machine learning, data mining, and predictive analytics for business intelligence.",
+      icon: Brain,
+      projects: ["Predictive Healthcare Analytics", "Financial Data Mining", "Social Media Sentiment Analysis"],
+      color: "text-emerald-600"
+    },
+    {
+      title: "Web Technologies",
+      description: "Modern web development frameworks, progressive web apps, and user experience research.",
+      icon: Globe,
+      projects: ["Progressive Web Applications", "Real-time Web Systems", "Accessibility Research"],
+      color: "text-teal-600"
+    },
+    {
+      title: "Cloud Computing",
+      description: "Distributed systems, serverless computing, and cloud-native application development.",
+      icon: Server,
+      projects: ["Microservices Architecture", "Serverless Computing", "Container Orchestration"],
+      color: "text-cyan-600"
+    },
+    {
+      title: "Mobile Computing",
+      description: "Cross-platform mobile development, IoT integration, and mobile security research.",
+      icon: Smartphone,
+      projects: ["Cross-Platform Mobile Apps", "IoT Mobile Integration", "Mobile Security Frameworks"],
+      color: "text-blue-600"
+    }
+  ];
+
+  const topAchievers = [
+    {
+      name: "Arjun Kumar",
+      year: "B.Tech IT 2024",
+      achievement: "Microsoft Student Partner, Full Stack Developer Intern at Google",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80",
+      skills: ["React", "Node.js", "Azure", "Machine Learning"]
+    },
+    {
+      name: "Priya Sharma",
+      year: "M.Tech IT 2023",
+      achievement: "Best Research Paper Award, Published 5 papers in international journals",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b8cc?auto=format&fit=crop&w=300&q=80",
+      skills: ["Data Science", "Python", "TensorFlow", "Research"]
+    },
+    {
+      name: "Rahul Singh",
+      year: "B.Tech IT 2024",
+      achievement: "Winner of Smart India Hackathon 2023, Founder of tech startup",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      skills: ["Mobile Development", "Entrepreneurship", "UI/UX", "Leadership"]
+    }
+  ];
+
+  const achievements = [
+    {
+      title: "ACM Student Chapter",
+      description: "Largest ACM chapter with 300+ members",
+      icon: Award,
+      color: "text-emerald-600"
+    },
+    {
+      title: "Open Source Projects",
+      description: "200+ student-led projects on GitHub",
+      icon: Code,
+      color: "text-teal-600"
+    },
+    {
+      title: "Tech Partnerships",
+      description: "Collaborations with major IT companies",
+      icon: Lightbulb,
+      color: "text-cyan-600"
+    },
+    {
+      title: "Career Success",
+      description: "98% placement rate in top IT firms",
+      icon: GraduationCap,
+      color: "text-blue-600"
+    }
+  ];
