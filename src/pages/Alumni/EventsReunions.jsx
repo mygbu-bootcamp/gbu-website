@@ -1,9 +1,147 @@
 
-import { useState } from 'react';
+import React, {useState } from 'react';
 
 import { Calendar, MapPin, Users, Clock, Camera, Plus, Heart, Star } from 'lucide-react';
 import { toast } from '../../hooks/use-toast';
+// Minimal Select component implementation for usage in this file
+// Minimal Dialog component implementation for usage in this file
+const Dialog = ({ open, onOpenChange, children }) => {
+  if (!open) return null;
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40"
+      onClick={() => onOpenChange(false)}
+    >
+      <div
+        className="bg-white rounded-lg shadow-lg max-w-full"
+        onClick={e => e.stopPropagation()}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
 
+const DialogContent = ({ children, className = "" }) => (
+  <div className={`p-6 ${className}`}>{children}</div>
+);
+
+const DialogHeader = ({ children }) => (
+  <div className="mb-4">{children}</div>
+);
+
+const DialogTitle = ({ children }) => (
+  <h2 className="text-xl font-bold text-gray-900">{children}</h2>
+);
+
+
+const Select = ({ value, onValueChange, children }) => {
+  const [open, setOpen] = useState(false);
+  const handleSelect = (val) => {
+    onValueChange(val);
+    setOpen(false);
+  };
+  // Find SelectTrigger and SelectContent children and clone with props
+  let trigger = null;
+  let content = null;
+  React.Children.forEach(children, (child) => {
+    if (child && child.type === SelectTrigger) {
+      trigger = React.cloneElement(child, {
+        onClick: () => setOpen((o) => !o),
+        value,
+        open,
+      });
+    } else if (child && child.type === SelectContent) {
+      content = open
+        ? React.cloneElement(child, { onSelect: handleSelect, value })
+        : null;
+    }
+  });
+  return (
+    <div className="relative">
+      {trigger}
+      {content}
+    </div>
+  );
+};
+
+const SelectTrigger = ({ children, onClick, value, open }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`w-full border border-gray-300 rounded-md px-4 py-2 text-sm bg-white flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+      open ? "ring-2 ring-blue-500" : ""
+    }`}
+  >
+    {children}
+    <span className="ml-2 text-gray-400">{open ? "▲" : "▼"}</span>
+  </button>
+);
+
+const SelectContent = ({ children, onSelect }) => (
+  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+    {React.Children.map(children, (child) =>
+      child && child.type === SelectItem
+        ? React.cloneElement(child, { onSelect })
+        : child
+    )}
+  </div>
+);
+
+const SelectItem = ({ value, children, onSelect }) => (
+  <div
+    className="px-4 py-2 cursor-pointer hover:bg-blue-50 text-sm"
+    onClick={() => onSelect(value)}
+    tabIndex={0}
+    role="option"
+    aria-selected="false"
+  >
+    {children}
+  </div>
+);
+
+const SelectValue = ({ placeholder }) => (
+  <span className="text-gray-700">{placeholder}</span>
+);
+ // Tabs components (minimal implementation)
+const Tabs = ({ defaultValue, children, className }) => {
+  const [value, setValue] = useState(defaultValue);
+  // Find all TabsTrigger and TabsContent children and clone them with props
+  const triggers = [];
+  const contents = [];
+  React.Children.forEach(children, child => {
+    if (child && child.type === TabsList) {
+      triggers.push(React.cloneElement(child, { value, setValue }));
+    } else if (child && child.type === TabsContent) {
+      contents.push(React.cloneElement(child, { value }));
+    }
+  });
+  return <div className={className}>{triggers}{contents}</div>;
+};
+
+const TabsList = ({ children, value, setValue, className }) => (
+  <div className={className}>
+    {React.Children.map(children, child =>
+      React.cloneElement(child, { value, setValue })
+    )}
+  </div>
+);
+
+const TabsTrigger = ({ value: tabValue, setValue, value, children, className }) => (
+  <button
+    type="button"
+    className={`${className} ${tabValue === value ? 'bg-blue-100 font-bold' : ''}`}
+    onClick={() => setValue(tabValue)}
+  >
+    {children}
+  </button>
+);
+
+const TabsContent = ({ value, children, value: tabValue, className }) => {
+  // tabValue is the value prop on TabsContent, value is the current selected
+  if (tabValue !== value) return null;
+  return <div className={className}>{children}</div>;
+};
 // Sample events data
 
   const Input = ({ id, ...props }) => (
