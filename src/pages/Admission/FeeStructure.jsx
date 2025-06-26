@@ -288,9 +288,16 @@ const FeeCard = ({ course }) => (
 const FeeStructure = () => {
   return (
     <div className="min-h-screen bg-gray-50">
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl font-bold mb-6 animate-fade-in">Fee Structure & Prospectus</h1>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in">
+              Complete fee details, payment options, and downloadable prospectus
+            </p>
+          </div>
+        </section>
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Fee Structure & Prospectus</h1>
-        <p className="text-xl text-gray-600 mb-8">Complete fee details, payment options, and downloadable prospectus</p>
+        
 
         <Card className="mb-8 border-l-4 border-blue-500 bg-blue-50">
           <CardContent className="p-6">

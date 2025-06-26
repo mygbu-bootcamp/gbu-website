@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   User,
@@ -55,12 +55,14 @@ const Navbar = () => {
         "chancellor-message",
         "vice-chancellor-message",
         "governance-committees",
-        "strategic-perspective",
+
         "policies-statutes-rti",
         "mandatory-disclosures",
-        "media-coverage",
+
       ].map((slug) => (
-        <Link to={`/about-us/${slug}`} key={slug}>{slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())}</Link>
+        <Link to={`/about-us/${slug}`} key={slug}>
+          {slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+        </Link>
       )),
     },
     {
@@ -68,14 +70,20 @@ const Navbar = () => {
       label: "Academics",
       icon: <GraduationCap size={16} />,
       items: [
+        ["schools", "Schools & Departments"],
+        ["faculty", "Faculty Directory"],
         ["academic-calendar", "Academic Calendar & Regulations"],
         ["cbcs-framework", "CBCS Curriculum Framework"],
-        ["faculty", "Faculty Directory"],
+        
         ["centers-of-excellence", "Centers of Excellence"],
         ["international-collaboration", "International Collaboration"],
         ["reports-publications", "Reports & Publications"],
         ["schools", "Schools & Departments"],
-      ].map(([slug, text]) => <Link to={`/academics/${slug}`} key={slug}>{text}</Link>),
+      ].map(([slug, text]) => (
+        <Link to={`/academics/${slug}`} key={slug}>
+          {text}
+        </Link>
+      )),
     },
     {
       key: "admissions",
@@ -87,19 +95,27 @@ const Navbar = () => {
         ["eligibility-reservation", "Eligibility & Reservation"],
         ["fee-structure-prospectus", "Fee Structure & Prospectus"],
         ["international-admissions", "International Admissions"],
-      ].map(([slug, text]) => <Link to={`/admissions/${slug}`} key={slug}>{text}</Link>),
+      ].map(([slug, text]) => (
+        <Link to={`/admissions/${slug}`} key={slug}>
+          {text}
+        </Link>
+      )),
     },
     {
       key: "research",
       label: "Research",
       icon: <BookOpen size={16} />,
       items: [
-         ["research-centers", "Center of Excellence and Labs"],
+        ["research-centers", "Center of Excellence and Labs"],
         ["publications-patents", "Publications, Patents and Projects"],
         ["incubation", "GBU Incubation Cell"],
-           ["institution-innovation", "Institution and Innovation"],
+        ["institution-innovation", "Institution and Innovation"],
         ["ipr-cell", "IPR Cell"],
-      ].map(([slug, text]) => <Link to={`/research/${slug}`} key={slug}>{text}</Link>),
+      ].map(([slug, text]) => (
+        <Link to={`/research/${slug}`} key={slug}>
+          {text}
+        </Link>
+      )),
     },
     {
       key: "campus",
@@ -113,7 +129,11 @@ const Navbar = () => {
         ["meditation-center", "Meditation Centre"],
         ["NSS", "National Service Scheme (NSS)"],
         ["NCC", "National Cadet Corps (NCC)"],
-      ].map(([slug, text]) => <Link to={`/campus-life/${slug}`} key={slug}>{text}</Link>),
+      ].map(([slug, text]) => (
+        <Link to={`/campus-life/${slug}`} key={slug}>
+          {text}
+        </Link>
+      )),
     },
     {
       key: "announcements",
@@ -121,12 +141,16 @@ const Navbar = () => {
       icon: <Camera size={16} />,
       items: [
         ["news-notifications", "News & Updates"],
-        ["event-calendar", "Event Calendar"],
-        ["notices", "Notices"],
+        ["event-calendar", "Upcoming Events"],
+        ["notices", "Notices & Circular"],
         ["press-releases", "Press Releases"],
         ["media-gallery", "Media Gallery"],
         ["newsletter", "Newsletter"],
-      ].map(([slug, text]) => <Link to={`/announcements/${slug}`} key={slug}>{text}</Link>),
+      ].map(([slug, text]) => (
+        <Link to={`/announcements/${slug}`} key={slug}>
+          {text}
+        </Link>
+      )),
     },
     {
       key: "placements",
@@ -141,9 +165,13 @@ const Navbar = () => {
       items: [
         ["alumni-network", "Alumni Network"],
         ["alumni-events", "Alumni Events"],
-        ["alumni-achievements", "Alumni Achievements"],
+
         ["become-mentor", "Become a Mentor"],
-      ].map(([slug, text]) => <Link to={`/alumni/${slug}`} key={slug}>{text}</Link>),
+      ].map(([slug, text]) => (
+        <Link to={`/alumni/${slug}`} key={slug}>
+          {text}
+        </Link>
+      )),
     },
   ];
 
@@ -151,7 +179,10 @@ const Navbar = () => {
     if (path) {
       return (
         <li key={menuKey}>
-          <Link to={path} className="flex items-center gap-1 hover:text-red-600">
+          <Link
+            to={path}
+            className="flex items-center gap-1 hover:text-red-600"
+          >
             {icon} {label}
           </Link>
         </li>
@@ -169,7 +200,9 @@ const Navbar = () => {
         <button
           type="button"
           onClick={() => toggleMenu(menuKey)}
-          className={`flex items-center gap-1 cursor-pointer ${openMenu === menuKey ? "text-red-600" : "hover:text-red-600"}`}
+          className={`flex items-center gap-1 cursor-pointer ${
+            openMenu === menuKey ? "text-red-600" : "hover:text-red-600"
+          }`}
         >
           {icon}
           {label} ▾
@@ -192,9 +225,11 @@ const Navbar = () => {
   };
 
   return (
+
     <nav className="bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between relative z-50">
       <div className="flex items-center space-x-3 cursor-pointer" onClick={() => (window.location.href = "/")}>
-        <img src="/assets/logo.png" alt="GBU Logo" className="w-64 h-12 mr-3" />
+        <img src="/assets/logo.svg" alt="GBU Logo" className="w-96 h-16 mr-3" />
+
       </div>
 
       {/* Hamburger Menu */}
@@ -203,8 +238,18 @@ const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="text-gray-700 focus:outline-none"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
       </div>
@@ -239,8 +284,14 @@ const Navbar = () => {
                       onClick={() => toggleMobileMenu(key)}
                       className="w-full flex justify-between items-center py-2 px-2 text-left hover:text-blue-600"
                     >
-                      <span className="flex items-center gap-2">{icon} {label}</span>
-                      {mobileOpenMenus[key] ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                      <span className="flex items-center gap-2">
+                        {icon} {label}
+                      </span>
+                      {mobileOpenMenus[key] ? (
+                        <ChevronUp size={18} />
+                      ) : (
+                        <ChevronDown size={18} />
+                      )}
                     </button>
                     {mobileOpenMenus[key] && (
                       <ul className="pl-6 flex flex-col gap-1 mt-1">

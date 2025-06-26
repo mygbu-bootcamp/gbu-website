@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React, { useState } from "react"; 
 import {
   Send,
   Info,
@@ -18,7 +18,10 @@ const Primarynavbar = () => {
 
   return (
     <nav
-      className="bg-gradient-to-r from-green-600 via-teal-600 to-blue-700 text-white text-sm relative"
+
+      className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 text-white text-sm relative"
+
+
       role="navigation"
       aria-label="Primary navigation"
     >
@@ -40,7 +43,7 @@ const Primarynavbar = () => {
             <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Recruitments
             </a>
-            <a href="https://gbu-facility-bookings-39.lovable.app/" className="hover:underline">Booking</a>
+            <a href="https://mygbu-smart-booking.vercel.app" className="hover:underline">Booking</a>
             <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Info size={14} /> RTI
             </a>
@@ -53,14 +56,11 @@ const Primarynavbar = () => {
             <a href="https://preview--fee-wise-campus-pay.lovable.app/" className="flex items-center gap-1 hover:underline">
               <CreditCard size={14} /> Online Fee Payment
             </a>
-            <a href="https://uni-spark-dashboard.lovable.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://mygbu-student.vercel.app/" className="flex items-center gap-1 hover:underline">
               <User size={14} /> Student Portal
             </a>
-            <a href="https://mygbu-faculty-nexus-3d.lovable.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://mygbu-faculty-smart-dashboard.lovable.app/" className="flex items-center gap-1 hover:underline">
               <LogIn size={14} /> Employee Login
-            </a>
-            <a href="https://buddha-directory-glide-28.lovable.app" className="flex items-center gap-1 hover:underline">
-              <Map size={14} /> Directory
             </a>
 
             <Link
@@ -69,6 +69,10 @@ const Primarynavbar = () => {
             >
               <Map size={14} /> Grievance Portal
             </Link>
+            <a href="https://buddha-directory-glide-28.lovable.app" className="flex items-center gap-1 hover:underline">
+              <Map size={14} /> Directory
+            </a>
+
 
             <a href="http://gbu-contact-hub-banner.vercel.app" className="flex items-center gap-1 hover:underline">
               <Phone size={14} /> Contact Us

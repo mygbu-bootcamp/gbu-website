@@ -35,22 +35,23 @@ export default function CampusLifeSection() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6">
         {testimonials.map((item, index) => {
-          const [categoryRaw, quoteRaw] = item.card_content.split('-');
+          // Split only on the first hyphen to allow hyphens in the quote
+          const [categoryRaw, ...quoteParts] = item.card_content.split('-');
           const category = categoryRaw?.trim() || '';
-          const quote = quoteRaw?.replace(/^["\s]+|["\s]+$/g, '') || '';
+          const quote = quoteParts.join('-').replace(/^["\s]+|["\s]+$/g, '') || '';
 
           return (
             <div
               key={index}
               tabIndex={0}
-              className="bg-white rounded-lg shadow hover:shadow-xl focus:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 hover:-translate-y-2 outline-none cursor-pointer overflow-hidden group w-full max-w-sm mx-auto"
+              className="bg-white rounded-lg shadow hover:shadow-xl focus:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 hover:-translate-y-2 outline-none cursor-pointer overflow-hidden group w-full h-[25rem] max-w-sm mx-auto"
               style={{ aspectRatio: '1/1' }}
             >
-              <div className="relative h-3/5">
+              <div className="relative h-2/5">
                 <img
                   src={item.image}
                   alt={category}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -58,9 +59,9 @@ export default function CampusLifeSection() {
                   {category}
                 </span>
               </div>
-              <div className="p-3 sm:p-4 h-2/5 flex flex-col justify-between">
+              <div className="p-3 sm:p-4 h-3/5 flex flex-col justify-between">
                 <p className="italic text-gray-700 leading-tight text-xs sm:text-sm transform transition-transform duration-300 group-hover:translate-x-1 overflow-hidden">
-                  "{quote.length > 80 ? quote.slice(0, 80) + '...' : quote}"
+                  "{quote.length > 500 ? quote.slice(0, 500) + '...' : quote}"
                 </p>
                 <p className="text-blue-800 font-semibold text-xs sm:text-sm transform transition-all duration-300 group-hover:text-indigo-600 group-hover:translate-x-1 mt-2">
                   {item.name}
