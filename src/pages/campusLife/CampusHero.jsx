@@ -19,22 +19,7 @@ const Button = ({ children, className = '', variant = 'default', ...props }) => 
 };
 
 const CampusHero = () => {
-<<<<<<< main
-  const [slides, setSlides] = useState([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${import.meta.env.VITE_HOST}campuslife/campus-hero/`);
-        setSlides(res.data);
-      } catch (err) {
-        console.error("Error fetching campus hero data:", err);
-      }
-    };
-
-    fetchData();
-=======
   const [heroData, setHeroData] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -52,7 +37,7 @@ const CampusHero = () => {
     };
 
     fetchHeroData();
->>>>>>> main
+
   }, []);
 
   useEffect(() => {
@@ -61,22 +46,7 @@ const CampusHero = () => {
     }, 5000);
 
     return () => clearInterval(timer);
-<<<<<<< main
-  }, [slides]);
 
-  const scrollToTour = (url) => {
-    if (url) {
-      window.open(url, "_blank");
-    } else {
-      const element = document.querySelector('#campus-tour');
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  if (slides.length === 0) return null;
-
-  const current = slides[currentSlide];
-=======
   }, [heroData.length]);
 
   const scrollToTour = () => {
@@ -87,7 +57,7 @@ const CampusHero = () => {
   };
 
   if (heroData.length === 0) return null;
->>>>>>> main
+
 
   return (
     <section id="home" className="relative h-screen overflow-hidden">
