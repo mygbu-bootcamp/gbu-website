@@ -25,7 +25,9 @@ function App() {
         <>
           <Primarynavbar />
           <Navbar />
+          <div className="pt-[110px]">
           <AppRouter />
+          </div>
           <Footer />
 
         </>

@@ -1,10 +1,10 @@
 
 import React from 'react';
 
-import { 
-  Globe, 
-  Users, 
-  FileText, 
+import {
+  Globe,
+  Users,
+  FileText,
   CreditCard,
   Plane,
   Home,
@@ -246,13 +246,15 @@ const InternationalAdmissions = () => {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">International Admissions</h1>
-          <p className="text-xl text-gray-600">Welcome students from around the world to join our diverse academic community</p>
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl font-bold mb-6 animate-fade-in">International Admissions</h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in">
+            Welcome students from around the world to join our diverse academic community
+          </p>
         </div>
+      </section>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
@@ -294,7 +296,7 @@ const InternationalAdmissions = () => {
             <TabsTrigger value="support">Support</TabsTrigger>
             <TabsTrigger value="contact">Contact</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="eligibility" className="space-y-6">
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Eligibility Requirements</h3>
@@ -302,7 +304,7 @@ const InternationalAdmissions = () => {
                 Our admission requirements are designed to ensure international students are well-prepared for academic success.
               </p>
             </div>
-            
+
             <div className="space-y-6">
               {eligibilityRequirements.map((req, index) => (
                 <Card key={index}>
@@ -345,7 +347,7 @@ const InternationalAdmissions = () => {
               ))}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="process" className="space-y-6">
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Application Process</h3>
@@ -353,10 +355,10 @@ const InternationalAdmissions = () => {
                 Follow these steps to complete your application for international admission.
               </p>
             </div>
-            
+
             <div className="space-y-6">
               {applicationProcess.map((step, index) => (
-                <Card key={index} className="border-l-4 border-l-blue-500">
+                <Card key={index} className="border-l-4 border-l-blue-500 border-solid">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">
@@ -382,7 +384,7 @@ const InternationalAdmissions = () => {
               ))}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="fees" className="space-y-6">
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Fee Structure (Annual)</h3>
@@ -390,7 +392,7 @@ const InternationalAdmissions = () => {
                 All fees are in USD. Scholarships and financial aid are available for eligible students.
               </p>
             </div>
-            
+
             <div className="space-y-6">
               {feeStructure.map((fee, index) => (
                 <Card key={index}>
@@ -420,7 +422,7 @@ const InternationalAdmissions = () => {
                 </Card>
               ))}
             </div>
-            
+
             <Card className="bg-blue-50 border-blue-200">
               <CardHeader>
                 <CardTitle className="text-blue-900">Available Scholarships</CardTitle>
@@ -439,7 +441,7 @@ const InternationalAdmissions = () => {
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="support" className="space-y-6">
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Student Support Services</h3>
@@ -447,7 +449,7 @@ const InternationalAdmissions = () => {
                 We provide comprehensive support to help international students succeed academically and personally.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {supportServices.map((service, index) => (
                 <Card key={index}>
@@ -466,7 +468,7 @@ const InternationalAdmissions = () => {
               ))}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="contact" className="space-y-6">
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Contact Information</h3>
@@ -474,7 +476,7 @@ const InternationalAdmissions = () => {
                 Get in touch with our international admissions team for personalized assistance.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {contactInfo.map((contact, index) => (
                 <Card key={index}>
@@ -500,7 +502,7 @@ const InternationalAdmissions = () => {
                 </Card>
               ))}
             </div>
-            
+
             <Card className="bg-gradient-to-r from-blue-600 to-green-600 text-white">
               <CardContent className="p-8 text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply?</h3>
@@ -509,7 +511,7 @@ const InternationalAdmissions = () => {
                   <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
                     Start Application
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+                  <Button size="lg" variant="outline" className="border-white border-[1px] border-solid text-white hover:bg-white hover:text-blue-600">
                     Schedule Consultation
                   </Button>
                 </div>

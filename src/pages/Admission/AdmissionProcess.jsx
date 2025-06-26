@@ -34,11 +34,16 @@ const AdmissionProcess = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl font-bold mb-6 animate-fade-in">Admission Process</h1>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in">
+              Your complete guide to joining our university
+            </p>
+          </div>
+        </section>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">Admission Process</h1>
-          <p className="text-xl text-gray-600">Your complete guide to joining our university</p>
-        </div>
+       
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Step-by-Step Process</h2>
@@ -110,7 +115,7 @@ const AdmissionProcess = () => {
             <Link to="/student-login" className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-2 px-6 rounded">
               Start Application
             </Link>
-            <button className="flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-100 text-lg font-semibold py-2 px-6 rounded">
+            <button className="flex items-center justify-center border border-gray-300 border-solid text-gray-700 hover:bg-gray-100 text-lg font-semibold py-2 px-6 rounded">
               <Download className="w-4 h-4 mr-2" />
               Download Prospectus
             </button>
