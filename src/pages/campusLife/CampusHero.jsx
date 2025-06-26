@@ -1,4 +1,10 @@
+<<<<<<< main
+
  import React, { useState, useEffect } from 'react';
+
+=======
+ import React, { useState, useEffect } from 'react';
+>>>>>>> main
 import axios from 'axios';
 import { ArrowDown, Map } from 'lucide-react';
 
@@ -17,6 +23,27 @@ const Button = ({ children, className = '', variant = 'default', ...props }) => 
 };
 
 const CampusHero = () => {
+<<<<<<< main
+
+  const [heroData, setHeroData] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
+  const API_URL = `${BASE}/campuslife/campus-hero/`;
+
+  useEffect(() => {
+    const fetchHeroData = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setHeroData(response.data || []);
+      } catch (error) {
+        console.error('Error fetching campus hero data:', error);
+      }
+    };
+
+    fetchHeroData();
+
+=======
   const [slides, setSlides] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -31,6 +58,7 @@ const CampusHero = () => {
     };
 
     fetchData();
+>>>>>>> main
   }, []);
 
   useEffect(() => {
@@ -39,6 +67,20 @@ const CampusHero = () => {
     }, 5000);
 
     return () => clearInterval(timer);
+<<<<<<< main
+
+  }, [heroData.length]);
+
+  const scrollToTour = () => {
+    const element = document.querySelector('#campus-tour');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  if (heroData.length === 0) return null;
+
+=======
   }, [slides]);
 
   const scrollToTour = (url) => {
@@ -53,6 +95,7 @@ const CampusHero = () => {
   if (slides.length === 0) return null;
 
   const current = slides[currentSlide];
+>>>>>>> main
 
   return (
     <section id="home" className="relative h-screen overflow-hidden">
