@@ -1,4 +1,4 @@
-Landing;
+import Landing from "../../components/departments/Landing";
 import Navbar from "../../components/departments/Navbar";
 import AboutSection from "../../components/departments/AboutIct";
 import LeadershipCard from "../../components/departments/Dean";

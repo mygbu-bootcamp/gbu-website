@@ -1,9 +1,5 @@
 import { useState } from 'react';
 
-
-
-
-
 import { Upload, CheckCircle , AlertCircle} from 'lucide-react';
 import { toast } from '../../hooks/use-toast';
 

@@ -94,13 +94,11 @@ const Navbar = () => {
       label: "Research",
       icon: <BookOpen size={16} />,
       items: [
-        ["research-centers", "Research Centers and Labs"],
-        ["publications-patents", "Publications and Patents"],
-        ["incubation-innovation", "Incubation and Innovation"],
-        ["startups", "Startups"],
-        ["funded-projects", "Funded Projects"],
-        ["irp-cell", "IRP Cell"],
-        ["research-highlights", "Research Highlights"],
+         ["research-centers", "Center of Excellence and Labs"],
+        ["publications-patents", "Publications, Patents and Projects"],
+        ["incubation", "GBU Incubation Cell"],
+           ["institution-innovation", "Institution and Innovation"],
+        ["ipr-cell", "IPR Cell"],
       ].map(([slug, text]) => <Link to={`/research/${slug}`} key={slug}>{text}</Link>),
     },
     {

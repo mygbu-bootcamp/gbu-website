@@ -1,11 +1,6 @@
 
 import { useState } from 'react';
 
-
-
-
-
-
 import { Calendar, MapPin, Users, Clock, Camera, Plus, Heart, Star } from 'lucide-react';
 import { toast } from '../../hooks/use-toast';
 
