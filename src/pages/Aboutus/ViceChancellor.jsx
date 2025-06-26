@@ -92,7 +92,7 @@ const ViceChancellor = () => {
       <div 
         className="relative h-80 bg-cover bg-center flex items-center justify-center"
         style={{
-          backgroundImage: "linear-gradient(rgba(75, 85, 150, 0.8), rgba(75, 85, 150, 0.8)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmFkaWVudCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPgogICAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkaWVudCkiLz4KPC9zdmc+Cg==')"
+          backgroundImage: "linear-gradient(rgba(75, 85, 150, 0.8), rgba(75, 85, 150, 0.8)), url('assets/prof.jepg')"
         }}
       >
         <div className="text-center text-white">
@@ -111,7 +111,7 @@ const ViceChancellor = () => {
               <div className="bg-gray-300 h-64 rounded-lg mb-4 flex items-center justify-center">
                 {/* <span className="text-gray-600">Vice Chancellor's Photo</span> */}
                 <img
-                  src="../../../public/assets/prof.jpeg"
+                  src="/assets/prof.jpeg"
                   alt="Prof. R.K. Singh"
                   className="object-cover h-full w-full rounded-lg"
 />
