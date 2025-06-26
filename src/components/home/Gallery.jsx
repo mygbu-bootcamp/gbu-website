@@ -63,7 +63,7 @@ export default function CampusGallery() {
         `}</style>
 
         <div className="text-center mb-6 sm:mb-8 lg:mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 mb-2">
+          <h2 className="text-3xl h-14 md:text-5xl md:h-15 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 mb-4">
             Ongoing Events
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
@@ -82,8 +82,8 @@ export default function CampusGallery() {
             />
 
             {/* Caption */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/30 backdrop-blur-md px-4 py-2 rounded-xl max-w-[80%] border border-white/20 border-solid">
-              <h3 className="text-white text-base md:text-lg font-semibold text-center drop-shadow-lg">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/30 backdrop-blur-md px-4 py-2 rounded-xl max-w-[90%] border border-white/20 border-solid">
+              <h3 className="text-white text-base md:text-lg font-semibold text-center drop-shadow-lg whitespace-normal break-words">
                 {currentImage.text}
               </h3>
             </div>
@@ -178,7 +178,7 @@ export default function CampusGallery() {
           <div className="w-full max-w-md bg-gray-200/50 rounded-full h-1 overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-500 ease-linear"
-              style={{ width: `${((mainImageIndex + 1) / galleryData.length) * 100}%` }}
+              style={{ width: `${galleryData.length ? ((mainImageIndex + 1) / galleryData.length) * 100 : 0}%` }}
             ></div>
           </div>
         </div>
