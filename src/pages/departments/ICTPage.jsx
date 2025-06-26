@@ -12,7 +12,7 @@ import RecruitersShowcase from "../../components/departments/Recuritor_showcase"
 import ClubsAchievements from "../../components/departments/Clubs_activevment.jsx";
 import StudentAchievements from "../../components/departments/Student_achievements.jsx";
 import StudentStartup from "../../components/departments/Startup.jsx";
-import Landing from "../../components/departments/Landing.jsx";
+
 
 const Index = () => {
   return (

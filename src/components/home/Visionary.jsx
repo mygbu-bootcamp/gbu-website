@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 
 const cardVariants = {
   enter: { opacity: 0, x: 100 },
@@ -16,8 +17,8 @@ const VisionaryLeadership = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/landing/leadership/`);
-        const data = await res.json();
+        const res = await axios.get(`${BASE_URL}/landing/leadership/`);
+        const data = res.data;
         console.log("Fetched data:", data);
         if (Array.isArray(data)) {
           setLeaders(data);
@@ -48,9 +49,8 @@ const VisionaryLeadership = () => {
 
   const current = leaders[index];
   const fullImageUrl = current.photo?.includes("http")
-  ? current.photo
-  : `${BASE_URL}/${current.photo.startsWith("media") ? "" : "media/"}${current.photo}`;
-
+    ? current.photo
+    : `${BASE_URL}/${current.photo.startsWith("media") ? "" : "media/"}${current.photo}`;
 
   return (
     <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-100 via-white to-green-100">

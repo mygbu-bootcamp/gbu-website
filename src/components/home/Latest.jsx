@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function LatestUpdates() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,8 +16,8 @@ export default function LatestUpdates() {
 
   const fetchNotices = async () => {
     try {
-      const res = await fetch(NOTICE_API);
-      const json = await res.json();
+      const res = await axios.get(NOTICE_API);
+      const json = res.data;
       setData(json);
 
       // Get unique categories from fetched data
@@ -36,8 +37,8 @@ export default function LatestUpdates() {
   const getTypeColor = (category) => {
     const colors = {
       "Latest News": "bg-blue-100 text-blue-600 border-blue-200",
-      "Events": "bg-green-100 text-green-600 border-green-200",
-      "Announcements": "bg-yellow-100 text-yellow-600 border-yellow-200"
+      "Notice/Circulars ": "bg-green-100 text-green-600 border-green-200",
+      "Upcoming Events ": "bg-yellow-100 text-yellow-600 border-yellow-200"
     };
     return colors[category] || "bg-gray-100 text-gray-600 border-gray-200";
   };
