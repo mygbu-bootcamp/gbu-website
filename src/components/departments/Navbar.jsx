@@ -61,7 +61,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-white border-b shadow-sm sticky top-0 z-50">
+    <header className="bg-white border-b shadow-sm fixed top-[96px] left-0 w-full z-30">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center px-6 py-3">
         <nav className="flex items-center space-x-6 font-medium">
           <Link to={routes.home} className="text-black hover:text-purple-700">
