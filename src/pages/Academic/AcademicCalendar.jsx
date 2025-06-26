@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, BookOpen, FileText, Download, Bell, Search } from 'lucide-react';
+import axios from 'axios';
 
 const AcademicCalendar = () => {
   const [events, setEvents] = useState([]);
@@ -13,24 +14,20 @@ const AcademicCalendar = () => {
   const HOST = import.meta.env.VITE_HOST;
 
   useEffect(() => {
-    fetch(`${HOST}/academic/events`)
-      .then(res => res.json())
-      .then(setEvents)
+    axios.get(`${HOST}/academic/events`)
+      .then(res => setEvents(res.data))
       .catch(err => console.error("Error fetching events:", err));
 
-    fetch(`${HOST}/academic/regulations`)
-      .then(res => res.json())
-      .then(setRegulations)
+    axios.get(`${HOST}/academic/regulations`)
+      .then(res => setRegulations(res.data))
       .catch(err => console.error("Error fetching regulations:", err));
 
-    fetch(`${HOST}/academic/hero/`)
-      .then(res => res.json())
-      .then(setStats)
+    axios.get(`${HOST}/academic/hero/`)
+      .then(res => setStats(res.data))
       .catch(err => console.error("Error fetching stats:", err));
 
-    fetch(`${HOST}/academic/stayupdated/`)
-      .then(res => res.json())
-      .then(data => setCta(data[0])) // Assuming only 1 item
+    axios.get(`${HOST}/academic/stayupdated/`)
+      .then(res => setCta(res.data[0])) // Assuming only 1 item
       .catch(err => console.error("Error fetching CTA:", err));
   }, []);
 
@@ -254,7 +251,7 @@ const AcademicCalendar = () => {
               </a>
               <a
                 href={cta.url2}
-                className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+                className="border border-white border-solid text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
               >
                 {cta.button2_text}
               </a>

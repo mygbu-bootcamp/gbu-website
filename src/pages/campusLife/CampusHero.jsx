@@ -1,4 +1,8 @@
+<<<<<<< main
  import React, { useState, useEffect } from 'react';
+=======
+import React, { useState, useEffect } from 'react';
+>>>>>>> main
 import axios from 'axios';
 import { ArrowDown, Map } from 'lucide-react';
 
@@ -17,6 +21,7 @@ const Button = ({ children, className = '', variant = 'default', ...props }) => 
 };
 
 const CampusHero = () => {
+<<<<<<< main
   const [slides, setSlides] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -31,14 +36,34 @@ const CampusHero = () => {
     };
 
     fetchData();
+=======
+  const [heroData, setHeroData] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
+  const API_URL = `${BASE}/campuslife/campus-hero/`;
+
+  useEffect(() => {
+    const fetchHeroData = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setHeroData(response.data || []);
+      } catch (error) {
+        console.error('Error fetching campus hero data:', error);
+      }
+    };
+
+    fetchHeroData();
+>>>>>>> main
   }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % heroData.length);
     }, 5000);
 
     return () => clearInterval(timer);
+<<<<<<< main
   }, [slides]);
 
   const scrollToTour = (url) => {
@@ -53,12 +78,24 @@ const CampusHero = () => {
   if (slides.length === 0) return null;
 
   const current = slides[currentSlide];
+=======
+  }, [heroData.length]);
+
+  const scrollToTour = () => {
+    const element = document.querySelector('#campus-tour');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  if (heroData.length === 0) return null;
+>>>>>>> main
 
   return (
     <section id="home" className="relative h-screen overflow-hidden">
       {/* Backgrounds */}
       <div className="absolute inset-0">
-        {slides.map((slide, index) => (
+        {heroData.map((slide, index) => (
           <div
             key={slide.id}
             className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
@@ -80,12 +117,17 @@ const CampusHero = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 animate-fade-in">
+<<<<<<< main
               {current.title.split(" ").slice(0, 2).join(" ")}
+=======
+              {heroData[currentSlide].title.split('GBU Campus Life')[0]}
+>>>>>>> main
               <span className="block bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                 {current.title.split(" ").slice(2).join(" ")}
               </span>
             </h1>
 
+<<<<<<< main
             <p
               className="text-xl lg:text-2xl text-white/90 mb-8 animate-fade-in"
               style={{ animationDelay: '0.3s' }}
@@ -114,10 +156,47 @@ const CampusHero = () => {
             </div>
 
             {/* Slide Indicators */}
+=======
+            <p className="text-xl lg:text-2xl text-white/90 mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              {heroData[currentSlide].description}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <a
+                href={heroData[currentSlide].button1_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl animate-pulse"
+                >
+                  <Map className="mr-2" size={20} />
+                  {heroData[currentSlide].button1_text}
+                </Button>
+              </a>
+
+              <a
+                href={heroData[currentSlide].button2_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border-white/50 border-[1px] border-solid px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105"
+                >
+                  {heroData[currentSlide].button2_text}
+                </Button>
+              </a>
+            </div>
+
+            {/* Slide Info */}
+>>>>>>> main
             <div className="mt-12 animate-fade-in" style={{ animationDelay: '0.9s' }}>
               <div className="flex items-center space-x-4 text-white/80">
                 <div className="flex space-x-2">
-                  {slides.map((_, index) => (
+                  {heroData.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
@@ -128,8 +207,13 @@ const CampusHero = () => {
                   ))}
                 </div>
                 <div>
+<<<<<<< main
                   <p className="font-semibold">{current.title}</p>
                   <p className="text-sm">{current.description}</p>
+=======
+                  <p className="font-semibold">{heroData[currentSlide].title}</p>
+                  <p className="text-sm">{heroData[currentSlide].description}</p>
+>>>>>>> main
                 </div>
               </div>
             </div>
