@@ -121,6 +121,7 @@ const ClubsCouncils = () => {
   const { toast } = useToast();
 
 
+
   const fetchClubs = async () => {
     try {
       const response = await axios.get(
@@ -135,6 +136,7 @@ const ClubsCouncils = () => {
   useEffect(() => {
     fetchClubs();
   }, []);
+
 
 
   const handleClubClick = (club) => {
