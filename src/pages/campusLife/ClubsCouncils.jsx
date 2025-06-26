@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useToast } from '../../hooks/use-toast';
-
 // ====== UI COMPONENTS (INLINE) ======
 
 // Button
@@ -114,11 +114,30 @@ export const CardContent = ({ children, className = '', ...props }) => (
 
 
 const ClubsCouncils = () => {
+  const [clubs, setClubs] = useState([]);
   const [selectedClub, setSelectedClub] = useState(null);
   const [joinClubOpen, setJoinClubOpen] = useState(false);
   const [selectedClubToJoin, setSelectedClubToJoin] = useState(null);
   const { toast } = useToast();
 
+<<<<<<< main
+=======
+  const fetchClubs = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_HOST}campuslife/student-clubs/`
+      );
+      setClubs(response.data);
+    } catch (error) {
+      console.error('Error fetching clubs:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchClubs();
+  }, []);
+
+>>>>>>> main
   const handleClubClick = (club) => {
     setSelectedClub(club);
   };
@@ -139,16 +158,16 @@ const ClubsCouncils = () => {
       year: formData.get('year'),
       branch: formData.get('branch'),
       experience: formData.get('experience'),
-      motivation: formData.get('motivation')
+      motivation: formData.get('motivation'),
     };
-    
+
     console.log('Join club request:', joinData);
-    
+
     toast({
-      title: "Club Join Request Submitted",
-      description: `Your request to join ${selectedClubToJoin.name} has been submitted successfully. You will be contacted within 48 hours.`,
+      title: 'Club Join Request Submitted',
+      description: `Your request to join ${selectedClubToJoin.name} has been submitted successfully.`,
     });
-    
+
     setJoinClubOpen(false);
     setSelectedClubToJoin(null);
     e.target.reset();
@@ -166,42 +185,46 @@ const ClubsCouncils = () => {
           </p>
         </div>
 
-        {/* Clubs Horizontal Carousel */}
         <div className="mb-16">
           <Carousel className="w-5/6 mx-auto">
             <CarouselContent className="ml-4">
-              {featuredClubs.map((club, index) => (
-                <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <Card 
+              {clubs.map((club, index) => (
+                <CarouselItem
+                  key={club.id}
+                  className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                >
+                  <Card
                     className="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl rounded-2xl h-full"
                     onClick={() => handleClubClick(club)}
                   >
-                    <CardContent className="  p-0 h-full flex flex-col">
+                    <CardContent className="p-0 h-full flex flex-col">
                       <div className="relative overflow-hidden rounded-t-2xl">
                         <img
-                          src={club.image}
+                          src={club.cover_image}
                           alt={club.name}
                           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                        <Badge className="absolute top-3 right-3 bg-blue-600">{club.category}</Badge>
+                        <Badge className="absolute top-3 right-3 bg-blue-600">Club</Badge>
                         <div className="absolute bottom-3 left-3 text-white">
                           <h4 className="font-bold text-lg">{club.name}</h4>
-                          <p className="text-sm opacity-90">{club.tagline}</p>
-                          <p className="text-xs opacity-75">{club.members} members</p>
+                          <p className="text-sm opacity-90">{club.description.slice(0, 50)}...</p>
+                          <p className="text-xs opacity-75">{club.member_count} members</p>
                         </div>
                       </div>
                       <div className="p-4 flex-grow flex flex-col justify-between">
-                        <p className="text-gray-600 text-sm mb-4 flex-grow">{club.description}</p>
-                        <Button 
-                          size="sm" 
+                        <p className="text-gray-600 text-sm mb-4 flex-grow">
+                          {club.description.slice(0, 100)}...
+                        </p>
+                        <Button
+                          size="sm"
                           className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleJoinClub(club);
                           }}
                         >
-                          Join Club
+                          {club.button_text || 'Join Club'}
                         </Button>
                       </div>
                     </CardContent>
@@ -214,7 +237,6 @@ const ClubsCouncils = () => {
           </Carousel>
         </div>
 
-        {/* Club Details Modal */}
         {selectedClub && (
           <Dialog open={!!selectedClub} onOpenChange={() => setSelectedClub(null)}>
             <DialogContent className="bg-white max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -223,43 +245,21 @@ const ClubsCouncils = () => {
               </DialogHeader>
               <div className="space-y-6">
                 <img
-                  src={selectedClub.image}
+                  src={selectedClub.cover_image}
                   alt={selectedClub.name}
                   className="w-full h-64 object-cover rounded-lg"
                 />
                 <div className="flex items-center gap-4">
-                  <Badge className="bg-blue-600">{selectedClub.category}</Badge>
-                  <span className="text-gray-600">{selectedClub.members} members</span>
-                  <span className="text-gray-600">President: {selectedClub.president}</span>
+                  <Badge className="bg-blue-600">Club</Badge>
+                  <span className="text-gray-600">{selectedClub.member_count} members</span>
+                  <span className="text-gray-600">President: {selectedClub.president_name}</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-3">About this Club</h3>
-                  <p className="text-gray-600">{selectedClub.fullDescription}</p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">Activities</h3>
-                  <ul className="grid grid-cols-2 gap-2">
-                    {selectedClub.activities.map((activity, index) => (
-                      <li key={index} className="flex items-center space-x-2">
-                        <span className="text-blue-600">•</span>
-                        <span className="text-gray-700">{activity}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">Achievements</h3>
-                  <ul className="space-y-2">
-                    {selectedClub.achievements.map((achievement, index) => (
-                      <li key={index} className="flex items-start space-x-2">
-                        <span className="text-blue-600 mt-1">🏆</span>
-                        <span className="text-gray-700">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-gray-600">{selectedClub.description}</p>
                 </div>
                 <div className="flex gap-4">
-                  <Button 
+                  <Button
                     className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-md"
                     onClick={() => {
                       setSelectedClub(null);
@@ -269,7 +269,7 @@ const ClubsCouncils = () => {
                     Join Club
                   </Button>
                   <Button variant="outline" className="px-4 py-2 rounded-lg shadow-md">
-                    Contact: {selectedClub.email}
+                    Contact: {selectedClub.contact_email}
                   </Button>
                 </div>
               </div>
@@ -277,7 +277,6 @@ const ClubsCouncils = () => {
           </Dialog>
         )}
 
-        {/* Join Club Modal */}
         <Dialog open={joinClubOpen} onOpenChange={setJoinClubOpen}>
           <DialogContent className="bg-white max-w-md max-h-[90vh] overflow-y-auto">
             <DialogHeader>

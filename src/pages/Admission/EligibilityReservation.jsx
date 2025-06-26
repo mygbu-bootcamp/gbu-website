@@ -242,20 +242,19 @@ const EligibilityReservation = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
 
-      
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl font-bold mb-6 animate-fade-in">Eligibility & Reservation</h1>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in">
+              Complete information about admission criteria and reservation policy
+            </p>
+          </div>
+        </section>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Eligibility & Reservation
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Complete information about admission criteria and reservation policy
-          </p>
-        </div>
+        
 
         {/* Important Notice */}
-        <div className="mb-8 border-l-4 border-l-orange-500 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg">
+        <div className="mb-8 border-l-4 border-l-orange-500 border-solid bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg">
           <div className="p-6">
             <div className="flex items-start space-x-3">
               <AlertCircleIcon />
@@ -379,7 +378,7 @@ const EligibilityReservation = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="mt-12 pt-8 border-t border-gray-200 border-solid">
           <div className="text-center text-gray-600">
             <p className="mb-2">For more information, contact the admissions office</p>
             <p className="text-sm">Last updated: June 2025</p>

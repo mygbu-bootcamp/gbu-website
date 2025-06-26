@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  GraduationCap, 
-  BookOpen, 
-  Users, 
+import {
+  GraduationCap,
+  BookOpen,
+  Users,
   Clock,
   Star,
   Award,
@@ -23,13 +23,13 @@ import {
 
 // UI Components
 const Card = ({ children, className = "" }) => (
-  <div className={`bg-white rounded-lg shadow-sm border border-gray-200 ${className}`}>
+  <div className={`bg-white rounded-lg shadow-sm border border-gray-200 border-solid${className}`}>
     {children}
   </div>
 );
 
 const CardHeader = ({ children }) => (
-  <div className="px-6 py-4 border-b border-gray-200">
+  <div className="px-6 py-4 border-b border-gray-200 border-solid">
     {children}
   </div>
 );
@@ -52,7 +52,7 @@ const Badge = ({ children, variant = "default", className = "" }) => {
     secondary: "bg-gray-100 text-gray-800",
     outline: "border border-gray-300 text-gray-700 bg-white"
   };
-  
+
   return (
     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${variants[variant]} ${className}`}>
       {children}
@@ -65,7 +65,7 @@ const Button = ({ children, size = "default", className = "" }) => {
     default: "px-4 py-2 text-sm",
     lg: "px-6 py-3 text-base"
   };
-  
+
   return (
     <button className={`inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${sizes[size]} ${className}`}>
       {children}
@@ -75,7 +75,7 @@ const Button = ({ children, size = "default", className = "" }) => {
 
 const Tabs = ({ children, defaultValue, className = "" }) => {
   const [activeTab, setActiveTab] = React.useState(defaultValue);
-  
+
   return (
     <div className={`w-full ${className}`} data-active-tab={activeTab}>
       {React.Children.map(children, child =>
@@ -95,11 +95,10 @@ const TabsList = ({ children, className = "", activeTab, setActiveTab }) => (
 
 const TabsTrigger = ({ children, value, className = "", activeTab, setActiveTab }) => (
   <button
-    className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${
-      activeTab === value 
-        ? 'bg-white text-gray-900 shadow-sm' 
+    className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${activeTab === value
+        ? 'bg-white text-gray-900 shadow-sm'
         : 'text-gray-600 hover:text-gray-900'
-    } ${className}`}
+      } ${className}`}
     onClick={() => setActiveTab(value)}
   >
     {children}
@@ -359,7 +358,7 @@ const CoursesOffered = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="flex items-center space-x-2">
               <Users className="w-4 h-4 text-blue-600" />
@@ -370,12 +369,12 @@ const CoursesOffered = () => {
               <span>{course.duration}</span>
             </div>
           </div>
-          
+
           <div>
             <h4 className="font-medium text-gray-900 mb-1">Eligibility:</h4>
             <p className="text-sm text-gray-600">{course.eligibility}</p>
           </div>
-          
+
           <div>
             <h4 className="font-medium text-gray-900 mb-2">Highlights:</h4>
             <ul className="space-y-1">
@@ -396,7 +395,7 @@ const CoursesOffered = () => {
     <div className="space-y-8">
       {/* School Header */}
       <div className="relative rounded-lg overflow-hidden">
-        <img 
+        <img
           src={`https://images.unsplash.com/${schoolData.image}?auto=format&fit=crop&w=1200&h=300`}
           alt={schoolName}
           className="w-full h-48 object-cover"
@@ -417,7 +416,7 @@ const CoursesOffered = () => {
           <TabsTrigger value="Postgraduate">Postgraduate</TabsTrigger>
           <TabsTrigger value="Doctoral">Doctoral</TabsTrigger>
         </TabsList>
-        
+
         {Object.entries(programs).map(([level, courses]) => (
           <TabsContent key={level} value={level} className="space-y-6">
             {courses.length > 0 ? (
@@ -445,14 +444,17 @@ const CoursesOffered = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Courses Offered</h1>
-          <p className="text-xl text-gray-600">Explore our diverse academic programs across multiple schools and degree levels</p>
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl font-bold mb-6 animate-fade-in">Courses Offered</h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in">
+            Explore our diverse academic programs across multiple schools and degree levels
+          </p>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
@@ -495,7 +497,7 @@ const CoursesOffered = () => {
               </TabsTrigger>
             ))}
           </TabsList>
-          
+
           {Object.entries(schoolCategories).map(([schoolName, schoolData]) => (
             <TabsContent key={schoolName} value={schoolName} className="space-y-6">
               <ProgramSection programs={schoolData.programs} schoolName={schoolName} schoolData={schoolData} />
