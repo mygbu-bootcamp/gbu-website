@@ -359,7 +359,7 @@ const CafesFood = () => {
                   <button
                     key={index}
                     onClick={() => setSelectedCafe(cafe)}
-                    className="absolute transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-orange-600 border-4 border-white rounded-full shadow-lg hover:scale-125 transition-all duration-300 animate-pulse"
+                    className="absolute transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-orange-600 border-4 border-white border-solid rounded-full shadow-lg hover:scale-125 transition-all duration-300 animate-pulse"
                     style={{ 
                       left: `${20 + (index * 15)}%`, 
                       top: `${30 + (index % 2 * 30)}%` 
@@ -446,7 +446,7 @@ const CafesFood = () => {
                       <DialogTrigger asChild>
                         <Button 
                           variant="outline" 
-                          className="border-orange-600 text-orange-600 hover:bg-orange-50 px-4 py-2 rounded-lg shadow-md"
+                          className="border-orange-600 border-[1px] border-solid text-orange-600 hover:bg-orange-50 px-4 py-2 rounded-lg shadow-md"
                         >
                           Write Review
                         </Button>
