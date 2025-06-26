@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React, { useState } from "react"; 
 import {
   Send,
   Info,
@@ -18,7 +18,7 @@ const Primarynavbar = () => {
 
   return (
     <nav
-      className="bg-gradient-to-r from-green-600 via-teal-600 to-blue-700 text-white text-sm relative"
+      className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-green-600 via-teal-600 to-blue-700 text-white text-sm shadow"
       role="navigation"
       aria-label="Primary navigation"
     >
