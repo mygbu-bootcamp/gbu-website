@@ -55,10 +55,10 @@ const Navbar = () => {
         "chancellor-message",
         "vice-chancellor-message",
         "governance-committees",
-        "strategic-perspective",
+
         "policies-statutes-rti",
         "mandatory-disclosures",
-        "media-coverage",
+
       ].map((slug) => (
         <Link to={`/about-us/${slug}`} key={slug}>{slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())}</Link>
       )),
@@ -68,13 +68,15 @@ const Navbar = () => {
       label: "Academics",
       icon: <GraduationCap size={16} />,
       items: [
+        ["schools", "Schools & Departments"],
+        ["faculty", "Faculty Directory"],
         ["academic-calendar", "Academic Calendar & Regulations"],
         ["cbcs-framework", "CBCS Curriculum Framework"],
-        ["faculty", "Faculty Directory"],
+        
         ["centers-of-excellence", "Centers of Excellence"],
         ["international-collaboration", "International Collaboration"],
         ["reports-publications", "Reports & Publications"],
-        ["schools", "Schools & Departments"],
+        
       ].map(([slug, text]) => <Link to={`/academics/${slug}`} key={slug}>{text}</Link>),
     },
     {
@@ -121,8 +123,8 @@ const Navbar = () => {
       icon: <Camera size={16} />,
       items: [
         ["news-notifications", "News & Updates"],
-        ["event-calendar", "Event Calendar"],
-        ["notices", "Notices"],
+        ["event-calendar", "Upcoming Events"],
+        ["notices", "Notices & Circular"],
         ["press-releases", "Press Releases"],
         ["media-gallery", "Media Gallery"],
         ["newsletter", "Newsletter"],
@@ -141,7 +143,7 @@ const Navbar = () => {
       items: [
         ["alumni-network", "Alumni Network"],
         ["alumni-events", "Alumni Events"],
-        ["alumni-achievements", "Alumni Achievements"],
+
         ["become-mentor", "Become a Mentor"],
       ].map(([slug, text]) => <Link to={`/alumni/${slug}`} key={slug}>{text}</Link>),
     },
