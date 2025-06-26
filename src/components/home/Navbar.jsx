@@ -225,11 +225,12 @@ const Navbar = () => {
   };
 
   return (
-
-    <nav className="bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between relative z-50">
-      <div className="flex items-center space-x-3 cursor-pointer" onClick={() => (window.location.href = "/")}>
-        <img src="/assets/logo.svg" alt="GBU Logo" className="w-96 h-16 mr-3" />
-
+   <nav className="fixed top-9 left-0 w-full z-40 bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between">Add commentMore actions
+      <div
+        className="flex items-center space-x-3 cursor-pointer"
+        onClick={() => (window.location.href = "/")}
+      >
+        <img src="/assets/logo.svg" alt="GBU Logo" className="w-64 h-12 mr-3" />
 
       </div>
 
