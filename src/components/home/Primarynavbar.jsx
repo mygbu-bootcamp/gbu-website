@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React, { useState } from "react"; 
 import {
   Send,
   Info,
@@ -18,7 +18,7 @@ const Primarynavbar = () => {
 
   return (
     <nav
-      className="bg-gradient-to-r from-green-600 via-teal-600 to-blue-700 text-white text-sm relative"
+      className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-green-600 via-teal-600 to-blue-700 text-white text-sm shadow"
       role="navigation"
       aria-label="Primary navigation"
     >
@@ -44,7 +44,8 @@ const Primarynavbar = () => {
             <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Info size={14} /> RTI
             </a>
-            <a href="#" className="hover:underline">Sitemap</a>
+            <a href="https://site-scape-navigator.lovable.app" className="hover:underline">Sitemap</a>
+
           </div>
 
           {/* Right links */}
@@ -111,9 +112,11 @@ const Primarynavbar = () => {
                 <a href="https://rti-page-rebuild-50.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   RTI
                 </a>
-                <a href="#" className="block px-3 py-2 rounded-md hover:bg-gray-100">
-                  Sitemap
-                </a>
+                <a href="https://site-scape-navigator.lovable.app" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+  Sitemap
+</a>
+
+
               </div>
             </div>
 
