@@ -13,24 +13,22 @@ import ClubsAchievements from "../../components/departments/Clubs_activevment.js
 import StudentAchievements from "../../components/departments/Student_achievements.jsx";
 import StudentStartup from "../../components/departments/Startup.jsx";
 
-
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-
       <Landing />
       <AboutSection />
       <LeadershipCard />
-      <ProgramsShowcase />
       <DepartmentsSection />
+      <ProgramsShowcase />
       <FacultyCarousel />
       <NoticeEvents />
+      <ClubsAchievements />
       <PlacementsSection />
       <RecentPlacements />
       <RecruitersShowcase />
-      <ClubsAchievements />
-      <StudentAchievements />
       <StudentStartup />
+      <StudentAchievements />
     </div>
   );
 };
