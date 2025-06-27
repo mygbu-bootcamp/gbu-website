@@ -1,8 +1,6 @@
-
-import { useState } from 'react';
 import AdvancedSearchFilter from './AdvancedSearchFilter';
-
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const EventFilters = ({
   onSearch,
@@ -12,16 +10,33 @@ const EventFilters = ({
   types,
   years
 }) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <AdvancedSearchFilter
-      onSearch={onSearch}
-      onDateFilter={onDateFilter}
-      onTypeFilter={onTypeFilter}
-      onYearFilter={onYearFilter}
-      types={types}
-      years={years}
-      placeholder="Search events..."
-    />
+    <div
+      className={`bg-gradient-to-br from-slate-50 to-blue-100 rounded-[22px] shadow-lg px-8 py-10 my-10 mx-auto flex flex-col items-center border border-slate-300 transition-shadow duration-200 ${
+        hovered ? 'shadow-2xl border-indigo-500' : ''
+      }`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="text-[2.2rem] font-extrabold text-slate-800 mb-3 tracking-wide text-center font-inter">
+        Find Your Event
+      </div>
+      <div className="text-[1.05rem] text-slate-500 mb-4 text-center font-inter">
+        Quickly search and filter events by type, year, or date.
+      </div>
+      <div className="w-[70px] h-1 bg-blue-400 rounded mx-auto mb-6 border-0"></div>
+      <AdvancedSearchFilter
+        onSearch={onSearch}
+        onDateFilter={onDateFilter}
+        onTypeFilter={onTypeFilter}
+        onYearFilter={onYearFilter}
+        types={types}
+        years={years}
+        placeholder="🔍 Search events, types, or years..."
+      />
+    </div>
   );
 };
 
@@ -34,4 +49,3 @@ EventFilters.propTypes = {
   types: PropTypes.arrayOf(PropTypes.string).isRequired,
   years: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
-

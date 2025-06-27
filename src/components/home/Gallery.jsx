@@ -51,7 +51,7 @@ export default function CampusGallery() {
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
-      <div className="w-[95vw] max-w-7xl py-6 sm:py-10 lg:py-16 mx-auto px-3 sm:px-6 lg:px-8">
+      <div className="w-full py-6 sm:py-10 lg:py-16 mx-auto px-3 sm:px-6 lg:px-8">
         <style>{`
           .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -82,7 +82,7 @@ export default function CampusGallery() {
             />
 
             {/* Caption */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/30 backdrop-blur-md px-4 py-2 rounded-xl max-w-[90%] border border-white/20 border-solid">
+            <div className="absolute w-full bottom-4 left-1/2 transform -translate-x-1/2 bg-black/30 backdrop-blur-md px-4 py-2 rounded-xl max-w-[90%] border border-white/20 border-solid">
               <h3 className="text-white text-base md:text-lg font-semibold text-center drop-shadow-lg whitespace-normal break-words">
                 {currentImage.text}
               </h3>

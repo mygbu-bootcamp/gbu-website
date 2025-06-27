@@ -111,8 +111,8 @@ const SocialShare = ({ url, title, className = "" }) => {
           Share
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-48">
-        <div className="space-y-2">
+      <PopoverContent className="w-48 ">
+        <div className="space-y-2 ">
           {socialButtons.map((social) => (
             <Button
               key={social.name}

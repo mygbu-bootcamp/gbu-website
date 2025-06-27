@@ -160,7 +160,7 @@ const StudentAchievements = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50/20 to-yellow-50/20">
-      <header className="bg-white/90 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-50">
+      <header className="bg-white/90 backdrop-blur-md border-b border-gray-200/50 border-solid sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <Link to="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-amber-600 transition-colors mb-4 text-sm font-medium group">
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -187,26 +187,26 @@ const StudentAchievements = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="🔍 Search by student, title, or description"
-            className="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm placeholder-gray-400"
+            className="w-full md:w-64 px-4 py-2 border border-gray-300 border-solid rounded-lg shadow-sm text-sm placeholder-gray-400"
           />
-          <select value={yearFilter} onChange={(e) => setYearFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 text-sm shadow-sm">
+          <select value={yearFilter} onChange={(e) => setYearFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 border-solid text-sm shadow-sm">
             <option value="">🎓 Year</option>
             <option value="2024">2024</option>
             <option value="2023">2023</option>
           </select>
-          <select value={departmentFilter} onChange={(e) => setDepartmentFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 text-sm shadow-sm">
+          <select value={departmentFilter} onChange={(e) => setDepartmentFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 border-solid text-sm shadow-sm">
             <option value="">🏫 Department</option>
             {[...new Set(achievements.map(a => a.department))].map((dept, i) => (
               <option key={i} value={dept}>{dept}</option>
             ))}
           </select>
-          <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 text-sm shadow-sm">
+          <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 border-solid text-sm shadow-sm">
             <option value="">🏅 Category</option>
             {[...new Set(achievements.map(a => a.category))].map((cat, i) => (
               <option key={i} value={cat}>{cat}</option>
             ))}
           </select>
-          <select value={sortOption} onChange={(e) => setSortOption(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 text-sm shadow-sm">
+          <select value={sortOption} onChange={(e) => setSortOption(e.target.value)} className="px-3 py-2 rounded-lg border border-gray-300 border-solid text-sm shadow-sm">
             <option value="Newest">⬆️ Newest First</option>
             <option value="Oldest">⬇️ Oldest First</option>
           </select>
@@ -217,7 +217,7 @@ const StudentAchievements = () => {
         <div className="flex justify-end mb-4">
           <button
             onClick={() => setShowArchived(!showArchived)}
-            className="px-4 py-2 bg-amber-100 text-amber-700 border border-amber-300 rounded-full text-sm hover:bg-amber-200 transition"
+            className="px-4 py-2 bg-amber-100 text-amber-700 border border-amber-300 border-solid rounded-full text-sm hover:bg-amber-200 transition"
           >
             {showArchived ? '🔙 Back to Achievements' : '🗄️ View Archived'}
           </button>
@@ -226,7 +226,7 @@ const StudentAchievements = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {(showArchived ? archivedAchievements : filteredAchievements).length > 0 ? (
             (showArchived ? archivedAchievements : filteredAchievements).map((achievement, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition-all">
+              <div key={index} className="bg-white border border-gray-200 border-solid rounded-xl p-6 shadow hover:shadow-lg transition-all">
                 <img src={achievement.image} alt="" className="w-full h-48 object-cover rounded-lg mb-4" />
                 <h3 className="text-lg font-bold text-gray-900 mb-1">{achievement.title}</h3>
                 <p className="text-sm text-gray-600 mb-1">{achievement.student} - {achievement.department} ({achievement.year})</p>
@@ -238,7 +238,7 @@ const StudentAchievements = () => {
                       ? unarchiveAchievement(achievement)
                       : archiveAchievement(achievement)
                   }
-                  className="mt-3 px-4 py-1.5 bg-yellow-100 text-yellow-700 border border-yellow-300 rounded-full text-xs hover:bg-yellow-200 transition"
+                  className="mt-3 px-4 py-1.5 bg-yellow-100 text-yellow-700 border border-yellow-300 border-solid rounded-full text-xs hover:bg-yellow-200 transition"
                 >
                   {showArchived ? 'Unarchive' : 'Archive'}
                 </button>

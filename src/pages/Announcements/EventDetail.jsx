@@ -1,27 +1,35 @@
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '../../components/announcement/Header';
 import SocialShare from '../../components/announcement/SocialShare';
 import RelatedEvents from '../../components/announcement/RelatedEvents';
-// Minimal UI components for EventDetail page
+import {
+  ArrowLeft, Calendar, MapPin, Users, ExternalLink, CalendarPlus, Download, Phone, Mail, QrCode
+} from 'lucide-react';
 
-// Button component
-const Button = ({ children, variant = "default", size = "md", asChild, className = "", ...props }) => {
+// --- UI COMPONENTS (Enhanced with more styles/animations) ---
+
+const Button = ({
+  children,
+  variant = "default",
+  size = "md",
+  asChild,
+  className = "",
+  ...props
+}) => {
   const base =
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+    "inline-flex items-center justify-center rounded-lg font-semibold shadow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
   const variants = {
-    default: "bg-blue-600 text-white hover:bg-blue-700",
+    default: "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700",
     outline: "border border-blue-600 text-blue-600 bg-white hover:bg-blue-50",
   };
   const sizes = {
     sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-2.5 text-lg",
+    md: "px-5 py-2 text-base",
+    lg: "px-7 py-2.5 text-lg",
   };
   const classes = `${base} ${variants[variant] || variants.default} ${sizes[size] || sizes.md} ${className}`;
   if (asChild) {
-    // For <a> or other elements
     const child = React.Children.only(children);
     return React.cloneElement(child, { className: `${child.props.className || ""} ${classes}`.trim(), ...props });
   }
@@ -32,11 +40,10 @@ const Button = ({ children, variant = "default", size = "md", asChild, className
   );
 };
 
-// Badge component
 const Badge = ({ children, className = "", variant = "solid", ...props }) => {
-  const base = "inline-block px-3 py-1 rounded-full text-xs font-semibold";
+  const base = "inline-block px-3 py-1 rounded-full text-xs font-bold shadow-sm tracking-wide";
   const variants = {
-    solid: "bg-blue-600 text-white",
+    solid: "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
     outline: "border border-current text-inherit bg-transparent",
   };
   return (
@@ -46,23 +53,21 @@ const Badge = ({ children, className = "", variant = "solid", ...props }) => {
   );
 };
 
-// Card components
 const Card = ({ children, className = "", ...props }) => (
-  <div className={`bg-white rounded-lg shadow ${className}`} {...props}>{children}</div>
+  <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 border-solid hover:shadow-2xl transition-shadow duration-300${className}`} {...props}>{children}</div>
 );
 const CardHeader = ({ children, className = "", ...props }) => (
-  <div className={`border-b px-6 py-4 ${className}`} {...props}>{children}</div>
+  <div className={`border-b px-8 py-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-2xl ${className}`} {...props}>{children}</div>
 );
 const CardTitle = ({ children, className = "", ...props }) => (
-  <h2 className={`text-xl font-bold ${className}`} {...props}>{children}</h2>
+  <h2 className={`text-2xl font-extrabold text-blue-700 tracking-tight ${className}`} {...props}>{children}</h2>
 );
 const CardContent = ({ children, className = "", ...props }) => (
-  <div className={`px-6 py-4 ${className}`} {...props}>{children}</div>
+  <div className={`px-8 py-6 ${className}`} {...props}>{children}</div>
 );
 
-// Tabs components
+// Tabs
 const TabsContext = React.createContext();
-
 const Tabs = ({ defaultValue, children, className = "" }) => {
   const [value, setValue] = React.useState(defaultValue);
   return (
@@ -71,20 +76,18 @@ const Tabs = ({ defaultValue, children, className = "" }) => {
     </TabsContext.Provider>
   );
 };
-
 const TabsList = ({ children, className = "" }) => (
-  <div className={`flex gap-2 bg-gray-100 rounded-lg p-1 mb-4 ${className}`}>{children}</div>
+  <div className={`flex gap-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl p-2 mb-4 shadow-inner ${className}`}>{children}</div>
 );
-
 const TabsTrigger = ({ value, children, className = "" }) => {
   const { value: active, setValue } = React.useContext(TabsContext);
   const isActive = active === value;
   return (
     <button
-      className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+      className={`flex-1 px-6 py-2 rounded-lg font-semibold transition-all duration-200 ${
         isActive
-          ? "bg-white shadow text-blue-700"
-          : "text-gray-600 hover:bg-gray-200"
+          ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow"
+          : "text-blue-700 hover:bg-blue-50"
       } ${className}`}
       onClick={() => setValue(value)}
       type="button"
@@ -93,14 +96,13 @@ const TabsTrigger = ({ value, children, className = "" }) => {
     </button>
   );
 };
-
 const TabsContent = ({ value, children, className = "" }) => {
   const { value: active } = React.useContext(TabsContext);
   if (active !== value) return null;
   return <div className={className}>{children}</div>;
 };
-import { ArrowLeft, Calendar, MapPin, Users, ExternalLink, CalendarPlus, Download, Phone, Mail, QrCode } from 'lucide-react';
-// Mock event data (replace with real data source in production)
+
+// --- MOCK DATA ---
 const mockEvents = [
   {
     id: "1",
@@ -135,10 +137,9 @@ const mockEvents = [
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80"
     ]
   }
-  // Add more mock events as needed
 ];
 
-// Minimal date formatting using native JS
+// --- UTILS ---
 function format(date, formatStr) {
   const d = typeof date === "string" ? new Date(date) : date;
   const pad = n => n.toString().padStart(2, "0");
@@ -155,17 +156,22 @@ function format(date, formatStr) {
   return d.toLocaleDateString();
 }
 
+// --- MAIN COMPONENT ---
 const EventDetail = () => {
   const { id } = useParams();
   const [showQR, setShowQR] = useState(false);
-  const event = mockEvents.find(item => item.id === id);
+  // const event = mockEvents.find(item => item.id === id);
+  const event = mockEvents.find(item => String(item.id) === String(id));
+
+
+  
 
   if (!event) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <Header />
-        <div className="container mx-auto px-4 py-8 text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Event not found</h1>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+        {/* <Header /> */}
+        <div className="container mx-auto px-4 py-16 text-center">
+          <h1 className="text-3xl font-extrabold text-blue-700 mb-6">Event not found</h1>
           <Link to="/events">
             <Button>Back to Events</Button>
           </Link>
@@ -176,21 +182,21 @@ const EventDetail = () => {
 
   const getTypeColor = (type) => {
     const colors = {
-      'Symposium': 'bg-blue-100 text-blue-800',
-      'Workshop': 'bg-green-100 text-green-800',
-      'Seminar': 'bg-purple-100 text-purple-800',
-      'Cultural': 'bg-orange-100 text-orange-800',
-      'Conference': 'bg-red-100 text-red-800',
-      'Webinar': 'bg-cyan-100 text-cyan-800'
+      'Symposium': 'bg-gradient-to-r from-blue-200 to-purple-200 text-blue-900',
+      'Workshop': 'bg-gradient-to-r from-green-200 to-blue-100 text-green-900',
+      'Seminar': 'bg-gradient-to-r from-purple-200 to-pink-100 text-purple-900',
+      'Cultural': 'bg-gradient-to-r from-orange-200 to-yellow-100 text-orange-900',
+      'Conference': 'bg-gradient-to-r from-red-200 to-pink-100 text-red-900',
+      'Webinar': 'bg-gradient-to-r from-cyan-200 to-blue-100 text-cyan-900'
     };
     return colors[type] || 'bg-gray-100 text-gray-800';
   };
 
   const getModeColor = (mode) => {
     const colors = {
-      'Online': 'bg-green-100 text-green-800',
-      'Offline': 'bg-blue-100 text-blue-800',
-      'Hybrid': 'bg-purple-100 text-purple-800'
+      'Online': 'bg-gradient-to-r from-green-200 to-blue-100 text-green-900',
+      'Offline': 'bg-gradient-to-r from-blue-200 to-purple-200 text-blue-900',
+      'Hybrid': 'bg-gradient-to-r from-purple-200 to-pink-100 text-purple-900'
     };
     return colors[mode] || 'bg-gray-100 text-gray-800';
   };
@@ -198,13 +204,8 @@ const EventDetail = () => {
   const addToGoogleCalendar = () => {
     const startDate = new Date(event.date);
     const endDate = event.endDate ? new Date(event.endDate) : new Date(startDate.getTime() + 2 * 60 * 60 * 1000);
-    
-    const formatDate = (date) => {
-      return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    };
-
+    const formatDate = (date) => date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${formatDate(startDate)}/${formatDate(endDate)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.venue)}`;
-    
     window.open(googleCalendarUrl, '_blank');
   };
 
@@ -218,7 +219,6 @@ const EventDetail = () => {
     { time: '02:30 PM', activity: 'Technical Sessions' },
     { time: '04:00 PM', activity: 'Networking & Closing' }
   ];
-
   const speakers = [
     { name: 'Dr. Rajesh Kumar', designation: 'Professor, IIT Delhi', topic: 'AI in Healthcare' },
     { name: 'Prof. Anita Sharma', designation: 'Director, AIIMS', topic: 'Medical Innovation' },
@@ -226,11 +226,11 @@ const EventDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <Header />
-      
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-6">
+
+      <div className="container mx-auto px-2 md:px-8 py-10">
+        <div className="mb-8">
           <Link to="/events">
             <Button variant="outline" size="sm">
               <ArrowLeft size={16} className="mr-2" />
@@ -239,44 +239,35 @@ const EventDetail = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Hero Banner */}
-            <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg overflow-hidden mb-8">
+            <div className="relative rounded-3xl overflow-hidden mb-10 shadow-2xl border border-blue-100">
               {event.images && event.images.length > 0 && (
                 <div className="absolute inset-0">
-                  <img 
-                    src={event.images[0]} 
+                  <img
+                    src={event.images[0]}
                     alt={event.title}
-                    className="w-full h-full object-cover opacity-30"
+                    className="w-full h-full object-cover scale-105 blur-sm brightness-75"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-purple-600/80" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-700/80 to-purple-700/80" />
                 </div>
               )}
-              
-              <div className="relative p-8 text-white">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge className={`${getTypeColor(event.type)} text-white bg-white/20`}>
-                    {event.type}
-                  </Badge>
-                  <Badge className={`${getModeColor(event.mode)} text-white bg-white/20`}>
-                    {event.mode}
-                  </Badge>
+              <div className="relative p-10 md:p-16 text-white">
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <Badge className={`${getTypeColor(event.type)} shadow-lg`}>{event.type}</Badge>
+                  <Badge className={`${getModeColor(event.mode)} shadow-lg`}>{event.mode}</Badge>
                   {!event.isUpcoming && (
-                    <Badge variant="outline" className="text-white border-white/50 border-[1px] border-solid">
+                    <Badge variant="outline" className="text-white border-white/70 border-[1.5px] border-solid shadow-lg">
                       Completed
                     </Badge>
                   )}
                 </div>
-                
-                <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                  {event.title}
-                </h1>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <h1 className="text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-lg">{event.title}</h1>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-base">
                   <div className="flex items-center">
-                    <Calendar size={16} className="mr-2" />
+                    <Calendar size={20} className="mr-3" />
                     <div>
                       <div>{format(new Date(event.date), 'MMMM dd, yyyy')}</div>
                       {event.endDate && (
@@ -284,14 +275,12 @@ const EventDetail = () => {
                       )}
                     </div>
                   </div>
-                  
                   <div className="flex items-center">
-                    <MapPin size={16} className="mr-2" />
+                    <MapPin size={20} className="mr-3" />
                     <div>{event.venue}</div>
                   </div>
-                  
                   <div className="flex items-center">
-                    <Users size={16} className="mr-2" />
+                    <Users size={20} className="mr-3" />
                     <div>{event.organizer}</div>
                   </div>
                 </div>
@@ -299,7 +288,7 @@ const EventDetail = () => {
             </div>
 
             {/* Content Tabs */}
-            <Tabs defaultValue="overview" className="space-y-6">
+            <Tabs defaultValue="overview" className="space-y-8">
               <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="agenda">Agenda</TabsTrigger>
@@ -313,21 +302,20 @@ const EventDetail = () => {
                     <CardTitle>About This Event</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700 leading-relaxed mb-6">
+                    <p className="text-gray-700 leading-relaxed mb-8 text-lg">
                       {event.description}
                     </p>
-                    
                     {/* Contact Information */}
-                    <div className="border-t pt-6">
-                      <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="border-t pt-8">
+                      <h3 className="text-xl font-bold mb-4 text-blue-700">Contact Information</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="flex items-center">
-                          <Phone size={16} className="mr-2 text-blue-600" />
-                          <span>+91 120 234 5678</span>
+                          <Phone size={18} className="mr-3 text-blue-600" />
+                          <span className="text-base font-medium">+91 120 234 5678</span>
                         </div>
                         <div className="flex items-center">
-                          <Mail size={16} className="mr-2 text-blue-600" />
-                          <span>events@gbu.ac.in</span>
+                          <Mail size={18} className="mr-3 text-blue-600" />
+                          <span className="text-base font-medium">events@gbu.ac.in</span>
                         </div>
                       </div>
                     </div>
@@ -341,14 +329,14 @@ const EventDetail = () => {
                     <CardTitle>Event Schedule</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       {agenda.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-4 p-3 bg-gray-50 rounded-lg">
-                          <div className="bg-blue-600 text-white px-3 py-1 rounded text-sm font-medium min-w-[80px] text-center">
+                        <div key={index} className="flex items-start space-x-5 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl shadow-sm">
+                          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg text-base font-bold min-w-[90px] text-center shadow">
                             {item.time}
                           </div>
                           <div className="flex-1">
-                            <p className="font-medium">{item.activity}</p>
+                            <p className="font-semibold text-lg">{item.activity}</p>
                           </div>
                         </div>
                       ))}
@@ -363,12 +351,12 @@ const EventDetail = () => {
                     <CardTitle>Speakers</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       {speakers.map((speaker, index) => (
-                        <div key={index} className="p-4 border rounded-lg">
-                          <h4 className="font-semibold text-lg">{speaker.name}</h4>
-                          <p className="text-blue-600 text-sm">{speaker.designation}</p>
-                          <p className="text-gray-600 mt-2">{speaker.topic}</p>
+                        <div key={index} className="p-6 border rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 shadow">
+                          <h4 className="font-bold text-xl mb-1">{speaker.name}</h4>
+                          <p className="text-blue-600 text-base font-medium">{speaker.designation}</p>
+                          <p className="text-gray-700 mt-3">{speaker.topic}</p>
                         </div>
                       ))}
                     </div>
@@ -381,16 +369,19 @@ const EventDetail = () => {
                   <CardHeader>
                     <CardTitle>Event Gallery</CardTitle>
                   </CardHeader>
+
+                  
                   <CardContent>
                     {event.images && event.images.length > 1 ? (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {event.images.slice(1).map((image, index) => (
-                          <div key={index} className="aspect-video overflow-hidden rounded-lg">
-                            <img 
-                              src={image} 
+                          <div key={index} className="aspect-video overflow-hidden rounded-xl shadow-lg group relative">
+                            <img
+                              src={image}
                               alt={`${event.title} - Image ${index + 2}`}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           </div>
                         ))}
                       </div>
@@ -404,52 +395,52 @@ const EventDetail = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Action Buttons */}
             <div className="sticky top-24">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Actions</CardTitle>
+                  <CardTitle className="text-xl">Actions</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4">
                   {event.isUpcoming && event.registrationUrl && (
-                    <Button size="lg" className="w-full" asChild>
+                    <Button size="lg" className="w-full animate-pulse" asChild>
                       <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink size={20} className="mr-2" />
+                        <ExternalLink size={22} className="mr-2" />
                         Register Now
                       </a>
                     </Button>
                   )}
-                  
+
                   <Button size="lg" variant="outline" className="w-full" onClick={addToGoogleCalendar}>
-                    <CalendarPlus size={20} className="mr-2" />
+                    <CalendarPlus size={22} className="mr-2" />
                     Add to Calendar
                   </Button>
-                  
+
                   <Button size="lg" variant="outline" className="w-full">
-                    <Download size={20} className="mr-2" />
+                    <Download size={22} className="mr-2" />
                     Download Brochure
                   </Button>
-                  
-                  <SocialShare 
+
+                  <SocialShare
                     url={window.location.href}
                     title={event.title}
                     className="w-full"
                   />
 
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
+                  <Button
+                    size="lg"
+                    variant="outline"
                     className="w-full"
                     onClick={() => setShowQR(!showQR)}
                   >
-                    <QrCode size={20} className="mr-2" />
+                    <QrCode size={22} className="mr-2" />
                     QR Code
                   </Button>
 
                   {showQR && (
-                    <div className="p-4 bg-gray-50 rounded-lg text-center">
-                      <div className="w-32 h-32 bg-gray-200 mx-auto rounded-lg flex items-center justify-center">
+                    <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl text-center shadow">
+                      <div className="w-32 h-32 bg-gray-200 mx-auto rounded-xl flex items-center justify-center">
                         <span className="text-gray-500 text-sm">QR Code</span>
                       </div>
                       <p className="text-sm text-gray-600 mt-2">Scan to share</p>
@@ -465,8 +456,8 @@ const EventDetail = () => {
         </div>
 
         {/* Mobile Floating Action Bar */}
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 lg:hidden z-50">
-          <div className="flex space-x-2">
+        <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-purple-600 border-t shadow-2xl p-4 lg:hidden z-50">
+          <div className="flex space-x-3">
             {event.isUpcoming && event.registrationUrl && (
               <Button className="flex-1" asChild>
                 <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
@@ -475,9 +466,9 @@ const EventDetail = () => {
               </Button>
             )}
             <Button variant="outline" onClick={addToGoogleCalendar}>
-              <CalendarPlus size={16} />
+              <CalendarPlus size={18} />
             </Button>
-            <SocialShare 
+            <SocialShare
               url={window.location.href}
               title={event.title}
             />

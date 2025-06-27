@@ -1,21 +1,32 @@
+import React, { useState, useRef } from 'react';
+import { CalendarIcon, Search, X } from 'lucide-react';
+import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 
-import React,{ useState } from 'react';
-// Minimal UI components defined inline for demonstration purposes.
-// In production, use a UI library or your own styled components.
+// Utility function to join class names conditionally
+function cn(...args) {
+  return args.flat().filter(Boolean).join(' ');
+}
 
+// Enhanced Input
 const Input = ({ className = '', ...props }) => (
   <input
-    className={`border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${className}`}
+    className={cn(
+      'border rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition bg-gray-50 shadow-sm text-gray-800 placeholder-gray-400',
+      className
+    )}
     {...props}
   />
 );
 
+// Enhanced Button
 const Button = ({ children, className = '', variant = 'default', ...props }) => {
   const base =
-    'px-4 py-2 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-500';
+    'px-5 py-2.5 rounded-lg font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm';
   const variants = {
-    default: 'bg-blue-600 text-white hover:bg-blue-700',
+    default: 'bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600',
     outline: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-100',
+    ghost: 'bg-transparent text-gray-500 hover:bg-gray-100',
   };
   return (
     <button className={`${base} ${variants[variant] || ''} ${className}`} {...props}>
@@ -24,9 +35,11 @@ const Button = ({ children, className = '', variant = 'default', ...props }) => 
   );
 };
 
-const Select = ({ children, onValueChange, ...props }) => (
+// Enhanced Select
+const Select = ({ value, onValueChange, children, ...props }) => (
   <select
-    className="border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+    className="border rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 shadow-sm text-gray-800"
+    value={value}
     onChange={e => onValueChange && onValueChange(e.target.value)}
     {...props}
   >
@@ -34,63 +47,97 @@ const Select = ({ children, onValueChange, ...props }) => (
   </select>
 );
 
-const SelectTrigger = ({ children, className = '', ...props }) => (
-  <div className={className} {...props}>{children}</div>
-);
-
 const SelectValue = ({ placeholder }) => (
   <option className="hidden" value="" disabled>{placeholder}</option>
 );
-
-const SelectContent = ({ children }) => children;
 
 const SelectItem = ({ value, children }) => (
   <option value={value}>{children}</option>
 );
 
-// Simple Calendar using input[type="date"]
-const Calendar = ({ selected, onSelect, ...props }) => (
-  <input
-    type="date"
-    value={selected ? selected.toISOString().split('T')[0] : ''}
-    onChange={e => onSelect && onSelect(e.target.value ? new Date(e.target.value) : null)}
-    className="border rounded px-2 py-1"
-    {...props}
-  />
-);
+// Enhanced Calendar Popover
+const CalendarPopover = ({ selected, onSelect, onClear, label }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
 
-// Simple Popover using a label and absolute positioning
+  // Close popover on outside click
+  React.useEffect(() => {
+    function handleClick(e) {
+      if (open && ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [open]);
 
-const Popover = ({ children }) => <div className="relative">{children}</div>;
-
-const PopoverTrigger = ({ asChild, children, ...props }) => {
-  // asChild is ignored for this simple implementation
-  return React.cloneElement(children, props);
-};
-
-const PopoverContent = ({ children, className = '', align = 'start', ...props }) => {
-  // Simple absolute dropdown
   return (
-    <div
-      className={`absolute z-10 mt-2 bg-white border rounded shadow-lg ${className}`}
-      style={{ minWidth: 200 }}
-      {...props}
-    >
-      {children}
+    <div className="relative" ref={ref}>
+      <Button
+        variant="outline"
+        className={cn(
+          "w-[150px] justify-start text-left font-normal flex items-center gap-2",
+          !selected && "text-gray-400"
+        )}
+        type="button"
+        aria-label={label}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <CalendarIcon className="h-5 w-5 text-blue-500" />
+        {selected ? format(selected, "MMM dd, yyyy") : label}
+        {selected && (
+          <span
+            tabIndex={0}
+            aria-label="Clear date"
+            className="ml-auto text-gray-400 hover:text-red-500 cursor-pointer"
+            onClick={e => { e.stopPropagation(); onClear(); setOpen(false); }}
+            onKeyDown={e => { if (e.key === 'Enter') { e.stopPropagation(); onClear(); setOpen(false); } }}
+            role="button"
+          >
+            <X size={16} />
+          </span>
+        )}
+      </Button>
+      {open && (
+        <div className="absolute z-20 mt-2 bg-white border rounded-lg shadow-xl p-4" style={{ minWidth: 220 }}>
+          <input
+            type="date"
+            value={selected ? selected.toISOString().split('T')[0] : ''}
+            onChange={e => {
+              onSelect(e.target.value ? new Date(e.target.value) : null);
+              setOpen(false);
+            }}
+            className="border rounded-lg px-3 py-2 bg-gray-50 shadow-sm text-gray-800 w-full"
+            autoFocus
+          />
+          <div className="flex justify-end mt-2">
+            <Button
+              variant="ghost"
+              type="button"
+              onClick={() => { onClear(); setOpen(false); }}
+              className="px-2 py-1 text-sm"
+            >
+              Clear
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-import { CalendarIcon, Search } from 'lucide-react';
-import { format } from 'date-fns';
-// Utility function to join class names conditionally
-function cn(...args) {
-  return args
-    .flat()
-    .filter(Boolean)
-    .join(' ');
-}
 
-import PropTypes from 'prop-types';
+// Filter Chip
+const FilterChip = ({ label, onRemove }) => (
+  <span className="inline-flex items-center bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-sm mr-2 mb-2">
+    {label}
+    <button
+      type="button"
+      className="ml-2 text-blue-400 hover:text-red-500 focus:outline-none"
+      aria-label={`Remove ${label}`}
+      onClick={onRemove}
+    >
+      <X size={14} />
+    </button>
+  </span>
+);
 
 const SearchFilter = ({
   onSearch,
@@ -104,6 +151,8 @@ const SearchFilter = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [type, setType] = useState('all');
+  const [year, setYear] = useState('all');
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -120,105 +169,102 @@ const SearchFilter = ({
     }
   };
 
+  // Reset handlers
+  const clearStartDate = () => handleDateChange(null, true);
+  const clearEndDate = () => handleDateChange(null, false);
+  const clearType = () => { setType('all'); onTypeFilter && onTypeFilter('all'); };
+  const clearYear = () => { setYear('all'); onYearFilter && onYearFilter('all'); };
+  const clearSearch = () => { setSearchQuery(''); onSearch(''); };
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-      <form onSubmit={handleSearch} className="space-y-4">
-        <div className="flex flex-col md:flex-row gap-4">
+    <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-2xl mb-10 border border-blue-100">
+      <form onSubmit={handleSearch} className="space-y-6">
+        <div className="flex flex-col md:flex-row gap-6 items-center">
           {/* Search Input */}
-          <div className="flex-1">
+          <div className=" w-3/6">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400" size={22} />
               <Input
                 type="text"
                 placeholder={placeholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                className="pl-12 text-lg pr-10"
+                aria-label="Search"
+                autoFocus
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
+                  aria-label="Clear search"
+                  onClick={clearSearch}
+                >
+                  <X size={18} />
+                </button>
+              )}
             </div>
           </div>
 
           {/* Date Filters */}
-          <div className="flex gap-2">
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className={cn(
-                    "w-[140px] justify-start text-left font-normal",
-                    !startDate && "text-muted-foreground"
-                  )}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {startDate ? format(startDate, "MMM dd") : "Start Date"}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={startDate || undefined}
-                  onSelect={(date) => handleDateChange(date, true)}
-                  initialFocus
-                  className="pointer-events-auto"
-                />
-              </PopoverContent>
-            </Popover>
-
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className={cn(
-                    "w-[140px] justify-start text-left font-normal",
-                    !endDate && "text-muted-foreground"
-                  )}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {endDate ? format(endDate, "MMM dd") : "End Date"}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={endDate || undefined}
-                  onSelect={(date) => handleDateChange(date, false)}
-                  initialFocus
-                  className="pointer-events-auto"
-                />
-              </PopoverContent>
-            </Popover>
+          <div className="flex w-2/6 gap-1 items-center">
+            <CalendarPopover
+              selected={startDate}
+              onSelect={date => handleDateChange(date, true)}
+              onClear={clearStartDate}
+              label="Start Date"
+              
+            />
+            <span className="text-gray-400 font-semibold">—</span>
+            <CalendarPopover
+              selected={endDate}
+              onSelect={date => handleDateChange(date, false)}
+              onClear={clearEndDate}
+              label="End Date"
+            />
           </div>
 
-          <Button type="submit">Search</Button>
+          <Button type="submit" className="text-lg flex items-center gap-2 shadow-md">
+            Search
+          </Button>
+        </div>
+
+        {/* Filter Chips */}
+        <div className="flex flex-wrap gap-2 mt-2">
+          {searchQuery && <FilterChip label={`Search: "${searchQuery}"`} onRemove={clearSearch} />}
+          {startDate && <FilterChip label={`From: ${format(startDate, 'MMM dd, yyyy')}`} onRemove={clearStartDate} />}
+          {endDate && <FilterChip label={`To: ${format(endDate, 'MMM dd, yyyy')}`} onRemove={clearEndDate} />}
+          {type !== 'all' && <FilterChip label={`Type: ${type}`} onRemove={clearType} />}
+          {year !== 'all' && <FilterChip label={`Year: ${year}`} onRemove={clearYear} />}
         </div>
 
         {/* Additional Filters */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
           {types.length > 0 && onTypeFilter && (
-            <Select onValueChange={onTypeFilter}>
-              <SelectTrigger className="w-full sm:w-[180px]">
-                <SelectValue placeholder="Select Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
-                {types.map((type) => (
-                  <SelectItem key={type} value={type}>{type}</SelectItem>
-                ))}
-              </SelectContent>
+            <Select
+              value={type}
+              onValueChange={val => { setType(val); onTypeFilter(val); }}
+              aria-label="Filter by type"
+            >
+              <SelectValue placeholder="Select Type" />
+              <SelectItem value="all">All Types</SelectItem>
+              {types.map((t) => (
+                <SelectItem key={t} value={t}>{t}</SelectItem>
+              ))}
             </Select>
           )}
 
           {years.length > 0 && onYearFilter && (
-            <Select onValueChange={onYearFilter}>
-              <SelectTrigger className="w-full sm:w-[180px]">
-                <SelectValue placeholder="Select Year" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Years</SelectItem>
-                {years.map((year) => (
-                  <SelectItem key={year} value={year}>{year}</SelectItem>
-                ))}
-              </SelectContent>
+            <Select
+              value={year}
+              onValueChange={val => { setYear(val); onYearFilter(val); }}
+              aria-label="Filter by year"
+            >
+              <SelectValue placeholder="Select Year" />
+              <SelectItem value="all">All Years</SelectItem>
+              {years.map((y) => (
+                <SelectItem key={y} value={y}>{y}</SelectItem>
+              ))}
             </Select>
           )}
         </div>
@@ -228,6 +274,7 @@ const SearchFilter = ({
 };
 
 export default SearchFilter;
+
 SearchFilter.propTypes = {
   onSearch: PropTypes.func.isRequired,
   onDateFilter: PropTypes.func.isRequired,
@@ -237,4 +284,3 @@ SearchFilter.propTypes = {
   years: PropTypes.arrayOf(PropTypes.string),
   placeholder: PropTypes.string,
 };
-
