@@ -1,33 +1,44 @@
-
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/announcement/Header';
 import AdvancedSearchFilter from '../../components/announcement/AdvancedSearchFilter';
 import SocialShare from '../../components/announcement/SocialShare';
 import EnhancedPagination from '../../components/announcement/EnhancedPagination';
+
 // Card, CardContent, CardDescription, CardHeader, CardTitle
 const Card = ({ children, className = '', ...props }) => (
-  <div className={`bg-white rounded-lg shadow ${className}`} {...props}>{children}</div>
+  <div
+    className={`bg-white rounded-2xl shadow-xl border border-gray-100 border-solid hover:shadow-2xl transition-all duration-300${className}`}
+    {...props}
+  >
+    {children}
+  </div>
 );
 const CardHeader = ({ children, className = '', ...props }) => (
-  <div className={`p-4 border-b ${className}`} {...props}>{children}</div>
+  <div className={`p-5 border-b border-gray-100 border-solid bg-gradient-to-r from-blue-50/60 to-white${className}`} {...props}>
+    {children}
+  </div>
 );
 const CardTitle = ({ children, className = '', ...props }) => (
-  <h2 className={`font-bold text-xl ${className}`} {...props}>{children}</h2>
+  <h2 className={`font-bold text-xl text-blue-900 leading-tight ${className}`} {...props}>
+    {children}
+  </h2>
 );
 const CardDescription = ({ children, className = '', ...props }) => (
-  <p className={`text-gray-500 ${className}`} {...props}>{children}</p>
+  <p className={`text-gray-500 ${className}`} {...props}>
+    {children}
+  </p>
 );
 const CardContent = ({ children, className = '', ...props }) => (
-  <div className={`p-4 ${className}`} {...props}>{children}</div>
+  <div className={`p-5 ${className}`}>{children}</div>
 );
 
 // Badge
 const Badge = ({ children, variant = 'secondary', className = '', ...props }) => {
-  const base = 'inline-block px-2 py-1 rounded font-medium';
+  const base = 'inline-block px-2 py-1 rounded-full font-medium shadow-sm';
   const variants = {
-    secondary: 'bg-gray-200 text-gray-700',
-    primary: 'bg-blue-500 text-white',
+    secondary: 'bg-gradient-to-r from-gray-200 to-gray-100 text-gray-700',
+    primary: 'bg-gradient-to-r from-blue-500 to-blue-400 text-white',
   };
   return (
     <span className={`${base} ${variants[variant] || ''} ${className}`} {...props}>
@@ -39,13 +50,13 @@ const Badge = ({ children, variant = 'secondary', className = '', ...props }) =>
 // Button
 const Button = ({ children, size = 'md', className = '', ...props }) => {
   const sizes = {
-    sm: 'px-3 py-1 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg',
+    sm: 'px-4 py-1.5 text-sm',
+    md: 'px-5 py-2 text-base',
+    lg: 'px-7 py-3 text-lg',
   };
   return (
     <button
-      className={`bg-blue-600 hover:bg-blue-700 text-white rounded ${sizes[size] || ''} ${className}`}
+      className={`bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-full shadow-md font-semibold focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 ${sizes[size] || ''} ${className}`}
       {...props}
     >
       {children}
@@ -79,9 +90,8 @@ import { format } from 'date-fns';
 
 const NewsNotifications = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [startDate, setStartDate] = useState < Date | null > (null);
-  const [endDate, setEndDate] = useState < Date | null > (null);
-  const [selectedTag, setSelectedTag] = useState('all');
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [selectedYear, setSelectedYear] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(12);
@@ -101,13 +111,11 @@ const NewsNotifications = () => {
       const matchesDateRange = (!startDate || newsDate >= startDate) &&
         (!endDate || newsDate <= endDate);
 
-      const matchesTag = selectedTag === 'all' || news.tags.includes(selectedTag);
       const matchesYear = selectedYear === 'all' || new Date(news.date).getFullYear().toString() === selectedYear;
       const matchesSelectedTags = selectedTags.length === 0 || selectedTags.some(tag => news.tags.includes(tag));
 
-      return matchesSearch && matchesDateRange && matchesTag && matchesYear && matchesSelectedTags;
+      return matchesSearch && matchesDateRange && matchesYear && matchesSelectedTags;
     });
-
     // Sort the filtered results
     filtered.sort((a, b) => {
       switch (sortOrder) {
@@ -122,13 +130,13 @@ const NewsNotifications = () => {
     });
 
     return filtered;
-  }, [searchQuery, startDate, endDate, selectedTag, selectedYear, selectedTags, sortOrder]);
-
-  const totalPages = Math.ceil(filteredAndSortedNews.length / itemsPerPage);
+  }, [searchQuery, startDate, endDate, selectedYear, selectedTags, sortOrder]);
   const currentNews = filteredAndSortedNews.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  const totalPages = Math.ceil(filteredAndSortedNews.length / itemsPerPage);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -171,40 +179,49 @@ const NewsNotifications = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Latest News</h1>
-          <p className="text-gray-600 text-lg">Stay updated with the latest happenings at GBU</p>
+      <div className="container mx-auto px-4 py-12">
+        <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl font-extrabold text-white mb-3 drop-shadow-lg tracking-tight">
+            Latest News
+          </h1>
+          <p className="text-white text-lg max-w-2xl mx-auto">
+            Stay updated with the latest happenings at <span className="font-semibold text-white">GBU</span>
+          </p>
+          </div>
+        </section>
+      
+
+        <div className="mb-10">
+          <AdvancedSearchFilter
+            onSearch={handleSearch}
+            onDateFilter={handleDateFilter}
+            onTypeFilter={handleTagFilter}
+            onYearFilter={handleYearFilter}
+            onSortChange={handleSortChange}
+            types={allTags}
+            years={allYears}
+            placeholder="Search news..."
+            currentSort={sortOrder}
+            tags={allTags}
+            onTagFilter={handleTagFilter}
+            selectedTags={selectedTags}
+          />
         </div>
 
-        <AdvancedSearchFilter
-          onSearch={handleSearch}
-          onDateFilter={handleDateFilter}
-          onTypeFilter={handleTagFilter}
-          onYearFilter={handleYearFilter}
-          onSortChange={handleSortChange}
-          types={allTags}
-          years={allYears}
-          placeholder="Search news..."
-          currentSort={sortOrder}
-          tags={allTags}
-          onTagFilter={handleTagFilter}
-          selectedTags={selectedTags}
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {currentNews.map((news) => (
-            <Card key={news.id} className="hover:shadow-lg transition-shadow">
+            <Card key={news.id} className="group relative overflow-hidden">
               {news.image && (
-                <div className="aspect-video w-full overflow-hidden rounded-t-lg">
+                <div className="aspect-video w-full overflow-hidden rounded-t-2xl">
                   <img
                     src={news.image}
                     alt={news.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
+                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 to-blue-200 opacity-70" />
                 </div>
               )}
               <CardHeader>
@@ -215,20 +232,23 @@ const NewsNotifications = () => {
                     </Badge>
                   ))}
                 </div>
-                <CardTitle className="text-lg font-semibold line-clamp-2">
+                <CardTitle className="text-lg font-semibold line-clamp-2 group-hover:text-blue-700 transition-colors">
                   {news.title}
                 </CardTitle>
-                <CardDescription className="text-sm text-gray-500">
+                <CardDescription className="text-sm text-gray-500 flex items-center gap-2 mt-1">
+                  <span className="inline-block w-2 h-2 bg-blue-400 rounded-full" />
                   {format(new Date(news.date), 'MMMM dd, yyyy')} • By {news.author}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 mb-5 line-clamp-3">
                   {news.excerpt}
                 </p>
                 <div className="flex justify-between items-center">
                   <Link to={`/news/${news.id}`}>
-                    <Button size="sm">Read More</Button>
+                    <Button size="sm" className="shadow hover:scale-105">
+                      Read More
+                    </Button>
                   </Link>
                   <SocialShare
                     url={`${window.location.origin}/news/${news.id}`}
@@ -236,25 +256,34 @@ const NewsNotifications = () => {
                   />
                 </div>
               </CardContent>
+              <div className="absolute inset-0 pointer-events-none group-hover:bg-blue-50/40 transition-all duration-300 rounded-2xl" />
             </Card>
           ))}
         </div>
 
         {filteredAndSortedNews.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No news found matching your criteria.</p>
+          <div className="text-center py-16">
+            <div className="inline-block bg-white px-8 py-6 rounded-2xl shadow-lg border border-blue-100">
+              <svg className="mx-auto mb-3 text-blue-400" width="48" height="48" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                  d="M12 8v4m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9Z" />
+              </svg>
+              <p className="text-gray-500 text-lg font-medium">No news found matching your criteria.</p>
+            </div>
           </div>
         )}
 
         {totalPages > 1 && (
-          <EnhancedPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            totalItems={filteredAndSortedNews.length}
-            itemsPerPage={itemsPerPage}
-            onPageChange={handlePageChange}
-            onItemsPerPageChange={handleItemsPerPageChange}
-          />
+          <div className="mt-12">
+            <EnhancedPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalItems={filteredAndSortedNews.length}
+              itemsPerPage={itemsPerPage}
+              onPageChange={handlePageChange}
+              onItemsPerPageChange={handleItemsPerPageChange}
+            />
+          </div>
         )}
       </div>
     </div>

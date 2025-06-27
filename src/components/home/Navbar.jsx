@@ -139,9 +139,11 @@ const Navbar = () => {
       icon: <Camera size={16} />,
       items: [
         ["news-notifications", "News & Updates"],
-        ["event-calendar", "Event Calendar"],
-        ["notices", "Notices"],
-        ["press-releases", "Press Releases"],
+
+        ["event-calendar", "Upcoming Events"],
+        ["notices", "Notices & Circular"],
+        // ["press-releases", "Press Releases"],
+
         ["media-gallery", "Media Gallery"],
         ["newsletter", "Newsletter"],
       ].map(([slug, text]) => (

@@ -1,9 +1,12 @@
-
 import { Link } from 'react-router-dom';
+import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { format } from 'date-fns';
+import PropTypes from 'prop-types';
+
 // Card component
 const Card = ({ children, className = '', ...props }) => (
   <div
-    className={`bg-gray-50 rounded-lg border border-gray-200 border-solid shadow-sm transition-shadow${className}`}
+    className={`bg-white rounded-xl border border-gray-100 border-solid shadow-md hover:shadow-xl transition-all duration-200 overflow-hidden${className}`}
     {...props}
   >
     {children}
@@ -11,19 +14,19 @@ const Card = ({ children, className = '', ...props }) => (
 );
 
 const CardHeader = ({ children, className = '', ...props }) => (
-  <div className={`p-3 border-b border-gray-100 border-solid${className}`} {...props}>
+  <div className={`p-4 border-b border-gray-100 border-solid bg-gradient-to-r from-blue-50/60 to-white${className}`} {...props}>
     {children}
   </div>
 );
 
 const CardTitle = ({ children, className = '', ...props }) => (
-  <h4 className={`font-semibold text-gray-800 ${className}`} {...props}>
+  <h4 className={`font-semibold text-gray-900 text-base ${className}`} {...props}>
     {children}
   </h4>
 );
 
 const CardContent = ({ children, className = '', ...props }) => (
-  <div className={`p-3 ${className}`} {...props}>
+  <div className={`p-4 ${className}`} {...props}>
     {children}
   </div>
 );
@@ -31,7 +34,7 @@ const CardContent = ({ children, className = '', ...props }) => (
 // Badge component
 const Badge = ({ children, className = '', ...props }) => (
   <span
-    className={`inline-block px-2 py-0.5 rounded-full font-medium text-xs ${className}`}
+    className={`inline-block px-3 py-1 rounded-full font-semibold text-xs shadow-sm ${className}`}
     {...props}
   >
     {children}
@@ -47,14 +50,15 @@ const Button = ({
   ...props
 }) => {
   const base =
-    'inline-flex items-center justify-center rounded-md font-medium focus:outline-none transition-colors duration-150';
+    'inline-flex items-center justify-center rounded-md font-medium focus:outline-none transition-colors duration-150 gap-1';
   const variants = {
     default: 'bg-blue-600 text-white hover:bg-blue-700',
     outline:
       'border border-blue-600 text-blue-700 bg-white hover:bg-blue-50',
+    ghost: 'bg-transparent text-blue-700 hover:bg-blue-50',
   };
   const sizes = {
-    sm: 'px-3 py-1 text-xs',
+    sm: 'px-3 py-1.5 text-xs',
     md: 'px-4 py-2 text-sm',
   };
   return (
@@ -66,8 +70,7 @@ const Button = ({
     </button>
   );
 };
-import { Calendar, MapPin } from 'lucide-react';
-import { format } from 'date-fns';
+
 // Mock events data
 const mockEvents = [
   {
@@ -120,7 +123,14 @@ const mockEvents = [
   },
 ];
 
-import PropTypes from 'prop-types';
+const typeIcons = {
+  Symposium: <span className="mr-1.5 text-blue-500"><Calendar size={14} /></span>,
+  Workshop: <span className="mr-1.5 text-green-500"><Calendar size={14} /></span>,
+  Seminar: <span className="mr-1.5 text-purple-500"><Calendar size={14} /></span>,
+  Cultural: <span className="mr-1.5 text-orange-500"><Calendar size={14} /></span>,
+  Conference: <span className="mr-1.5 text-red-500"><Calendar size={14} /></span>,
+  Webinar: <span className="mr-1.5 text-cyan-500"><Calendar size={14} /></span>,
+};
 
 const RelatedEvents = ({ currentEventId, maxEvents = 4 }) => {
   const relatedEvents = mockEvents
@@ -142,41 +152,50 @@ const RelatedEvents = ({ currentEventId, maxEvents = 4 }) => {
   if (relatedEvents.length === 0) return null;
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-800">Upcoming Events</h3>
+    <div className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 rounded-2xl shadow-xl p-8 border border-blue-100">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-2xl font-bold text-blue-900 flex items-center gap-2">
+          <Calendar size={22} className="text-blue-500" />
+          Upcoming Events
+        </h3>
         <Link to="/events">
-          <Button variant="outline" size="sm">View All</Button>
+          <Button variant="ghost" size="sm" className="font-semibold">
+            View All <ArrowRight size={16} />
+          </Button>
         </Link>
       </div>
-      
-      <div className="space-y-4">
+      <div className="grid gap-6 md:grid-cols-2">
         {relatedEvents.map((event) => (
-          <Card key={event.id} className="hover:shadow-md transition-shadow">
-            <CardHeader className="pb-2">
-              <div className="flex items-start justify-between">
+          <Card key={event.id} className="group hover:scale-[1.02]">
+            <CardHeader className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                {typeIcons[event.type] || null}
                 <Badge className={`${getTypeColor(event.type)} text-xs`}>
                   {event.type}
                 </Badge>
               </div>
-              <CardTitle className="text-sm font-medium line-clamp-2">
+              <CardTitle className="text-base font-semibold line-clamp-2 group-hover:text-blue-700 transition-colors">
                 {event.title}
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-0">
-              <div className="space-y-1 text-xs text-gray-600 mb-3">
-                <div className="flex items-center">
-                  <Calendar size={12} className="mr-1" />
-                  {format(new Date(event.date), 'MMM dd, yyyy')}
+            <CardContent className="pt-2">
+              <div className="flex flex-col gap-2 text-sm text-gray-600 mb-4">
+                <div className="flex items-center gap-2">
+                  <Calendar size={15} className="text-blue-400" />
+                  <span className="font-medium">{format(new Date(event.date), 'MMM dd, yyyy')}</span>
                 </div>
-                <div className="flex items-center">
-                  <MapPin size={12} className="mr-1" />
-                  <span className="line-clamp-1">{event.venue}</span>
+                <div className="flex items-center gap-2">
+                  <MapPin size={15} className="text-pink-400" />
+                  <span className="truncate">{event.venue}</span>
                 </div>
               </div>
               <Link to={`/events/${event.id}`}>
-                <Button size="sm" variant="outline" className="w-full text-xs">
-                  View Details
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="w-full text-xs font-semibold shadow hover:shadow-md"
+                >
+                  View Details <ArrowRight size={14} />
                 </Button>
               </Link>
             </CardContent>
@@ -192,4 +211,3 @@ RelatedEvents.propTypes = {
   currentEventId: PropTypes.string.isRequired,
   maxEvents: PropTypes.number,
 };
-
