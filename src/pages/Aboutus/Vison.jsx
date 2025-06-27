@@ -325,7 +325,7 @@ const Vison = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="grid grid-cols-2 gap-4">
               <img 
-                src="https://images.unsplash.com/photo-1721322800607-8c38375eef04?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                src="/assets/hostels.jpg" 
                 alt="Hostel Room" 
                 className="rounded-lg"
               />
@@ -421,42 +421,47 @@ const Vison = () => {
         </div>
       </section>
 
-      {/* Section 10: Green Eco-Friendly Campus */}
-      <section className="py-16 relative">
-        <div className="absolute inset-0 bg-black/40 z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
-          }}
-        ></div>
-        
-        <div className="relative z-20 max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Green Eco-Friendly Campus
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { title: "Rainwater Harvesting", icon: "💧" },
-              { title: "Solar-Powered Lighting", icon: "☀️" },
-              { title: "Botanical Gardens", icon: "🌺" },
-              { title: "Pedestrian Pathways", icon: "🚶‍♂️" },
-              { title: "Sustainable Design", icon: "🌱" },
-              { title: "Green Architecture", icon: "🏢" }
-            ].map((feature, index) => (
-              <Card key={index} className="bg-white/90 backdrop-blur-sm hover:bg-white transition-all rounded-xl">
-                <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="font-semibold text-gray-900">{feature.title}</h3>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+{/* Section 10: Green Eco-Friendly Campus */}
+<section className="py-16 relative">
+  {/* Green translucent overlay */}
+  <div className="absolute inset-0 bg-green-700/80 z-10"></div>
+
+  {/* Background image */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-fixed"
+    style={{
+      backgroundImage: "url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
+    }}
+  ></div>
+
+  {/* Content */}
+  <div className="relative z-20 max-w-7xl mx-auto px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold text-white mb-4">
+        Green Eco-Friendly Campus
+      </h2>
+    </div>
+    
+    <div className="grid md:grid-cols-3 gap-8">
+      {[
+        { title: "Rainwater Harvesting", icon: "💧" },
+        { title: "Solar-Powered Lighting", icon: "☀️" },
+        { title: "Botanical Gardens", icon: "🌺" },
+        { title: "Pedestrian Pathways", icon: "🚶‍♂️" },
+        { title: "Sustainable Design", icon: "🌱" },
+        { title: "Green Architecture", icon: "🏢" }
+      ].map((feature, index) => (
+        <Card key={index} className="bg-white/90 backdrop-blur-sm hover:bg-white transition-all rounded-xl">
+          <CardContent className="p-6 text-center">
+            <div className="text-4xl mb-4">{feature.icon}</div>
+            <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Section 11: Sports & Recreation */}
       <section className="py-16 bg-gray-900 text-white">
@@ -474,22 +479,22 @@ const Vison = () => {
             <Card className="bg-gray-800 border-gray-700 border-[1px] border-solid rounded-xl">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-4">🏟️</div>
-                <h3 className="font-bold text-white mb-2">47-Acre Sports Zone</h3>
-                <p className="text-gray-300">Comprehensive outdoor facilities</p>
+                <h3 className="font-bold text-black mb-2">47-Acre Sports Zone</h3>
+                <p className="text-gray-700">Comprehensive outdoor facilities</p>
               </CardContent>
             </Card>
             <Card className="bg-gray-800 border-gray-700 border-[1px] border-solid rounded-xl">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-4">🏃‍♂️</div>
-                <h3 className="font-bold text-white mb-2">Multi-Sport Facilities</h3>
-                <p className="text-gray-300">Cricket, Football, Squash, Gym</p>
+                <h3 className="font-bold text-black mb-2">Multi-Sport Facilities</h3>
+                <p className="text-gray-700">Cricket, Football, Squash, Gym</p>
               </CardContent>
             </Card>
             <Card className="bg-gray-800 border-gray-700 border-[1px] border-solid rounded-xl">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-4">🏛️</div>
-                <h3 className="font-bold text-white mb-2">₹78 Cr Indoor Stadium</h3>
-                <p className="text-gray-300">Coming in 2025</p>
+                <h3 className="font-bold text-black mb-2">₹78 Cr Indoor Stadium</h3>
+                <p className="text-gray-700">Coming in 2025</p>
               </CardContent>
             </Card>
           </div>

@@ -51,7 +51,7 @@ const Navbar = () => {
       label: "About Us",
       icon: <User size={16} />,
       items: [
-        "vision-mission",
+        "About GBU",
         "chancellor-message",
         "vice-chancellor-message",
         "governance-committees",

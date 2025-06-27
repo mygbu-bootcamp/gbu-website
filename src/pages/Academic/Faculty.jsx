@@ -121,7 +121,7 @@ const qualifications = [
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">500+</h3>
+              <h3 className="text-3xl font-bold text-gray-800 mb-2">200+</h3>
               <p className="text-gray-600">Faculty Members</p>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>

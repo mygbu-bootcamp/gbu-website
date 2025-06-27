@@ -53,7 +53,7 @@ const Primarynavbar = () => {
 
           {/* Right links */}
           <div className="flex flex-wrap gap-4 items-center">
-            <a href="https://preview--fee-wise-campus-pay.lovable.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://gbu-smart-fee.vercel.app/" className="flex items-center gap-1 hover:underline">
               <CreditCard size={14} /> Online Fee Payment
             </a>
             <a href="https://mygbu-student.vercel.app/" className="flex items-center gap-1 hover:underline">
