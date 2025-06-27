@@ -105,7 +105,7 @@ export default function WelcomePage() {
           position: "relative",
           padding: "10px 0",
           height: "40px",
-          marginBottom: "30px",
+          // marginBottom: "30px",
         }}
       >
         <div
