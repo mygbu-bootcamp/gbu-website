@@ -55,10 +55,10 @@ const Navbar = () => {
         "chancellor-message",
         "vice-chancellor-message",
         "governance-committees",
-
+        "strategic-perspective",
         "policies-statutes-rti",
         "mandatory-disclosures",
-
+        "media-coverage",
       ].map((slug) => (
         <Link to={`/about-us/${slug}`} key={slug}>
           {slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
@@ -70,11 +70,9 @@ const Navbar = () => {
       label: "Academics",
       icon: <GraduationCap size={16} />,
       items: [
-        ["schools", "Schools & Departments"],
-        ["faculty", "Faculty Directory"],
         ["academic-calendar", "Academic Calendar & Regulations"],
         ["cbcs-framework", "CBCS Curriculum Framework"],
-        
+        ["faculty", "Faculty Directory"],
         ["centers-of-excellence", "Centers of Excellence"],
         ["international-collaboration", "International Collaboration"],
         ["reports-publications", "Reports & Publications"],
@@ -141,9 +139,15 @@ const Navbar = () => {
       icon: <Camera size={16} />,
       items: [
         ["news-notifications", "News & Updates"],
+<<<<<<< HEAD
         ["event-calendar", "Upcoming Events"],
         ["notices", "Notices & Circular"],
         // ["press-releases", "Press Releases"],
+=======
+        ["event-calendar", "Event Calendar"],
+        ["notices", "Notices"],
+        ["press-releases", "Press Releases"],
+>>>>>>> c960ac6ed1edc6c57b6718b1a179cbe1adf92da8
         ["media-gallery", "Media Gallery"],
         ["newsletter", "Newsletter"],
       ].map(([slug, text]) => (
@@ -165,7 +169,7 @@ const Navbar = () => {
       items: [
         ["alumni-network", "Alumni Network"],
         ["alumni-events", "Alumni Events"],
-
+        ["alumni-achievements", "Alumni Achievements"],
         ["become-mentor", "Become a Mentor"],
       ].map(([slug, text]) => (
         <Link to={`/alumni/${slug}`} key={slug}>
@@ -225,11 +229,12 @@ const Navbar = () => {
   };
 
   return (
-
-    <nav className="bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between relative z-50">
-      <div className="flex items-center space-x-3 cursor-pointer" onClick={() => (window.location.href = "/")}>
-        <img src="/assets/logo.svg" alt="GBU Logo" className="w-96 h-16 mr-3" />
-
+    <nav className="fixed top-9 left-0 w-full z-40 bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between">
+      <div
+        className="flex items-center space-x-3 cursor-pointer"
+        onClick={() => (window.location.href = "/")}
+      >
+        <img src="/assets/logo.svg" alt="GBU Logo" className="w-64 h-12 mr-3" />
       </div>
 
       {/* Hamburger Menu */}
