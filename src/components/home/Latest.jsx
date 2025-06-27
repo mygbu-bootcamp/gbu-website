@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 export default function LatestUpdates() {
@@ -8,6 +8,8 @@ export default function LatestUpdates() {
 
   const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
   const NOTICE_API = `${BASE}/landing/news-and-events/`;
+
+  const scrollRefs = useRef([]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -19,7 +21,7 @@ export default function LatestUpdates() {
       const res = await axios.get(NOTICE_API);
       const json = res.data;
       setData(json);
-      const uniqueCategories = [...new Set(json.map(item => item.category))];
+      const uniqueCategories = [...new Map(json.map(item => [item.category, item])).values()];
       setCategories(uniqueCategories);
     } catch (err) {
       console.error('Error fetching notices:', err);
@@ -29,28 +31,22 @@ export default function LatestUpdates() {
   useEffect(() => {
     const intervals = [];
 
-    setTimeout(() => {
-      categories.forEach((_, index) => {
-        const container = document.getElementById(`scroll-container-${index}`);
-        if (!container) return;
+    scrollRefs.current.forEach((container) => {
+      if (!container) return;
 
-        let scrollAmount = 0;
-        const scrollStep = 1;
-        const scrollDelay = 50;
+      const scrollStep = 1;
+      const scrollDelay = 50;
 
-        const interval = setInterval(() => {
-          if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-            container.scrollTop = 0;
-            scrollAmount = 0;
-          } else {
-            scrollAmount += scrollStep;
-            container.scrollTop = scrollAmount;
-          }
-        }, scrollDelay);
+      const interval = setInterval(() => {
+        if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+          container.scrollTop = 0;
+        } else {
+          container.scrollTop += scrollStep;
+        }
+      }, scrollDelay);
 
-        intervals.push(interval);
-      });
-    }, 1500); // allow DOM to render
+      intervals.push(interval);
+    });
 
     return () => intervals.forEach(clearInterval);
   }, [categories]);
@@ -75,9 +71,8 @@ export default function LatestUpdates() {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex items-start gap-3 p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-transparent hover:border-blue-100 ${
-        isVisible ? 'animate-slide-in' : 'opacity-0 translate-y-4'
-      }`}
+      className={`group relative flex items-start gap-3 p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-transparent hover:border-blue-100 ${isVisible ? 'animate-slide-in' : 'opacity-0 translate-y-4'
+        }`}
       style={{ animationDelay: `${index * 150}ms` }}
     >
       <div className={`w-1.5 h-16 ${getPriorityIndicator(item.priority)} rounded-full flex-shrink-0 mt-1 shadow-sm`}></div>
@@ -139,17 +134,18 @@ export default function LatestUpdates() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {categories.map((category, catIndex) => {
+        {categories.map((catItem, catIndex) => {
+          const category = catItem.category;
           const filtered = data.filter(item => item.category === category);
           return (
-            <div key={catIndex} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden">
+            <div key={catIndex} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden flex flex-col">
               <div className="p-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white">
                 <h3 className="text-lg font-semibold">{category}</h3>
               </div>
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden flex-1">
                 <div
                   className="auto-scroll space-y-3 max-h-[350px] overflow-y-auto pr-2"
-                  id={`scroll-container-${catIndex}`}
+                  ref={el => (scrollRefs.current[catIndex] = el)}
                   style={{ scrollBehavior: 'smooth' }}
                 >
                   {filtered.length > 0 ? (
@@ -157,10 +153,21 @@ export default function LatestUpdates() {
                       <NoticeCard key={item.id} item={item} index={i} category={category} />
                     ))
                   ) : (
-                    <p className="text-sm text-gray-500">No updates in this category.</p>
+                    <p className="text-sm text-gray-500 p-4">No updates in this category.</p>
                   )}
                 </div>
               </div>
+              <button
+                onClick={() => {
+                  const url = catItem.view_more_url || '/news-and-events';
+                  window.location.href = url;
+                }}
+                className="absolute right-4 bottom-4 z-10 px-4 py-2 border border-blue-500 text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-200 bg-transparent shadow"
+                style={{ background: 'none' }}
+              >
+                View More
+              </button>
+
             </div>
           );
         })}

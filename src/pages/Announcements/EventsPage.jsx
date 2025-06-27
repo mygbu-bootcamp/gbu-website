@@ -167,14 +167,17 @@ const EventsPage = () => {
   return (
     <div className="min-h-screen w-full bg-gray-50">
       {/* <Header /> */}
-      
-      <div className="container w-full mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Academic Events</h1>
-          <p className="text-gray-600 text-lg">Discover upcoming and past academic events at GBU</p>
+       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl font-bold mb-6 animate-fade-in">Academic Events</h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in">
+            Discover upcoming and past academic events at GBU
+          </p>
         </div>
-
-        <EventFilters
+      </section>
+      
+        
+            <EventFilters
           onSearch={handleSearch}
           onDateFilter={handleDateFilter}
           onTypeFilter={handleTypeFilter}
@@ -182,6 +185,7 @@ const EventsPage = () => {
           types={allTypes}
           years={allYears}
         />
+          
 
         <EventTabs
           activeTab={activeTab}
@@ -207,8 +211,8 @@ const EventsPage = () => {
             onItemsPerPageChange={handleItemsPerPageChange}
           />
         )}
-      </div>
-    </div>
+        </div>
+  
   );
 };
 
