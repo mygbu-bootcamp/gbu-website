@@ -87,8 +87,8 @@ const EventCard = ({ event, isPastEvent = false }) => {
     <Card className={`hover:shadow-2xl transition-shadow duration-300 ${isPastEvent ? 'opacity-80 grayscale' : ''}`}>
       {event.images && event.images.length > 0 ? (
         <div className="aspect-video w-full overflow-hidden relative group">
-          <img 
-            src={event.images[0]} 
+          <img
+            src={event.images[0]}
             alt={event.title}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -133,11 +133,10 @@ const EventCard = ({ event, isPastEvent = false }) => {
           {event.description}
         </p>
         <div className="flex flex-wrap gap-3 items-center">
-          <Link to={`/events/${event.id}`}>
-            <Button size="sm" variant={isPastEvent ? "outline" : "default"}>
-              View Details
-            </Button>
+          <Link to={`/announcements/event-calendar/${event.id}`}>
+            <Button>View Details</Button>
           </Link>
+
           {event.registrationUrl && !isPastEvent && (
             <Button size="sm" variant="outline" asChild>
               <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
@@ -146,14 +145,16 @@ const EventCard = ({ event, isPastEvent = false }) => {
               </a>
             </Button>
           )}
+
           <div className="ml-auto">
-            <SocialShare 
+            <SocialShare
               url={`${window.location.origin}/events/${event.id}`}
               title={event.title}
               className="!ml-0"
             />
           </div>
         </div>
+
       </CardContent>
     </Card>
   );

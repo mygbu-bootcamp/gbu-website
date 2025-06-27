@@ -142,7 +142,6 @@ const Navbar = () => {
       items: [
         ["news-notifications", "News & Updates"],
 
-
         ["event-calendar", "Upcoming Events"],
         ["notices", "Notices & Circular"],
         // ["press-releases", "Press Releases"],
