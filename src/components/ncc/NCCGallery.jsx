@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React , { useState } from 'react';
 // Minimal UI components defined inline for this file
 
 const Card = ({ children, className = "" }) => (

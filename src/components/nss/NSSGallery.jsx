@@ -1,122 +1,11 @@
 import React, { useState } from 'react';
-// Minimal Card components
-const Card = ({ children, className }) => (
-  <div className={`bg-white rounded-lg shadow ${className || ''}`}>{children}</div>
-);
-const CardHeader = ({ children, className }) => (
-  <div className={`p-4 border-b border-gray-200 ${className || ''}`}>{children}</div>
-);
-const CardTitle = ({ children, className }) => (
-  <h3 className={`font-semibold text-lg ${className || ''}`}>{children}</h3>
-);
-const CardContent = ({ children, className }) => (
-  <div className={`p-4 ${className || ''}`}>{children}</div>
-);
-
-// Minimal Button component
-const Button = ({ children, className, variant = 'default', size = 'md', ...props }) => {
-  const base =
-    'inline-flex items-center justify-center rounded font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
-  const variants = {
-    default: 'bg-blue-600 text-white hover:bg-blue-700',
-    outline: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50',
-  };
-  const sizes = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-  };
-  return (
-    <button
-      className={`${base} ${variants[variant] || variants.default} ${sizes[size] || sizes.md} ${className || ''}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
-
-// Minimal Badge component
-const Badge = ({ children, className, variant }) => {
-  const base = 'inline-block px-2 py-0.5 rounded text-xs font-semibold';
-  const variants = {
-    outline: 'border border-gray-300 text-gray-700 bg-white',
-    default: 'bg-gray-100 text-gray-800',
-  };
-  return (
-    <span className={`${base} ${variants[variant] || variants.default} ${className || ''}`}>
-      {children}
-    </span>
-  );
-};
-import { Camera, Filter, Calendar, Eye, Download } from 'lucide-react';
-// Minimal Select component
-const Select = ({ value, onValueChange, children }) => (
-  <div className="relative">{React.Children.map(children, child => React.cloneElement(child, { value, onValueChange }))}</div>
-);
-const SelectTrigger = ({ children, className }) => (
-  <button className={`border rounded px-3 py-2 bg-white text-left w-full ${className || ''}`} type="button">
-    {children}
-  </button>
-);
-const SelectValue = ({ placeholder }) => (
-  <span className="text-gray-700">{placeholder}</span>
-);
-const SelectContent = ({ children }) => (
-  <div className="absolute z-10 mt-1 w-full bg-white border rounded shadow">{children}</div>
-);
-const SelectItem = ({ value, children, onValueChange }) => (
-  <div
-    className="px-4 py-2 hover:bg-blue-100 cursor-pointer"
-    onClick={() => onValueChange && onValueChange(value)}
-    tabIndex={0}
-    role="option"
-  >
-    {children}
-  </div>
-);
-
-// Minimal Dialog component
-const Dialog = ({ children }) => {
-  const [open, setOpen] = useState(false);
-  return React.Children.map(children, child =>
-    child.type.displayName === 'DialogTrigger'
-      ? React.cloneElement(child, { onClick: () => setOpen(true) })
-      : child.type.displayName === 'DialogContent' && open
-      ? React.cloneElement(child, { onClose: () => setOpen(false) })
-      : null
-  );
-};
-const DialogTrigger = ({ children, onClick }) => (
-  <div onClick={onClick} style={{ display: 'inline-block' }}>{children}</div>
-);
-DialogTrigger.displayName = 'DialogTrigger';
-
-const DialogContent = ({ children, onClose, className }) => (
-  <div
-    className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 ${className || ''}`}
-    onClick={onClose}
-  >
-    <div
-      className="bg-white rounded-lg p-6 max-w-full w-[90vw] md:w-auto"
-      onClick={e => e.stopPropagation()}
-    >
-      {children}
-      <button
-        className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
-        onClick={onClose}
-        aria-label="Close"
-      >
-        ×
-      </button>
-    </div>
-  </div>
-);
-DialogContent.displayName = 'DialogContent';
+import { Camera, Filter, Eye, Download } from 'lucide-react';
 
 const NSSGallery = () => {
   const [selectedYear, setSelectedYear] = useState('2024');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState('all');
+  const [dialogImage, setDialogImage] = useState(null);
 
   const galleryItems = [
     {
@@ -216,64 +105,57 @@ const NSSGallery = () => {
       </div>
 
       {/* Filters */}
-      <Card>
-        <CardContent className="p-6">
-          <div className="flex flex-wrap gap-4 items-center">
-            <div className="flex items-center space-x-2">
-              <Filter className="h-4 w-4 text-gray-600" />
-              <span className="text-sm font-medium text-gray-700">Filter by:</span>
-            </div>
-
-            <Select value={selectedYear} onValueChange={setSelectedYear}>
-              <SelectTrigger className="w-32">
-                <SelectValue placeholder="Year" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Years</SelectItem>
-                <SelectItem value="2024">2024</SelectItem>
-                <SelectItem value="2023">2023</SelectItem>
-                <SelectItem value="2022">2022</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-36">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
-                <SelectItem value="Health">Health</SelectItem>
-                <SelectItem value="Education">Education</SelectItem>
-                <SelectItem value="Environment">Environment</SelectItem>
-                <SelectItem value="Community">Community</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Select value={selectedEvent} onValueChange={setSelectedEvent}>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Event" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Events</SelectItem>
-                <SelectItem value="Blood Donation Camp">Blood Donation</SelectItem>
-                <SelectItem value="Environmental Drive">Environment</SelectItem>
-                <SelectItem value="Digital Literacy">Digital Literacy</SelectItem>
-                <SelectItem value="Health Camp">Health Camp</SelectItem>
-                <SelectItem value="Rural Development">Rural Development</SelectItem>
-              </SelectContent>
-            </Select>
+      <div className="bg-white rounded-lg shadow p-6">
+        <div className="flex flex-wrap gap-4 items-center">
+          <div className="flex items-center space-x-2">
+            <Filter className="h-4 w-4 text-gray-600" />
+            <span className="text-sm font-medium text-gray-700">Filter by:</span>
           </div>
-        </CardContent>
-      </Card>
+
+          {[{
+            value: selectedYear,
+            setValue: setSelectedYear,
+            options: ['all', '2024', '2023', '2022'],
+            label: 'Year',
+            width: 'w-32'
+          }, {
+            value: selectedCategory,
+            setValue: setSelectedCategory,
+            options: ['all', 'Health', 'Education', 'Environment', 'Community'],
+            label: 'Category',
+            width: 'w-36'
+          }, {
+            value: selectedEvent,
+            setValue: setSelectedEvent,
+            options: ['all', 'Blood Donation Camp', 'Environmental Drive', 'Digital Literacy', 'Health Camp', 'Rural Development'],
+            label: 'Event',
+            width: 'w-40'
+          }].map(({ value, setValue, options, label, width }, i) => (
+            <div key={i} className={`relative ${width}`}>
+              <select
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                className="w-full px-3 py-2 border rounded bg-white text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {options.map(opt => (
+                  <option key={opt} value={opt}>
+                    {opt === 'all' ? `All ${label}s` : opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Gallery Grid */}
       <div className="space-y-8">
         {filteredItems.map((item) => (
-          <Card key={item.id} className="overflow-hidden">
-            <CardHeader>
+          <div key={item.id} className="bg-white rounded-lg shadow overflow-hidden">
+            <div className="p-4 border-b border-gray-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <CardTitle className="text-xl text-gray-900">{item.title}</CardTitle>
+                  <h3 className="font-semibold text-xl text-gray-900">{item.title}</h3>
                   <p className="text-gray-600 mt-1">
                     {new Date(item.date).toLocaleDateString('en-IN', {
                       year: 'numeric',
@@ -283,46 +165,29 @@ const NSSGallery = () => {
                   </p>
                 </div>
                 <div className="flex space-x-2">
-                  <Badge className={getCategoryColor(item.category)}>
+                  <span className={`inline-block px-2 py-0.5 rounded text-xs font-semibold ${getCategoryColor(item.category)}`}>
                     {item.category}
-                  </Badge>
-                  <Badge variant="outline">{item.year}</Badge>
+                  </span>
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-semibold border border-gray-300 text-gray-700 bg-white">
+                    {item.year}
+                  </span>
                 </div>
               </div>
-            </CardHeader>
-            <CardContent>
+            </div>
+
+            <div className="p-4">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {item.images.map((image, index) => (
-                  <Dialog key={index}>
-                    <DialogTrigger asChild>
-                      <div className="relative group cursor-pointer">
-                        <img
-                          src={image.url}
-                          alt={image.caption}
-                          className="w-full h-32 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 rounded-lg flex items-center justify-center">
-                          <Eye className="h-6 w-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl">
-                      <div className="space-y-4">
-                        <img
-                          src={image.url}
-                          alt={image.caption}
-                          className="w-full h-auto rounded-lg"
-                        />
-                        <div className="flex justify-between items-center">
-                          <p className="text-gray-700">{image.caption}</p>
-                          <Button variant="outline" size="sm">
-                            <Download className="h-4 w-4 mr-2" />
-                            Download
-                          </Button>
-                        </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                  <div key={index} className="relative group cursor-pointer" onClick={() => setDialogImage(image)}>
+                    <img
+                      src={image.url}
+                      alt={image.caption}
+                      className="w-full h-32 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 rounded-lg flex items-center justify-center">
+                      <Eye className="h-6 w-6 text-white opacity-0 transform scale-90 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300" />
+                    </div>
+                  </div>
                 ))}
               </div>
 
@@ -330,19 +195,52 @@ const NSSGallery = () => {
                 <span className="text-sm text-gray-600">
                   {item.images.length} photos
                 </span>
-                <Button variant="outline" size="sm">
-                  <Download className="h-4 w-4 mr-2" />
+                <button className="flex items-center gap-2 px-4 py-2 text-sm border rounded text-gray-700 bg-white hover:bg-gray-50">
+                  <Download className="h-4 w-4" />
                   Download All
-                </Button>
+                </button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         ))}
       </div>
 
+      {/* Dialog View */}
+      {dialogImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setDialogImage(null)}
+        >
+          <div
+            className="bg-white rounded-lg p-6 w-[90vw] md:w-auto max-w-4xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-2 text-gray-400 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onClick={() => setDialogImage(null)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <div className="space-y-4">
+              <img src={dialogImage.url} alt={dialogImage.caption} className="w-full h-auto rounded-lg" />
+              <div className="flex justify-between items-center">
+                <p className="text-gray-700">{dialogImage.caption}</p>
+                <button className="flex items-center gap-2 px-4 py-2 text-sm border rounded text-gray-700 bg-white hover:bg-gray-50">
+                  <Download className="h-4 w-4" />
+                  Download
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Statistics */}
-      <Card className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-        <CardContent className="p-8">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg shadow">
+        <div className="p-8">
           <h3 className="text-2xl font-bold mb-6 text-center">Gallery Statistics</h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div>
@@ -362,23 +260,23 @@ const NSSGallery = () => {
               <div className="text-blue-100">Views & Downloads</div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      {/* Upload Section (Admin) */}
-      <Card className="border-2 border-dashed border-gray-300 hover:border-blue-400 transition-colors">
-        <CardContent className="flex flex-col items-center justify-center py-12">
+      {/* Upload Section */}
+      <div className="border-2 border-dashed border-gray-300 hover:border-blue-400 transition-colors rounded-lg shadow">
+        <div className="flex flex-col items-center justify-center py-12">
           <Camera className="h-12 w-12 text-gray-400 mb-4" />
           <h3 className="text-lg font-semibold text-gray-600 mb-2">Add New Photos</h3>
           <p className="text-gray-500 text-center mb-4">
             Upload event photos and videos to the gallery
           </p>
-          <Button className="bg-blue-600 hover:bg-blue-700">
-            <Camera className="h-4 w-4 mr-2" />
+          <button className="flex items-center gap-2 px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded">
+            <Camera className="h-4 w-4" />
             Upload Media
-          </Button>
-        </CardContent>
-      </Card>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

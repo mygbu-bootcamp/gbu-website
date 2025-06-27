@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
 // Minimal UI components defined inline for this file
 
 const Card = ({ children, className = "" }) => (
@@ -94,7 +94,7 @@ const SelectItem = ({ value: itemValue, children, value, onValueChange }) => (
   </div>
 );
 import { Upload, UserPlus, Shield, Award } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../../hooks/use-toast';
 
 const NCCRegistration = () => {
   const { toast } = useToast();

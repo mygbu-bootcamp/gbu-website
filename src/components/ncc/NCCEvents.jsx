@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
 // Card, CardHeader, CardTitle, CardContent, Button, Badge components defined locally
 
 const Card = ({ children, className = '', ...props }) => (

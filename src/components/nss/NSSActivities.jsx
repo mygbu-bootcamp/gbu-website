@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-// Card Components (locally defined for this file)
+import React, { useState, useContext, createContext, useEffect } from 'react';
+import { Calendar, MapPin, Users, FileText, Camera, Share2, Upload, Download } from 'lucide-react';
+
+// === UI COMPONENTS ===
 const Card = ({ children, className = '', ...props }) => (
-  <div
-    className={
-      `bg-white rounded-xl shadow border border-gray-200 p-0 ${className}`
-    }
-    {...props}
-  >
+  <div className={`bg-white rounded-xl shadow border border-gray-200 p-0 ${className}`} {...props}>
     {children}
   </div>
 );
@@ -29,7 +26,6 @@ const CardContent = ({ children, className = '', ...props }) => (
   </div>
 );
 
-// Button Component (locally defined, responsive)
 const Button = ({
   children,
   variant = 'default',
@@ -39,11 +35,10 @@ const Button = ({
   ...props
 }) => {
   const base =
-    'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+    'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
   const variants = {
     default: 'bg-blue-600 text-white hover:bg-blue-700',
-    outline:
-      'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-blue-400',
+    outline: 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-blue-400',
   };
   const sizes = {
     sm: 'px-2 py-1 text-xs md:text-sm',
@@ -61,70 +56,63 @@ const Button = ({
   );
 };
 
-// Badge Component (locally defined, responsive)
 const Badge = ({ children, className = '', ...props }) => (
-  <span
-    className={`inline-block px-2 py-0.5 rounded-full text-xs md:text-sm font-semibold ${className}`}
-    {...props}
-  >
+  <span className={`inline-block px-2 py-0.5 rounded-full text-xs md:text-sm font-semibold ${className}`} {...props}>
     {children}
   </span>
 );
-import { Calendar, MapPin, Users, FileText, Camera, Share2, Upload, Download } from 'lucide-react';
-// Dialog components defined locally for usage in this file
 
-const Dialog = ({ children }) => (
-  <div className="inline">{children}</div>
-);
+// === DIALOG CONTEXT COMPONENTS ===
+const DialogContext = createContext();
 
-const DialogTrigger = ({ asChild, children }) => {
-  const [open, setOpen] = React.useState(false);
-  // Clone the child and inject onClick to open dialog
+const Dialog = ({ children }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <DialogContext.Provider value={{ open, setOpen }}>
+      {children}
+    </DialogContext.Provider>
+  );
+};
+
+const DialogTrigger = ({ children }) => {
+  const { setOpen } = useContext(DialogContext);
   return React.cloneElement(children, {
     onClick: (e) => {
-      if (children.props.onClick) children.props.onClick(e);
+      e.stopPropagation();
       setOpen(true);
     },
-    'data-dialog-trigger': true,
-    tabIndex: 0,
-    onKeyDown: (e) => {
-      if (e.key === 'Enter' || e.key === ' ') setOpen(true);
-    }
   });
 };
 
-const DialogContext = React.createContext();
-
 const DialogContent = ({ children }) => {
-  const [open, setOpen] = React.useState(true);
-  React.useEffect(() => {
-    const close = (e) => {
-      if (e.target.classList.contains('nss-dialog-overlay')) setOpen(false);
+  const { open, setOpen } = useContext(DialogContext);
+
+  useEffect(() => {
+    const handleClose = (e) => {
+      if (e.target.classList.contains('nss-dialog-overlay')) {
+        setOpen(false);
+      }
     };
-    document.addEventListener('mousedown', close);
-    return () => document.removeEventListener('mousedown', close);
-  }, []);
+    document.addEventListener('mousedown', handleClose);
+    return () => document.removeEventListener('mousedown', handleClose);
+  }, [setOpen]);
+
   if (!open) return null;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center px-2 nss-dialog-overlay bg-black/40">
-      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-2 bg-black/40 nss-dialog-overlay">
+      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 animate-fade-in" onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>
   );
 };
 
-const DialogHeader = ({ children }) => (
-  <div className="mb-4">{children}</div>
-);
+const DialogHeader = ({ children }) => <div className="mb-4">{children}</div>;
+const DialogTitle = ({ children }) => <h3 className="text-lg font-semibold text-gray-900">{children}</h3>;
 
-const DialogTitle = ({ children }) => (
-  <h3 className="text-lg font-semibold text-gray-900">{children}</h3>
-);
-
+// === MAIN COMPONENT ===
 const NSSActivities = () => {
-  const [selectedActivity, setSelectedActivity] = useState(null);
-
   const activities = [
     {
       id: 1,
@@ -138,7 +126,7 @@ const NSSActivities = () => {
       volunteers: 45,
       photos: 4,
       hasNotice: true,
-      hasReport: true
+      hasReport: true,
     },
     {
       id: 2,
@@ -152,7 +140,7 @@ const NSSActivities = () => {
       volunteers: 25,
       photos: 6,
       hasNotice: true,
-      hasReport: true
+      hasReport: true,
     },
     {
       id: 3,
@@ -166,7 +154,7 @@ const NSSActivities = () => {
       volunteers: 60,
       photos: 0,
       hasNotice: true,
-      hasReport: false
+      hasReport: false,
     },
     {
       id: 4,
@@ -180,38 +168,39 @@ const NSSActivities = () => {
       volunteers: 15,
       photos: 0,
       hasNotice: true,
-      hasReport: false
-    }
+      hasReport: false,
+    },
   ];
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Completed': return 'bg-green-100 text-green-800';
-      case 'Upcoming': return 'bg-blue-100 text-blue-800';
-      case 'Cancelled': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'Completed':
+        return 'bg-green-100 text-green-800';
+      case 'Upcoming':
+        return 'bg-blue-100 text-blue-800';
+      case 'Cancelled':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
-  const getModeColor = (mode) => {
-    return mode === 'Online' ? 'bg-purple-100 text-purple-800' : 'bg-orange-100 text-orange-800';
-  };
+  const getModeColor = (mode) =>
+    mode === 'Online' ? 'bg-purple-100 text-purple-800' : 'bg-orange-100 text-orange-800';
 
   const shareActivity = (activity) => {
     const shareText = `Join us for ${activity.name} on ${activity.date} at ${activity.venue}. #NSS #CommunityService #SocialImpact`;
-
-    const shareUrls = {
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareText)}`,
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(window.location.href)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`,
-      instagram: '#'
+    const url = encodeURIComponent(window.location.href);
+    return {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${encodeURIComponent(shareText)}`,
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${url}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+      instagram: '#',
     };
-
-    return shareUrls;
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">NSS Activities</h2>
@@ -223,31 +212,22 @@ const NSSActivities = () => {
       {/* Activities Grid */}
       <div className="grid lg:grid-cols-2 gap-6">
         {activities.map((activity) => (
-          <Card key={activity.id} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <Card key={activity.id} className="hover:shadow-lg transition-transform transform hover:-translate-y-1">
             <CardHeader>
               <div className="flex justify-between items-start mb-2">
                 <CardTitle className="text-xl text-gray-900">{activity.name}</CardTitle>
                 <div className="flex space-x-2">
-                  <Badge className={getStatusColor(activity.status)}>
-                    {activity.status}
-                  </Badge>
-                  <Badge className={getModeColor(activity.mode)}>
-                    {activity.mode}
-                  </Badge>
+                  <Badge className={getStatusColor(activity.status)}>{activity.status}</Badge>
+                  <Badge className={getModeColor(activity.mode)}>{activity.mode}</Badge>
                 </div>
               </div>
             </CardHeader>
-
             <CardContent className="space-y-4">
-              {/* Event Details */}
+              {/* Details */}
               <div className="space-y-2">
                 <div className="flex items-center space-x-2 text-gray-600">
                   <Calendar className="h-4 w-4" />
-                  <span>{new Date(activity.date).toLocaleDateString('en-IN', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}</span>
+                  <span>{new Date(activity.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
                 <div className="flex items-center space-x-2 text-gray-600">
                   <MapPin className="h-4 w-4" />
@@ -260,17 +240,15 @@ const NSSActivities = () => {
               </div>
 
               {/* Description */}
-              <p className="text-gray-700 text-sm leading-relaxed">
-                {activity.description}
-              </p>
+              <p className="text-gray-700 text-sm leading-relaxed">{activity.description}</p>
 
-              {/* Impact Summary */}
+              {/* Impact */}
               <div className="bg-blue-50 p-3 rounded-lg">
                 <h4 className="font-semibold text-blue-900 mb-1">Impact Summary</h4>
                 <p className="text-blue-800 text-sm">{activity.impact}</p>
               </div>
 
-              {/* Action Buttons */}
+              {/* Buttons */}
               <div className="flex flex-wrap gap-2">
                 {activity.hasNotice && (
                   <Button variant="outline" size="sm" className="flex items-center space-x-1">
@@ -278,23 +256,20 @@ const NSSActivities = () => {
                     <span>Notice</span>
                   </Button>
                 )}
-
                 {activity.photos > 0 && (
                   <Button variant="outline" size="sm" className="flex items-center space-x-1">
                     <Camera className="h-3 w-3" />
                     <span>Photos ({activity.photos})</span>
                   </Button>
                 )}
-
                 {activity.hasReport && (
                   <Button variant="outline" size="sm" className="flex items-center space-x-1">
                     <Download className="h-3 w-3" />
                     <span>Report</span>
                   </Button>
                 )}
-
                 <Dialog>
-                  <DialogTrigger asChild>
+                  <DialogTrigger>
                     <Button variant="outline" size="sm" className="flex items-center space-x-1">
                       <Share2 className="h-3 w-3" />
                       <span>Share</span>
@@ -311,7 +286,7 @@ const NSSActivities = () => {
                           <Button
                             key={platform}
                             variant="outline"
-                            onClick={() => platform !== 'instagram' ? window.open(url, '_blank') : null}
+                            onClick={() => platform !== 'instagram' && window.open(url, '_blank')}
                             disabled={platform === 'instagram'}
                             className="capitalize"
                           >
@@ -328,14 +303,12 @@ const NSSActivities = () => {
         ))}
       </div>
 
-      {/* Add New Activity Button (Admin) */}
+      {/* Admin Add New */}
       <Card className="border-2 border-dashed border-gray-300 hover:border-blue-400 transition-colors">
         <CardContent className="flex flex-col items-center justify-center py-12">
           <Upload className="h-12 w-12 text-gray-400 mb-4" />
           <h3 className="text-lg font-semibold text-gray-600 mb-2">Add New Activity</h3>
-          <p className="text-gray-500 text-center mb-4">
-            Upload event details, photos, and documents
-          </p>
+          <p className="text-gray-500 text-center mb-4">Upload event details, photos, and documents</p>
           <Button className="bg-blue-600 hover:bg-blue-700">
             <Upload className="h-4 w-4 mr-2" />
             Add Activity

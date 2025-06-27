@@ -1,78 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Children, isValidElement, cloneElement } from 'react';
 import { Shield, Users, Award } from 'lucide-react';
-// Tabs, TabsContent, TabsList, TabsTrigger components defined locally
 
-const Tabs = ({ value, onValueChange, children, className }) => {
-  const [active, setActive] = useState(value);
-
-  React.useEffect(() => {
-    setActive(value);
-  }, [value]);
-
-  const handleChange = (val) => {
-    setActive(val);
-    if (onValueChange) onValueChange(val);
-  };
-
-  // Clone children to inject props
-  const childrenWithProps = React.Children.map(children, (child) => {
-    if (!React.isValidElement(child)) return child;
-    if (child.type.displayName === 'TabsList') {
-      return React.cloneElement(child, { active, onChange: handleChange });
-    }
-    if (child.type.displayName === 'TabsContent') {
-      return React.cloneElement(child, { active });
-    }
-    return child;
-  });
-
-  return (
-    <div className={className}>
-      {childrenWithProps}
-    </div>
-  );
-};
-
-const TabsList = ({ children, className, active, onChange }) => {
-  // Clone children to inject active and onChange
-  const childrenWithProps = React.Children.map(children, (child) => {
-    if (!React.isValidElement(child)) return child;
-    return React.cloneElement(child, {
-      isActive: child.props.value === active,
-      onSelect: () => onChange(child.props.value),
-    });
-  });
-  return (
-    <div className={className}>
-      {childrenWithProps}
-    </div>
-  );
-};
-TabsList.displayName = 'TabsList';
-
-const TabsTrigger = ({ children, value, className, isActive, onSelect }) => (
-  <button
-    type="button"
-    className={
-      `${className} transition-colors duration-200 rounded-md focus:outline-none ` +
-      (isActive
-        ? 'bg-gradient-to-r from-blue-900 to-orange-600 text-white font-semibold shadow'
-        : 'bg-transparent text-gray-700 hover:bg-orange-100')
-    }
-    onClick={onSelect}
-    aria-selected={isActive}
-    tabIndex={isActive ? 0 : -1}
-  >
-    {children}
-  </button>
-);
-TabsTrigger.displayName = 'TabsTrigger';
-
-const TabsContent = ({ children, value, active }) => {
-  if (value && value !== active) return null;
-  return <div>{children}</div>;
-};
-TabsContent.displayName = 'TabsContent';
 import NCCIntroduction from '../../components/ncc/NCCIntroduction';
 import NCCStructure from '../../components/ncc/NCCStructure';
 import NCCTraining from '../../components/ncc/NCCTraining';
@@ -83,6 +11,69 @@ import NCCResources from '../../components/ncc/NCCResources';
 import NCCGallery from '../../components/ncc/NCCGallery';
 import NCCSocialMedia from '../../components/ncc/NCCSocialMedia';
 
+// Tabs system
+const Tabs = ({ value, onValueChange, children, className }) => {
+  const [active, setActive] = useState(value);
+
+  useEffect(() => {
+    setActive(value);
+  }, [value]);
+
+  const handleChange = (val) => {
+    setActive(val);
+    if (onValueChange) onValueChange(val);
+  };
+
+  const childrenWithProps = Children.map(children, (child) => {
+    if (!isValidElement(child)) return child;
+    if (child.type.displayName === 'TabsList') {
+      return cloneElement(child, { active, onChange: handleChange });
+    }
+    if (child.type.displayName === 'TabsContent') {
+      return cloneElement(child, { active });
+    }
+    return child;
+  });
+
+  return <div className={className}>{childrenWithProps}</div>;
+};
+
+const TabsList = ({ children, className, active, onChange }) => {
+  const childrenWithProps = Children.map(children, (child) => {
+    if (!isValidElement(child)) return child;
+    return cloneElement(child, {
+      isActive: child.props.tab === active,
+      onSelect: () => onChange(child.props.tab),
+    });
+  });
+
+  return <div className={className}>{childrenWithProps}</div>;
+};
+TabsList.displayName = 'TabsList';
+
+const TabsTrigger = ({ children, tab, className, isActive, onSelect }) => (
+  <button
+    type="button"
+    className={`${className} transition duration-200 rounded-md focus:outline-none ${
+      isActive
+        ? 'bg-gradient-to-r from-blue-900 to-orange-600 text-white font-semibold shadow'
+        : 'bg-transparent text-gray-700 hover:bg-orange-100'
+    }`}
+    onClick={onSelect}
+  >
+    {children}
+  </button>
+);
+TabsTrigger.displayName = 'TabsTrigger';
+
+const TabsContent = ({ children, tab, active }) => (
+  <div className={tab === active ? 'block' : 'hidden'}>
+    {children}
+  </div>
+);
+TabsContent.displayName = 'TabsContent';
+
+// Main NCC Page
 const NCC = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -118,53 +109,27 @@ const NCC = () => {
         <div className="container mx-auto px-4">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-5 lg:grid-cols-9 h-auto p-1">
-              <TabsTrigger value="overview" className="text-xs lg:text-sm py-3">Overview</TabsTrigger>
-              <TabsTrigger value="structure" className="text-xs lg:text-sm py-3">Structure</TabsTrigger>
-              <TabsTrigger value="training" className="text-xs lg:text-sm py-3">Training</TabsTrigger>
-              <TabsTrigger value="register" className="text-xs lg:text-sm py-3">Register</TabsTrigger>
-              <TabsTrigger value="events" className="text-xs lg:text-sm py-3">Events</TabsTrigger>
-              <TabsTrigger value="achievements" className="text-xs lg:text-sm py-3">Achievements</TabsTrigger>
-              <TabsTrigger value="resources" className="text-xs lg:text-sm py-3">Resources</TabsTrigger>
-              <TabsTrigger value="gallery" className="text-xs lg:text-sm py-3">Gallery</TabsTrigger>
-              <TabsTrigger value="social" className="text-xs lg:text-sm py-3">Social</TabsTrigger>
+              <TabsTrigger tab="overview" className="text-xs lg:text-sm py-3">Overview</TabsTrigger>
+              <TabsTrigger tab="structure" className="text-xs lg:text-sm py-3">Structure</TabsTrigger>
+              <TabsTrigger tab="training" className="text-xs lg:text-sm py-3">Training</TabsTrigger>
+              <TabsTrigger tab="register" className="text-xs lg:text-sm py-3">Register</TabsTrigger>
+              <TabsTrigger tab="events" className="text-xs lg:text-sm py-3">Events</TabsTrigger>
+              <TabsTrigger tab="achievements" className="text-xs lg:text-sm py-3">Achievements</TabsTrigger>
+              <TabsTrigger tab="resources" className="text-xs lg:text-sm py-3">Resources</TabsTrigger>
+              <TabsTrigger tab="gallery" className="text-xs lg:text-sm py-3">Gallery</TabsTrigger>
+              <TabsTrigger tab="social" className="text-xs lg:text-sm py-3">Social</TabsTrigger>
             </TabsList>
 
             <div className="py-8">
-              <TabsContent value="overview">
-                <NCCIntroduction />
-              </TabsContent>
-
-              <TabsContent value="structure">
-                <NCCStructure />
-              </TabsContent>
-
-              <TabsContent value="training">
-                <NCCTraining />
-              </TabsContent>
-
-              <TabsContent value="register">
-                <NCCRegistration />
-              </TabsContent>
-
-              <TabsContent value="events">
-                <NCCEvents />
-              </TabsContent>
-
-              <TabsContent value="achievements">
-                <NCCAchievements />
-              </TabsContent>
-
-              <TabsContent value="resources">
-                <NCCResources />
-              </TabsContent>
-
-              <TabsContent value="gallery">
-                <NCCGallery />
-              </TabsContent>
-
-              <TabsContent value="social">
-                <NCCSocialMedia />
-              </TabsContent>
+              <TabsContent tab="overview"><NCCIntroduction /></TabsContent>
+              <TabsContent tab="structure"><NCCStructure /></TabsContent>
+              <TabsContent tab="training"><NCCTraining /></TabsContent>
+              <TabsContent tab="register"><NCCRegistration /></TabsContent>
+              <TabsContent tab="events"><NCCEvents /></TabsContent>
+              <TabsContent tab="achievements"><NCCAchievements /></TabsContent>
+              <TabsContent tab="resources"><NCCResources /></TabsContent>
+              <TabsContent tab="gallery"><NCCGallery /></TabsContent>
+              <TabsContent tab="social"><NCCSocialMedia /></TabsContent>
             </div>
           </Tabs>
         </div>
