@@ -59,10 +59,13 @@ const Primarynavbar = () => {
             <a href="https://mygbu-student.vercel.app/" className="flex items-center gap-1 hover:underline">
               <User size={14} /> Student Portal
             </a>
-            <a href="https://mygbu-faculty-smart-dashboard.lovable.app/" className="flex items-center gap-1 hover:underline">
-              <LogIn size={14} /> Employee Login
+            <a href="https://faculty-dasboard.vercel.app/" className="flex items-center gap-1 hover:underline">
+              <LogIn size={14} /> Faculty Login
             </a>
 
+ <a href="https://faculty-dasboard.vercel.app/" className="flex items-center gap-1 hover:underline">
+              <LogIn size={14} /> Admin Login
+            </a>
             <Link
               to="/grievance"
               className="flex items-center gap-1 hover:underline"
