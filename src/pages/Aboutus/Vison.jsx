@@ -330,20 +330,12 @@ const Vison = () => {
                 className="rounded-lg"
               />
               <img 
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                src="/assets/hostel2.jpg" 
                 alt="Dining Area" 
                 className="rounded-lg"
               />
-              <img 
-                src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                alt="Common Area" 
-                className="rounded-lg"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                alt="Recreation" 
-                className="rounded-lg"
-              />
+           
+
             </div>
             
             <div>
@@ -379,9 +371,9 @@ const Vison = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center">
               <img 
-                src="/assets/images.jpg" 
+                src="/assets/meditation.jpg" 
                 alt="Meditation Center" 
-                className="rounded-full shadow-xl mx-auto mb-6 w-80 h-80 object-cover"
+                className="rounded-full shadow-xl mx-auto mb-6 w-100 h-100 object-cover"
               />
             </div>
             
