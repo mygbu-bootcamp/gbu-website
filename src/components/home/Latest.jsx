@@ -148,7 +148,7 @@ export default function LatestUpdates() {
               </div>
               <div className="relative overflow-hidden">
                 <div
-                  className="auto-scroll space-y-3 max-h-[600px] overflow-y-auto pr-2"
+                  className="auto-scroll space-y-3 max-h-[350px] overflow-y-auto pr-2"
                   id={`scroll-container-${catIndex}`}
                   style={{ scrollBehavior: 'smooth' }}
                 >

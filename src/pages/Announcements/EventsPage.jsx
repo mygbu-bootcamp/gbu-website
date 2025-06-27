@@ -73,7 +73,7 @@ const mockEvents = [
 ];
 
 // Custom hook for event filtering and pagination
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 
 function useEventFiltering({ events, itemsPerPage }) {
   const [search, setSearch] = useState('');
@@ -166,7 +166,7 @@ const EventsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      {/* <Header /> */}
       
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">

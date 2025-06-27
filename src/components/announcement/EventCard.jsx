@@ -1,25 +1,25 @@
-
 import { Link } from 'react-router-dom';
+
 // Card component
 const Card = ({ className = '', children }) => (
-  <div className={`bg-white rounded-lg shadow border ${className}`}>{children}</div>
+  <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden ${className}`}>{children}</div>
 );
 
 const CardHeader = ({ children }) => (
-  <div className="p-4 border-b">{children}</div>
+  <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-blue-50/60 to-white">{children}</div>
 );
 
 const CardTitle = ({ className = '', children }) => (
-  <h3 className={`text-xl font-bold ${className}`}>{children}</h3>
+  <h3 className={`text-2xl font-extrabold tracking-tight text-gray-900 ${className}`}>{children}</h3>
 );
 
 const CardContent = ({ children }) => (
-  <div className="p-4">{children}</div>
+  <div className="p-6">{children}</div>
 );
 
 // Badge component
 const Badge = ({ className = '', variant, children }) => {
-  const base = "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium";
+  const base = "inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold shadow-sm";
   const outline = "border border-gray-300 bg-white text-gray-800";
   return (
     <span className={`${base} ${variant === "outline" ? outline : ""} ${className}`}>
@@ -31,17 +31,16 @@ const Badge = ({ className = '', variant, children }) => {
 // Button component
 const Button = ({ size = "md", variant = "default", asChild, className = '', children, ...props }) => {
   const sizes = {
-    sm: "px-3 py-1 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-3 text-lg"
+    sm: "px-4 py-1.5 text-sm",
+    md: "px-5 py-2 text-base",
+    lg: "px-7 py-3 text-lg"
   };
   const variants = {
-    default: "bg-blue-600 text-white hover:bg-blue-700",
+    default: "bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 shadow",
     outline: "border border-blue-600 text-blue-600 bg-white hover:bg-blue-50"
   };
-  const classes = `inline-flex items-center rounded transition ${sizes[size] || sizes.md} ${variants[variant] || variants.default} ${className}`;
+  const classes = `inline-flex items-center rounded-full transition font-semibold ${sizes[size] || sizes.md} ${variants[variant] || variants.default} ${className}`;
   if (asChild) {
-    // expects children to be a single element (like <a>)
     return React.cloneElement(children, {
       className: `${classes} ${children.props.className || ''}`,
       ...props
@@ -53,12 +52,14 @@ const Button = ({ size = "md", variant = "default", asChild, className = '', chi
     </button>
   );
 };
+
 import { Calendar, MapPin, Users, ExternalLink } from 'lucide-react';
 import { format } from 'date-fns';
-import { EventItem } from '@/data/mockData';
 import SocialShare from './SocialShare';
-
 import PropTypes from 'prop-types';
+
+const shimmer =
+  "bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse";
 
 const EventCard = ({ event, isPastEvent = false }) => {
   const getTypeColor = (type) => {
@@ -83,18 +84,21 @@ const EventCard = ({ event, isPastEvent = false }) => {
   };
 
   return (
-    <Card className={`hover:shadow-lg transition-shadow ${isPastEvent ? 'opacity-90' : ''}`}>
-      {event.images && event.images.length > 0 && (
-        <div className="aspect-video w-full overflow-hidden rounded-t-lg">
+    <Card className={`hover:shadow-2xl transition-shadow duration-300 ${isPastEvent ? 'opacity-80 grayscale' : ''}`}>
+      {event.images && event.images.length > 0 ? (
+        <div className="aspect-video w-full overflow-hidden relative group">
           <img 
             src={event.images[0]} 
             alt={event.title}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
         </div>
+      ) : (
+        <div className={`aspect-video w-full ${shimmer} rounded-t-2xl`} />
       )}
       <CardHeader>
-        <div className="flex flex-wrap gap-2 mb-2">
+        <div className="flex flex-wrap gap-2 mb-3">
           <Badge className={getTypeColor(event.type)}>
             {event.type}
           </Badge>
@@ -103,30 +107,32 @@ const EventCard = ({ event, isPastEvent = false }) => {
           </Badge>
           {isPastEvent && <Badge variant="outline">Completed</Badge>}
         </div>
-        <CardTitle className="text-lg font-semibold line-clamp-2">
+        <CardTitle className="line-clamp-2">
           {event.title}
         </CardTitle>
-        <div className="space-y-1 text-sm text-gray-600">
-          <div className="flex items-center">
-            <Calendar size={14} className="mr-2" />
-            {format(new Date(event.date), 'MMM dd, yyyy')}
-            {event.endDate && ` - ${format(new Date(event.endDate), 'MMM dd, yyyy')}`}
+        <div className="space-y-1 text-sm text-gray-600 mt-2">
+          <div className="flex items-center gap-2">
+            <Calendar size={16} className="text-blue-500" />
+            <span>
+              {format(new Date(event.date), 'MMM dd, yyyy')}
+              {event.endDate && ` - ${format(new Date(event.endDate), 'MMM dd, yyyy')}`}
+            </span>
           </div>
-          <div className="flex items-center">
-            <MapPin size={14} className="mr-2" />
-            {event.venue}
+          <div className="flex items-center gap-2">
+            <MapPin size={16} className="text-rose-500" />
+            <span>{event.venue}</span>
           </div>
-          <div className="flex items-center">
-            <Users size={14} className="mr-2" />
-            {event.organizer}
+          <div className="flex items-center gap-2">
+            <Users size={16} className="text-green-500" />
+            <span>{event.organizer}</span>
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-600 mb-4 line-clamp-3">
+        <p className="text-gray-700 mb-5 line-clamp-4 leading-relaxed">
           {event.description}
         </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-3 items-center">
           <Link to={`/events/${event.id}`}>
             <Button size="sm" variant={isPastEvent ? "outline" : "default"}>
               View Details
@@ -135,16 +141,18 @@ const EventCard = ({ event, isPastEvent = false }) => {
           {event.registrationUrl && !isPastEvent && (
             <Button size="sm" variant="outline" asChild>
               <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink size={14} className="mr-2" />
+                <ExternalLink size={16} className="mr-2" />
                 Register
               </a>
             </Button>
           )}
-          <SocialShare 
-            url={`${window.location.origin}/events/${event.id}`}
-            title={event.title}
-            className={isPastEvent ? "" : "ml-auto"}
-          />
+          <div className="ml-auto">
+            <SocialShare 
+              url={`${window.location.origin}/events/${event.id}`}
+              title={event.title}
+              className="!ml-0"
+            />
+          </div>
         </div>
       </CardContent>
     </Card>
@@ -152,6 +160,7 @@ const EventCard = ({ event, isPastEvent = false }) => {
 };
 
 export default EventCard;
+
 EventCard.propTypes = {
   event: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -168,4 +177,3 @@ EventCard.propTypes = {
   }).isRequired,
   isPastEvent: PropTypes.bool,
 };
-

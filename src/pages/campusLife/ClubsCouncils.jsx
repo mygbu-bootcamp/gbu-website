@@ -139,9 +139,24 @@ const ClubsCouncils = () => {
 
 
 
-  const handleClubClick = (club) => {
-    setSelectedClub(club);
-  };
+const fetchClubs = async () => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_HOST}campuslife/student-clubs/`
+    );
+    setClubs(response.data);
+  } catch (error) {
+    console.error('Error fetching clubs:', error);
+  }
+};
+
+useEffect(() => {
+  fetchClubs();
+}, []);
+
+const handleClubClick = (club) => {
+  setSelectedClub(club);
+};
 
   const handleJoinClub = (club) => {
     setSelectedClubToJoin(club);
@@ -176,15 +191,15 @@ const ClubsCouncils = () => {
 
   return (
     <section id="clubs-events" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Student <span className="text-blue-600">Clubs</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join vibrant communities and participate in exciting activities that shape your college experience.
-          </p>
-        </div>
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        Student <span className="text-blue-600">Clubs</span>
+      </h2>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        Join vibrant communities and participate in exciting activities that shape your college experience.
+      </p>
+    </div>
 
         <div className="mb-16">
           <Carousel className="w-5/6 mx-auto">
