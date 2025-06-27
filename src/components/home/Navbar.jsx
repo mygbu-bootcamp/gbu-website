@@ -143,7 +143,7 @@ const Navbar = () => {
         ["news-notifications", "News & Updates"],
         ["event-calendar", "Upcoming Events"],
         ["notices", "Notices & Circular"],
-        ["press-releases", "Press Releases"],
+        // ["press-releases", "Press Releases"],
         ["media-gallery", "Media Gallery"],
         ["newsletter", "Newsletter"],
       ].map(([slug, text]) => (
