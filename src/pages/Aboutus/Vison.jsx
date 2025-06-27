@@ -379,7 +379,7 @@ const Vison = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center">
               <img 
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                src="/assets/images.jpg" 
                 alt="Meditation Center" 
                 className="rounded-full shadow-xl mx-auto mb-6 w-80 h-80 object-cover"
               />
