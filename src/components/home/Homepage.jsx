@@ -155,8 +155,10 @@ export default function WelcomePage() {
       <div
         role="region"
         aria-label="Latest announcements"
+
         className="bg-blue-800 text-white overflow-hidden relative py-2 sm:py-3 mb-6 sm:mb-8"
         style={{ height: "auto", minHeight: "40px" }}
+
       >
         <div
           className="inline-block absolute whitespace-nowrap animate-scroll text-sm sm:text-base"
