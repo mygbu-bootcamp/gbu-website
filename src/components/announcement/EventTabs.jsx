@@ -1,7 +1,6 @@
 import React from 'react';
 import EventCard from './EventCard';
 
-// Enhanced Tabs components with better UI and interactivity
 const Tabs = ({ value, onValueChange, children, className }) => (
   <div className={className}>{children}</div>
 );
@@ -31,22 +30,6 @@ const TabsContent = ({ value, active, children }) => (
   ) : null
 );
 
-/**
- * @typedef {Object} EventItem
- * @property {string|number} id
- * @property {any} [key]
- */
-
-/**
- * @typedef {Object} EventTabsProps
- * @property {string} activeTab
- * @property {(tab: string) => void} onTabChange
- * @property {EventItem[]} upcomingEvents
- * @property {EventItem[]} pastEvents
- * @property {EventItem[]} currentEvents
- */
-
-/** @param {EventTabsProps} props */
 const EventTabs = ({
   activeTab,
   onTabChange,
@@ -54,6 +37,8 @@ const EventTabs = ({
   pastEvents,
   currentEvents
 }) => {
+  const showEmptyMessage = currentEvents.length === 0;
+
   return (
     <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl shadow-xl p-8 border border-gray-100 border-solid">
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
@@ -74,25 +59,19 @@ const EventTabs = ({
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="upcoming" active={activeTab === 'upcoming'}>
-          {upcomingEvents.length === 0 ? (
-            <div className="text-center text-gray-500 py-12 text-lg">No upcoming events.</div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {upcomingEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
+        <TabsContent value={activeTab} active>
+          {showEmptyMessage ? (
+            <div className="text-center text-gray-500 py-12 text-lg">
+              No {activeTab} events.
             </div>
-          )}
-        </TabsContent>
-
-        <TabsContent value="past" active={activeTab === 'past'}>
-          {pastEvents.length === 0 ? (
-            <div className="text-center text-gray-400 py-12 text-lg">No past events.</div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {pastEvents.map((event) => (
-                <EventCard key={event.id} event={event} isPastEvent />
+              {currentEvents.map(event => (
+                <EventCard
+                  key={event.id}
+                  event={event}
+                  isPastEvent={activeTab === 'past'}
+                />
               ))}
             </div>
           )}

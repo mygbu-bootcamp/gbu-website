@@ -160,12 +160,16 @@ function format(date, formatStr) {
 const EventDetail = () => {
   const { id } = useParams();
   const [showQR, setShowQR] = useState(false);
-  const event = mockEvents.find(item => item.id === id);
+  // const event = mockEvents.find(item => item.id === id);
+  const event = mockEvents.find(item => String(item.id) === String(id));
+
+
+  
 
   if (!event) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
-        <Header />
+        {/* <Header /> */}
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-3xl font-extrabold text-blue-700 mb-6">Event not found</h1>
           <Link to="/events">
@@ -365,6 +369,8 @@ const EventDetail = () => {
                   <CardHeader>
                     <CardTitle>Event Gallery</CardTitle>
                   </CardHeader>
+
+                  
                   <CardContent>
                     {event.images && event.images.length > 1 ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
