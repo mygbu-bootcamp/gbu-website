@@ -13,9 +13,14 @@ import CoursesOffered from "../pages/Admission/CoursesOffered.jsx";
 import EligibilityReservation from "../pages/Admission/EligibilityReservation.jsx";
 import FeeStructure from "../pages/Admission/FeeStructure.jsx";
 import InternationalAdmissions from "../pages/Admission/InternationalAdmissions.jsx";
+import NewsDetail from "../pages/Announcements/NewsDetail.jsx";
 import NewsNotifications from "../pages/Announcements/NewsNotifications.jsx";
-import EventsCalendar from "../pages/Announcements/EventsCalendar.jsx";
+import EventsPage from "../pages/Announcements/EventsPage.jsx";
 import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
+import EventDetail from "../pages/Announcements/EventDetail.jsx";
+import MediaGallery from "../pages/Announcements/MediaGallery.jsx";
+import Notice from "../pages/Announcements/Notice.jsx";
+import NoticeDetail from "../pages/Announcements/NoticeDetail.jsx";
 
 import AlumniNetwork from "../pages/Alumni/AlumniNetwork.jsx";
 import EventsReunions from "../pages/Alumni/EventsReunions.jsx";
@@ -23,12 +28,13 @@ import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
 
 import HostelDining from "../pages/campusLife/HostelDining.jsx";
 import SportsCultural from "../pages/campusLife/SportsCultural.jsx";
-import ClubsCouncils from "../pages/campusLife/ClubsCouncils.jsx";
+import ClubsCouncils from "../pages/clubs/ClubsMain.jsx";
+
 import NSS from "../pages/campusLife/NSS.jsx";
 import NCC from "../pages/campusLife/NCC.jsx";
 import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
 import Overview from "../pages/campusLife/Overview.jsx";
-
+import ClubDetail from "../pages/clubs/ClubDetail.jsx";
 import GrievanceMain from "../pages/grievance/GrievanceMain.jsx";
 import { AuthProvider } from "../components/Grievance/contexts/AuthContext";
 import ProtectedRoute from "../components/Grievance/ProtectedRoute";
@@ -116,7 +122,7 @@ import Dean from "../components/departments/Dean.jsx";
 import Conferences from "../pages/departments/Usict_activities.jsx";
 import LaboratoryCards from "../pages/departments/laboratries.jsx";
 // import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
-import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx";
+// import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx";
 import Placement_home from "../pages/Placement/Placement_home.jsx";
 
 export default function AppRouter() {
@@ -261,6 +267,7 @@ export default function AppRouter() {
             path="/campus-life/clubs-societies"
             element={<ClubsCouncils />}
           />
+           <Route path="/club/:clubId" element={<ClubDetail />} />
           <Route path="/campus-life/NSS" element={<NSS />} />
           <Route path="/campus-life/NCC" element={<NCC />} />
 
@@ -275,13 +282,22 @@ export default function AppRouter() {
             element={<NewsNotifications />}
           />
           <Route
-            path="/announcements/event-calendar"
-            element={<EventsCalendar />}
+            path="/announcements/news-notifications/:id"
+            element={<NewsDetail />}
           />
-          <Route path="/announcements/notices" element={<h1>iskaa bhi</h1>} />
           <Route
-            path="/announcements/press-releases"
-            element={<MediaCoverage />}
+            path="/announcements/event-calendar"
+            element={<EventsPage />}
+          />
+          <Route
+            path="/announcements/event-calendar/:id"
+            element={<EventDetail />}
+          />
+          <Route path="/announcements/notices" element={<Notice/>} />
+          <Route path="/announcements/notices/:id" element={<NoticeDetail/>} />
+          <Route
+            path="/announcements/media-gallery"
+            element={<MediaGallery />}
           />
 
           <Route

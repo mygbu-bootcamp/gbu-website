@@ -1,26 +1,65 @@
-
 import { useState } from 'react';
+import { CalendarIcon, Search, X, SlidersHorizontal } from 'lucide-react';
+import { format } from 'date-fns';
+import PropTypes from 'prop-types';
+
+// Utility function to join class names conditionally
+function cn(...args) {
+  return args
+    .map(arg => {
+      if (!arg && arg !== 0) return '';
+      if (typeof arg === 'string' || typeof arg === 'number') return String(arg);
+      if (Array.isArray(arg)) return cn(...arg);
+      if (typeof arg === 'object' && arg !== null) {
+        return Object.entries(arg)
+          .filter(([_, value]) => Boolean(value))
+          .map(([key]) => key)
+          .join(' ');
+      }
+      return '';
+    })
+    .filter(Boolean)
+    .join(' ');
+}
+
+// Enhanced Input
 const Input = ({ className = '', ...props }) => (
   <input
-    className={`border rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary transition ${className}`}
+    className={cn(
+      "border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary transition bg-gray-50 shadow-sm text-base",
+      "placeholder-gray-400",
+      className
+    )}
     {...props}
   />
 );
 
-const Button = ({ children, variant = "default", size = "md", className = '', ...props }) => {
+// Enhanced Button
+const Button = ({
+  children,
+  variant = "default",
+  size = "md",
+  className = '',
+  ...props
+}) => {
   const variants = {
-    default: "bg-primary text-white hover:bg-primary/90",
-    outline: "border border-primary text-primary bg-white hover:bg-primary hover:text-white",
+    default: "bg-gradient-to-r from-primary to-blue-600 text-white hover:from-blue-600 hover:to-primary shadow-md",
+    outline: "border border-primary text-primary bg-white hover:bg-primary/10 shadow-sm",
     ghost: "bg-transparent text-primary hover:bg-primary/10",
     secondary: "bg-gray-100 text-gray-700 hover:bg-gray-200"
   };
   const sizes = {
-    md: "px-4 py-2 text-sm",
-    sm: "px-3 py-1 text-xs"
+    md: "px-5 py-2.5 text-base",
+    sm: "px-3 py-1.5 text-sm"
   };
   return (
     <button
-      className={`rounded-md font-medium transition ${variants[variant] || ''} ${sizes[size] || ''} ${className}`}
+      className={cn(
+        "rounded-lg font-semibold transition flex items-center justify-center gap-2",
+        variants[variant] || '',
+        sizes[size] || '',
+        className
+      )}
       {...props}
     >
       {children}
@@ -28,11 +67,15 @@ const Button = ({ children, variant = "default", size = "md", className = '', ..
   );
 };
 
+// Enhanced Select
 const Select = ({ value, onValueChange, children, className = '', ...props }) => (
   <select
     value={value}
     onChange={e => onValueChange?.(e.target.value)}
-    className={`border rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary transition ${className}`}
+    className={cn(
+      "border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary transition bg-gray-50 shadow-sm text-base",
+      className
+    )}
     {...props}
   >
     {children}
@@ -40,7 +83,7 @@ const Select = ({ value, onValueChange, children, className = '', ...props }) =>
 );
 
 const SelectTrigger = ({ children, className = '', ...props }) => (
-  <div className={`relative ${className}`} {...props}>{children}</div>
+  <div className={cn("relative", className)} {...props}>{children}</div>
 );
 
 const SelectValue = ({ placeholder }) => (
@@ -53,62 +96,47 @@ const SelectItem = ({ value, children }) => (
   <option value={value}>{children}</option>
 );
 
-const Calendar = ({ selected, onSelect, mode = "single", initialFocus }) => {
-  // Simple date picker using input[type=date]
-  return (
-    <input
-      type="date"
-      value={selected ? new Date(selected).toISOString().slice(0, 10) : ''}
-      onChange={e => onSelect?.(e.target.value ? new Date(e.target.value) : null)}
-      className="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary"
-    />
-  );
-};
+// Enhanced Calendar
+const Calendar = ({ selected, onSelect }) => (
+  <input
+    type="date"
+    value={selected ? new Date(selected).toISOString().slice(0, 10) : ''}
+    onChange={e => onSelect?.(e.target.value ? new Date(e.target.value) : null)}
+    className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary bg-gray-50 shadow-sm"
+  />
+);
 
 const Popover = ({ children }) => <div className="relative">{children}</div>;
-const PopoverTrigger = ({ asChild, children }) => children;
-const PopoverContent = ({ children, className = '', align }) => (
-  <div className={`absolute z-50 mt-2 bg-white border rounded-md shadow-lg p-2 ${className}`}>
+const PopoverTrigger = ({ children }) => children;
+const PopoverContent = ({ children, className = '' }) => (
+  <div className={cn(
+    "absolute z-50 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl p-4 min-w-[220px] animate-fade-in",
+    className
+  )}>
     {children}
   </div>
 );
 
+// Enhanced Badge
 const Badge = ({ children, variant = "default", className = '', ...props }) => {
   const variants = {
-    default: "bg-primary text-white",
+    default: "bg-gradient-to-r from-primary to-blue-600 text-white",
     outline: "border border-primary text-primary bg-white",
     secondary: "bg-gray-200 text-gray-700"
   };
   return (
     <span
-      className={`inline-flex items-center px-2 py-1 rounded text-xs font-semibold ${variants[variant] || ''} ${className}`}
+      className={cn(
+        "inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition cursor-pointer",
+        variants[variant] || '',
+        className
+      )}
       {...props}
     >
       {children}
     </span>
   );
 };
-import { CalendarIcon, Search, Filter, X, SlidersHorizontal } from 'lucide-react';
-import { format } from 'date-fns';
-// Utility function to join class names conditionally
-function cn(...args) {
-  return args
-    .flatMap(arg => {
-      if (!arg) return [];
-      if (typeof arg === 'string') return [arg];
-      if (Array.isArray(arg)) return arg;
-      if (typeof arg === 'object') {
-        return Object.entries(arg)
-          .filter(([_, value]) => Boolean(value))
-          .map(([key]) => key);
-      }
-      return [];
-    })
-    .filter(Boolean)
-    .join(' ');
-}
-
-// PropTypes will be used for prop validation below
 
 const AdvancedSearchFilter = ({
   onSearch,
@@ -125,9 +153,16 @@ const AdvancedSearchFilter = ({
   selectedTags = []
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [showStartCalendar, setShowStartCalendar] = useState(false);
+  const [showEndCalendar, setShowEndCalendar] = useState(false);
+
+  const handleStartCalendarOpen = () => setShowStartCalendar(true);
+  const handleStartCalendarClose = () => setShowStartCalendar(false);
+  const handleEndCalendarOpen = () => setShowEndCalendar(true);
+  const handleEndCalendarClose = () => setShowEndCalendar(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -164,29 +199,29 @@ const AdvancedSearchFilter = ({
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-md mb-6 sticky top-20 z-40">
-      <div className="p-4">
+    <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 rounded-2xl shadow-2xl mb-8 sticky top-20 z-40 border border-blue-100">
+      <div className="p-6">
         {/* Main Search Bar */}
-        <form onSubmit={handleSearch} className="space-y-4">
-          <div className="flex flex-col md:flex-row gap-3">
+        <form onSubmit={handleSearch} className="space-y-6">
+          <div className="flex flex-col md:flex-row gap-4 items-center">
             {/* Search Input */}
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400" size={22} />
                 <Input
                   type="text"
                   placeholder={placeholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  className="pl-12 py-3 text-lg bg-white shadow-md"
                 />
               </div>
             </div>
 
             {/* Sort Dropdown */}
             {onSortChange && (
-              <Select value={currentSort} onValueChange={onSortChange}>
-                <SelectTrigger className="w-full md:w-[180px]">
+              <Select value={currentSort} onValueChange={onSortChange} className="max-w-[180px] bg-white shadow-md">
+                <SelectTrigger>
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent>
@@ -204,10 +239,13 @@ const AdvancedSearchFilter = ({
               type="button"
               variant="outline"
               onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className="flex items-center gap-2"
+              className={cn(
+                "gap-2 border-2 border-blue-300 hover:border-blue-500 bg-white shadow-md",
+                isFilterOpen && "bg-blue-50 border-blue-500"
+              )}
             >
-              <SlidersHorizontal size={16} />
-              Filters
+              <SlidersHorizontal size={18} />
+              <span className="font-semibold">Filters</span>
               {hasActiveFilters && (
                 <Badge variant="secondary" className="ml-1">
                   {selectedTags.length + (searchQuery ? 1 : 0) + (startDate || endDate ? 1 : 0)}
@@ -215,25 +253,29 @@ const AdvancedSearchFilter = ({
               )}
             </Button>
 
-            <Button type="submit">Search</Button>
+            <Button type="submit" className="shadow-lg py-3 px-6 text-lg">
+              <Search size={18} className="mr-1" />
+              Search
+            </Button>
           </div>
 
           {/* Expanded Filters */}
           {isFilterOpen && (
-            <div className="border-t pt-4 space-y-4">
+            <div className="border-t border-blue-200 pt-6 space-y-6 animate-fade-in">
               {/* Date Filters */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex gap-3">
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button
+                       onClick={handleStartCalendarOpen}
                         variant="outline"
                         className={cn(
-                          "w-full sm:w-[150px] justify-start text-left font-normal",
+                          "w-full sm:w-[170px] justify-start text-left font-normal bg-white shadow-sm border-blue-200",
                           !startDate && "text-muted-foreground"
                         )}
                       >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        <CalendarIcon className="mr-2 h-5 w-5 text-blue-400" />
                         {startDate ? format(startDate, "MMM dd, yyyy") : "Start Date"}
                       </Button>
                     </PopoverTrigger>
@@ -249,14 +291,14 @@ const AdvancedSearchFilter = ({
 
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button
+                      <Button onClick={handleEndCalendarOpen}
                         variant="outline"
                         className={cn(
-                          "w-full sm:w-[150px] justify-start text-left font-normal",
+                          "w-full sm:w-[170px] justify-start text-left font-normal bg-white shadow-sm border-blue-200",
                           !endDate && "text-muted-foreground"
                         )}
                       >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        <CalendarIcon className="mr-2 h-5 w-5 text-blue-400" />
                         {endDate ? format(endDate, "MMM dd, yyyy") : "End Date"}
                       </Button>
                     </PopoverTrigger>
@@ -272,10 +314,10 @@ const AdvancedSearchFilter = ({
                 </div>
 
                 {/* Type and Year Filters */}
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   {types.length > 0 && onTypeFilter && (
-                    <Select onValueChange={onTypeFilter}>
-                      <SelectTrigger className="w-full sm:w-[150px]">
+                    <Select onValueChange={onTypeFilter} className="w-full sm:w-[150px] bg-white shadow-sm">
+                      <SelectTrigger>
                         <SelectValue placeholder="Type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -288,8 +330,8 @@ const AdvancedSearchFilter = ({
                   )}
 
                   {years.length > 0 && onYearFilter && (
-                    <Select onValueChange={onYearFilter}>
-                      <SelectTrigger className="w-full sm:w-[150px]">
+                    <Select onValueChange={onYearFilter} className="w-full sm:w-[150px] bg-white shadow-sm">
+                      <SelectTrigger>
                         <SelectValue placeholder="Year" />
                       </SelectTrigger>
                       <SelectContent>
@@ -306,13 +348,16 @@ const AdvancedSearchFilter = ({
               {/* Tag Cloud */}
               {tags.length > 0 && onTagFilter && (
                 <div>
-                  <div className="text-sm font-medium mb-2">Tags:</div>
+                  <div className="text-sm font-semibold mb-2 text-blue-700">Tags:</div>
                   <div className="flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <Badge
                         key={tag}
                         variant={selectedTags.includes(tag) ? "default" : "outline"}
-                        className="cursor-pointer hover:bg-primary/80"
+                        className={cn(
+                          "hover:bg-blue-600/90 hover:text-white transition-all duration-150",
+                          selectedTags.includes(tag) ? "shadow-lg scale-105" : "shadow-sm"
+                        )}
                         onClick={() => onTagFilter(tag)}
                       >
                         {tag}
@@ -328,7 +373,7 @@ const AdvancedSearchFilter = ({
               {/* Clear Filters */}
               {hasActiveFilters && (
                 <div className="flex justify-end">
-                  <Button variant="ghost" size="sm" onClick={clearFilters}>
+                  <Button variant="ghost" size="sm" onClick={clearFilters} className="text-blue-600 hover:bg-blue-100">
                     <X size={16} className="mr-2" />
                     Clear Filters
                   </Button>
@@ -341,9 +386,6 @@ const AdvancedSearchFilter = ({
     </div>
   );
 };
-
-export default AdvancedSearchFilter;
-import PropTypes from 'prop-types';
 
 AdvancedSearchFilter.propTypes = {
   onSearch: PropTypes.func.isRequired,
@@ -360,3 +402,4 @@ AdvancedSearchFilter.propTypes = {
   selectedTags: PropTypes.arrayOf(PropTypes.string),
 };
 
+export default AdvancedSearchFilter;

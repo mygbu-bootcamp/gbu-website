@@ -124,23 +124,6 @@ const ClubsCouncils = () => {
 
   // Removed duplicate fetchClubs and useEffect
 
-
-
-const fetchClubs = async () => {
-  try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_HOST}campuslife/student-clubs/`
-    );
-    setClubs(response.data);
-  } catch (error) {
-    console.error('Error fetching clubs:', error);
-  }
-};
-
-useEffect(() => {
-  fetchClubs();
-}, []);
-
 const handleClubClick = (club) => {
   setSelectedClub(club);
 };
