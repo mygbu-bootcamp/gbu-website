@@ -5,86 +5,65 @@ const ViceChancellor = () => {
 
   const tabs = ['Overview', 'Education', 'Research', 'Vision'];
 
-  const tabContent = {
-    Overview: {
-      title: "Experience",
-      content: "Over 30 years in academic, administration, and research excellence across multiple disciplines."
-    },
-    Education: {
-      title: "Educational Background",
-      content: (
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-semibold text-gray-800">Ph.D. in Computer Science & Engineering</h4>
-            <p className="text-sm text-gray-600">Indian Institute of Technology (IIT) Delhi, 1995</p>
-            <p className="text-xs text-gray-500">Thesis: "Advanced Machine Learning Algorithms for Pattern Recognition"</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-gray-800">M.Tech in Computer Science</h4>
-            <p className="text-sm text-gray-600">Indian Institute of Science (IISc) Bangalore, 1990</p>
-            <p className="text-xs text-gray-500">Specialization: Artificial Intelligence and Data Structures</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-gray-800">B.Tech in Electronics & Communication</h4>
-            <p className="text-sm text-gray-600">Delhi College of Engineering, 1988</p>
-            <p className="text-xs text-gray-500">First Class with Distinction, Gold Medalist</p>
-          </div>
+const tabContent = {
+  Overview: {
+    title: "Experience",
+    content: "Over 30 years in cancer biology research, academic leadership, and administrative excellence across premier Indian and international institutions."
+  },
+  Education: {
+    title: "Educational Background",
+    content: (
+      <div className="space-y-4">
+        <div>
+          <h4 className="font-semibold text-gray-800">Professor of Cancer Biology</h4>
+          <p className="text-sm text-gray-600">Jawaharlal Nehru University (JNU), New Delhi</p>
+          <p className="text-xs text-gray-500">2012 – Present</p>
         </div>
-      )
-    },
-    Research: {
-      title: "Research Contributions",
-      content: (
-        <div className="space-y-6">
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Internet of Things (IoT) & Smart Cities</h4>
-            <p className="text-sm text-gray-700 mb-2">Leading research in IoT infrastructure for smart city development, focusing on sensor networks and data analytics.</p>
-            <div className="space-y-1">
-              <a href="https://doi.org/10.1109/IoT.2023.001" className="text-blue-600 hover:underline text-xs block">
-                "IoT-Based Smart Infrastructure for Urban Development" - IEEE IoT Journal (2023)
-              </a>
-              <a href="https://doi.org/10.1016/j.iot.2023.100567" className="text-blue-600 hover:underline text-xs block">
-                "Sustainable Smart Cities using IoT: A Comprehensive Framework" - Internet of Things Journal (2023)
-              </a>
-            </div>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Artificial Intelligence & Machine Learning</h4>
-            <p className="text-sm text-gray-700 mb-2">Pioneering work in AI applications for education, healthcare, and industrial automation.</p>
-            <div className="space-y-1">
-              <a href="https://doi.org/10.1007/s10462-023-10234-x" className="text-blue-600 hover:underline text-xs block">
-                "Deep Learning Models for Educational Assessment" - Artificial Intelligence Review (2023)
-              </a>
-              <a href="https://doi.org/10.1016/j.artint.2023.103887" className="text-blue-600 hover:underline text-xs block">
-                "AI-Driven Healthcare Diagnostics: A Multi-Modal Approach" - Artificial Intelligence (2023)
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Cybersecurity & Blockchain</h4>
-            <p className="text-sm text-gray-700 mb-2">Advanced research in blockchain technology for secure academic credential verification.</p>
-            <div className="space-y-1">
-              <a href="https://doi.org/10.1109/TDSC.2023.3245678" className="text-blue-600 hover:underline text-xs block">
-                "Blockchain-Based Academic Credential System" - IEEE Trans. Dependable and Secure Computing (2023)
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-gray-50 p-3 rounded-lg mt-4">
-            <p className="text-sm"><strong>Publications:</strong> 180+ peer-reviewed papers, H-index: 42</p>
-            <p className="text-sm"><strong>Citations:</strong> 3,500+ citations, Google Scholar verified</p>
-            <p className="text-sm"><strong>Research Grants:</strong> ₹15+ Crores from DST, SERB, and industry partners</p>
-          </div>
+        <div>
+          <h4 className="font-semibold text-gray-800">Professor</h4>
+          <p className="text-sm text-gray-600">Central University of Gujarat, Gandhinagar</p>
+          <p className="text-xs text-gray-500">2010 – 2012</p>
         </div>
-      )
-    },
-    Vision: {
-      title: "Leadership Vision",
-      content: "Pioneered interdisciplinary innovation at Gautam Buddha University, fostering academic excellence and industry-academia collaboration."
-    }
-  };
+        <div>
+          <h4 className="font-semibold text-gray-800">Assistant Professor (Research)</h4>
+          <p className="text-sm text-gray-600">University of Colorado, Denver, USA</p>
+          <p className="text-xs text-gray-500">2003 – 2006</p>
+        </div>
+        <div>
+          <h4 className="font-semibold text-gray-800">Post-doctoral Research Fellow</h4>
+          <p className="text-sm text-gray-600">AMC Cancer Research Center, Colorado, USA</p>
+          <p className="text-xs text-gray-500">2000 – 2001</p>
+        </div>
+      </div>
+    )
+  },
+  Research: {
+    title: "Research Contributions",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h4 className="font-semibold text-gray-800 mb-2">Molecular Cancer Biology</h4>
+          <p className="text-sm text-gray-700 mb-2">Focus on cancer initiation, oxidative stress, apoptosis, angiogenesis, immune modulation, and phytochemical-based therapeutics using in vitro, in vivo, and Drosophila models.</p>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-gray-800 mb-2">Integrative Medicine & Translational Research</h4>
+          <p className="text-sm text-gray-700 mb-2">Established the Centre for Integrative Cancer Biology and Therapeutics with Stanford University and OHSU; leads DPRP and Ayurveda System Medicine programs.</p>
+        </div>
+
+        <div className="bg-gray-50 p-3 rounded-lg mt-4">
+          <p className="text-sm"><strong>Publications:</strong> 180+ peer-reviewed papers</p>
+          <p className="text-sm"><strong>H-index:</strong> 78, <strong>i10-index:</strong> 154</p>
+          <p className="text-sm"><strong>Citations:</strong> 16,539+ (Google Scholar)</p>
+        </div>
+      </div>
+    )
+  },
+  Vision: {
+    title: "Leadership Vision",
+    content: "Prof. Singh envisions globally connected, innovation-driven education, blending traditional wisdom with modern science. He advocates for academic excellence, research integration, student-centric learning, industry partnerships, and sustainable societal development through inclusive higher education."
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -268,8 +268,24 @@ export default function AppRouter() {
             element={<ClubsCouncils />}
           />
            <Route path="/club/:clubId" element={<ClubDetail />} />
-          <Route path="/campus-life/NSS" element={<NSS />} />
-          <Route path="/campus-life/NCC" element={<NCC />} />
+         <Route
+    path="/campus-life/NSS"
+    element={
+      (() => {
+        window.location.href = "https://mygbu-nss-ncc.lovable.app";
+        return null;
+      })()
+    }
+  />
+  <Route
+    path="/campus-life/NCC"
+    element={
+      (() => {
+        window.location.href = "https://mygbu-nss-ncc.lovable.app";
+        return null;
+      })()
+    }
+  />
 
           <Route
             path="/campus-life/meditation-center"
