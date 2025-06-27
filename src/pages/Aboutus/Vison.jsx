@@ -559,7 +559,7 @@ const Vison = () => {
       </section>
 
       {/* Section 14: Placements & Collaborations */}
-      <section className="py-16 bg-white border-t border-gray-200 border-solid">
+      {/* <section className="py-16 bg-white border-t border-gray-200 border-solid">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -598,7 +598,7 @@ const Vison = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Section 15: Final CTA Banner */}
       <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-900 text-white">
