@@ -28,12 +28,13 @@ import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
 
 import HostelDining from "../pages/campusLife/HostelDining.jsx";
 import SportsCultural from "../pages/campusLife/SportsCultural.jsx";
-import ClubsCouncils from "../pages/campusLife/ClubsCouncils.jsx";
+import ClubsCouncils from "../pages/clubs/ClubsMain.jsx";
+
 import NSS from "../pages/campusLife/NSS.jsx";
 import NCC from "../pages/campusLife/NCC.jsx";
 import MeditationCenter from "../pages/campusLife/MeditationCenter.jsx";
 import Overview from "../pages/campusLife/Overview.jsx";
-
+import ClubDetail from "../pages/clubs/ClubDetail.jsx";
 import GrievanceMain from "../pages/grievance/GrievanceMain.jsx";
 import { AuthProvider } from "../components/Grievance/contexts/AuthContext";
 import ProtectedRoute from "../components/Grievance/ProtectedRoute";
@@ -266,6 +267,7 @@ export default function AppRouter() {
             path="/campus-life/clubs-societies"
             element={<ClubsCouncils />}
           />
+           <Route path="/club/:clubId" element={<ClubDetail />} />
           <Route path="/campus-life/NSS" element={<NSS />} />
           <Route path="/campus-life/NCC" element={<NCC />} />
 
