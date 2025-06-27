@@ -13,23 +13,34 @@ const VisionaryLeadership = () => {
   const [index, setIndex] = useState(0);
 
   const BASE_URL = import.meta.env.VITE_HOST;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}/landing/leadership/`);
-        const data = res.data;
-        console.log("Fetched data:", data);
-        if (Array.isArray(data)) {
-          setLeaders(data);
-        }
-      } catch (error) {
-        console.error("Error fetching leadership data:", error);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/landing/leadership/`);
+      const data = res.data;
+      console.log("Fetched data:", data);
+      if (Array.isArray(data)) {
+        const sorted = [...data].sort((a, b) => {
+          const roles = ["Hon'ble Chancellor", "Hon'ble Vice-Chancellor"];
+          const aIndex = roles.indexOf(a.designation?.trim());
+          const bIndex = roles.indexOf(b.designation?.trim());
+          
+          if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+          if (aIndex !== -1) return -1;
+          if (bIndex !== -1) return 1;
+          return 0;
+        });
+        setLeaders(sorted);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching leadership data:", error);
+    }
+  };
 
-    fetchData();
-  }, []);
+  fetchData();
+}, []);
+
+
 
   useEffect(() => {
     if (leaders.length === 0) return;

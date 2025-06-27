@@ -30,10 +30,19 @@ export default function WelcomePage() {
     ? bannerData.video
     : `${BASE}/${bannerData.video.startsWith("media") ? "" : "media/"}${bannerData.video}`;
 
+  // Heights: primary navbar = 48px (py-2), secondary navbar = 48px (py-3 + logo height)
+  // Total offset = 48px + 48px = 96px (adjust if your navbars are different)
   return (
     <>
       {/* Main welcome section */}
-      <div className="relative h-screen flex flex-col justify-center overflow-hidden">
+      <div
+        className="relative flex flex-col justify-center overflow-hidden"
+        style={{
+          minHeight: "calc(100vh - 96px)",
+          height: "calc(100vh - 96px)",
+          // marginTop: "96px",
+        }}
+      >
         {/* Background video or image */}
         {bannerData.video?.endsWith(".mp4") ? (
           <video
@@ -105,7 +114,7 @@ export default function WelcomePage() {
             position: "absolute",
             animation: "scrollText 10s linear infinite",
             whiteSpace: "nowrap",
-            zIndex: 0 ,
+            zIndex: 0,
           }}
         >
           📢 Admissions open for 2025-26 academic session | Admissions open for 2025-26 academic session | Admissions open for 2025-26 academic session
