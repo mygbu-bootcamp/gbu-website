@@ -8,31 +8,38 @@ const ViceChancellor = () => {
 const tabContent = {
   Overview: {
     title: "Experience",
-    content: "Over 30 years in cancer biology research, academic leadership, and administrative excellence across premier Indian and international institutions."
+
+    content:
+      "Over 25 years of academic, research, and leadership experience in cancer biology and molecular oncology, with significant contributions to chemoprevention and angiogenesis research."
+
   },
   Education: {
     title: "Educational Background",
     content: (
       <div className="space-y-4">
         <div>
-          <h4 className="font-semibold text-gray-800">Professor of Cancer Biology</h4>
-          <p className="text-sm text-gray-600">Jawaharlal Nehru University (JNU), New Delhi</p>
-          <p className="text-xs text-gray-500">2012 – Present</p>
+
+          <h4 className="font-semibold text-gray-800">
+            Ph.D. in Cancer Biology
+          </h4>
+          <p className="text-sm text-gray-600">
+            Jawaharlal Nehru University, New Delhi, India
+          </p>
+          <p className="text-xs text-gray-500">
+            Thesis: "Mechanisms of Carcinogenesis and Chemopreventive Strategies"
+          </p>
         </div>
         <div>
-          <h4 className="font-semibold text-gray-800">Professor</h4>
-          <p className="text-sm text-gray-600">Central University of Gujarat, Gandhinagar</p>
-          <p className="text-xs text-gray-500">2010 – 2012</p>
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-800">Assistant Professor (Research)</h4>
-          <p className="text-sm text-gray-600">University of Colorado, Denver, USA</p>
-          <p className="text-xs text-gray-500">2003 – 2006</p>
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-800">Post-doctoral Research Fellow</h4>
-          <p className="text-sm text-gray-600">AMC Cancer Research Center, Colorado, USA</p>
-          <p className="text-xs text-gray-500">2000 – 2001</p>
+          <h4 className="font-semibold text-gray-800">
+            M.Sc. in Life Sciences
+          </h4>
+          <p className="text-sm text-gray-600">
+            Jawaharlal Nehru University, New Delhi, India
+          </p>
+          <p className="text-xs text-gray-500">
+            Specialization: Molecular Biology and Biochemistry
+          </p>
+
         </div>
       </div>
     )
@@ -42,26 +49,66 @@ const tabContent = {
     content: (
       <div className="space-y-6">
         <div>
-          <h4 className="font-semibold text-gray-800 mb-2">Molecular Cancer Biology</h4>
-          <p className="text-sm text-gray-700 mb-2">Focus on cancer initiation, oxidative stress, apoptosis, angiogenesis, immune modulation, and phytochemical-based therapeutics using in vitro, in vivo, and Drosophila models.</p>
+
+          <h4 className="font-semibold text-gray-800 mb-2">
+            Cancer Chemoprevention & Angiogenesis
+          </h4>
+          <p className="text-sm text-gray-700 mb-2">
+            Discovering and evaluating anticancer activities of phytochemicals and providing mechanistic insights for their use in cancer prevention and therapy. Significant work in studying natural compounds with anti-angiogenic efficacies.
+          </p>
         </div>
 
         <div>
-          <h4 className="font-semibold text-gray-800 mb-2">Integrative Medicine & Translational Research</h4>
-          <p className="text-sm text-gray-700 mb-2">Established the Centre for Integrative Cancer Biology and Therapeutics with Stanford University and OHSU; leads DPRP and Ayurveda System Medicine programs.</p>
+          <h4 className="font-semibold text-gray-800 mb-2">
+            Environmental Carcinogens & DNA Damage
+          </h4>
+          <p className="text-sm text-gray-700 mb-2">
+            Research on deregulated biological processes during cancer development, including apoptosis, mitogenic signaling, and DNA repair pathways affected by environmental carcinogens such as insecticides, pesticides, and UV radiation.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-gray-800 mb-2">
+            Microgravity Effects
+          </h4>
+          <p className="text-sm text-gray-700 mb-2">
+            Exploring molecular and biological effects of microgravity on cells and animal models to understand cancer development.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-gray-800 mb-2">
+            Model Systems
+          </h4>
+          <p className="text-sm text-gray-700 mb-2">
+            Established in vitro, in vivo, ex vivo, 3D spheroid, and organoid models to study tumor angiogenesis and cancer therapeutics.
+          </p>
         </div>
 
         <div className="bg-gray-50 p-3 rounded-lg mt-4">
-          <p className="text-sm"><strong>Publications:</strong> 180+ peer-reviewed papers</p>
-          <p className="text-sm"><strong>H-index:</strong> 78, <strong>i10-index:</strong> 154</p>
-          <p className="text-sm"><strong>Citations:</strong> 16,539+ (Google Scholar)</p>
+          <p className="text-sm">
+            <strong>Publications:</strong> 150+ peer-reviewed papers
+          </p>
+          <p className="text-sm">
+            <strong>h-index:</strong> 78
+          </p>
+          <p className="text-sm">
+            <strong>i10-index:</strong> 154
+          </p>
+          <p className="text-sm">
+            <strong>Citations:</strong> 16,539 total (5,266 since 2020)
+          </p>
+
         </div>
       </div>
     )
   },
   Vision: {
-    title: "Leadership Vision",
-    content: "Prof. Singh envisions globally connected, innovation-driven education, blending traditional wisdom with modern science. He advocates for academic excellence, research integration, student-centric learning, industry partnerships, and sustainable societal development through inclusive higher education."
+
+    title: "Research Vision",
+    content:
+      "Committed to advancing non-toxic mechanism-based anticancer therapies and developing integrative models for understanding cancer progression, prevention, and treatment."
+
   }
 };
 

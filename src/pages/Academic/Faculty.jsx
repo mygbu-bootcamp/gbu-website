@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import SimpleLayout from '../../components/faculty/SimpleLayout';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import TabContent  from '../../components/faculty/TabContent';
+
+
 import {
   Mail, Phone, Globe, Award,
   BookOpen, Users, Search, Filter, X
@@ -14,6 +18,8 @@ const Faculty = () => {
   const [selectedQualification, setSelectedQualification] = useState('All');
   const [selectedSchool, setSelectedSchool] = useState('All Schools');
   const [showFilters, setShowFilters] = useState(false);
+  console.log('✅ Faculty Component Rendered');
+
 
   useEffect(() => {
     const fetchFaculty = async () => {
@@ -96,10 +102,38 @@ const Faculty = () => {
     setSelectedQualification('All');
     setSelectedSchool('All Schools');
     setSearchTerm('');
+
+
   };
+
+  const { id } = useParams();
+const selectedFaculty = facultyMembers.find(
+  (faculty) => faculty.id == id  // loose equals matches number vs string
+);
+
+useEffect(() => {
+  console.log('🔄 Faculty Members:', facultyMembers);
+  console.log('🔄 Selected Faculty:', selectedFaculty);
+  console.log('🔄 URL id:', id);
+}, [facultyMembers, selectedFaculty, id]);
+
+
+
 
   return (
     <SimpleLayout>
+     
+      {id ? (
+    selectedFaculty ? (
+      <section className="py-12">
+        <TabContent activeTab="overview" profile={selectedFaculty} />
+      </section>
+    ) : (
+      <section className="py-12 text-center">
+        <p className="text-gray-600">Loading faculty profile...</p>
+      </section>
+    )
+  ) : (<>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-500 to-teal-400 text-white py-20">
         <div className="container mx-auto px-4 text-center">
@@ -346,6 +380,8 @@ const Faculty = () => {
           </div>
         </div>
       </section>
+      </> 
+    )}
     </SimpleLayout>
   );
 };
