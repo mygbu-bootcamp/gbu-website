@@ -8,14 +8,17 @@ const ViceChancellor = () => {
 const tabContent = {
   Overview: {
     title: "Experience",
+
     content:
       "Over 25 years of academic, research, and leadership experience in cancer biology and molecular oncology, with significant contributions to chemoprevention and angiogenesis research."
+
   },
   Education: {
     title: "Educational Background",
     content: (
       <div className="space-y-4">
         <div>
+
           <h4 className="font-semibold text-gray-800">
             Ph.D. in Cancer Biology
           </h4>
@@ -36,6 +39,7 @@ const tabContent = {
           <p className="text-xs text-gray-500">
             Specialization: Molecular Biology and Biochemistry
           </p>
+
         </div>
       </div>
     )
@@ -45,6 +49,7 @@ const tabContent = {
     content: (
       <div className="space-y-6">
         <div>
+
           <h4 className="font-semibold text-gray-800 mb-2">
             Cancer Chemoprevention & Angiogenesis
           </h4>
@@ -93,14 +98,17 @@ const tabContent = {
           <p className="text-sm">
             <strong>Citations:</strong> 16,539 total (5,266 since 2020)
           </p>
+
         </div>
       </div>
     )
   },
   Vision: {
+
     title: "Research Vision",
     content:
       "Committed to advancing non-toxic mechanism-based anticancer therapies and developing integrative models for understanding cancer progression, prevention, and treatment."
+
   }
 };
 
