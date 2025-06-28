@@ -139,7 +139,7 @@ const StudentAchievements = () => {
             </button>
           </div>
 
-          {/* Indicators */}
+          {/* Indicators*/}
           <div className="flex justify-center py-6 space-x-2 bg-gray-50">
             {achievements.map((_, index) => (
               <button

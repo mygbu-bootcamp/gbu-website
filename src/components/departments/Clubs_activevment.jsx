@@ -218,7 +218,7 @@ const ClubsAchievements = () => {
                     </span>
                   </div>
                   
-                  {/* Social MediaLinks */}
+                  {/* Social Media Links */}
                   <div className="border-t pt-4">
                     <div className="flex justify-center space-x-4">
                       {Object.entries(club.socialLinks).map(([platform, url]) => (
