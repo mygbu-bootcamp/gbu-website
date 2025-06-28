@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const StudentStartup = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Simulated dynamic data(replace with API later)
+  // Simulated dynamic data (replace with API later)
   const startupData = {
     startups: [
       {
