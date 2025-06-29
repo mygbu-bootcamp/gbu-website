@@ -164,71 +164,69 @@ const ClubsAchievements = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-college-navy mb-4">
-            Club's Life
+    <section className="py-16 bg-gray-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-blue-800">
+            Student Clubs & Activities
           </h2>
-          <p className="text-xl text-gray-600">Excellence beyond academics</p>
+          <p className="text-xl text-gray-600">Fostering leadership and innovation</p>
+          <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Student Clubs */}
-        <div className="mb-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {clubs.map((club, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow border border-gray-100 hover:shadow-lg transition-shadow overflow-hidden"
-              >
-                <div className="relative">
-                  <img
-                    src={club.image}
-                    alt={club.name}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge variant="outline" className="bg-white">
-                      {club.category}
-                    </Badge>
-                  </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {clubs.map((club, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className="relative">
+                <img
+                  src={club.image}
+                  alt={club.name}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute top-4 right-4">
+                  <Badge variant="outline" className="bg-white">
+                    {club.category}
+                  </Badge>
                 </div>
-                <div className="px-6 py-4">
-                  <h4 className="text-college-navy text-lg font-semibold mb-2">
-                    {club.name}
-                  </h4>
-                  <p className="text-gray-600 mb-3">{club.description}</p>
-                  
-                  {/* Faculty Advisor */}
-                  <div className="mb-3">
-                    <span className="text-sm text-gray-500">Faculty Advisor: </span>
-                    <span className="text-sm font-medium text-college-navy">
-                      {club.facultyAdvisor}
-                    </span>
-                  </div>
-                  
-                  {/* Members Count */}
-                  <div className="flex justify-between items-center text-sm mb-4">
-                    <span className="text-gray-500">Members:</span>
-                    <span className="font-semibold text-college-blue">
-                      {club.members}
-                    </span>
-                  </div>
-                  
-                  {/* Social Media Links */}
-                  <div className="border-t pt-4">
-                    <div className="flex justify-center space-x-4">
-                      {Object.entries(club.socialLinks).map(([platform, url]) => (
-                        <div key={platform}>
-                          {renderSocialIcon(platform, url)}
-                        </div>
-                      ))}
-                    </div>
+              </div>
+              <div className="px-6 py-4">
+                <h4 className="text-college-navy text-lg font-semibold mb-2">
+                  {club.name}
+                </h4>
+                <p className="text-gray-600 mb-3">{club.description}</p>
+                
+                {/* Faculty Advisor */}
+                <div className="mb-3">
+                  <span className="text-sm text-gray-500">Faculty Advisor: </span>
+                  <span className="text-sm font-medium text-college-navy">
+                    {club.facultyAdvisor}
+                  </span>
+                </div>
+                
+                {/* Members Count */}
+                <div className="flex justify-between items-center text-sm mb-4">
+                  <span className="text-gray-500">Members:</span>
+                  <span className="font-semibold text-college-blue">
+                    {club.members}
+                  </span>
+                </div>
+                
+                {/* Social Media Links */}
+                <div className="border-t pt-4">
+                  <div className="flex justify-center space-x-4">
+                    {Object.entries(club.socialLinks).map(([platform, url]) => (
+                      <div key={platform}>
+                        {renderSocialIcon(platform, url)}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

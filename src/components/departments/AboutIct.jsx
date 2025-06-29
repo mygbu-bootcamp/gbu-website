@@ -93,22 +93,32 @@ const AboutUs = () => {
   };
 
   return (
-    <section className="relative py-20 overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gray-100">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-        <div className="absolute top-10 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-75"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-150"></div>
-      </div>
+    <section className="relative py-20 overflow-hidden bg-gray-100">
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div className="relative inline-block">
+            <h2 className="text-5xl md:text-6xl font-bold text-blue-600 mb-4">
+              About Us
+            </h2>
+            <motion.div
+              className="absolute -bottom-2 left-0 h-1 bg-blue-500 rounded-full"
+              variants={highlightVariants}
+            />
+          </motion.div>
+          <motion.p
+            className="text-xl text-gray-600 mt-6 font-medium"
+            variants={itemVariants}
+          >
+            School of Information and Communication Technology
+          </motion.p>
+        </motion.div>
 
-      <motion.div
-        className="container mx-auto px-4 relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
         {/* Floating Icons */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
@@ -137,25 +147,6 @@ const AboutUs = () => {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          {/* Main Title Section */}
-          <motion.div className="text-center mb-16" variants={itemVariants}>
-            <motion.div className="relative inline-block">
-              <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-                About Us
-              </h2>
-              <motion.div
-                className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                variants={highlightVariants}
-              />
-            </motion.div>
-            <motion.p
-              className="text-xl text-gray-600 mt-6 font-medium"
-              variants={itemVariants}
-            >
-              School of Information and Communication Technology
-            </motion.p>
-          </motion.div>
-
           {/* Content Cards */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* First Card */}
@@ -276,7 +267,7 @@ const AboutUs = () => {
             </motion.div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

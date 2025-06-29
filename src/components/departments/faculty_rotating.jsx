@@ -71,7 +71,13 @@ const faculty = [
     name: "Dr. Kartikeya Tiwari",
     title: "Assistant Professor – CSE",
     image: "https://faculty.gbu.ac.in/uploads/photos/66475c0d84def_IMG-20240517-WA0009%20(1).jpg",
+
   },
+  {
+    name: "Dr. Maneet Singh",
+    title: "Assistant Professor – IT",
+    image: "/assets/logo.svg",
+  }
 ];
 
 // Duplicate for infinite effect
