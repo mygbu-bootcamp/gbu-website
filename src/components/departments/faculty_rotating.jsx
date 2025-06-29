@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const faculty = [
-  { name: "Dr. A.K. Sharma", title: "Professor & Dean", image: "https://via.placeholder.com/200x250?text=Dr.+A.K.+Sharma" },
-  { name: "Prof. Meera Jain", title: "Associate Professor", image: "https://via.placeholder.com/200x250?text=Prof.+Meera+Jain" },
-  { name: "Dr. Rajeev Kumar", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Rajeev+Kumar" },
-  { name: "Ms. Priya Verma", title: "Lecturer", image: "https://via.placeholder.com/200x250?text=Ms.+Priya+Verma" },
-  { name: "Mr. Anil Kapoor", title: "Lab Assistant", image: "https://via.placeholder.com/200x250?text=Mr.+Anil+Kapoor" },
-  { name: "Dr. Seema Joshi", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Seema+Joshi" },
-  { name: "Dr. Seema Joshi", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Seema+Joshi" },
-  { name: "Dr. Seema Joshi", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Seema+Joshi" },
-  { name: "Dr. Seema Joshi", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Seema+Joshi" },
-  { name: "Dr. Seema Joshi", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Seema+Joshi" },
+  { name: "Prof. Sanjay Kumar Sharma", title: "Professor", image: "https://faculty.gbu.ac.in/uploads/photos/66052fb965b32_sanjay.sharma.jpg" },
+  { name: "Dr. Arpit Bhardwaj", title: "Associate Professor and Dean(ICT)", image: "https://faculty.gbu.ac.in/uploads/photos/6735c61d170ee_WhatsApp%20Image%202024-11-14%20at%203.12.33%20PM.jpeg" },
+  { name: "Dr. Arun Solanki", title: "Assistant Professor and HOD", image: "https://faculty.gbu.ac.in/uploads/photos/67c6a617c08be_cropped-arun.jpg" },
+  { name: "Dr. Neeta Singh", title: "Assistant Professor and HOD", image: "https://faculty.gbu.ac.in/uploads/photos/67c48c839f452_280409.png" },
+  { name: "Dr. Vidushi Sharma", title: "Assistant Professor and HOD", image: "https://faculty.gbu.ac.in/uploads/photos/66052f0435179_vidushi.jpg" },
+  { name: "Dr. Vimlesh Kumar Ray", title: "Assistant Professor", image: "https://faculty.gbu.ac.in/uploads/photos/66052fd60f82d_vimlesh.jpg" },
+  { name: "Dr. Aarti Gautam Dinker", title: "Assistant Professor", image: "https://faculty.gbu.ac.in/uploads/photos/6605300c5c849_aarti.jpg" },
+  { name: "Dr. Gaurav Kumar", title: "Assistant Professor", image: "https://faculty.gbu.ac.in/uploads/photos/6721e9346dac1_Photo-removebg-preview.png" },
+  { name: "Dr. Raju Pal", title: "Assistant Professor", image: "https://faculty.gbu.ac.in/uploads/photos/660a761667ced_CS%20Raju%20Pal.jpg" },
+  { name: "Dr. Priyanka Goyal", title: "Assistant Professor", image: "https://faculty.gbu.ac.in/uploads/photos/66052fa591258_priyankag.jpg" },
+  { name: "Dr. Rajesh Mishra", title: "Assistant Professor", image: "https://faculty.gbu.ac.in/uploads/photos/67c341c729a98_rajesh%20photo.jpg" },
+  { name: "Dr. Anika", title: "Assistant Professor", image: "https://faculty.gbu.ac.in/uploads/photos/672ee826e3b19_Anika.jpg" },
+
+  // { name: "Dr. Seema Joshi", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Seema+Joshi" },
+  // { name: "Dr. Seema Joshi", title: "Assistant Professor", image: "https://via.placeholder.com/200x250?text=Dr.+Seema+Joshi" },
 
 ];
 

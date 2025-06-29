@@ -2,18 +2,24 @@ import React from "react";
 
 const LeadershipCard = () => {
   const leader = {
-    name: "Dr. Rajesh Kumar",
-    title: "Head of Department - CSE",
-    description:
-      "Dr. Kumar is a distinguished academician with extensive experience in Computer Science and Engineering. He leads the CSE department with a focus on innovative curriculum design, research excellence, and industry collaboration to prepare students for the evolving tech landscape.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face",
+    name: "Dr. Arpit Bhardwaj",
+    title: "Dean, USICT",
+    description: `University School of Information and Communication Technology came into existence in 2008 with the primary objective of catering to all academic and research requirements in fields of electronics communication and computer science. The first academic session consisting of post-graduate program started in July 2009, and at present, it is successfully running undergraduate, post-graduate, and research programs in all emerging areas related to information and communication technology. 
+
+The school is committed towards providing highest quality teaching education and producing technocrats who can work on the latest available technologies in the global context. To fulfill this aim and to provide education according to industrial requirement the extra academic activities like lectures from outside experts, workshops, symposiums, and conferences are organized on a regular basis.
+
+The first batch of postgraduate students has successfully passed in 2011. The school has wonderful infrastructure having classrooms equipped with state-of-the-art audio visual support and a large number of functional laboratories equipped with the latest instruments/hardware/software and highly committed and dedicated faculty.
+
+The school has already made a roadmap for its development for the next 10 years in the form of a “Vision 2020” document and is in real spirit marching on this roadmap for fulfilling the defined objectives. The school aims to become a hub of higher-end research activities and has successfully started its research program and has many research scholars on its roll, carrying research in all prominent areas of electronics, communication, and computer engineering.
+
+I am more than confident to tell you that the best, most effective and finest weapon an academic organization can ever have is “knowledge” and it is a common quote in ICT field that “knowledge is power”. The USICT works on the sole objective of acquiring and propagating as much knowledge as possible to the students.`,
+    image: "https://www.gbu.ac.in/USICT/media/img/arpit%20bhardwaj.jpg",
   };
 
   return (
     <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-100 via-white to-green-100">
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-10 sm:mb-12">
-        Department <span className="text-blue-800">Leadership</span>
+        Dean's <span className="text-blue-800">Message</span>
         <div className="w-20 sm:w-24 h-1 bg-green-500 mx-auto mt-2 rounded-full"></div>
       </h2>
 
@@ -31,7 +37,7 @@ const LeadershipCard = () => {
             <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3">
               {leader.title}
             </p>
-            <p className="text-gray-700 text-sm sm:text-base">
+            <p className="text-gray-700 text-sm sm:text-base whitespace-pre-line">
               {leader.description}
             </p>
           </div>

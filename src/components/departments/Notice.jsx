@@ -120,7 +120,7 @@ const NoticeEvents = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-blue-900 mb-3">
-            Campus Life
+            Notices and Events
           </h2>
           <p className="text-xl text-gray-600">
             Stay updated with latest notices and events

@@ -7,12 +7,12 @@ const StudentStartup = () => {
 
   const startups = [
     {
-      name: 'StudyMate AI',
-      founder: 'Arjun Patel (3rd Year CSE)',
-      description: 'AI-powered study companion that creates personalized learning paths and quizzes',
-      funding: '₹3 Lakhs',
-      status: 'Bootstrapped',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop',
+      name: 'Frienducation',
+      founder: 'Priyansh Goel',
+      // description: 'AI-powered study companion that creates personalized learning paths and quizzes',
+      // funding: '₹3 Lakhs',
+      // status: 'Bootstrapped',
+      image: 'https://www.gbu.ac.in/USICT/media/img/goel.jpg',
       year: '2024',
     },
     {
