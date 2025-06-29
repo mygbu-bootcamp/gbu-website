@@ -1,7 +1,22 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { Badge } from '../../components/ui/badge';
+const Badge = ({ children, className = '', variant = 'default', ...props }) => {
+  const baseStyle =
+    'inline-block rounded-full font-medium text-sm px-2 py-1';
+  const variants = {
+    default: 'bg-gray-200 text-gray-800',
+    outline: 'border border-blue-400 bg-white text-blue-800',
+  };
+  return (
+    <span
+      className={`${baseStyle} ${variants[variant] || ''} ${className}`}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+};
 
 const Button = ({ children, className = '', variant = 'default', ...props }) => {
   const baseStyle =
