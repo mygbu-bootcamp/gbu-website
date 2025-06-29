@@ -1,4 +1,4 @@
- import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   User,
@@ -12,13 +12,24 @@ import {
   Search,
   ChevronDown,
   ChevronUp,
+  Menu,
+  X,
 } from "lucide-react";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileOpenMenus, setMobileOpenMenus] = useState({});
+  const [isScrolled, setIsScrolled] = useState(false);
   const menuRefs = useRef({});
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = (menu) => {
     setOpenMenu((prev) => (prev === menu ? null : menu));
@@ -55,10 +66,8 @@ const Navbar = () => {
         "chancellor-message",
         "vice-chancellor-message",
         "governance-committees",
-
         "policies-statutes-rti",
         "mandatory-disclosures",
-
       ].map((slug) => (
         <Link to={`/about-us/${slug}`} key={slug}>
           {slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
@@ -74,11 +83,9 @@ const Navbar = () => {
         ["faculty", "Faculty Directory"],
         ["academic-calendar", "Academic Calendar & Regulations"],
         ["cbcs-framework", "CBCS Curriculum Framework"],
-        
         ["centers-of-excellence", "Centers of Excellence"],
         ["international-collaboration", "International Collaboration"],
         ["reports-publications", "Reports & Publications"],
-
       ].map(([slug, text]) => (
         <Link to={`/academics/${slug}`} key={slug}>
           {text}
@@ -141,12 +148,8 @@ const Navbar = () => {
       icon: <Camera size={16} />,
       items: [
         ["news-notifications", "News & Updates"],
-
         ["event-calendar", "Upcoming Events"],
         ["notices", "Notices & Circular"],
-        // ["press-releases", "Press Releases"],
-
-
         ["media-gallery", "Media Gallery"],
         ["newsletter", "Newsletter"],
       ].map(([slug, text]) => (
@@ -168,7 +171,6 @@ const Navbar = () => {
       items: [
         ["alumni-network", "Alumni Network"],
         ["alumni-events", "Alumni Events"],
-
         ["become-mentor", "Become a Mentor"],
       ].map(([slug, text]) => (
         <Link to={`/alumni/${slug}`} key={slug}>
@@ -184,7 +186,7 @@ const Navbar = () => {
         <li key={menuKey}>
           <Link
             to={path}
-            className="flex items-center gap-1 hover:text-red-600"
+            className="flex items-center gap-1 hover:text-blue-600 text-gray-700 px-3 py-2 text-sm font-medium"
           >
             {icon} {label}
           </Link>
@@ -198,135 +200,141 @@ const Navbar = () => {
         className="relative"
         ref={(el) => (menuRefs.current[menuKey] = el)}
         aria-haspopup="true"
-        aria-expanded={openMenu === menuKey}
       >
         <button
-          type="button"
           onClick={() => toggleMenu(menuKey)}
-          className={`flex items-center gap-1 cursor-pointer ${
-            openMenu === menuKey ? "text-red-600" : "hover:text-red-600"
-          }`}
+          className="flex items-center gap-1 hover:text-blue-600 text-gray-700 px-3 py-2 text-sm font-medium"
         >
-          {icon}
-          {label} ▾
+          {icon} {label}
+          {openMenu === menuKey ? (
+            <ChevronUp size={14} />
+          ) : (
+            <ChevronDown size={14} />
+          )}
         </button>
         {openMenu === menuKey && (
-          <ul className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg border rounded-lg z-40 p-2 text-left">
-            {items.map((item, idx) => (
-              <li
-                key={idx}
-                className="px-3 py-1 rounded cursor-pointer transition hover:bg-blue-50 hover:text-blue-600"
-                onClick={() => setOpenMenu(null)}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+          <div className="absolute left-0 top-full mt-1 w-64 bg-white rounded-lg shadow-lg py-2 z-50">
+            <div className="flex flex-col">
+              {items.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={() => setOpenMenu(null)}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
         )}
       </li>
     );
   };
 
   return (
-   <nav className="fixed top-9 left-0 w-full z-40 bg-white shadow px-4 md:px-16 py-3 flex items-center justify-between">
-      <div
-        className="flex items-center space-x-3 cursor-pointer"
-        onClick={() => (window.location.href = "/")}
-      >
-        <img src="/assets/logo.svg" alt="GBU Logo" className="w-64 h-12 mr-3" />
-
-      </div>
-
-      {/* Hamburger Menu */}
-      <div className="md:hidden">
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-gray-700 focus:outline-none"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
+    <div
+      className={`fixed top-9 left-0 w-full z-40 bg-white transition-all duration-300 ${
+        isScrolled ? "shadow-md" : "shadow"
+      }`}
+    >
+      <div className="container mx-auto px-4 md:px-16">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <img
+              src="/assets/logo.svg"
+              alt="GBU Logo"
+              className="h-12 w-auto"
             />
-          </svg>
-        </button>
-      </div>
+          </Link>
 
-      {/* Desktop Nav */}
-      <ul className="hidden md:flex flex-wrap justify-center gap-6 text-sm text-gray-700 relative">
-        {menus.map(({ key, label, icon, items, path }) =>
-          createMenu(label, icon, key, items, path)
-        )}
-        <li className="flex items-center gap-1 cursor-pointer hover:text-blue-600">
-          <Search size={16} />
-        </li>
-      </ul>
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center">
+            <ul className="flex items-center space-x-1">
+              {menus.map((menu) =>
+                createMenu(menu.label, menu.icon, menu.key, menu.items, menu.path)
+              )}
+            </ul>
 
-      {/* Mobile Nav */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden z-50 px-4 py-4">
-          <ul className="flex flex-col gap-2 text-sm text-gray-700">
-            {menus.map(({ key, label, icon, items, path }) => (
-              <li key={key}>
-                {path ? (
-                  <Link
-                    to={path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center gap-2 py-2 px-2 hover:text-red-600"
-                  >
-                    {icon} {label}
-                  </Link>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => toggleMobileMenu(key)}
-                      className="w-full flex justify-between items-center py-2 px-2 text-left hover:text-blue-600"
+            {/* Search Icon */}
+            <button
+              className="ml-4 p-2 hover:bg-gray-100 rounded-full text-gray-700"
+              aria-label="Search"
+            >
+              <Search size={20} />
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 text-gray-700"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden border-t border-gray-200">
+            <div className="py-2">
+              {menus.map((menu) => (
+                <div key={menu.key}>
+                  {menu.path ? (
+                    <Link
+                      to={menu.path}
+                      className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
                     >
                       <span className="flex items-center gap-2">
-                        {icon} {label}
+                        {menu.icon}
+                        {menu.label}
                       </span>
-                      {mobileOpenMenus[key] ? (
-                        <ChevronUp size={18} />
-                      ) : (
-                        <ChevronDown size={18} />
-                      )}
-                    </button>
-                    {mobileOpenMenus[key] && (
-                      <ul className="pl-6 flex flex-col gap-1 mt-1">
-                        {items.map((item, idx) => (
-                          <li key={idx}>
+                    </Link>
+                  ) : (
+                    <div>
+                      <button
+                        onClick={() => toggleMobileMenu(menu.key)}
+                        className="w-full flex items-center justify-between px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+                      >
+                        <span className="flex items-center gap-2">
+                          {menu.icon}
+                          {menu.label}
+                        </span>
+                        {mobileOpenMenus[menu.key] ? (
+                          <ChevronUp size={16} />
+                        ) : (
+                          <ChevronDown size={16} />
+                        )}
+                      </button>
+                      {mobileOpenMenus[menu.key] && (
+                        <div className="bg-gray-50">
+                          {menu.items.map((item, index) => (
                             <div
-                              onClick={() => {
-                                setIsMobileMenuOpen(false);
-                                setMobileOpenMenus({});
-                              }}
-                              className="block py-1 hover:text-red-600"
+                              key={index}
+                              className="block px-6 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             >
                               {item}
                             </div>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </>
-                )}
-              </li>
-            ))}
-            <li className="flex items-center gap-2 py-2 px-2 cursor-pointer hover:text-blue-600">
-              <Search size={16} />
-              Search
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+              {/* Search in mobile menu */}
+              <div className="px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">
+                <span className="flex items-center gap-2">
+                  <Search size={16} />
+                  Search
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

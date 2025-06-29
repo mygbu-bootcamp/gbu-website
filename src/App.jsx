@@ -4,12 +4,16 @@ import AppRouter from "./routes/router";
 import PreLoad from "../src/components/home/preLoad.jsx";
 import Primarynavbar from "../src/components/home/Primarynavbar.jsx";
 import Navbar from "../src/components/home/Navbar.jsx";
+import DepartmentNavbar from "../src/components/departments/Navbar.jsx";
 import Footer from "../src/components/home/Footer.jsx";
 
 function App() {
   const [isPreloadComplete, setIsPreloadComplete] = useState(() => {
     return localStorage.getItem("preloadComplete") === "true";
   });
+
+  const location = useLocation();
+  const isICTPage = location.pathname.startsWith("/schools/ict");
 
   useEffect(() => {
     if (isPreloadComplete) {
@@ -20,19 +24,24 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
-      {!isPreloadComplete ? (
-        <PreLoad onComplete={() => setIsPreloadComplete(true)} />
-      ) : (
-        <>
-          <Primarynavbar />
-          <Navbar />
-          <div>
-          <AppRouter />
-          </div>
-          <Footer />
-
-        </>
-      )}
+        {!isPreloadComplete ? (
+          <PreLoad onComplete={() => setIsPreloadComplete(true)} />
+        ) : (
+          <>
+            <Primarynavbar />
+            {isICTPage ? (
+              <div className="mt-9">
+                <DepartmentNavbar />
+              </div>
+            ) : (
+              <Navbar />
+            )}
+            <div className={isICTPage ? "pt-8" : "pt-[6.5rem]"}>
+              <AppRouter />
+            </div>
+            <Footer />
+          </>
+        )}
       </Suspense>
     </div>
   );
