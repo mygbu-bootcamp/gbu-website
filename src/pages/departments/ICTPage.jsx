@@ -3,6 +3,7 @@ import Navbar from "../../components/departments/Navbar";
 import AboutSection from "../../components/departments/AboutIct";
 import LeadershipCard from "../../components/departments/Dean";
 import ProgramsShowcase from "../../components/departments/Program";
+// import QuickAccess from "../../components/home/Quicklink.jsx";
 import DepartmentsSection from "../../components/departments/Deptcard";
 import FacultyCarousel from "../../components/departments/faculty_rotating.jsx";
 import NoticeEvents from "../../components/departments/Notice.jsx";
@@ -17,20 +18,20 @@ import StudentStartup from "../../components/departments/Startup.jsx";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-
       <Landing />
       <AboutSection />
+      {/* <QuickAccess/> */}
       <LeadershipCard />
-      <ProgramsShowcase />
       <DepartmentsSection />
+      <ProgramsShowcase />
       <FacultyCarousel />
       <NoticeEvents />
+      <ClubsAchievements />
       <PlacementsSection />
       <RecentPlacements />
       <RecruitersShowcase />
-      <ClubsAchievements />
-      <StudentAchievements />
       <StudentStartup />
+      <StudentAchievements />
     </div>
   );
 };

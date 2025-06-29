@@ -35,19 +35,19 @@ export default function CampusLifeSection() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6">
         {testimonials.map((item, index) => {
-          // Split only on the first hyphen to allow hyphens in the quote
-          const [categoryRaw, ...quoteParts] = item.card_content.split('-');
+          const [categoryRaw] = item.card_content.split('-');
           const category = categoryRaw?.trim() || '';
-          const quote = quoteParts.join('-').replace(/^["\s]+|["\s]+$/g, '') || '';
+          const quote = item.description?.replace(/\r\n/g, ' ').trim() || '';
+
 
           return (
             <div
               key={index}
               tabIndex={0}
-              className="bg-white rounded-lg shadow hover:shadow-xl focus:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 hover:-translate-y-2 outline-none cursor-pointer overflow-hidden group w-full h-[25rem] max-w-sm mx-auto"
+              className="bg-white rounded-2xl shadow-2xl hover:shadow-xl focus:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 hover:-translate-y-2 outline-none cursor-pointer overflow-hidden group w-full h-[20rem] max-w-sm mx-auto"
               style={{ aspectRatio: '1/1' }}
             >
-              <div className="relative h-2/5">
+              <div className="relative h-4/5">
                 <img
                   src={item.image}
                   alt={category}
@@ -59,15 +59,23 @@ export default function CampusLifeSection() {
                   {category}
                 </span>
               </div>
-              <div className="p-3 sm:p-4 h-3/5 flex flex-col justify-between">
-                <p className="italic text-gray-700 leading-tight text-xs sm:text-sm transform transition-transform duration-300 group-hover:translate-x-1 overflow-hidden">
-                  "{quote.length > 500 ? quote.slice(0, 500) + '...' : quote}"
+              <div className="p-2 sm:p-4 flex flex-col justify-between">
+                <p
+                  className="italic text-gray-900 leading-tight text-xs sm:text-sm transform transition-transform duration-300 group-hover:translate-x-1 overflow-hidden"
+                  style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                  }}
+                >
+                  "{quote}"
                 </p>
-                <p className="text-white font-semibold text-xs sm:text-sm transform transition-all duration-300 group-hover:text-white group-hover:translate-x-1 mt-2">
+                {/* <p className="text-white font-semibold text-xs sm:text-sm transform transition-all duration-300 group-hover:text-white group-hover:translate-x-1 mt-2">
                   {item.name}
                   <br />
                   <span className="italic text-xs">{item.course}</span>
-                </p>
+                </p> */}
               </div>
             </div>
           );

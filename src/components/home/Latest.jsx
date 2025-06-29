@@ -9,9 +9,7 @@ export default function LatestUpdates() {
   const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
   const NOTICE_API = `${BASE}/landing/news-and-events/`;
 
-  const scrollRefs = useRef([]);
-
-  // ✅ Fallback mock data if API fails
+  // ✅ New: fallback mock data, realistic
   const mockData = [
     {
       id: 1,
@@ -76,65 +74,8 @@ export default function LatestUpdates() {
       priority: 'high',
       date: '2025-06-26',
       url: '#'
-    },
-    {
-      id: 9,
-      content_text: 'Parking area near Admin Block will remain closed for renovation work.',
-      category: 'Notice/Circulars ',
-      priority: 'medium',
-      date: '2025-06-19',
-      url: '#'
-    },
-    {
-      id: 10,
-      content_text: 'Auditions for Cultural Fest 2025 will begin from 1st August at Student Activity Centre.',
-      category: 'Upcoming Events ',
-      priority: 'medium',
-      date: '2025-06-23',
-      url: '#'
-    },
-    {
-      id: 11,
-      content_text: 'Hostel fee payment deadline extended till 15th July due to summer vacations.',
-      category: 'Notice/Circulars ',
-      priority: 'low',
-      date: '2025-06-28',
-      url: '#'
-    },
-    {
-      id: 12,
-      content_text: 'Vice Chancellor’s address for newly admitted students will be streamed live on GBU portal.',
-      category: 'Latest News',
-      priority: 'low',
-      date: '2025-06-29',
-      url: '#'
-    },
-    {
-      id: 13,
-      content_text: 'Special Workshop on Career Guidance for Final Year Students on 5th July.',
-      category: 'Upcoming Events ',
-      priority: 'medium',
-      date: '2025-06-30',
-      url: '#'
-    },
-    {
-      id: 14,
-      content_text: 'Notice: Students are advised to update their contact details in the ERP portal.',
-      category: 'Notice/Circulars ',
-      priority: 'medium',
-      date: '2025-07-01',
-      url: '#'
-    },
-    {
-      id: 15,
-      content_text: 'Faculty Development Program on Research Methodologies will be held next month.',
-      category: 'Latest News',
-      priority: 'low',
-      date: '2025-07-02',
-      url: '#'
     }
   ];
-
 
   useEffect(() => {
     setIsVisible(true);
@@ -145,49 +86,22 @@ export default function LatestUpdates() {
     try {
       const res = await axios.get(NOTICE_API);
       const json = res.data;
-
       if (Array.isArray(json) && json.length > 0) {
         setData(json);
         const uniqueCategories = [...new Map(json.map(item => [item.category, item])).values()];
         setCategories(uniqueCategories);
       } else {
-        // If empty or invalid, fallback to mock data
-        console.warn('API returned empty data, using mock data.');
         setData(mockData);
         const uniqueCategories = [...new Map(mockData.map(item => [item.category, item])).values()];
         setCategories(uniqueCategories);
       }
     } catch (err) {
       console.error('Error fetching notices:', err);
-      // Fallback to mock data on error
       setData(mockData);
       const uniqueCategories = [...new Map(mockData.map(item => [item.category, item])).values()];
       setCategories(uniqueCategories);
     }
   };
-
-  useEffect(() => {
-    const intervals = [];
-
-    scrollRefs.current.forEach((container) => {
-      if (!container) return;
-
-      const scrollStep = 1;
-      const scrollDelay = 50;
-
-      const interval = setInterval(() => {
-        if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-          container.scrollTop = 0;
-        } else {
-          container.scrollTop += scrollStep;
-        }
-      }, scrollDelay);
-
-      intervals.push(interval);
-    });
-
-    return () => intervals.forEach(clearInterval);
-  }, [categories]);
 
   const getPriorityIndicator = (priority = 'low') => {
     if (priority === 'high') return 'bg-red-500 animate-pulse';
@@ -240,24 +154,25 @@ export default function LatestUpdates() {
     <section className="px-4 md:px-8 lg:px-16 py-12 bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30 min-h-screen">
       <style jsx>{`
         @keyframes slide-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-slide-in {
           animation: slide-in 0.6s ease-out forwards;
         }
-        .auto-scroll::-webkit-scrollbar {
-          display: none;
+        .marquee-wrapper {
+          overflow: hidden;
+          height: 350px;
+          position: relative;
         }
-        .auto-scroll {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+        .marquee-content {
+          display: flex;
+          flex-direction: column;
+          animation: scroll-up linear infinite;
+        }
+        @keyframes scroll-up {
+          0% { transform: translateY(0%); }
+          100% { transform: translateY(-50%); }
         }
       `}</style>
 
@@ -273,47 +188,42 @@ export default function LatestUpdates() {
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {categories.map((catItem, catIndex) => {
-  const category = catItem.category;
-  const filtered = data.filter(item => item.category === category);
-  return (
-    <div key={catIndex} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden flex flex-col relative">
-      <div className="p-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white">
-        <h3 className="text-lg font-semibold">{category}</h3>
-      </div>
+          const category = catItem.category;
+          const filtered = data.filter(item => item.category === category);
 
-      {/* 🟢 Make scroll area and view more button separate */}
-      <div className="relative flex-1 flex flex-col">
-        <div
-          className="auto-scroll space-y-3 max-h-[350px] overflow-y-auto pr-2 pb-16" 
-          // 👆 Added pb-16 to leave room for button
-          ref={el => (scrollRefs.current[catIndex] = el)}
-          style={{ scrollBehavior: 'smooth' }}
-        >
-          {filtered.length > 0 ? (
-            filtered.map((item, i) => (
-              <NoticeCard key={item.id} item={item} index={i} category={category} />
-            ))
-          ) : (
-            <p className="text-sm text-gray-500 p-4">No updates in this category.</p>
-          )}
-        </div>
+          return (
+            <div key={catIndex} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden flex flex-col relative">
+              <div className="p-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white">
+                <h3 className="text-lg font-semibold">{category}</h3>
+              </div>
 
-        <div className="absolute bottom-4 right-4 z-10">
-          <button
-            onClick={() => {
-              const url = catItem.view_more_url || '/news-and-events';
-              window.location.href = url;
-            }}
-            className="px-4 py-2 border border-blue-500 text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-200 bg-transparent shadow"
-          >
-            View More
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-})}
+              <div className="relative flex-1 flex flex-col">
+                <div className="marquee-wrapper">
+                  <div
+                    className="marquee-content space-y-3"
+                    style={{ animationDuration: `${filtered.length * 5}s` }}
+                  >
+                    {filtered.concat(filtered).map((item, i) => (
+                      <NoticeCard key={`${item.id}-${i}`} item={item} index={i} category={category} />
+                    ))}
+                  </div>
+                </div>
 
+                <div className="flex align-middle justify-end z-10 mt-8 h-10">
+                  <button
+                    onClick={() => {
+                      const url = catItem.view_more_url || '/news-and-events';
+                      window.location.href = url;
+                    }}
+                    className="px-4 py-1 text-blue-600  rounded-2xl font-semibold hover:bg-blue-500 hover:text-white transition-colors duration-200 bg-transparent"
+                  >
+                    View More
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

@@ -3,17 +3,11 @@ import React from "react";
 const LeadershipCard = () => {
   const leader = {
     name: "Dr. Arpit Bhardwaj",
-    title: "Dean, USICT",
-    description: `University School of Information and Communication Technology came into existence in 2008 with the primary objective of catering to all academic and research requirements in fields of electronics communication and computer science. The first academic session consisting of post-graduate program started in July 2009, and at present, it is successfully running undergraduate, post-graduate, and research programs in all emerging areas related to information and communication technology. 
-
-The school is committed towards providing highest quality teaching education and producing technocrats who can work on the latest available technologies in the global context. To fulfill this aim and to provide education according to industrial requirement the extra academic activities like lectures from outside experts, workshops, symposiums, and conferences are organized on a regular basis.
-
-The first batch of postgraduate students has successfully passed in 2011. The school has wonderful infrastructure having classrooms equipped with state-of-the-art audio visual support and a large number of functional laboratories equipped with the latest instruments/hardware/software and highly committed and dedicated faculty.
-
-The school has already made a roadmap for its development for the next 10 years in the form of a “Vision 2020” document and is in real spirit marching on this roadmap for fulfilling the defined objectives. The school aims to become a hub of higher-end research activities and has successfully started its research program and has many research scholars on its roll, carrying research in all prominent areas of electronics, communication, and computer engineering.
-
-I am more than confident to tell you that the best, most effective and finest weapon an academic organization can ever have is “knowledge” and it is a common quote in ICT field that “knowledge is power”. The USICT works on the sole objective of acquiring and propagating as much knowledge as possible to the students.`,
-    image: "https://www.gbu.ac.in/USICT/media/img/arpit%20bhardwaj.jpg",
+    title: "Dean (I/C) – School of ICT, GBU",
+    description:
+      "Dr. Arpit Bhardwaj is the current Dean‑in‑Charge of USICT, joining GBU in 2008. He holds a Ph.D. from IIT Indore and has published over 50 papers in IEEE, Elsevier & Springer. His research spans Genetic Programming, EEG‑signal classification, and AI‑driven emotion recognition. As Dean, he oversees academic programs (B.Tech, M.Tech, Ph.D.), enhances industry collaborations, and actively promotes student‑faculty innovation initiatives.",
+    image:
+      "https://www.gbu.ac.in/USICT/media/img/arpit%20bhardwaj.jpg",
   };
 
   return (
