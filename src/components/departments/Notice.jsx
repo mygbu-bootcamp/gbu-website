@@ -1,7 +1,3 @@
-
-
-
-
 import { Calendar } from "lucide-react";
 
 // Card Components
@@ -124,7 +120,7 @@ const NoticeEvents = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-blue-900 mb-3">
-            SOICT Campus Life
+            School's Ongoing Activity
           </h2>
           <p className="text-xl text-gray-600">
             Stay updated with latest notices and events
@@ -201,3 +197,4 @@ const NoticeEvents = () => {
 };
 
 export default NoticeEvents;
+

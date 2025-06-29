@@ -6,14 +6,12 @@ const Landing = () => {
 
   const slides = [
     {
-      image:
-        "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=1080&fit=crop",
+      image: "/assets/ICT.png",
       title: "School Of ICT",
       subtitle: "Shaping Tomorrow's Engineers Today",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&h=1080&fit=crop",
+      image: "/assets/CyberLab.jpeg",
       title: "State-of-the-Art Laboratories",
       subtitle: "Where Innovation Meets Technology",
     },
