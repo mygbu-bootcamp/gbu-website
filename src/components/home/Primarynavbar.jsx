@@ -53,16 +53,19 @@ const Primarynavbar = () => {
 
           {/* Right links */}
           <div className="flex flex-wrap gap-4 items-center">
-            <a href="https://preview--fee-wise-campus-pay.lovable.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://gbu-smart-fee.vercel.app/" className="flex items-center gap-1 hover:underline">
               <CreditCard size={14} /> Online Fee Payment
             </a>
             <a href="https://mygbu-student.vercel.app/" className="flex items-center gap-1 hover:underline">
               <User size={14} /> Student Portal
             </a>
-            <a href="https://mygbu-faculty-smart-dashboard.lovable.app/" className="flex items-center gap-1 hover:underline">
-              <LogIn size={14} /> Employee Login
+            <a href="https://mygbu-faculty-smart-dashboard-77.vercel.app/" className="flex items-center gap-1 hover:underline">
+              <LogIn size={14} /> Faculty Login
             </a>
 
+ <a href="https://mygbu-admin.vercel.app/" className="flex items-center gap-1 hover:underline">
+              <LogIn size={14} /> Admin Login
+            </a>
             <Link
               to="/grievance"
               className="flex items-center gap-1 hover:underline"
@@ -130,7 +133,7 @@ const Primarynavbar = () => {
             <div>
               <p className="text-gray-500 uppercase tracking-wider text-xs mb-2">Portals</p>
               <div className="space-y-2">
-                <a href="https://preview--fee-wise-campus-pay.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="https://gbu-smart-fee.vercel.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Online Fee Payment
                 </a>
                 <a href="https://uni-spark-dashboard.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
