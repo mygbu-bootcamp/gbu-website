@@ -3,34 +3,74 @@ import { motion } from "framer-motion";
 
 const faculty = [
   {
-    name: "Dr. Rakesh Kumar",
-    title: "Assistant Professor – CSE",
-    image: "https://via.placeholder.com/200x250?text=Dr.+Rakesh+Kumar",
+    name: "Dr. Arpit Bhardwaj",
+    title: "Dean, CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/6735c61d170ee_WhatsApp%20Image%202024-11-14%20at%203.12.33%20PM.jpeg",
   },
   {
+    name: "Dr. Arun Solanki",
+    title: "HOD – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/67c6a617c08be_cropped-arun.jpg",
+  },
+  {
+    name: "Dr. Aarti Gautam Dinker",
+    title: "Assistant Professor – CSE",
+    image: " https://faculty.gbu.ac.in/uploads/photos/6605300c5c849_aarti.jpg",
+  },
+  {
+    name: "Dr. Anika",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/672ee826e3b19_Anika.jpg",
+  },
+  {
+    name: "Dr. Anurag Singh Baghel",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/66052f4f5757a_asb.jpg",
+  },
+  {
+    name: "Dr. Gaurav Kumar",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/6721e9346dac1_Photo-removebg-preview.png",
+  },
+    {
+    name: "Dr. Nitesh Singh Bhati",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/671b256dd035a_WhatsApp%20Image%202024-10-25%20at%2010.05.19%20AM.jpeg",
+  },
+    {
+    name: "Dr. Pradeep Tomar",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/6603cfe3be87c_pradeep-tomar.jpg",
+  },
+    {
+    name: "Dr. Rajendra Bahadur Singh",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/6613ce13d7538_RBS_PIC.jpeg",
+  },
+    {
     name: "Dr. Raju Pal",
     title: "Assistant Professor – CSE",
-    image: "https://via.placeholder.com/200x250?text=Dr.+Raju+Pal",
+    image: "https://faculty.gbu.ac.in/uploads/photos/660a761667ced_CS%20Raju%20Pal.jpg",
   },
-  {
-    name: "Dr. Vidushi Sharma",
-    title: "Assistant Professor – ECE",
-    image: "https://via.placeholder.com/200x250?text=Dr.+Vidushi+Sharma",
+    {
+    name: "Dr. Rakesh Kumar",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/67c6cc28b50d0_SML_8821.JPG",
   },
-  {
+    {
+    name: "Dr. Shiraz Khurana",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/672b4e0fd48e8_image%20(1).png",
+  },
+    {
     name: "Dr. Vimlesh Kumar Ray",
-    title: "Assistant Professor – ECE",
-    image: "https://via.placeholder.com/200x250?text=Dr.+Vimlesh+Kumar+Ray",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/66052fd60f82d_vimlesh.jpg",
   },
-  {
-    name: "Dr. Maneet Singh",
-    title: "Assistant Professor – IT",
-    image: "https://via.placeholder.com/200x250?text=Dr.+Maneet+Singh",
-  },
-  {
-    name: "Dr. Akash Kumar",
-    title: "Assistant Professor – IT",
-    image: "https://via.placeholder.com/200x250?text=Dr.+Akash+Kumar",
+    {
+    name: "Dr. Kartikeya Tiwari",
+    title: "Assistant Professor – CSE",
+    image: "https://faculty.gbu.ac.in/uploads/photos/66475c0d84def_IMG-20240517-WA0009%20(1).jpg",
   },
 ];
 

@@ -31,7 +31,7 @@ const LeadershipCard = () => {
             <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3">
               {leader.title}
             </p>
-            <p className="text-gray-700 text-sm sm:text-base">
+            <p className="text-gray-700 text-sm sm:text-base whitespace-pre-line">
               {leader.description}
             </p>
           </div>
