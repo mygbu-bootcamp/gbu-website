@@ -5,20 +5,64 @@ const RecruitersShowcase = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const recruiters = [
-    { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-    { name: "TCS", logo: "https://logo.clearbit.com/tcs.com" },
-    { name: "HCL", logo: "https://logo.clearbit.com/hcltech.com" },
-    { name: "Tech Mahindra", logo: "https://logo.clearbit.com/techmahindra.com" },
+    {
+      name: "Samsung",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/samsung.png",
+    },
+    {
+      name: "TCS",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/tcs.png",
+    },
+    {
+      name: "Adobe",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/adobe.png",
+    },
+    {
+      name: "Tech Mahindra",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/tech.png",
+    },
     { name: "Adobe", logo: "https://logo.clearbit.com/adobe.com" },
-    { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
-    { name: "Wipro", logo: "https://logo.clearbit.com/wipro.com" },
-    { name: "Infosys", logo: "https://logo.clearbit.com/infosys.com" },
-    { name: "Samsung", logo: "https://logo.clearbit.com/samsung.com" },
-    { name: "Intel", logo: "https://logo.clearbit.com/intel.com" },
+    {
+      name: "Metro",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/metro.png",
+    },
+    {
+      name: "HCL",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/hcl.png",
+    },
+    {
+      name: "Byjus",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/byjus.png",
+    },
+    {
+      name: "Nagrro",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/nagrro.png",
+    },
+    {
+      name: "Apple",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/apple.png",
+    },
     { name: "Byju's", logo: "https://logo.clearbit.com/byjus.com" },
-    { name: "Axis Bank", logo: "https://logo.clearbit.com/axisbank.com" },
-    { name: "S&P Global", logo: "https://logo.clearbit.com/spglobal.com" },
-    { name: "Freecharge", logo: "https://logo.clearbit.com/freecharge.in" },
+    {
+      name: "White Hat Junior",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/white.png",
+    },
+    {
+      name: "Hexaware",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/hexaware.png",
+    },
+    {
+      name: "Blinkit",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/blink-it-logo.png",
+    },
+    {
+      name: "Toppr",
+      logo: "https://www.gbu.ac.in/USICT/media/img/recute/Toppr_logo.png",
+    },
+    { name: "Wipro", logo: "https://www.gbu.ac.in/USICT/media/img/recute/wipro.png" },
+    { name: "Scaler", logo: "https://www.gbu.ac.in/USICT/media/img/recute/scaler.png" },
+    { name: "Chegg", logo: "https://www.gbu.ac.in/USICT/media/img/recute/Chegg-Logo.png" }
+  
   ];
 
   const itemsPerSlide = 8;
@@ -52,7 +96,9 @@ const RecruitersShowcase = () => {
           <h2 className="text-4xl font-bold text-college-navy mb-4 bg-gradient-to-r from-college-navy to-college-blue bg-clip-text text-transparent">
             Our Recruiters
           </h2>
-          <p className="text-xl text-gray-600">Industry leaders who trust our talent</p>
+          <p className="text-xl text-gray-600">
+            Industry leaders who trust our talent
+          </p>
           <div className="w-24 h-1 bg-gradient-to-r from-college-blue to-college-gold mx-auto mt-4 rounded-full"></div>
         </div>
 

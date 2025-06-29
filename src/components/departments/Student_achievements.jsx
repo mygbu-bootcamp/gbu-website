@@ -9,7 +9,7 @@ const achievements = [
     year: "2024",
     student: "USICT Students",
     department: "CSE/IT/ECE",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop",
+    image: "https://i.ytimg.com/vi/znMbKz6ZPno/maxresdefault.jpg?w=400&h=250&fit=crop",
     description:
       "GBU hosted the internal SIH 2024 with 224 participants from USICT solving real-world challenges." ,
   },
@@ -19,7 +19,7 @@ const achievements = [
     year: "2018",
     student: "Sachin Mishra & Team (Mechanical)",
     department: "Mechanical",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop",
+    image: "https://www.shellecomarathon.com/_jcr_content/root/main/section/simple_1063219968/promo_copy_copy.shellimg.jpeg/1706575524878/shell-eco-marathon-banner-home.jpeg?imwidth=301&impolicy=amidala-image&imdensity=1.25?w=400&h=250&fit=crop",
     description:
       "GBU’s Mechanical team designed a hydrogen-powered Eco-Kart and represented India." ,
   },
@@ -29,7 +29,7 @@ const achievements = [
     year: "2023",
     student: "58 States & Club Athletes",
     department: "Sports",
-    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=250&fit=crop",
+    image: "https://img.olympics.com/images/image/private/t_s_16_9_g_auto/t_s_w2440/f_auto/primary/cmgu8jns1geqgoyzmvll?w=400&h=250&fit=crop",
     description:
       "GBU hosted the 7th Elite Women’s National Boxing Championship in Dec 2023." ,
   },
@@ -39,7 +39,7 @@ const achievements = [
     year: "2024",
     student: "USICT Researchers",
     department: "CSE/IT",
-    image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=250&fit=crop",
+    image: "https://pg-p.ctme.caltech.edu/wp-content/uploads/sites/4/2023/03/future_of_ai.jpg?w=400&h=250&fit=crop",
     description:
       "UP Govt & industry partners funded AI CoE at GBU to boost advanced tech research." ,
   }
