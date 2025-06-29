@@ -1,34 +1,20 @@
 import React, { useState, useMemo, cloneElement } from 'react';
-import Header from '../../components/announcement/Header';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import SearchFilter from '../../components/announcement/SearchFilter';
 import EnhancedPagination from '../../components/announcement/EnhancedPagination';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
-// Dialog, DialogContent, DialogTrigger
-const Dialog = ({ open, onOpenChange, children }) => {
-  return open !== undefined ? (open ? <>{children}</> : null) : <>{children}</>;
-};
-const DialogTrigger = ({ asChild, children }) => children;
+// === Dialog ===
+const Dialog = ({ open, children }) => (open ? <>{children}</> : null);
+const DialogTrigger = ({ children }) => children;
 const DialogContent = ({ className = '', children }) => (
-  <div
-    className={`fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm ${className}`}
-    style={{ animation: 'fadeIn 0.2s' }}
-  >
+  <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm ${className}`}>
     <div className="relative">{children}</div>
   </div>
 );
 
-// Button
-const Button = ({
-  children,
-  onClick,
-  variant = 'default',
-  size = 'md',
-  className = '',
-  ...props
-}) => {
-  const base =
-    'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+// === Button ===
+const Button = ({ children, onClick, variant = 'default', size = 'md', className = '', ...props }) => {
+  const base = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   const variants = {
     default: 'bg-blue-600 text-white hover:bg-blue-700 shadow-md',
     ghost: 'bg-transparent hover:bg-gray-200',
@@ -39,27 +25,26 @@ const Button = ({
     icon: 'h-10 w-10 p-0',
   };
   return (
-    <button
-      type="button"
-      className={`${base} ${variants[variant] || ''} ${sizes[size] || ''} ${className}`}
-      onClick={onClick}
-      {...props}
-    >
+    <button type="button" className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} onClick={onClick} {...props}>
       {children}
     </button>
   );
 };
 
-// Badge
+// === Badge ===
 const Badge = ({ children, className = '' }) => (
-  <span
-    className={`inline-block px-2 py-0.5 rounded text-xs font-semibold shadow-sm ${className}`}
-  >
-    {children}
-  </span>
+  <span className={`inline-block px-2 py-0.5 rounded text-xs font-semibold shadow-sm ${className}`}>{children}</span>
 );
 
-// Tabs, TabsList, TabsTrigger, TabsContent
+// === Format date ===
+function format(date, formatStr) {
+  const d = typeof date === 'string' ? new Date(date) : date;
+  const pad = (n) => (n < 10 ? '0' + n : n);
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return formatStr.replace('MMMM', monthNames[d.getMonth()]).replace('dd', pad(d.getDate())).replace('yyyy', d.getFullYear());
+}
+
+// === Tabs ===
 const Tabs = ({ value, children, className = '' }) => {
   const [active, setActive] = useState(value);
   return (
@@ -74,27 +59,15 @@ const Tabs = ({ value, children, className = '' }) => {
 };
 const TabsList = ({ children, active, setActive, className = '' }) => (
   <div className={className}>
-    {React.Children.map(children, (child) =>
-      cloneElement(child, { active, setActive })
-    )}
+    {React.Children.map(children, (child) => cloneElement(child, { active, setActive }))}
   </div>
 );
 TabsList.displayName = 'TabsList';
 
-const TabsTrigger = ({
-  value,
-  children,
-  active,
-  setActive,
-  className = '',
-}) => (
+const TabsTrigger = ({ value, children, active, setActive, className = '' }) => (
   <button
     type="button"
-    className={`py-2 px-4 rounded-t font-medium transition-colors ${
-      active === value
-        ? 'bg-white shadow text-blue-700'
-        : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-    } ${className}`}
+    className={`py-2 px-4 rounded-t font-medium transition-colors ${active === value ? 'bg-white shadow text-blue-700' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'} ${className}`}
     onClick={() => setActive(value)}
   >
     {children}
@@ -102,11 +75,10 @@ const TabsTrigger = ({
 );
 TabsTrigger.displayName = 'TabsTrigger';
 
-const TabsContent = ({ value, active, children }) =>
-  active === value ? <div>{children}</div> : null;
+const TabsContent = ({ value, active, children }) => (active === value ? <div>{children}</div> : null);
 TabsContent.displayName = 'TabsContent';
 
-// Mock media data
+// === Mock Media ===
 const mockMedia = [
   {
     id: 1,
@@ -116,8 +88,8 @@ const mockMedia = [
     date: '2023-05-15',
     images: [
       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80'
-    ]
+      'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+    ],
   },
   {
     id: 2,
@@ -126,8 +98,9 @@ const mockMedia = [
     year: '2022',
     date: '2022-11-10',
     images: [
-      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80'
-    ]
+      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=600&q=80',
+    ],
   },
   {
     id: 3,
@@ -138,8 +111,7 @@ const mockMedia = [
     images: [
       'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80',
       'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80'
-    ]
+    ],
   },
   {
     id: 4,
@@ -148,8 +120,8 @@ const mockMedia = [
     year: '2021',
     date: '2021-09-05',
     images: [
-      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80'
-    ]
+      'https://images.unsplash.com/photo-1498079022511-d15614cb1c02?auto=format&fit=crop&w=600&q=80',
+    ],
   },
   {
     id: 5,
@@ -158,8 +130,9 @@ const mockMedia = [
     year: '2022',
     date: '2022-03-18',
     images: [
-      'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80'
-    ]
+      'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1504691342899-8d2d1a0d88d3?auto=format&fit=crop&w=600&q=80',
+    ],
   },
   {
     id: 6,
@@ -168,28 +141,119 @@ const mockMedia = [
     year: '2023',
     date: '2023-07-12',
     images: [
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80'
-    ]
-  }
+      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 7,
+    title: 'Robotics Workshop',
+    category: 'Academic',
+    year: '2023',
+    date: '2023-08-05',
+    images: [
+      'https://images.unsplash.com/photo-1581090700227-4c4c2a5d7a2b?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 8,
+    title: 'Faculty Development Program',
+    category: 'Academic',
+    year: '2022',
+    date: '2022-12-11',
+    images: [
+      'https://images.unsplash.com/photo-1523289333742-be1143f6b766?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 9,
+    title: 'Annual Science Fair',
+    category: 'Academic',
+    year: '2021',
+    date: '2021-10-22',
+    images: [
+      'https://images.unsplash.com/photo-1558981403-c5f98968e4c6?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 10,
+    title: 'Inter-College Football Tournament',
+    category: 'Sports',
+    year: '2023',
+    date: '2023-04-03',
+    images: [
+      'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 11,
+    title: 'Winter Cultural Eve',
+    category: 'Cultural',
+    year: '2022',
+    date: '2022-12-21',
+    images: [
+      'https://images.unsplash.com/photo-1515165562838-8d6f33ab9a3a?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 12,
+    title: 'Open Mic Night',
+    category: 'Cultural',
+    year: '2021',
+    date: '2021-11-02',
+    images: [
+      'https://images.unsplash.com/photo-1515705576963-95cad62945b6?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 13,
+    title: 'Yoga & Wellness Camp',
+    category: 'Campus Life',
+    year: '2023',
+    date: '2023-06-15',
+    images: [
+      'https://images.unsplash.com/photo-1554306274-f7c838fa9e38?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 14,
+    title: 'Literary Fest',
+    category: 'Cultural',
+    year: '2022',
+    date: '2022-09-12',
+    images: [
+      'https://images.unsplash.com/photo-1579546929155-97d9f43511d7?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  {
+    id: 15,
+    title: 'Marathon 2023',
+    category: 'Sports',
+    year: '2023',
+    date: '2023-01-25',
+    images: [
+      'https://images.unsplash.com/photo-1504470695779-75300268aa44?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  // Add 15 more to ensure pagination:
+  ...Array.from({ length: 15 }, (_, i) => ({
+    id: 16 + i,
+    title: `Extra Event ${i + 1}`,
+    category: ['Convocation', 'Sports', 'Cultural', 'Academic', 'Campus Life', 'Events'][i % 6],
+    year: ['2021', '2022', '2023'][i % 3],
+    date: `2023-0${(i % 9) + 1}-15`,
+    images: [
+      `https://source.unsplash.com/random/600x400?sig=${i}`,
+      `https://source.unsplash.com/random/601x400?sig=${i + 50}`,
+    ],
+  })),
 ];
 
-// Simple date formatting function (similar to date-fns/format)
-function format(date, formatStr) {
-  const d = typeof date === 'string' ? new Date(date) : date;
-  const pad = (n) => n < 10 ? '0' + n : n;
-  const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  return formatStr
-    .replace('MMMM', monthNames[d.getMonth()])
-    .replace('dd', pad(d.getDate()))
-    .replace('yyyy', d.getFullYear());
-}
 
-const shimmer =
-  'relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent before:animate-shimmer';
+// === Shimmer ===
+const shimmer = 'relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:animate-shimmer';
 
+// === Main ===
 const MediaGallery = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -204,155 +268,60 @@ const MediaGallery = () => {
 
   const filteredMedia = useMemo(() => {
     return mockMedia.filter(item => {
-      const matchesSearch = !searchQuery ||
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.category.toLowerCase().includes(searchQuery.toLowerCase());
-
+      const matchesSearch = !searchQuery || item.title.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
       const matchesYear = selectedYear === 'all' || item.year === selectedYear;
-
       return matchesSearch && matchesCategory && matchesYear;
     });
   }, [searchQuery, selectedCategory, selectedYear]);
 
   const totalPages = Math.ceil(filteredMedia.length / itemsPerPage);
-  const currentMedia = filteredMedia.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const currentMedia = filteredMedia.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    setCurrentPage(1);
+  const openImageModal = (item) => {
+    setSelectedMediaItem(item);
+    setSelectedImageIndex(0);
   };
 
-  const handleCategoryFilter = (category) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
+  const navigateImage = (dir) => {
+    const total = selectedMediaItem.images.length;
+    setSelectedImageIndex((prev) => (dir === 'next' ? (prev + 1) % total : (prev - 1 + total) % total));
   };
 
-  const handleYearFilter = (year) => {
-    setSelectedYear(year);
-    setCurrentPage(1);
-  };
-
-  const handleItemsPerPageChange = (newItemsPerPage) => {
-    setItemsPerPage(newItemsPerPage);
-    setCurrentPage(1);
-  };
-
-  const openImageModal = (mediaItem, imageIndex) => {
-    setSelectedMediaItem(mediaItem);
-    setSelectedImageIndex(imageIndex);
-  };
-
-  const navigateImage = (direction) => {
-    if (!selectedMediaItem || selectedImageIndex === null) return;
-
-    const currentIndex = selectedImageIndex;
-    const totalImages = selectedMediaItem.images.length;
-
-    if (direction === 'next') {
-      setSelectedImageIndex((currentIndex + 1) % totalImages);
-    } else {
-      setSelectedImageIndex((currentIndex - 1 + totalImages) % totalImages);
-    }
-  };
-
-  const getCategoryColor = (category) => {
-    const colors = {
-      'Convocation': 'bg-purple-100 text-purple-800',
-      'Sports': 'bg-green-100 text-green-800',
-      'Cultural': 'bg-orange-100 text-orange-800',
-      'Academic': 'bg-blue-100 text-blue-800',
-      'Campus Life': 'bg-pink-100 text-pink-800',
-      'Events': 'bg-indigo-100 text-indigo-800'
-    };
-    return colors[category] || 'bg-gray-100 text-gray-800';
-  };
+  const getCategoryColor = (cat) => ({
+    Convocation: 'bg-purple-100 text-purple-800',
+    Sports: 'bg-green-100 text-green-800',
+    Cultural: 'bg-orange-100 text-orange-800',
+  }[cat] || 'bg-gray-100 text-gray-800');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50">
-      {/* <Header /> */}
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20 text-center">
+        <h1 className="text-4xl font-bold mb-2">Media Gallery</h1>
+        <p className="text-lg">Explore vibrant moments from university events. Click to view details!</p>
+      </section>
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-10">
-          <h1 className="text-5xl font-extrabold text-blue-900 mb-3 tracking-tight drop-shadow-lg">
-            Media Gallery
-          </h1>
-          <p className="text-gray-600 text-lg max-w-xl mx-auto">
-            Explore vibrant moments from university events. Click on any image to view in detail!
-          </p>
-        </div>
+      <div className="container mx-auto py-12">
+        <SearchFilter onSearch={setSearchQuery} onTypeFilter={setSelectedCategory} onYearFilter={setSelectedYear} types={allCategories} years={allYears} placeholder="Search..." />
 
-        <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <SearchFilter
-            onSearch={handleSearch}
-            onDateFilter={() => {}} // Not used for media gallery
-            onTypeFilter={handleCategoryFilter}
-            onYearFilter={handleYearFilter}
-            types={allCategories}
-            years={allYears}
-            placeholder="Search media..."
-          />
-        </div>
-
-        <Tabs value="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-1 mb-8">
-            <TabsTrigger value="all" className="w-full">
-              <span className="flex items-center justify-center gap-2">
-                <span className="text-lg font-semibold">All Media</span>
-                <span className="bg-blue-100 text-blue-700 rounded px-2 py-0.5 text-xs font-bold">
-                  {filteredMedia.length}
-                </span>
-              </span>
-            </TabsTrigger>
+        <Tabs value="all">
+          <TabsList className="mb-8">
+            <TabsTrigger value="all"><span>All Media ({filteredMedia.length})</span></TabsTrigger>
           </TabsList>
-
           <TabsContent value="all">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              {currentMedia.map((item) => (
-                <div
-                  key={item.id}
-                  className="space-y-3 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 border-solid group"
-                >
-                  <div className="grid grid-cols-1 gap-2">
-                    {item.images.map((image, imageIndex) => (
-                      <Dialog key={imageIndex}>
-                        <DialogTrigger asChild>
-                          <div
-                            className={`aspect-square overflow-hidden rounded-t-xl cursor-pointer group relative ${shimmer}`}
-                            onClick={() => openImageModal(item, imageIndex)}
-                          >
-                            <img
-                              src={image}
-                              alt={`${item.title} - ${imageIndex + 1}`}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <span className="absolute bottom-2 right-2 bg-white/80 text-gray-700 text-xs px-2 py-0.5 rounded shadow">
-                              View
-                            </span>
-                          </div>
-                        </DialogTrigger>
-                      </Dialog>
-                    ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-10 gap-8">
+              {currentMedia.map(item => (
+                <div key={item.id} className="bg-white rounded-xl shadow border border-gray-100 border-solid overflow-hidden hover:shadow-lg transition-all duration-300" style={{ height: '26rem' }}>
+                  <div className="h-[70%] cursor-pointer overflow-hidden" onClick={() => openImageModal(item)}>
+                    <img src={item.images[0]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                   </div>
-
-                  <div className="space-y-2 px-4 pb-4">
-                    <div className="flex items-center justify-between">
-                      <Badge className={getCategoryColor(item.category)}>
-                        {item.category}
-                      </Badge>
+                  <div className="p-4 h-[30%] flex flex-col justify-between">
+                    <div className="flex items-center justify-between mb-1">
+                      <Badge className={getCategoryColor(item.category)}>{item.category}</Badge>
                       <span className="text-sm text-gray-500">{item.year}</span>
                     </div>
-                    <h3 className="font-semibold text-gray-800 line-clamp-2 text-lg">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      {format(new Date(item.date), 'MMMM dd, yyyy')}
-                    </p>
+                    <h3 className="font-semibold text-gray-800 line-clamp-2">{item.title}</h3>
+                    <p className="text-sm text-gray-500">{format(item.date, 'MMMM dd, yyyy')}</p>
                   </div>
                 </div>
               ))}
@@ -360,87 +329,33 @@ const MediaGallery = () => {
           </TabsContent>
         </Tabs>
 
-        {filteredMedia.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-gray-500 text-lg">
-              <span role="img" aria-label="no results">😕</span> No media found matching your criteria.
-            </p>
-          </div>
-        )}
-
         {totalPages > 1 && (
           <div className="mt-10">
-            <EnhancedPagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              totalItems={filteredMedia.length}
-              itemsPerPage={itemsPerPage}
-              onPageChange={setCurrentPage}
-              onItemsPerPageChange={handleItemsPerPageChange}
-              showItemsPerPage={true}
-            />
+            <EnhancedPagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} itemsPerPage={itemsPerPage} onItemsPerPageChange={setItemsPerPage} />
           </div>
         )}
-      </div>
 
-      {/* Image Modal */}
-      {selectedMediaItem && selectedImageIndex !== null && (
-        <Dialog open={selectedImageIndex !== null} onOpenChange={() => setSelectedImageIndex(null)}>
-          <DialogContent className="max-w-4xl w-full p-0 bg-black/90 border-0 rounded-2xl shadow-2xl">
-            <div className="relative">
-              <img
-                src={selectedMediaItem.images[selectedImageIndex]}
-                alt={`${selectedMediaItem.title} - ${selectedImageIndex + 1}`}
-                className="w-full h-auto max-h-[80vh] object-contain rounded-2xl"
-                style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)' }}
-              />
-
-              {/* Navigation Buttons */}
-              {selectedMediaItem.images.length > 1 && (
-                <>
-                  <Button
-                    variant="glass"
-                    size="icon"
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2"
-                    onClick={() => navigateImage('prev')}
-                  >
-                    <ChevronLeft size={28} />
-                  </Button>
-                  <Button
-                    variant="glass"
-                    size="icon"
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2"
-                    onClick={() => navigateImage('next')}
-                  >
-                    <ChevronRight size={28} />
-                  </Button>
-                </>
-              )}
-
-              {/* Close Button */}
-              <Button
-                variant="glass"
-                size="icon"
-                className="absolute top-4 right-4"
-                onClick={() => setSelectedImageIndex(null)}
-              >
-                <X size={26} />
-              </Button>
-
-              {/* Image Info */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 text-white rounded-b-2xl">
-                <h3 className="text-2xl font-bold mb-2 drop-shadow">{selectedMediaItem.title}</h3>
-                <div className="flex items-center justify-between text-sm font-medium">
-                  <span>{format(new Date(selectedMediaItem.date), 'MMMM dd, yyyy')}</span>
-                  <span>
-                    {selectedImageIndex + 1} of {selectedMediaItem.images.length}
-                  </span>
+        {selectedMediaItem && selectedImageIndex !== null && (
+          <Dialog open>
+            <DialogContent className=" w-full p-0 bg-black/90 rounded-2xl">
+              <div className="relative">
+                <img src={selectedMediaItem.images[selectedImageIndex]} alt="" className="w-full max-h-[80vh] object-contain rounded-xl" />
+                <Button variant="glass" size="icon" className="absolute top-4 right-4" onClick={() => setSelectedImageIndex(null)}><X size={26} /></Button>
+                {selectedMediaItem.images.length > 1 && (
+                  <>
+                    <Button variant="glass" size="icon" className="absolute left-4 top-1/2 transform -translate-y-1/2" onClick={() => navigateImage('prev')}><ChevronLeft size={28} /></Button>
+                    <Button variant="glass" size="icon" className="absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => navigateImage('next')}><ChevronRight size={28} /></Button>
+                  </>
+                )}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 text-white rounded-b-2xl">
+                  <h3 className="text-2xl font-bold mb-2">{selectedMediaItem.title}</h3>
+                  <div className="flex justify-between text-sm">{format(selectedMediaItem.date, 'MMMM dd, yyyy')} <span>{selectedImageIndex + 1} of {selectedMediaItem.images.length}</span></div>
                 </div>
               </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      )}
+            </DialogContent>
+          </Dialog>
+        )}
+      </div>
     </div>
   );
 };

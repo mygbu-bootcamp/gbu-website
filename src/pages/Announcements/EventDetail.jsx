@@ -105,39 +105,144 @@ const TabsContent = ({ value, children, className = "" }) => {
 // --- MOCK DATA ---
 const mockEvents = [
   {
-    id: "1",
-    title: "International Symposium on AI",
-    description: "A premier event bringing together leading minds in Artificial Intelligence for knowledge sharing, networking, and collaboration.",
-    date: "2024-07-15T09:00:00Z",
-    endDate: "2024-07-15T17:00:00Z",
-    venue: "Auditorium, GBU Campus",
-    organizer: "School of ICT, GBU",
-    type: "Symposium",
+    id: 1,
+    title: "GBU Tech Symposium",
+    description:
+      "An in-depth symposium exploring the latest advancements in technology, including keynote talks, panel discussions, and networking opportunities for students and faculty.",
+    date: "2024-07-10T09:00:00Z",
+    endDate: "2024-07-10T17:00:00Z",
+    venue: "Main Auditorium, GBU Campus",
+    organizer: "School of Engineering, GBU",
+    type: "Seminar",
     mode: "Offline",
     isUpcoming: true,
-    registrationUrl: "https://forms.gle/ai-symposium-gbu",
+    registrationUrl: "https://forms.gle/gbu-tech-symposium",
     images: [
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80"
-    ]
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+    ],
   },
   {
-    id: "2",
-    title: "Web Development Workshop",
-    description: "Hands-on workshop covering modern web development tools and frameworks.",
-    date: "2024-08-10T10:00:00Z",
-    venue: "Lab 2, GBU Campus",
-    organizer: "School of Engineering, GBU",
-    type: "Workshop",
+    id: 2,
+    title: "Annual Science Fair",
+    description:
+      "A showcase event where students present their innovative science projects to peers, faculty, and industry professionals. Includes awards and interactive exhibits.",
+    date: "2023-12-15T10:00:00Z",
+    endDate: "2023-12-15T16:00:00Z",
+    venue: "Exhibition Hall, GBU Campus",
+    organizer: "School of Science, GBU",
+    type: "Fair",
     mode: "Offline",
     isUpcoming: false,
     registrationUrl: "",
     images: [
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80"
-    ]
-  }
+      "https://images.unsplash.com/photo-1532619066780-408fe5bdfb33?auto=format&fit=crop&w=800&q=80",
+    ],
+  },
+  {
+    id: 3,
+    title: "Mathematics Workshop",
+    description:
+      "An interactive workshop designed to enhance students’ problem-solving skills and introduce advanced mathematical concepts through hands-on activities.",
+    date: "2024-08-05T09:30:00Z",
+    endDate: "2024-08-05T15:30:00Z",
+    venue: "Lecture Hall 3, Academic Block, GBU",
+    organizer: "Department of Mathematics, GBU",
+    type: "Workshop",
+    mode: "Offline",
+    isUpcoming: true,
+    registrationUrl: "https://forms.gle/mathematics-workshop-gbu",
+    images: [
+      "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
+    ],
+  },
+  {
+    id: 4,
+    title: "Cultural Fest",
+    description:
+      "An annual cultural festival celebrating diversity through music, dance, drama, and art performances by students from various backgrounds.",
+    date: "2023-11-20T17:00:00Z",
+    endDate: "2023-11-20T22:00:00Z",
+    venue: "Open Air Theatre, GBU",
+    organizer: "Cultural Committee, GBU",
+    type: "Festival",
+    mode: "Offline",
+    isUpcoming: false,
+    registrationUrl: "",
+    images: [
+      "https://images.unsplash.com/photo-1529078155058-5d716f45d604?auto=format&fit=crop&w=800&q=80",
+    ],
+  },
+  {
+    id: 5,
+    title: "AI Guest Lecture",
+    description:
+      "A guest lecture by industry experts discussing the current trends, challenges, and future scope of Artificial Intelligence in various sectors.",
+    date: "2024-09-01T11:00:00Z",
+    endDate: "2024-09-01T13:00:00Z",
+    venue: "Seminar Hall B, GBU",
+    organizer: "School of ICT, GBU",
+    type: "Lecture",
+    mode: "Hybrid",
+    isUpcoming: true,
+    registrationUrl: "https://forms.gle/ai-guest-lecture-gbu",
+    images: [
+      "https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&w=800&q=80",
+    ],
+  },
+  {
+    id: 6,
+    title: "Sports Meet",
+    description:
+      "Annual sports meet including athletics, indoor and outdoor games, and award distribution for winners in various categories.",
+    date: "2023-10-10T08:00:00Z",
+    endDate: "2023-10-10T18:00:00Z",
+    venue: "Sports Ground, GBU",
+    organizer: "Sports Council, GBU",
+    type: "Sports",
+    mode: "Offline",
+    isUpcoming: false,
+    registrationUrl: "",
+    images: [
+      "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80",
+    ],
+  },
+  {
+    id: 7,
+    title: "Research Paper Presentation",
+    description:
+      "Students and faculty members present their latest research papers to an audience of peers and experts. Includes Q&A sessions and feedback.",
+    date: "2024-07-25T14:00:00Z",
+    endDate: "2024-07-25T17:00:00Z",
+    venue: "Conference Room 1, GBU",
+    organizer: "Research Cell, GBU",
+    type: "Presentation",
+    mode: "Offline",
+    isUpcoming: true,
+    registrationUrl: "https://forms.gle/research-presentation-gbu",
+    images: [
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
+    ],
+  },
+  {
+    id: 8,
+    title: "Alumni Meet",
+    description:
+      "A reunion event for GBU alumni to reconnect, network, and share their experiences with current students and faculty.",
+    date: "2023-09-05T18:00:00Z",
+    endDate: "2023-09-05T21:00:00Z",
+    venue: "Banquet Hall, GBU",
+    organizer: "Alumni Association, GBU",
+    type: "Meet",
+    mode: "Offline",
+    isUpcoming: false,
+    registrationUrl: "",
+    images: [
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+    ],
+  },
 ];
+
 
 // --- UTILS ---
 function format(date, formatStr) {
@@ -172,7 +277,7 @@ const EventDetail = () => {
         {/* <Header /> */}
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-3xl font-extrabold text-blue-700 mb-6">Event not found</h1>
-          <Link to="/events-calendar">
+          <Link to="/announcements/event-calendar">
             <Button>Back to Events</Button>
           </Link>
         </div>
@@ -227,11 +332,11 @@ const EventDetail = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
-      <Header />
+      {/* <Header /> */}
 
       <div className="container mx-auto px-2 md:px-8 py-10">
         <div className="mb-8">
-          <Link to="/events-calendar">
+          <Link to="/announcements/event-calendar">
             <Button variant="outline" size="sm">
               <ArrowLeft size={16} className="mr-2" />
               Back to Events
