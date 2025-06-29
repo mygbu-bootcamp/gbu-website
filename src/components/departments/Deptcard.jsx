@@ -92,7 +92,7 @@ const DepartmentsSection = () => {
           {departments.map((dept, index) => (
             <div
               key={index}
-              className="flex flex-col min-h-[600px] bg-white/90 backdrop-blur-md border border-gray-200 shadow hover:shadow-xl transition-all group overflow-hidden rounded-xl"
+              className="flex flex-col min-h-[600px] bg-white/90 backdrop-blur-md border border-gray-200 border-solid shadow hover:shadow-xl transition-all group overflow-hidden rounded-xl"
             >
               <div className="relative">
                 <img
@@ -117,19 +117,19 @@ const DepartmentsSection = () => {
               <div className="px-6 pb-6 pt-4 flex flex-col gap-6 flex-grow">
                 <p className="text-gray-700">{dept.description}</p>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-4">
                   <div className="bg-blue-50 p-4 rounded-lg text-center">
                     <div className="text-2xl font-bold text-blue-600">
                       {dept.faculty}
                     </div>
                     <div className="text-sm text-gray-600">Faculty</div>
                   </div>
-                  <div className="bg-blue-50 p-4 rounded-lg text-center">
+                  {/* <div className="bg-blue-50 p-4 rounded-lg text-center">
                     <div className="text-2xl font-bold text-blue-600">
                       {dept.labs}
                     </div>
                     <div className="text-sm text-gray-600">Labs</div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="bg-blue-50 p-4 rounded-xl">
