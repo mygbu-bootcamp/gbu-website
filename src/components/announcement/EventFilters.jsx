@@ -1,4 +1,4 @@
-import AdvancedSearchFilter from './AdvancedSearchFilter';
+import SearchFilter from './SearchFilter';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
@@ -27,7 +27,7 @@ const EventFilters = ({
         Quickly search and filter events by type, year, or date.
       </div>
       {/* <div className=" h-1 w-full bg-blue-400 rounded mx-auto mb-6 border-0"></div> */}
-      <div className='w-full'><AdvancedSearchFilter
+      <div className='w-full'><SearchFilter
         onSearch={onSearch}
         onDateFilter={onDateFilter}
         onTypeFilter={onTypeFilter}

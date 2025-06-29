@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/announcement/Header';
-import AdvancedSearchFilter from '../../components/announcement/AdvancedSearchFilter';
+import SearchFilter from '../../components/announcement/SearchFilter';
 import SocialShare from '../../components/announcement/SocialShare';
 import EnhancedPagination from '../../components/announcement/EnhancedPagination';
 
@@ -65,27 +65,190 @@ const Button = ({ children, size = 'md', className = '', ...props }) => {
 };
 
 // mockNews (minimal mock data for demonstration)
-const mockNews = [
+export const mockNews = [
   {
     id: 1,
     title: 'GBU Launches New Research Center',
-    excerpt: 'The university has inaugurated a new interdisciplinary research center...',
+    excerpt: 'The university inaugurated a new research center for sustainable technologies and smart systems.',
     date: '2024-05-10',
     author: 'Admin',
     tags: ['Research', 'Campus'],
-    image: 'https://via.placeholder.com/400x200',
+    image: 'https://images.unsplash.com/photo-1581091215369-7f72b8f34054?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 2,
     title: 'Annual Sports Meet Announced',
-    excerpt: 'Get ready for the annual sports meet with exciting events and prizes...',
+    excerpt: 'Students are gearing up for the annual sports meet with exciting games and prizes.',
     date: '2024-04-22',
     author: 'Sports Dept',
     tags: ['Sports', 'Events'],
-    image: 'https://via.placeholder.com/400x200',
+    image: 'https://images.unsplash.com/photo-1530878955558-bafcdd9282c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   },
-  // Add more mock news items as needed
+  {
+    id: 3,
+    title: 'International Conference on AI',
+    excerpt: 'Researchers worldwide attended the International Conference on AI and Robotics hosted by GBU.',
+    date: '2024-06-15',
+    author: 'Admin',
+    tags: ['Conference', 'AI'],
+    image: 'https://images.unsplash.com/photo-1581092580495-4c4a45c16d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 4,
+    title: 'Successful Placement Drive 2024',
+    excerpt: 'Top companies offered roles in IT, management, and research to graduating students.',
+    date: '2024-03-12',
+    author: 'Placement Cell',
+    tags: ['Placements', 'Careers'],
+    image: 'https://images.unsplash.com/photo-1605902711622-cfb43c4437d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 5,
+    title: 'New Digital Library Block Opens',
+    excerpt: 'Students can now access state-of-the-art digital resources and collaborative spaces.',
+    date: '2024-02-28',
+    author: 'Library Committee',
+    tags: ['Library', 'Campus'],
+    image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 6,
+    title: 'GBU Team Wins National Hackathon',
+    excerpt: 'CSE students won first prize for an innovative smart city solution at a national hackathon.',
+    date: '2024-05-05',
+    author: 'Innovation Club',
+    tags: ['Hackathon', 'Innovation'],
+    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee9819?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 7,
+    title: 'Environment Week Drives Awareness',
+    excerpt: 'Tree plantation drives and workshops promoted sustainability on campus.',
+    date: '2024-04-18',
+    author: 'Eco Club',
+    tags: ['Environment', 'Campus Life'],
+    image: 'https://images.unsplash.com/photo-1527549993586-dff825b37782?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 8,
+    title: 'MoU Signed with Global University',
+    excerpt: 'GBU partnered with a leading international university for student exchange and research.',
+    date: '2024-06-01',
+    author: 'Admin',
+    tags: ['International', 'Research'],
+    image: 'https://images.unsplash.com/photo-1600195077070-03c0c8e36f18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 9,
+    title: 'Cultural Fest Abhivyakti Concludes',
+    excerpt: 'The annual cultural fest saw vibrant performances, art showcases, and celebrity night.',
+    date: '2024-03-25',
+    author: 'Cultural Committee',
+    tags: ['Cultural', 'Events'],
+    image: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 10,
+    title: 'Alumni Meet 2024',
+    excerpt: 'GBU hosted its alumni meet with networking sessions and future collaborations.',
+    date: '2024-05-20',
+    author: 'Alumni Association',
+    tags: ['Alumni', 'Networking'],
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 11,
+    title: 'New Hostel Facilities Inaugurated',
+    excerpt: 'New hostels with modern amenities and green architecture were opened.',
+    date: '2024-04-12',
+    author: 'Admin',
+    tags: ['Campus', 'Facilities'],
+    image: 'https://images.unsplash.com/photo-1613931803086-c5d1df8b6cb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 12,
+    title: 'Annual Science Exhibition Held',
+    excerpt: 'Students showcased innovative projects and prototypes at the annual science fair.',
+    date: '2024-03-30',
+    author: 'Science Club',
+    tags: ['Science', 'Exhibition'],
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 13,
+    title: 'Seminar on Mental Health Awareness',
+    excerpt: 'Experts conducted sessions to promote mental well-being among students.',
+    date: '2024-05-18',
+    author: 'Health Club',
+    tags: ['Wellness', 'Awareness'],
+    image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 14,
+    title: 'GBU Students Visit Parliament',
+    excerpt: 'Political science students visited Parliament House for an educational tour.',
+    date: '2024-04-05',
+    author: 'Dept. of Political Science',
+    tags: ['Educational Tour', 'Politics'],
+    image: 'https://images.unsplash.com/photo-1603052875149-56b8e6e4b0f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 15,
+    title: 'Art & Photography Workshop',
+    excerpt: 'Renowned artists held a two-day workshop for budding photographers and painters.',
+    date: '2024-04-28',
+    author: 'Arts Club',
+    tags: ['Workshop', 'Arts'],
+    image: 'https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 16,
+    title: 'Guest Lecture by Industry Leader',
+    excerpt: 'An industry veteran shared insights on the future of tech and careers.',
+    date: '2024-05-12',
+    author: 'Career Cell',
+    tags: ['Lecture', 'Careers'],
+    image: 'https://images.unsplash.com/photo-1581094278514-55f9857f6372?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 17,
+    title: 'Coding Bootcamp Concludes',
+    excerpt: 'The week-long coding bootcamp helped students enhance practical programming skills.',
+    date: '2024-03-22',
+    author: 'CSE Dept',
+    tags: ['Bootcamp', 'Coding'],
+    image: 'https://images.unsplash.com/photo-1581090700227-3e6a994d40c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 18,
+    title: 'GBU Students Win Debate Competition',
+    excerpt: 'The debate team secured first place at an inter-university competition.',
+    date: '2024-04-02',
+    author: 'Literary Club',
+    tags: ['Debate', 'Achievements'],
+    image: 'https://images.unsplash.com/photo-1532105956626-95675db236c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 19,
+    title: 'Blood Donation Camp Organized',
+    excerpt: 'Students and faculty participated in a campus-wide blood donation drive.',
+    date: '2024-03-18',
+    author: 'Health Club',
+    tags: ['Social', 'Health'],
+    image: 'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 20,
+    title: 'Yoga and Meditation Retreat',
+    excerpt: 'A special retreat for stress relief and wellness was held at the campus center.',
+    date: '2024-05-25',
+    author: 'Wellness Club',
+    tags: ['Wellness', 'Yoga'],
+    image: 'https://images.unsplash.com/photo-1600986602534-771b5014a4f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
 ];
+
+
 import { format } from 'date-fns';
 
 const NewsNotifications = () => {
@@ -194,8 +357,8 @@ const NewsNotifications = () => {
         </section>
       
 
-        <div className="mb-10">
-          <AdvancedSearchFilter
+        <div className="mb-1">
+          <SearchFilter
             onSearch={handleSearch}
             onDateFilter={handleDateFilter}
             onTypeFilter={handleTagFilter}

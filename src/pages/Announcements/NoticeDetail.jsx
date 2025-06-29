@@ -110,12 +110,12 @@ const NoticeDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
+    <div className="min-h-screen bg-gray-50 mt-20 mx-20">
+      {/* <Header /> */}
       
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link to="/notices">
+          <Link to="/announcements/notices">
             <Button variant="outline" size="sm">
               <ArrowLeft size={16} className="mr-2" />
               Back to Notices

@@ -212,85 +212,91 @@ const Notice = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+    <div className="min-h-screen bg-gray-50 pb-10">
       {/* <Header /> */}
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Notices & Circulars</h1>
-          <p className="text-gray-600 text-lg">Important notices and official circulars</p>
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold text-white mb-4">Notices & Circulars</h1>
+          <p className="text-white text-lg">Important notices and official circulars</p>
         </div>
+      </section>
 
-        <SearchFilter
-          onSearch={handleSearch}
-          onDateFilter={handleDateFilter}
-          onTypeFilter={handleTypeFilter}
-          onYearFilter={handleYearFilter}
-          types={allTypes}
-          years={allYears}
-          placeholder="Search notices..."
-        />
 
-        <div className="space-y-4">
-          {currentNotices.map((notice) => (
-            <Card key={notice.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge className={getTypeColor(notice.type)}>
-                        {notice.type}
-                      </Badge>
-                      <span className="text-sm text-gray-500">
-                        {format(new Date(notice.date), 'MMMM dd, yyyy')}
-                      </span>
-                    </div>
-                    <CardTitle className="text-lg font-semibold">
-                      {notice.title}
-                    </CardTitle>
-                    <CardDescription className="mt-2">
-                      {notice.content.substring(0, 150)}...
-                    </CardDescription>
+
+
+      <SearchFilter
+        onSearch={handleSearch}
+        onDateFilter={handleDateFilter}
+        onTypeFilter={handleTypeFilter}
+        onYearFilter={handleYearFilter}
+        types={allTypes}
+        years={allYears}
+        placeholder="Search notices..."
+      />
+
+      <div className="space-y-4 mx-10">
+        {currentNotices.map((notice) => (
+          <Card key={notice.id} className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge className={getTypeColor(notice.type)}>
+                      {notice.type}
+                    </Badge>
+                    <span className="text-sm text-gray-500">
+                      {format(new Date(notice.date), 'MMMM dd, yyyy')}
+                    </span>
                   </div>
-                  <div className="flex flex-col sm:flex-row gap-2 shrink-0">
-                    {notice.pdfUrl && (
-                      <Button size="sm" variant="outline">
-                        <Download size={16} className="mr-2" />
-                        Download
-                      </Button>
-                    )}
-                    <Link to={`/notices/${notice.id}`}>
-                      <Button size="sm">
-                        <FileText size={16} className="mr-2" />
-                        View Details
-                      </Button>
-                    </Link>
-                    <SocialShare
-                      url={`${window.location.origin}/notices/${notice.id}`}
-                      title={notice.title}
-                    />
-                  </div>
+                  <CardTitle className="text-lg font-semibold">
+                    {notice.title}
+                  </CardTitle>
+                  <CardDescription className="mt-2">
+                    {notice.content.substring(0, 150)}...
+                  </CardDescription>
                 </div>
-              </CardHeader>
-            </Card>
-          ))}
-        </div>
-
-        {filteredNotices.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No notices found matching your criteria.</p>
-          </div>
-        )}
-
-        {totalPages > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
-        )}
+                <div className="flex flex-col sm:flex-row gap-2 shrink-0">
+                  {notice.pdfUrl && (
+                    <Button size="sm" variant="outline">
+                      <Download size={16} className="mr-2" />
+                      Download
+                    </Button>
+                  )}
+                  <Link to={`/announcements/notices/${notice.id}`}>
+                    <Button size="sm">
+                      <FileText size={16} className="mr-2" />
+                      View Details
+                    </Button>
+                  </Link>
+                  <SocialShare
+                    url={`${window.location.origin}/notices/${notice.id}`}
+                    title={notice.title}
+                  />
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+        ))}
       </div>
+
+      {filteredNotices.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-gray-500 text-lg">No notices found matching your criteria.</p>
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
     </div>
+    
+    </>
   );
 };
 
