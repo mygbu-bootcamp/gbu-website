@@ -21,21 +21,21 @@ const achievements = [
     department: "Mechanical",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop",
     description:
-      "GBU’s Mechanical team designed a hydrogen-powered Eco-Kart and represented India." ,
+      "GBU's Mechanical team designed a hydrogen-powered Eco-Kart and represented India." ,
   },
   {
-    title: "Elite Women’s National Boxing Championship 2023",
+    title: "Elite Women's National Boxing Championship 2023",
     achievement: "Hosted Event",
     year: "2023",
     student: "58 States & Club Athletes",
     department: "Sports",
     image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=250&fit=crop",
     description:
-      "GBU hosted the 7th Elite Women’s National Boxing Championship in Dec 2023." ,
+      "GBU hosted the 7th Elite Women's National Boxing Championship in Dec 2023." ,
   },
   {
     title: "AI Centre of Excellence Establishment",
-    achievement: "₹50 Cr UP Govt Funding",
+    achievement: "₹50 Cr UP Govt Funding",
     year: "2024",
     student: "USICT Researchers",
     department: "CSE/IT",
@@ -62,17 +62,17 @@ const StudentAchievements = () => {
     setCurrentSlide((prev) => (prev - 1 + achievements.length) % achievements.length);
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-orange-50">
+    <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-          Student Achievements
+          <h2 className="text-4xl font-bold text-blue-800">
+            Student Achievements
           </h2>
           <p className="text-xl text-gray-600">Celebrating excellence and innovation</p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-500 mx-auto mt-4 rounded-full" />
+          <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        <div className="shadow-2xl border-0 bg-white/90 backdrop-blur-sm relative overflow-hidden rounded-xl">
+        <div className="shadow-2xl border-0 bg-white backdrop-blur-sm relative overflow-hidden rounded-xl">
           <div className="relative h-96">
             {achievements.map((achievement, index) => (
               <div
@@ -90,9 +90,9 @@ const StudentAchievements = () => {
                       alt={achievement.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-black/40" />
                   </div>
-                  <div className="p-8 flex flex-col justify-center bg-gradient-to-br from-white to-blue-50">
+                  <div className="p-8 flex flex-col justify-center bg-white">
                     <div className="mb-4 space-x-2">
                       <Badge className="bg-green-100 text-green-800">
                         {achievement.year}

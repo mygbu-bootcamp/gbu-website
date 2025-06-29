@@ -45,23 +45,23 @@ const RecruitersShowcase = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+    <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-college-navy mb-4 bg-gradient-to-r from-college-navy to-college-blue bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold text-blue-800 mb-4">
             Our Recruiters
           </h2>
           <p className="text-xl text-gray-600">Industry leaders who trust our talent</p>
-          <div className="w-24 h-1 bg-gradient-to-r from-college-blue to-college-gold mx-auto mt-4 rounded-full"></div>
+          <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Showcase Container */}
-        <div className="rounded-xl shadow-2xl border-0 bg-white/90 backdrop-blur-sm relative overflow-hidden">
+        <div className="rounded-xl shadow-2xl border-0 bg-white backdrop-blur-sm relative overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-100 p-4 text-center">
-            <h3 className="text-college-navy flex items-center justify-center font-bold text-lg">
-              <div className="w-2 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3"></div>
+          <div className="bg-white border-b border-gray-100 p-4 text-center">
+            <h3 className="text-blue-800 flex items-center justify-center font-bold text-lg">
+              <div className="w-2 h-8 bg-blue-500 rounded-full mr-3"></div>
               Industry Partners
             </h3>
           </div>

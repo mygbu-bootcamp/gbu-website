@@ -10,18 +10,18 @@ const PlacementsSection = () => {
   return (
     <section
       id="placements"
-      className="py-20 bg-gradient-to-br from-blue-100 via-white to-green-100"
+      className="py-20 bg-gray-100"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue-800">
             Placements
           </h2>
           <p className="text-xl text-gray-600">
             Connecting talent with opportunities
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mt-6 rounded-full" />
+          <div className="w-24 h-1 bg-blue-500 mx-auto mt-6 rounded-full" />
         </div>
 
         {/* Hero Image */}
@@ -31,7 +31,7 @@ const PlacementsSection = () => {
             alt="Placement Drive"
             className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-yellow-400/20" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
         {/* Stats */}

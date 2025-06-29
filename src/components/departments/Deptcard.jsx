@@ -73,18 +73,18 @@ const DepartmentsSection = () => {
     },
   ];
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+    <section className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue-900">
             Our Departments
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Three premier departments offering cutting-edge programs in
             engineering and technology.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-300 mx-auto mt-6 rounded-full"></div>
+          <div className="w-24 h-1 bg-blue-500 mx-auto mt-6 rounded-full"></div>
         </div>
 
         {/* Department Cards */}

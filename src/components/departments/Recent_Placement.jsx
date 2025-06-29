@@ -80,24 +80,24 @@ const RecentPlacements = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-green-50 to-blue-50">
+    <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-4 text-blue-800">
             Recent Placements
           </h2>
           <p className="text-xl text-gray-600">
             Our students securing top positions
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mt-4 rounded-full" />
+          <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full" />
         </div>
 
         {/* Content Card */}
-        <div className="rounded-xl shadow-2xl border-0 bg-white/90 backdrop-blur-sm relative overflow-hidden">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 border-b border-gray-200 p-4 text-center">
+        <div className="rounded-xl shadow-2xl border-0 bg-white backdrop-blur-sm relative overflow-hidden">
+          <div className="bg-white border-b border-gray-200 p-4 text-center">
             <h3 className="flex justify-center items-center text-blue-800 text-lg font-bold">
-              <div className="w-2 h-8 bg-gradient-to-b from-green-500 to-blue-500 rounded-full mr-3" />
+              <div className="w-2 h-8 bg-blue-500 rounded-full mr-3" />
               Success Stories
             </h3>
           </div>
