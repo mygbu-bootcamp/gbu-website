@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, BookOpen, FileText, Download, Bell, Search } from 'lucide-react';
-import axios from 'axios';
 
 const AcademicCalendar = () => {
   const [events, setEvents] = useState([]);
@@ -11,24 +10,105 @@ const AcademicCalendar = () => {
   const [filterType, setFilterType] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const HOST = import.meta.env.VITE_HOST;
-
   useEffect(() => {
-    axios.get(`${HOST}/academic/events`)
-      .then(res => setEvents(res.data))
-      .catch(err => console.error("Error fetching events:", err));
+    // Static GBU academic events
+    setEvents([
+      {
+        id: 1,
+        date: '2025-07-15',
+        title: 'Commencement of Odd Semester Classes',
+        description: 'Classes for all odd semester programs begin.',
+        category: 'academic',
+        status: 'upcoming',
+        heading: 'Academic Schedule - 2025',
+        desc: 'Stay updated with the semester-wise academic calendar of GBU.'
+      },
+      {
+        id: 2,
+        date: '2025-08-01',
+        title: 'MBA Admission Round 2',
+        description: 'Final counseling and admission for MBA students.',
+        category: 'admission',
+        status: 'upcoming'
+      },
+      {
+        id: 3,
+        date: '2025-10-02',
+        title: 'Gandhi Jayanti',
+        description: 'University will remain closed.',
+        category: 'holiday',
+        status: 'upcoming'
+      },
+      {
+        id: 4,
+        date: '2025-11-25',
+        title: 'Mid Semester Exams',
+        description: 'Scheduled mid-term examination for all UG and PG courses.',
+        category: 'exam',
+        status: 'upcoming'
+      }
+    ]);
 
-    axios.get(`${HOST}/academic/regulations`)
-      .then(res => setRegulations(res.data))
-      .catch(err => console.error("Error fetching regulations:", err));
+    // Static GBU regulations
+    setRegulations([
+      {
+        title: 'UGCBCS Guidelines',
+        description: 'Detailed academic guidelines for Undergraduate Choice Based Credit System.',
+        document: '/docs/ug_cbcs_guidelines.pdf',
+        last_updated: '2024-12-01'
+      },
+      {
+        title: 'PG Ordinance 2022',
+        description: 'Postgraduate program ordinance document issued by the Academic Council.',
+        document: '/docs/pg_ordinance_2022.pdf',
+        last_updated: '2024-11-15'
+      },
+      {
+        title: 'Examination Conduct Policy',
+        description: 'Standard Operating Procedures for the conduct of university examinations.',
+        document: '/docs/exam_conduct_policy.pdf',
+        last_updated: '2025-01-10'
+      }
+    ]);
 
-    axios.get(`${HOST}/academic/hero/`)
-      .then(res => setStats(res.data))
-      .catch(err => console.error("Error fetching stats:", err));
+    // Stats for Hero Cards
+    setStats([
+      {
+        icon_class: 'calendar',
+        icon_text: 'Semesters Covered',
+        background_color: '#e0f2fe',
+        ssemester_count: 8
+      },
+      {
+        icon_class: 'clock',
+        icon_text: 'Teaching Days',
+        background_color: '#dcfce7',
+        teaching_days: 180
+      },
+      {
+        icon_class: 'book',
+        icon_text: 'Examination Periods',
+        background_color: '#ede9fe',
+        examination_periods: '2 Sem / Year'
+      },
+      {
+        icon_class: 'file',
+        icon_text: 'Academic Regulations',
+        background_color: '#fff7ed',
+        academic_regulations: '2022 Edition'
+      }
+    ]);
 
-    axios.get(`${HOST}/academic/stayupdated/`)
-      .then(res => setCta(res.data[0])) // Assuming only 1 item
-      .catch(err => console.error("Error fetching CTA:", err));
+    // CTA Static Content
+    setCta({
+      title: 'Stay Informed With GBU',
+      description: 'Subscribe to GBU updates and never miss important academic events or announcements.',
+      button1_text: 'Subscribe Now',
+      button2_text: 'View Notices',
+      url1: 'https://www.gbu.ac.in/subscribe',
+      url2: 'https://www.gbu.ac.in/notices',
+      background_color: '#4f46e5'
+    });
   }, []);
 
   const getEventTypeColor = (type) => {
@@ -78,30 +158,26 @@ const AcademicCalendar = () => {
       <section className="py-15 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            {stats.length === 0 ? (
-              <p className="text-gray-500">Loading statistics...</p>
-            ) : (
-              stats.map((stat, index) => (
-                <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ backgroundColor: stat.background_color || '#e0e7ff' }}>
-                    {stat.icon_class === 'calendar' && <Calendar className="w-8 h-8 text-blue-600" />}
-                    {stat.icon_class === 'clock' && <Clock className="w-8 h-8 text-green-600" />}
-                    {stat.icon_class === 'book' && <BookOpen className="w-8 h-8 text-purple-600" />}
-                    {stat.icon_class === 'file' && <FileText className="w-8 h-8 text-orange-600" />}
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-800 mb-2">
-                    {{
-                      'calendar': stat.ssemester_count,
-                      'clock': stat.teaching_days,
-                      'book': stat.examination_periods,
-                      'file': stat.academic_regulations
-                    }[stat.icon_class] || '--'}
-                  </h3>
-                  <p className="text-gray-600">{stat.icon_text}</p>
+            {stats.map((stat, index) => (
+              <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                  style={{ backgroundColor: stat.background_color }}>
+                  {stat.icon_class === 'calendar' && <Calendar className="w-8 h-8 text-blue-600" />}
+                  {stat.icon_class === 'clock' && <Clock className="w-8 h-8 text-green-600" />}
+                  {stat.icon_class === 'book' && <BookOpen className="w-8 h-8 text-purple-600" />}
+                  {stat.icon_class === 'file' && <FileText className="w-8 h-8 text-orange-600" />}
                 </div>
-              ))
-            )}
+                <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                  {{
+                    'calendar': stat.ssemester_count,
+                    'clock': stat.teaching_days,
+                    'book': stat.examination_periods,
+                    'file': stat.academic_regulations
+                  }[stat.icon_class] || '--'}
+                </h3>
+                <p className="text-gray-600">{stat.icon_text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -210,7 +286,7 @@ const AcademicCalendar = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {regulations.map((regulation, index) => (
+            {regulations.map((reg, index) => (
               <div
                 key={index}
                 className="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-all duration-300 animate-fade-in"
@@ -218,17 +294,15 @@ const AcademicCalendar = () => {
               >
                 <div className="flex items-center justify-between mb-4">
                   <FileText className="w-8 h-8 text-blue-600" />
-                  <a href={`${HOST}${regulation.document}`} download>
+                  <a href={reg.document} download>
                     <Download className="w-5 h-5 text-gray-400 hover:text-blue-600 cursor-pointer transition-colors" />
                   </a>
                 </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-2">{regulation.title}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{regulation.description}</p>
+                <h3 className="text-lg font-bold text-gray-800 mb-2">{reg.title}</h3>
+                <p className="text-gray-600 mb-4 text-sm">{reg.description}</p>
                 <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span>Last updated: {new Date(regulation.last_updated).toLocaleDateString()}</span>
-                  <Link to={`${HOST}${regulation.document}`} className="text-blue-600 hover:text-blue-800 font-medium">
-                    Download PDF
-                  </Link>
+                  <span>Last updated: {new Date(reg.last_updated).toLocaleDateString()}</span>
+                  <Link to={reg.document} className="text-blue-600 hover:text-blue-800 font-medium">Download PDF</Link>
                 </div>
               </div>
             ))}
