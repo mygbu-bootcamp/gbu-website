@@ -17,7 +17,7 @@ const Landing = () => {
     },
     {
       image:
-        "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1920&h=1080&fit=crop",
+        "https://www.diginerve.com/blogs/wp-content/uploads/2022/08/Career-as-a-Microbiologist-in-India.webp",
       title: "Research & Development",
       subtitle: "Pioneering Solutions for Tomorrow",
     },

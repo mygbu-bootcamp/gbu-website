@@ -27,7 +27,7 @@ const PlacementsSection = () => {
         {/* Hero Image */}
         <div className="relative mb-12 rounded-2xl overflow-hidden shadow-lg group">
           <img
-            src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1200&h=300&fit=crop"
+            src="https://pnndigital.com/wp-content/uploads/2023/12/1-199.jpg"
             alt="Placement Drive"
             className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
           />
