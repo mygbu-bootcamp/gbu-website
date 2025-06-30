@@ -1,5 +1,7 @@
 import { Badge } from "../ui/badge";
 import { Facebook, Instagram, Twitter, Linkedin, Mail } from "lucide-react";
+import tcc from "../../assets/tcc.png"
+import GDSC from "../../assets/GDSC.png"
 
 const ClubsAchievements = () => {
   const clubs = [
@@ -9,7 +11,7 @@ const ClubsAchievements = () => {
       members: 150,
       category: "Technical & Cultural",
       facultyAdvisor: "Dr. Vimlesh Kumar Ray",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&h=200&fit=crop",
+      image: tcc,
       socialLinks: {
         instagram: "https://instagram.com/technoculture_gbu",
         linkedin: "https://linkedin.com/company/techno-club-gbu",
@@ -22,7 +24,7 @@ const ClubsAchievements = () => {
       members: 500,
       category: "Technical",
       facultyAdvisor: "Dr. Rajesh Mishra",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=200&fit=crop",
+      image: GDSC,
       socialLinks: {
         instagram: "https://instagram.com/gdsc_gbu",
         linkedin: "https://linkedin.com/company/gdsc-gautam-buddha-university",
@@ -35,7 +37,7 @@ const ClubsAchievements = () => {
       members: 60,
       category: "Professional",
       facultyAdvisor: "Dr. Vikram Singh",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQxT9G3gSxNZESl4NJH1NzcPq0kBF1XNyHcA&s",
       socialLinks: {
         linkedin: "https://linkedin.com/company/ieeestudentbranch",
         twitter: "https://twitter.com/ieeestudents",
@@ -48,7 +50,7 @@ const ClubsAchievements = () => {
       members: 200,
       category: "Technical",
       facultyAdvisor: "Dr. Anurag Singh Baghel",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=200&fit=crop",
+      image: "https://repository-images.githubusercontent.com/389157855/a2869f47-24d9-4e16-a6cc-b944855dc5f7",
       socialLinks: {
         instagram: "https://instagram.com/codechef_gbu",
         email: "codechef@gbu.ac.in"
@@ -60,7 +62,7 @@ const ClubsAchievements = () => {
       members: 45,
       category: "Technical",
       facultyAdvisor: "Dr. Vimlesh Kumar Ray",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&h=200&fit=crop",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_dlCh4LMQ-987UX_Ssas6havujpWSVCmIGw&s",
       socialLinks: {
         twitter: "https://twitter.com/robiotics_gbu",
         email: "robotics@gbu.ac.in"
@@ -72,7 +74,7 @@ const ClubsAchievements = () => {
       members: 80,
       category: "Cultural",
       facultyAdvisor: "Dr. Manjari Suman",
-      image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&h=200&fit=crop",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQiaFXt6eK5fEvem3rwrqMkO-O3ERZm0rV9g&s",
       socialLinks: {
         linkedin: "https://linkedin.com/company/drishtikon-gbu",
         email: "drishtikon@gbu.ac.in"
@@ -84,7 +86,7 @@ const ClubsAchievements = () => {
       members: 300,
       category: "Cultural",
       facultyAdvisor: "Dr. Anand Pratap Singh",
-      image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&h=200&fit=crop",
+      image: "https://www.palmbeachculture.com/wp/wp-content/uploads/2025/06/Art-Calls-32.jpg",
       socialLinks: {
         facebook: "https://facebook.com/abhivyanjana",
         instagram: "https://instagram.com/abhivyanjana_gbu",
@@ -97,7 +99,7 @@ const ClubsAchievements = () => {
       members: 60,
       category: "Adventure",
       facultyAdvisor: "Dr. Sunita Gupta",
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=200&fit=crop",
+      image: "https://i.pinimg.com/736x/2a/9b/fd/2a9bfd335b50e86e48ad59b4b28aa5b5.jpg",
       socialLinks: {
         email: "adventure@gbu.ac.in"
       }
@@ -108,7 +110,7 @@ const ClubsAchievements = () => {
       members: 50,
       category: "Creative",
       facultyAdvisor: "Dr. Vidushi Sharma",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=200&fit=crop",
+      image: "https://image-static.collegedunia.com/public/reviewPhotos/899143/unnamed.jpg",
       socialLinks: {
         instagram: "https://instagram.com/photoclub_gbu",
         email: "photography@gbu.ac.in"
@@ -120,7 +122,7 @@ const ClubsAchievements = () => {
       members: 40,
       category: "Creative",
       facultyAdvisor: "Dr. Anand Pratap Singh",
-      image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&h=200&fit=crop",
+      image: "https://images.squarespace-cdn.com/content/v1/604e4790cbfeea1a501ac957/1664284358990-4TBHSR3TPHO2A3M8O79V/teen+photo.jpeg",
       socialLinks: {
         email: "art@gbu.ac.in"
       }
