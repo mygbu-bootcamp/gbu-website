@@ -165,8 +165,8 @@ const Navbar = () => {
       path: "/placements",
     },
     {
-      key: "Anshul",
-      label: "Anshul",
+      key: "alumni",
+      label: "Alumni",
       icon: <Users size={16} />,
       items: [
         ["alumni-network", "Alumni Network"],
