@@ -60,7 +60,7 @@ const RecentPlacements = () => {
       company: "OYO",
       package: "₹9.5 LPA",
       department: "MBA Marketing",
-      photo: "https://media.licdn.com/dms/image/v2/D4E03AQHWFtZ4DcGStw/profile-displayphoto-shrink_200_200/B4EZY08o.zGgAY-/0/1744645037140?e=2147483647&v=beta&t=E35nU9GjENbN7Gu2iJiJW7by-ptR_swmAdYWc0OUjis",
+      photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQnD8jL6lGMNyBpWtACOnjxqpNuMb7xTEGsQ&s",
     }
   ];
 
