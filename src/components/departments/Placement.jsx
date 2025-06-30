@@ -1,3 +1,4 @@
+import placement from "../../assets/placement.png"
 const PlacementsSection = () => {
   const placementStats = [
   { label: "Placement Rate", value: "85‑90%", color: "bg-green-500" },
@@ -27,7 +28,7 @@ const PlacementsSection = () => {
         {/* Hero Image */}
         <div className="relative mb-12 rounded-2xl overflow-hidden shadow-lg group">
           <img
-            src="https://pnndigital.com/wp-content/uploads/2023/12/1-199.jpg"
+            src = {placement}
             alt="Placement Drive"
             className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
           />
