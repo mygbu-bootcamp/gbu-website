@@ -215,57 +215,57 @@ const HostelLife = () => {
     {
       id: 1,
       name: 'Boys Hostel',
-      image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
+      image: 'https://hostels.gbu.ac.in/mmjbh/site/sliderimg/mmjbh-slider-1.jpg',
       capacity: '500 Students',
       amenities: ['24/7 WiFi', 'Mess Facility', 'Laundry', 'Common Room', 'Study Hall', 'Recreation Center'],
       description: 'Modern accommodation facility for male undergraduate and postgraduate students.',
       fullDescription: 'Boys Hostel offers comfortable accommodation with modern amenities and a vibrant community atmosphere. The hostel includes spacious rooms with attached bathrooms, high-speed internet connectivity, round-the-clock security, and various recreational facilities to ensure a well-rounded campus life experience.',
       rules: ['No smoking in rooms', 'Visitors allowed until 9 PM', 'Quiet hours: 10 PM - 6 AM', 'Mess timings: 7 AM - 10 PM', 'ID card required for entry'],
       images: [
-        'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=800&h=600&fit=crop'
+        'https://hostels.gbu.ac.in/rbh/site/sliderimg/rbh-slider-1.jpg?w=800&h=600&fit=crop',
+        ' https://hostels.gbu.ac.in/mmjbh/site/sliderimg/mmjbh-slider-1.jpg?w=800&h=600&fit=crop'
       ]
     },
     {
       id: 2,
       name: 'Girls Hostel',
-      image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop',
+      image: 'https://hostels.gbu.ac.in/sbpgh/site/sliderimg/slider-1-sbpgh.jpeg?w=800&h=600&fit=crop',
       capacity: '450 Students',
       amenities: ['Enhanced Security', 'Garden Access', 'Beauty Salon', 'Sports Room', 'Library Corner', 'Wellness Center'],
       description: 'Safe and comfortable accommodation for female undergraduate and postgraduate students.',
       fullDescription: 'Girls Hostel provides a secure and comfortable living environment with modern amenities and enhanced security measures. The hostel features beautiful common areas, specialized facilities for female students, and a supportive community that fosters academic excellence and personal growth.',
       rules: ['Enhanced security protocols', 'Visitor timings: 10 AM - 7 PM', 'Common room access till 10 PM', 'Regular health check-ups', 'Biometric access system'],
       images: [
-        'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1517022812141-23620dba5c23?w=800&h=600&fit=crop'
+        'https://hostels.gbu.ac.in/icgh/site/sliderimg/slider-1-icgh.jpeg?w=800&h=600&fit=crop',
+        'https://hostels.gbu.ac.in/mdvgh/site/sliderimg/slider-1-mdvgh.jpeg?w=800&h=600&fit=crop'
       ]
     },
     {
       id: 3,
       name: 'PhD Residence',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop',
+      image: 'https://www.gbu.ac.in/Content/gbudata/hostel-data/banner/Artboard1savitri.png?w=800&h=600&fit=crop',
       capacity: '200 Research Scholars',
       amenities: ['Private Study Rooms', 'Research Library', 'High-Speed Internet', 'Conference Rooms', 'Computer Lab', 'Printing Facility'],
       description: 'Specialized accommodation for PhD students and research scholars with advanced academic facilities.',
       fullDescription: 'PhD Residence is designed specifically for research scholars pursuing doctoral studies. It offers quiet study environments, specialized research facilities, and academic support services to facilitate high-quality research work and scholarly pursuits.',
       rules: ['24/7 access with research ID', 'Study rooms bookable in advance', 'Research library access included', 'Conference room booking available', 'Quiet environment maintained'],
       images: [
-        'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=600&fit=crop'
+        'https://hostels.gbu.ac.in/mdvgh/site/sliderimg/slider-1-mdvgh.jpeg?w=800&h=600&fit=crop',
+        'https://hostels.gbu.ac.in/mdvgh/site/sliderimg/slider-1-mdvgh.jpeg?w=800&h=600&fit=crop'
       ]
     },
     {
       id: 4,
       name: 'International Students Hostel',
-      image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=600&fit=crop',
+      image: 'https://hostels.gbu.ac.in/images/slider/slider-1-mvbh.jpg?w=800&h=600&fit=crop',
       capacity: '150 International Students',
       amenities: ['Cultural Exchange Center', 'International Cuisine', 'Language Support', 'Orientation Programs', 'Travel Assistance', 'Multi-Faith Prayer Room'],
       description: 'Dedicated accommodation for international students with cultural integration support.',
       fullDescription: 'International Students Hostel provides a welcoming environment for students from around the world. It features cultural integration programs, international cuisine options, language support services, and specialized assistance to help international students adapt to campus life and Indian culture.',
       rules: ['Passport/visa verification required', 'Cultural orientation mandatory', 'Multi-language support available', 'International student advisor access', 'Cultural celebration participation encouraged'],
-      images: [
-        'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1517022812141-23620dba5c23?w=800&h=600&fit=crop'
+       images: [
+        'https://hostels.gbu.ac.in/rbh/site/sliderimg/rbh-slider-1.jpg?w=800&h=600&fit=crop',
+        ' https://hostels.gbu.ac.in/mmjbh/site/sliderimg/mmjbh-slider-1.jpg?w=800&h=600&fit=crop'
       ]
     }
   ];

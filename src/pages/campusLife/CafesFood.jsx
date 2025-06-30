@@ -189,8 +189,8 @@ const CafesFood = () => {
   const cafes = [
     {
       name: 'Central Cafeteria',
-      image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=800&h=600&fit=crop',
-      location: 'Main Academic Block',
+      image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqFcm4Co0at8fuwJLOfejXCfJyC5Fzszeuh63ITaGXsH5LMKbgkGWCwCGcM2bz8BVin_SoKjvW3yubTNbBYqlscXJMa-zKiaT-njdq2rxUZ3oN2u04HN3PjDXklWuIpSV3pWgc1AA=s1360-w1360-h1020-rw',
+      location: 'School of Management',
       hours: '7:00 AM - 10:00 PM',
       rating: 4.5,
       reviews: 324,
@@ -205,7 +205,7 @@ const CafesFood = () => {
     },
     {
       name: 'Coffee Corner',
-      image: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=800&h=600&fit=crop',
+      image:  "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npRlvOzQu34RmG3RyFKqqjqtbZIkRAVD5amLo3-gjJcbcv2r5L4CNILl48QiQab_S_KPleLspW7_ok8MlLEiSjlgDp0Ibv_xFSA9VZtwcczvqJwWu_zZoLyEFWmvvceZRsA3T5o=s1360-w1360-h1020-rw",
       location: 'Library Building',
       hours: '8:00 AM - 8:00 PM',
       rating: 4.3,
@@ -221,8 +221,8 @@ const CafesFood = () => {
     },
     {
       name: 'Garden Bistro',
-      image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop',
-      location: 'Near Hostel Block',
+      image: 'https://hostels.gbu.ac.in/images/student-utilities/shopping-complex.jpeg?w=800&h=600&fit=crop',
+      location: 'Shopping Complex',
       hours: '11:00 AM - 11:00 PM',
       rating: 4.7,
       reviews: 267,
@@ -237,7 +237,7 @@ const CafesFood = () => {
     },
     {
       name: 'Night Canteen',
-      image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=600&fit=crop',
+      image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4npRlvOzQu34RmG3RyFKqqjqtbZIkRAVD5amLo3-gjJcbcv2r5L4CNILl48QiQab_S_KPleLspW7_ok8MlLEiSjlgDp0Ibv_xFSA9VZtwcczvqJwWu_zZoLyEFWmvvceZRsA3T5o=s1360-w1360-h1020-rw',
       location: 'Hostel Area',
       hours: '9:00 PM - 2:00 AM',
       rating: 4.2,
@@ -253,8 +253,8 @@ const CafesFood = () => {
     },
     {
       name: 'Health Hub',
-      image: 'https://images.unsplash.com/photo-1487887235947-a955ef187fcc?w=800&h=600&fit=crop',
-      location: 'Sports Complex',
+      image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4npETELmQ518Af5FHbedwWX7BL39ud9sixFtzP3khBjc7KN2UyscEaf3zwoTlobnfooV3eOcDexpLqs3o6Yp9I6vyP_Dd2ksEeldzd0DS8mldgiUbYf_-a5B4NPvpu4tmVdKi2MC=s1360-w1360-h1020-rw',
+      location: 'Street cafe',
       hours: '6:00 AM - 9:00 PM',
       rating: 4.4,
       reviews: 89,
@@ -351,7 +351,7 @@ const CafesFood = () => {
             <CardContent className="p-0">
               <div className="relative bg-gradient-to-br from-orange-100 to-yellow-100 h-80">
                 <img
-                  src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&h=600&fit=crop"
+                  src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4np7pnwdKl5Fl87sJuaGzwfi4olSss9stG5adqZiLxfFlp95plNniwJ-Ia8wbm2KrpuNURWlgqst57uEnOBhWDbZso0gKxnknsPLOi4wOpO0raglcBP_6mp2HAHeXYGYUMOGK7Cq=s1360-w1360-h1020-rw"
                   alt="Campus Food Map"
                   className="w-full h-full object-cover opacity-80"
                 />

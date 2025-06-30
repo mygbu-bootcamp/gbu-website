@@ -1,6 +1,11 @@
 
 import React, { useState } from 'react';
-
+ 
+import basketball from "../../assets/Basketball.jpg";
+import tennis from "../../assets/Tennis.jpg";
+import volleyball from "../../assets/volleyball.jpg";
+import badminton from "../../assets/badminton.jpg";
+import sports from "../../assets/sports.jpg";
 // import { Card, CardContent } from '@/components/ui/card';
 // Carousel Components
 const Carousel = ({ className = "", children }) => (
@@ -100,7 +105,7 @@ const SportsWellness = () => {
       icon: '⚽',
       title: 'Outdoor Stadium',
       shortDescription: 'Professional football stadium',
-      image: 'https://images.unsplash.com/photo-1459865264687-595d652de67e?w=800&h=600&fit=crop',
+      image: 'https://www.gbu.ac.in/Content/img/sports/banner1.jpg?w=800&h=600&fit=crop',
       capacity: '5000 spectators',
       location: 'Main Sports Complex',
       access: 'Students & Staff',
@@ -125,7 +130,7 @@ const SportsWellness = () => {
       icon: '🏀',
       title: 'Basketball Court',
       shortDescription: 'Indoor professional court',
-      image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=600&fit=crop',
+      image: basketball,
       capacity: '500 spectators',
       location: 'Sports Complex - Block A',
       access: 'Students & Staff',
@@ -150,7 +155,7 @@ const SportsWellness = () => {
       icon: '🏸',
       title: 'Indoor Badminton Arena',
       shortDescription: 'Multi-court badminton facility',
-      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop',
+      image: badminton,
       capacity: '6 courts, 120 spectators',
       location: 'Sports Complex - Block B',
       access: 'Students & Staff',
@@ -175,7 +180,7 @@ const SportsWellness = () => {
       icon: '🏓',
       title: 'Table Tennis Room',
       shortDescription: 'Dedicated TT facility',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+      image: tennis,
       capacity: '8 tables, 50 spectators',
       location: 'Sports Complex - Ground Floor',
       access: 'Students & Staff',
@@ -200,7 +205,7 @@ const SportsWellness = () => {
       icon: '🏋️',
       title: 'Gymnasium',
       shortDescription: 'Modern fitness center',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+      image: 'https://hostels.gbu.ac.in/images/student-utilities/gym.jpeg?w=800&h=600&fit=crop',
       capacity: '100 users simultaneously',
       location: 'Sports Complex - First Floor',
       access: 'Students & Staff (Membership)',
@@ -225,7 +230,7 @@ const SportsWellness = () => {
       icon: '🏐',
       title: 'Volleyball Court',
       shortDescription: 'Indoor & outdoor courts',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0400e808d57?w=800&h=600&fit=crop',
+      image:  volleyball,
       capacity: '2 courts, 200 spectators',
       location: 'Sports Complex - Multi-purpose',
       access: 'Students & Staff',
@@ -300,7 +305,7 @@ const SportsWellness = () => {
       icon: '🎭',
       title: 'Multipurpose Sports Auditorium',
       shortDescription: 'Large indoor arena',
-      image: 'https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&h=600&fit=crop',
+      image: sports,
       capacity: '2000 spectators',
       location: 'Central Sports Complex',
       access: 'Students & Staff (Event bookings)',

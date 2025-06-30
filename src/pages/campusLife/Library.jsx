@@ -89,7 +89,7 @@ const Library = () => {
 
   const libraryImages = [
     {
-      url: 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=800&h=600&fit=crop',
+      url: 'https://library.gbu.ac.in/img/Artboard%201library1.jpg?w=800&h=600&fit=crop',
       title: 'Main Reading Hall',
       description: 'Spacious reading area with natural lighting',
       capacity: '200 seats',
@@ -98,7 +98,7 @@ const Library = () => {
       rules: ['Maintain silence', 'No food or drinks', 'Mobile phones on silent', 'Keep belongings secure']
     },
     {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      url: 'https://cdn.universitykart.com//Content/upload/admin/l2zuaqtx.jh3.jpg?w=800&h=600&fit=crop',
       title: 'Digital Study Zone',
       description: 'Computer lab with high-speed internet',
       capacity: '50 computers',
@@ -107,7 +107,7 @@ const Library = () => {
       rules: ['Valid student ID required', 'Time limit: 2 hours', 'No downloads allowed', 'Report technical issues']
     },
     {
-      url: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop',
+      url: 'https://www.gbu.ac.in/Content/img/library.jpg?w=800&h=600&fit=crop',
       title: 'Group Study Rooms',
       description: 'Collaborative spaces for team projects',
       capacity: '6-8 people per room',

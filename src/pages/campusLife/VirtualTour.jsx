@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Play, Calendar } from 'lucide-react';
 // Dialog Components
 const DialogContext = React.createContext();
-
+import gbuimage from '../../assets/gbu.jpg';
 const Dialog = ({ children }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -136,7 +136,7 @@ const VirtualTour = () => {
                   <>
                     {/* Video Thumbnail */}
                     <img
-                      src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&h=800&fit=crop"
+                      src= {gbuimage}
                       alt="Campus Virtual Tour"
                       className="w-full h-full object-cover"
                     />
@@ -159,7 +159,7 @@ const VirtualTour = () => {
                     <iframe
                       width="100%"
                       height="100%"
-                      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                      src="https://www.youtube.com/embed/aV-XncxVM-Q?si=_I_baQgzeZHy7hAe?autoplay=1"
                       title="GBU Campus Virtual Tour"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
