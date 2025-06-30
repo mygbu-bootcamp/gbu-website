@@ -13,8 +13,8 @@ const CardTitle = ({ className = '', children }) => (
   <h3 className={`text-2xl font-extrabold tracking-tight text-gray-900 ${className}`}>{children}</h3>
 );
 
-const CardContent = ({ children }) => (
-  <div className="p-6">{children}</div>
+const CardContent = ({ className = '', children }) => (
+  <div className={`p-6 ${className}`}>{children}</div>
 );
 
 // Badge component
@@ -53,13 +53,11 @@ const Button = ({ size = "md", variant = "default", asChild, className = '', chi
   );
 };
 
-import { Calendar, MapPin, Users, ExternalLink } from 'lucide-react';
+import { Calendar, ExternalLink } from 'lucide-react';
 import { format } from 'date-fns';
 import SocialShare from './SocialShare';
-import PropTypes from 'prop-types';
 
-const shimmer =
-  "bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse";
+const shimmer = "bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse";
 
 const EventCard = ({ event, isPastEvent = false }) => {
   const getTypeColor = (type) => {
@@ -85,11 +83,12 @@ const EventCard = ({ event, isPastEvent = false }) => {
 
   return (
     <Link to={`/announcements/event-calendar/${event.id}`} className="block">
-      <Card className={`hover:shadow-2xl transition-shadow duration-300 ${isPastEvent ? 'opacity-80 grayscale' : ''}`}>
-        {event.images && event.images.length > 0 ? (
+      {/* ✅ Make Card flex column with fixed height */}
+      <Card className={`h-130 flex flex-col hover:shadow-2xl transition-shadow duration-300 ${isPastEvent ? 'opacity-80 grayscale' : ''}`}>
+        {event.image ? (
           <div className="aspect-video w-full overflow-hidden relative group">
             <img
-              src={event.images[0]}
+              src={event.image}
               alt={event.title}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
@@ -120,22 +119,17 @@ const EventCard = ({ event, isPastEvent = false }) => {
                 {event.endDate && ` - ${format(new Date(event.endDate), 'MMM dd, yyyy')}`}
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <MapPin size={16} className="text-rose-500" />
-              <span>{event.venue}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users size={16} className="text-green-500" />
-              <span>{event.organizer}</span>
-            </div>
           </div>
         </CardHeader>
 
-        <CardContent>
+        {/* ✅ Make CardContent flex-1 to grow & push buttons down */}
+        <CardContent className="flex flex-col flex-1">
           <p className="text-gray-700 mb-5 line-clamp-4 leading-relaxed">
             {event.description}
           </p>
-          <div className="flex flex-wrap gap-3 items-center">
+
+          {/* ✅ Action row sticks at the bottom */}
+          <div className="flex flex-wrap gap-3 items-center mt-auto">
             <Button>View Details</Button>
 
             {event.registrationUrl && !isPastEvent && (
