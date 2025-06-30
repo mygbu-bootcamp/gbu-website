@@ -166,7 +166,7 @@ const Navbar = () => {
     },
     {
       key: "alumni",
-      label: "Alumni",
+      label: "Anshul",
       icon: <Users size={16} />,
       items: [
         ["alumni-network", "Alumni Network"],
