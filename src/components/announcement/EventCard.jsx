@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+import { Calendar, ExternalLink } from 'lucide-react';
+import { format } from 'date-fns';
+import SocialShare from './SocialShare';
 
 // Card component
 const Card = ({ className = '', children }) => (
@@ -17,7 +20,6 @@ const CardContent = ({ className = '', children }) => (
   <div className={`p-6 ${className}`}>{children}</div>
 );
 
-// Badge component
 const Badge = ({ className = '', variant, children }) => {
   const base = "inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold shadow-sm";
   const outline = "border border-gray-300 bg-white text-gray-800";
@@ -28,7 +30,6 @@ const Badge = ({ className = '', variant, children }) => {
   );
 };
 
-// Button component
 const Button = ({ size = "md", variant = "default", asChild, className = '', children, ...props }) => {
   const sizes = {
     sm: "px-4 py-1.5 text-sm",
@@ -52,10 +53,6 @@ const Button = ({ size = "md", variant = "default", asChild, className = '', chi
     </button>
   );
 };
-
-import { Calendar, ExternalLink } from 'lucide-react';
-import { format } from 'date-fns';
-import SocialShare from './SocialShare';
 
 const shimmer = "bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse";
 
@@ -82,11 +79,13 @@ const EventCard = ({ event, isPastEvent = false }) => {
   };
 
   return (
-    <Link to={`/announcements/event-calendar/${event.id}`} className="block">
-      {/* ✅ Make Card flex column with fixed height */}
-      <Card className={`h-130 flex flex-col hover:shadow-2xl transition-shadow duration-300 ${isPastEvent ? 'opacity-80 grayscale' : ''}`}>
+    <Link to={`/announcements/event-calendar/${event.id}`} className="block group">
+      <Card
+        className={`h-130 flex flex-col hover:shadow-2xl transition-shadow duration-300 
+          ${isPastEvent ? 'grayscale hover:grayscale-0 transition-all duration-500' : ''}`}
+      >
         {event.image ? (
-          <div className="aspect-video w-full overflow-hidden relative group">
+          <div className="aspect-video w-full overflow-hidden relative">
             <img
               src={event.image}
               alt={event.title}
@@ -122,13 +121,11 @@ const EventCard = ({ event, isPastEvent = false }) => {
           </div>
         </CardHeader>
 
-        {/* ✅ Make CardContent flex-1 to grow & push buttons down */}
         <CardContent className="flex flex-col flex-1">
           <p className="text-gray-700 mb-5 line-clamp-4 leading-relaxed">
             {event.description}
           </p>
 
-          {/* ✅ Action row sticks at the bottom */}
           <div className="flex flex-wrap gap-3 items-center mt-auto">
             <Button>View Details</Button>
 
