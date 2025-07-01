@@ -202,7 +202,7 @@ const SearchFilter = ({
                 placeholder={placeholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 text-lg pr-10"
+                className="pl-12 text-md pr-10"
                 aria-label="Search"
                 autoFocus
               />
@@ -251,7 +251,7 @@ const SearchFilter = ({
         </div>
 
         {/* Additional Filters */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
+        <div className="flex -mt-8 flex-col sm:flex-row gap-4 items-center">
           {types.length > 0 && onTypeFilter && (
             <Select
               value={type}
