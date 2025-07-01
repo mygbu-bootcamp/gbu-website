@@ -242,7 +242,7 @@ const NCCGallery = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="space-y-8"
+      className="space-y-8 mx-20"
     >
       {/* HEADER */}
       <motion.div

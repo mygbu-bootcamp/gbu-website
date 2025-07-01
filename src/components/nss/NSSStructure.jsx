@@ -95,7 +95,7 @@ const NSSStructure = () => {
   };
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 mx-20">
       {/* Program Officer Section */}
       <motion.div variants={fadeIn} initial="hidden" animate="visible">
         <Card className="overflow-hidden">

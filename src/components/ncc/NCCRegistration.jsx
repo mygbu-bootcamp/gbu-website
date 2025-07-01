@@ -80,7 +80,7 @@ const Select = ({ value, onValueChange, placeholder, children }) => {
     )?.props.children || placeholder;
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}

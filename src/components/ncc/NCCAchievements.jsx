@@ -115,7 +115,7 @@ const NCCAchievements = () => {
   };
 
   return (
-    <div className="space-y-12 px-4 md:px-8 pb-16">
+    <div className="space-y-12 px-4 mx-20 md:px-8 pb-16">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -107,7 +107,7 @@ const NCCResources = () => {
   };
 
   return (
-    <div className="space-y-10 px-4 md:px-8 pb-16">
+    <div className="space-y-10 mx-20 px-4 md:px-8 pb-16">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}

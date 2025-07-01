@@ -76,7 +76,7 @@ const NCCSocialMedia = () => {
 
   return (
     <motion.div
-      className="space-y-12"
+      className="space-y-12 mx-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}

@@ -66,7 +66,7 @@ const NCCIntroduction = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 mx-20">
       {/* Mission Statement */}
       <Card className="border-l-4 border-l-orange-600">
         <CardHeader>
@@ -83,7 +83,7 @@ const NCCIntroduction = () => {
       </Card>
 
       {/* Unit Information */}
-      <Card className="bg-gradient-to-r  from-blue-600 to-blue-400 text-white">
+      <Card className="bg-gradient-to-r   from-blue-600 to-purple-600 text-white">
         <CardHeader>
           <CardTitle className="text-2xl flex items-center">
             <Shield className="h-8 w-8 mr-3" />

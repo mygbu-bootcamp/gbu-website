@@ -112,7 +112,7 @@ const NCCStructure = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 mx-20">
       {/* ANO Section */}
       <Card className="overflow-hidden mr-5 ml-5">
         <CardHeader className="bg-gradient-to-r  from-blue-600 to-blue-400 text-white">
