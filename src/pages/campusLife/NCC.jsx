@@ -56,16 +56,13 @@ const NCC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-900 to-orange-600 text-white py-16">
+    {/* Header */}
+      <div className="bg-blue-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-4">
-            <Shield className="h-16 w-16" />
-          </div>
           <h1 className="text-5xl font-bold mb-4">National Cadet Corps</h1>
           <p className="text-2xl font-light mb-6">"Unity and Discipline"</p>
           <div className="flex justify-center items-center space-x-8 text-lg">
-            <div className="flex items-center space-x-2">
+             <div className="flex items-center space-x-2">
               <Users className="h-6 w-6" />
               <span>300+ Cadets</span>
             </div>

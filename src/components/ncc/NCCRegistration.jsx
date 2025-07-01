@@ -20,11 +20,10 @@ const staggerContainer = {
 const Card = ({ children, className = "" }) => (
   <motion.div
     initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={fadeInUp}
-    whileHover={{ scale: 1.02 }}
-    transition={{ duration: 0.4 }}
+  animate="visible"
+  variants={fadeInUp}
+  whileHover={{ scale: 1.02 }}
+  transition={{ duration: 0.3 }}
     className={`bg-white rounded-xl shadow p-4 ${className}`}
   >
     {children}

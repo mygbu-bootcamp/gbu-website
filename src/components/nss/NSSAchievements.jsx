@@ -4,7 +4,7 @@ const Card = ({ children, className = '', ...props }) => (
 );
 
 const CardHeader = ({ children, className = '', ...props }) => (
-  <div className={`border-b px-6 py-4 ${className}`} {...props}>{children}</div>
+  <div className={` px-6 py-4 ${className}`} {...props}>{children}</div>
 );
 
 const CardTitle = ({ children, className = '', ...props }) => (

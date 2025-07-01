@@ -13,10 +13,11 @@ const fadeInUp = {
 // Minimal Card, CardContent, CardHeader, CardTitle, Badge components
 const Card = ({ className = "", children, ...props }) => (
   <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={fadeInUp}
+     initial="hidden"
+  animate="visible"
+  variants={fadeInUp}
+  whileHover={{ scale: 1.02 }}
+  transition={{ duration: 0.3 }}
     className={`rounded-lg shadow bg-white ${className}`}
     {...props}
   >
