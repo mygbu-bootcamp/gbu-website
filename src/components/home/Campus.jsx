@@ -69,7 +69,7 @@ export default function CampusLifeSection() {
                     overflow: 'hidden',
                   }}
                 >
-                  "{quote}"
+                  {quote}
                 </p>
                 {/* <p className="text-white font-semibold text-xs sm:text-sm transform transition-all duration-300 group-hover:text-white group-hover:translate-x-1 mt-2">
                   {item.name}
