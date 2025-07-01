@@ -193,7 +193,7 @@ const NCCAchievements = () => {
                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                 {majorAchievements.map((item) => (
                   <div key={item.id} className="min-w-full p-4">
-                    <div className="grid md:grid-cols-2 gap-6 bg-gradient-to-r from-blue-900 to-orange-600 text-white rounded-lg p-6">
+                    <div className="grid md:grid-cols-2 gap-6 bg-gradient-to-r  from-blue-600 to-blue-400 text-white rounded-lg p-6">
                       <img src={item.image} alt={item.title || "achievement"} className="w-full h-48 object-cover rounded-lg shadow-md" />
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
@@ -294,7 +294,7 @@ const NCCAchievements = () => {
       </section>
 
       {/* Legacy Numbers */}
-      <Card className="bg-gradient-to-r from-blue-900 to-orange-600 text-white">
+      <Card className="bg-gradient-to-r  from-blue-600 to-blue-400 text-white">
         <CardContent className="p-8">
           <h3 className="text-2xl font-bold mb-6 text-center">Our Legacy in Numbers</h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">

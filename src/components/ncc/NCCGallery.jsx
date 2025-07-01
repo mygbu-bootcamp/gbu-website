@@ -412,7 +412,7 @@ const NCCGallery = () => {
       </Card>
 
       {/* Statistics */}
-      <Card className="bg-gradient-to-r from-blue-900 to-orange-600 text-white">
+      <Card className="bg-gradient-to-r  from-blue-600 to-blue-400 text-white">
         <CardContent className="p-8">
           <h3 className="text-2xl font-bold mb-6 text-center">Gallery Statistics</h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
