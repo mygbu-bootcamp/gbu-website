@@ -46,13 +46,11 @@ export default function GallerySlider() {
   const currentImage = images[mainIndex];
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30 py-10 px-4">
+    <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30 py-15 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 mb-4">
-            Photo Gallery
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
+        <div className="text-center mb-5">
+          <h1 className="text-3xl font-bold text-center mb-8">PHOTO GALLERY</h1>
+          
         </div>
 
         {/* Main Image */}
