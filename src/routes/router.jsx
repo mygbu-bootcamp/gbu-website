@@ -49,6 +49,12 @@ import EscalationPolicy from "../pages/grievance/EscalationPolicy";
 import ComplaintDetail from "../pages/grievance/ComplaintDetail";
 import FacultyDashboard from "../pages/grievance/FacultyDashboard";
 
+import SitemapMain from "../pages/Sitemap/SitemapMain.jsx";
+import Sitemap from "../pages/Sitemap/Sitemap.jsx";
+import SitemapAbout from "../pages/Sitemap/SitemapAbout.jsx";
+import SitemapContact from "../pages/Sitemap/SitemapContact.jsx";
+import SitemapAcademics from "../pages/Sitemap/SitemapAcademics.jsx";
+
 const AcademicCalendar = React.lazy(() =>
   import("../pages/Academic/AcademicCalendar.jsx")
 );
@@ -360,6 +366,11 @@ export default function AppRouter() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
+          <Route path="/sitemapMain" element={<SitemapMain />} />
+          <Route path="/sitemap" element={<Sitemap />} />
+          <Route path="/sitemapAbout" element={<SitemapAbout />} />
+          <Route path="/sitemapContact" element={<SitemapContact />} />
+          <Route path="/sitemapAcademics" element={<SitemapAcademics />} />
         </Routes>
       </AuthProvider>
     </Suspense>
