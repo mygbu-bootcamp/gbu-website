@@ -34,7 +34,7 @@ const Primarynavbar = () => {
         <div className="hidden xl:flex w-full justify-between">
           {/* Left links */}
           <div className="flex flex-wrap gap-4 items-center">
-            <a href="https://tender-navigator-portal.vercel.app/" className="flex items-center gap-1 hover:underline">
+            <a href="/tender" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Tenders
             </a>
             <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
@@ -104,7 +104,7 @@ const Primarynavbar = () => {
             <div>
               <p className="text-gray-500 uppercase tracking-wider text-xs mb-2">Quick Links</p>
               <div className="space-y-2">
-                <a href="https://tender-navigator-portal.vercel.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="/tender" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Tenders
                 </a>
                 <a href="https://recruit-hub-display.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
