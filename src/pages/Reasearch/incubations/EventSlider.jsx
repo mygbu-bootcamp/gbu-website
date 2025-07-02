@@ -33,7 +33,7 @@ const events = [
     date: "April 28, 2024",
     image:
       "https://media.kasperskydaily.com/wp-content/uploads/sites/85/2021/03/19103746/womens-history-month.jpg",
-    images: ["https://www.gburif.org/event/women-tech.jpeg"],
+    images: ["https://media.kasperskydaily.com/wp-content/uploads/sites/85/2021/03/19103746/womens-history-month.jpg"],
     description:
       "Celebrating women innovators through talks and mentorship.",
     detailedDescription:

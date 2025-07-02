@@ -15,7 +15,7 @@ const ContactUs = () => {
     <section className="px-4 py-15 ">
        <h1 className="text-3xl font-bold text-center mb-8">CONTACT US</h1>
        
-      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row">
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 overflow-hidden flex flex-col md:flex-row">
         {/* Contact Info */}
         <div className="w-full md:w-1/2 p-8">
          
