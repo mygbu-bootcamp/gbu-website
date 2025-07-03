@@ -37,8 +37,8 @@ const Button = ({
 
 const Card = ({ className = "", children }) => (
   <div
-    className={`rounded-2xl overflow-hidden shadow ${className}`}
-    style={{ background: "inherit" }}
+    className={`rounded-2xl bg-white overflow-hidden shadow ${className}`}
+    
   >
     {children}
   </div>
@@ -105,14 +105,14 @@ const SitemapMain = () => {
         {/* Quick Navigation Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
           {/* Academics Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:bg-white/95">
-            <CardHeader className="text-center pb-2">
+          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white backdrop-blur-sm">
+            <CardHeader className="text-center pb-2 bg-white">
               <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
                 <GraduationCap className="w-6 h-6 text-blue-600" />
               </div>
               <CardTitle className="text-lg">Academics</CardTitle>
             </CardHeader>
-            <CardContent className="text-center">
+            <CardContent className="text-center bg-white">
               <CardDescription className="mb-4">
                 Explore our academic programs, faculty, and research
                 opportunities.
@@ -129,14 +129,14 @@ const SitemapMain = () => {
           </Card>
 
           {/* Admissions Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:bg-white/95">
-            <CardHeader className="text-center pb-2">
+          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white">
+            <CardHeader className="text-center pb-2 bg-white">
               <div className="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
                 <Users className="w-6 h-6 text-green-600" />
               </div>
               <CardTitle className="text-lg">Admissions</CardTitle>
             </CardHeader>
-            <CardContent className="text-center">
+            <CardContent className="text-center bg-white">
               <CardDescription className="mb-4">
                 Find information about courses, eligibility, and admission
                 process.
@@ -153,37 +153,38 @@ const SitemapMain = () => {
           </Card>
 
           {/* Events Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:bg-white/95">
-            <CardHeader className="text-center pb-2">
-              <div className="mx-auto w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
-                <Calendar className="w-6 h-6 text-purple-600" />
-              </div>
-              <CardTitle className="text-lg">Events</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <CardDescription className="mb-4">
-                Stay updated with latest news, events, and announcements.
-              </CardDescription>
-              <Link to="/announcements/news-notifications">
-                <Button
-                  variant="ghost"
-                  className="text-purple-600 hover:text-purple-700"
-                >
-                  View Events →
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
+<Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+  <CardHeader className="text-center pb-2 bg-white">
+    <div className="mx-auto w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
+      <Calendar className="w-6 h-6 text-purple-600" />
+    </div>
+    <CardTitle className="text-lg">Events</CardTitle>
+  </CardHeader>
+  <CardContent className="text-center bg-white">
+    <CardDescription className="mb-4">
+      Stay updated with latest news, events, and announcements.
+    </CardDescription>
+    <Link to="/announcements/news-notifications">
+      <Button
+        variant="ghost"
+        className="text-purple-600 hover:text-purple-700"
+      >
+        View Events →
+      </Button>
+    </Link>
+  </CardContent>
+</Card>
+
 
           {/* Contact Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:bg-white/95">
-            <CardHeader className="text-center pb-2">
+          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <CardHeader className="text-center pb-2 bg-white">
               <div className="mx-auto w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
                 <Phone className="w-6 h-6 text-orange-600" />
               </div>
               <CardTitle className="text-lg">Contact</CardTitle>
             </CardHeader>
-            <CardContent className="text-center">
+            <CardContent className="text-center bg-white">
               <CardDescription className="mb-4">
                 Get in touch with us for any queries or assistance.
               </CardDescription>
