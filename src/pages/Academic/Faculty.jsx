@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import TabContent from '../../components/faculty/TabContent';
 import { Mail, Phone, Globe, Award, BookOpen, Users, Search, Filter, X } from 'lucide-react';
 
-const VITE_HOST = import.meta.env.VITE_HOST;
+const VITE_HOST = import.meta.env.VITE_HOST; 
 
 const Faculty = () => {
   const [facultyMembers, setFacultyMembers] = useState([]);
@@ -26,9 +26,9 @@ const Faculty = () => {
     const fetchAllData = async () => {
       try {
         const [facultyRes, directoryRes, joinRes] = await Promise.all([
-          axios.get(`${VITE_HOST}academic/faculty/members/`),
-          axios.get(`${VITE_HOST}academic/faculty/directory/`),
-          axios.get(`${VITE_HOST}academic/faculty/join/`)
+          axios.get(`${VITE_HOST}/academic/faculty/members/`),
+          axios.get(`${VITE_HOST}/academic/faculty/directory/`),
+          axios.get(`${VITE_HOST}/academic/faculty/join/`)
         ]);
         setFacultyMembers(facultyRes.data);
         setDirectoryStats(directoryRes.data[0]);
@@ -197,8 +197,8 @@ const Faculty = () => {
                         key={school}
                         onClick={() => setSelectedSchool(school)}
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedSchool === school
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                           }`}
                       >
                         {school}
