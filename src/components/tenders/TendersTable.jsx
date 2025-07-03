@@ -2,7 +2,7 @@ import React from 'react';
 
 // 🟢 Basic Card components
 const Card = ({ children, className = '' }) => (
-  <div className={`bg-card border rounded-lg shadow-sm ${className}`}>
+  <div className={`bg-white border rounded-lg shadow-sm ${className}`}>
     {children}
   </div>
 );
@@ -32,30 +32,33 @@ const Tabs = ({ children, defaultValue, className = '' }) => {
 };
 
 const TabsList = ({ children, active, setActive, className = '' }) => (
-  <div className={`flex ${className}`}>{React.Children.map(children, (child) =>
-    React.cloneElement(child, { active, setActive })
-  )}</div>
+  <div className={`flex ${className}`}>
+    {React.Children.map(children, (child) =>
+      React.cloneElement(child, { active, setActive })
+    )}
+  </div>
 );
 
-const TabsTrigger = ({ value, children, active, setActive, className = '' }) => (
-  <button
-    onClick={() => setActive(value)}
-    className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors
-      ${active === value
-        ? 'border-primary text-primary'
-        : 'border-transparent hover:text-primary'}
-    ${className}`}
-  >
-    {children}
-  </button>
-);
+const TabsTrigger = ({ value, children, active, setActive, className = '' }) => {
+  const isActive = active === value;
+
+  return (
+    <button
+      onClick={() => setActive(value)}
+      className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors w-1/2 rounded-xl
+        ${isActive ? 'bg-black text-white' : 'bg-white text-black'}
+        hover:bg-black hover:text-white
+        ${className}`}
+    >
+      {children}
+    </button>
+  );
+};
 
 const TabsContent = ({ value, active, children, className = '' }) => {
   if (value !== active) return null;
   return <div className={className}>{children}</div>;
 };
-
-import TenderRow from './TenderRow'; 
 
 // 🟢 Sample data
 const sampleTenders = [
@@ -101,40 +104,34 @@ const sampleTenders = [
   },
 ];
 
-// 🟢 Table component
-const TenderTable = ({ tenders }) => (
-  <Card className="w-full">
-    <CardContent className="p-0">
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-muted/50 border-b">
-            <tr>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
-                Serial No.
-              </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
-                Title
-              </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
-                Brief Description
-              </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
-                Closing Date
-              </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
-                Document
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border">
-            {tenders.map((tender) => (
-              <TenderRow key={tender.id} tender={tender} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+// 🟢 Card Row for each tender
+const TenderCard = ({ tender, index }) => (
+  <Card className="mb-4 border-none shadow-xl hover:shadow-2xl">
+    <CardContent>
+      <h3 className="text-lg font-semibold mb-2">{index + 1}. {tender.title}</h3>
+      <p className="text-sm text-gray-600 mb-2">{tender.description}</p>
+      <p className="text-sm mb-2">
+        <span className="font-medium">Closing Date:</span> {tender.closingDate}
+      </p>
+      <a
+        href={tender.documentUrl}
+        className="text-sm text-bold underline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View Document
+      </a>
     </CardContent>
   </Card>
+);
+
+// 🟢 Cards Container
+const TenderTable = ({ tenders }) => (
+  <div className="space-y-4">
+    {tenders.map((tender, idx) => (
+      <TenderCard key={tender.id} tender={tender} index={idx} />
+    ))}
+  </div>
 );
 
 // 🟢 Main Component
@@ -143,10 +140,10 @@ const TendersTable = () => {
     <div className="w-full">
       <Tabs defaultValue="current" className="w-full">
         <TabsList className="w-full mb-6 flex flex-row justify-between border-b">
-          <TabsTrigger value="current" className=" rounded-xl w-1/2 hover:bg-black  hover:text-white">
+          <TabsTrigger value="current">
             Current Opportunities
           </TabsTrigger>
-          <TabsTrigger value="archived" className="w-1/2 hover:bg-black hover:text-white rounded-xl">
+          <TabsTrigger value="archived">
             Archived Opportunities
           </TabsTrigger>
         </TabsList>
@@ -155,7 +152,7 @@ const TendersTable = () => {
           <TenderTable tenders={sampleTenders} />
         </TabsContent>
 
-        <TabsContent value="archived" className="mt-0">
+        <TabsContent value="archived" className="mt-5">
           <TenderTable tenders={sampleTenders} />
           <div className="mt-4 p-4 bg-muted/30 rounded-lg border-l-4 border-muted-foreground">
             <p className="text-sm text-muted-foreground italic">

@@ -20,7 +20,7 @@ const TenderMain = () => {
           </h1>
           
           {/* Introduction */}
-          <div className="bg-card border rounded-lg p-6 mb-8">
+          <div className="bg-card border-none rounded-xl shadow-2xl p-6 mt-2 mb-25">
             <p className="text-muted-foreground leading-relaxed">
               Welcome to our procurement portal. Here you can find current tender opportunities, 
               requests for proposals (RFPs), requests for expressions (RFE), and requests for 
@@ -38,11 +38,11 @@ const TenderMain = () => {
         </div>
 
         {/* Footer Section */}
-        <div className="border-t pt-6">
+        <div className="border-t pt-10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-sm text-muted-foreground">
               Looking for past opportunities? 
-              <a href="#" className="text-primary hover:text-primary/80 hover:underline ml-1 transition-colors">
+              <a href="#" className="text-xl hover:text-primary/80 underline ml-1 transition-colors">
                 View Archived Tenders
               </a>
             </div>
