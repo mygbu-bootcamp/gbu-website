@@ -8,6 +8,9 @@ const PlacementBrochure = React.lazy(() =>
   import("../pages/Placement/PlacementBrochure")
 );
 import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
+
+import RecruitMain from "../pages/recruitments/RecruitMain.jsx";
+
 import AdmissionProcess from "../pages/Admission/AdmissionProcess.jsx";
 import CoursesOffered from "../pages/Admission/CoursesOffered.jsx";
 import EligibilityReservation from "../pages/Admission/EligibilityReservation.jsx";
@@ -357,6 +360,9 @@ export default function AppRouter() {
               </ProtectedRoute>
             }
           />
+
+          <Route path="recruitments" element={<RecruitMain />} />
+
           <Route path="/complaint/:id" element={<ComplaintDetail />} />
           <Route path="/track" element={<TrackComplaint />} />
           <Route path="/faq" element={<FAQ />} />
