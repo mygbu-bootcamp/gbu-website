@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import {
   Send,
   Info,
@@ -40,8 +40,13 @@ const Primarynavbar = () => {
             <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Recruitments
             </a>
+
             <a href="/booking" className="hover:underline">Booking</a>
             <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
+
+            <a href="https://mygbu-smart-booking.vercel.app" className="hover:underline">Booking</a>
+            <a href="/rti" className="flex items-center gap-1 hover:underline">
+
               <Info size={14} /> RTI
             </a>
             <a href="https://site-scape-navigator.lovable.app" className="hover:underline">Sitemap</a>
@@ -60,7 +65,7 @@ const Primarynavbar = () => {
               <LogIn size={14} /> Faculty Login
             </a>
 
- <a href="https://mygbu-admin.vercel.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://mygbu-admin.vercel.app/" className="flex items-center gap-1 hover:underline">
               <LogIn size={14} /> Admin Login
             </a>
             <Link
@@ -113,12 +118,12 @@ const Primarynavbar = () => {
                 <a href="/booking" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Booking
                 </a>
-                <a href="https://rti-page-rebuild-50.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="/rti" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   RTI
                 </a>
                 <a href="https://site-scape-navigator.lovable.app" className="block px-3 py-2 rounded-md hover:bg-gray-100">
-  Sitemap
-</a>
+                  Sitemap
+                </a>
 
 
               </div>
