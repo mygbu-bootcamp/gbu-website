@@ -40,7 +40,7 @@ const Primarynavbar = () => {
             <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Recruitments
             </a>
-            <a href="https://mygbu-smart-booking.vercel.app" className="hover:underline">Booking</a>
+            <a href="/booking" className="hover:underline">Booking</a>
             <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
               <Info size={14} /> RTI
             </a>
@@ -110,7 +110,7 @@ const Primarynavbar = () => {
                 <a href="https://recruit-hub-display.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Recruitments
                 </a>
-                <a href="https://gbu-facility-bookings-39.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="/booking" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Booking
                 </a>
                 <a href="https://rti-page-rebuild-50.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">

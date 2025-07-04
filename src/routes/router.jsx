@@ -125,6 +125,9 @@ import LaboratoryCards from "../pages/departments/laboratries.jsx";
 // import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx";
 import Placement_home from "../pages/Placement/Placement_home.jsx";
 
+import BookingMain from "../pages/booking/BookingMain.jsx";
+import FacilityBookingPage from "../components/booking/FacilityBookingPage.jsx";
+
 export default function AppRouter() {
   return (
     <Suspense
@@ -360,6 +363,12 @@ export default function AppRouter() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
+
+          <Route path="/booking" element={<BookingMain />} />
+          <Route path="/booking/:facilityId" element={<FacilityBookingPage />} />
+    
+
+           
         </Routes>
       </AuthProvider>
     </Suspense>
