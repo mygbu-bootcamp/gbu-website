@@ -1,5 +1,6 @@
 
 import React from 'react';
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 // Card components
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-xl shadow-md border border-gray-200 ${className}`}>{children}</div>
@@ -41,6 +42,7 @@ const Button = ({
   );
 };
 import { FileText, Users, Bell, Settings, Download, Mail } from 'lucide-react';
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 const AdminActions = () => {
   const quickActions = [
@@ -79,6 +81,7 @@ const AdminActions = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Quick Actions */}
       <Card>
@@ -128,6 +131,7 @@ const AdminActions = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 
