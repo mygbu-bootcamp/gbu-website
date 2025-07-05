@@ -189,38 +189,41 @@ const SearchFilter = ({
   const clearYear = () => { setYear('all'); onYearFilter && onYearFilter('all'); };
   const clearSearch = () => { setSearchQuery(''); onSearch(''); };
 
-  return (
-    <div className="bg-gradient-to-br from-blue-50 to-white p-2 rounded-2xl mb-2 shadow-2xl border border-blue-100">
-      <form onSubmit={handleSearch} className="space-y-2">
-        <div className="flex flex-col md:flex-row gap-6 items-center">
-          {/* Search Input */}
-          <div className="w-3/6">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400" size={22} />
-              <Input
-                type="text"
-                placeholder={placeholder}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 text-md pr-10"
-                aria-label="Search"
-                autoFocus
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
-                  aria-label="Clear search"
-                  onClick={clearSearch}
-                >
-                  <X size={18} />
-                </button>
-              )}
-            </div>
-          </div>
+  // ✅ UPDATED PART: only width/flex related tweaks done
 
-          {/* Date Filters */}
-          <div className="flex w-2/6 gap-1 items-center">
+return (
+  <div className="bg-gradient-to-br from-blue-50 to-white p-2 rounded-2xl mb-2 shadow-2xl border border-blue-100">
+    <form onSubmit={handleSearch} className="space-y-2">
+      <div className="flex flex-col md:flex-row lg:gap-10 sm:gap-5 items-center w-full">
+        {/* Search Input */}
+        <div className="w-full md:w-3/6">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 " size={22} />
+            <Input
+              type="text"
+              placeholder={placeholder}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-12 text-md pr-10"
+              aria-label="Search"
+              autoFocus
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
+                aria-label="Clear search"
+                onClick={clearSearch}
+              >
+                <X size={18} />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Date Filters */}
+        <div className="flex flex-col md:flex-row gap-2 items-center w-full md:w-6/6 mt-2 md:mt-0">
+          <div className="flex flex-row gap-2 w-full md:w-full sm:w-full">
             <CalendarPopover
               selected={startDate}
               onSelect={(date) => handleDateChange(date, true)}
@@ -236,52 +239,54 @@ const SearchFilter = ({
             />
           </div>
 
-          <Button type="submit" className="text-lg flex items-center gap-2 shadow-md ">
+          <Button type="submit" className="text-lg flex items-center gap-2 shadow-md mt-2 md:mt-0">
             Search
           </Button>
         </div>
+      </div>
 
-        {/* Filter Chips */}
-        <div className="flex flex-wrap gap-2">
-          {searchQuery && <FilterChip label={`Search: "${searchQuery}"`} onRemove={clearSearch} />}
-          {startDate && <FilterChip label={`From: ${format(startDate, 'MMM dd, yyyy')}`} onRemove={clearStartDate} />}
-          {endDate && <FilterChip label={`To: ${format(endDate, 'MMM dd, yyyy')}`} onRemove={clearEndDate} />}
-          {type !== 'all' && <FilterChip label={`Type: ${type}`} onRemove={clearType} />}
-          {year !== 'all' && <FilterChip label={`Year: ${year}`} onRemove={clearYear} />}
-        </div>
+      {/* Filter Chips */}
+      <div className="flex flex-wrap gap-2">
+        {searchQuery && <FilterChip label={`Search: "${searchQuery}"`} onRemove={clearSearch} />}
+        {startDate && <FilterChip label={`From: ${format(startDate, 'MMM dd, yyyy')}`} onRemove={clearStartDate} />}
+        {endDate && <FilterChip label={`To: ${format(endDate, 'MMM dd, yyyy')}`} onRemove={clearEndDate} />}
+        {type !== 'all' && <FilterChip label={`Type: ${type}`} onRemove={clearType} />}
+        {year !== 'all' && <FilterChip label={`Year: ${year}`} onRemove={clearYear} />}
+      </div>
 
-        {/* Additional Filters */}
-        <div className="flex -mt-8 flex-col sm:flex-row gap-4 items-center">
-          {types.length > 0 && onTypeFilter && (
-            <Select
-              value={type}
-              onValueChange={val => { setType(val); onTypeFilter(val); }}
-              aria-label="Filter by type"
-            >
-              <SelectValue placeholder="Select Type" />
-              <SelectItem value="all">All Types</SelectItem>
-              {types.map((t) => (
-                <SelectItem key={t} value={t}>{t}</SelectItem>
-              ))}
-            </Select>
-          )}
-          {years.length > 0 && onYearFilter && (
-            <Select
-              value={year}
-              onValueChange={val => { setYear(val); onYearFilter(val); }}
-              aria-label="Filter by year"
-            >
-              <SelectValue placeholder="Select Year" />
-              <SelectItem value="all">All Years</SelectItem>
-              {years.map((y) => (
-                <SelectItem key={y} value={y}>{y}</SelectItem>
-              ))}
-            </Select>
-          )}
-        </div>
-      </form>
-    </div>
-  );
+      {/* Additional Filters */}
+      <div className="flex flex-col sm:flex-row gap-4 items-center w-full">
+        {types.length > 0 && onTypeFilter && (
+          <Select
+            value={type}
+            onValueChange={val => { setType(val); onTypeFilter(val); }}
+            aria-label="Filter by type"
+          >
+            <SelectValue placeholder="Select Type" />
+            <SelectItem value="all">All Types</SelectItem>
+            {types.map((t) => (
+              <SelectItem key={t} value={t}>{t}</SelectItem>
+            ))}
+          </Select>
+        )}
+        {years.length > 0 && onYearFilter && (
+          <Select
+            value={year}
+            onValueChange={val => { setYear(val); onYearFilter(val); }}
+            aria-label="Filter by year"
+          >
+            <SelectValue placeholder="Select Year" />
+            <SelectItem value="all">All Years</SelectItem>
+            {years.map((y) => (
+              <SelectItem key={y} value={y}>{y}</SelectItem>
+            ))}
+          </Select>
+        )}
+      </div>
+    </form>
+  </div>
+);
+
 };
 
 export default SearchFilter;

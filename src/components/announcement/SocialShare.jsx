@@ -30,7 +30,7 @@ const Popover = ({ children }) => {
   const triggerRef = useRef(null);
   return (
     <PopoverContext.Provider value={{ open, setOpen, triggerRef }}>
-      <div className="relative inline-block">{children}</div>
+      <div className="relative z-1000 inline-block">{children}</div>
     </PopoverContext.Provider>
   );
 };
