@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Users, FileText, CheckCircle, AlertCircle, GraduationCap, BookOpen } from 'lucide-react';
 import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 // Custom Card components with modern UI effects
@@ -40,8 +41,8 @@ const CardContent = ({ children, className = '', ...props }) => (
     {children}
   </div>
 );
-import { Users, FileText, CheckCircle, AlertCircle, GraduationCap, BookOpen } from 'lucide-react';
-import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
+
 
 const AdminStats = () => {
   const stats = [
