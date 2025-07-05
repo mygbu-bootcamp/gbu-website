@@ -42,7 +42,6 @@ const Button = ({
   );
 };
 import { FileText, Users, Bell, Settings, Download, Mail } from 'lucide-react';
-import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 const AdminActions = () => {
   const quickActions = [
