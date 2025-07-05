@@ -124,6 +124,9 @@ import LaboratoryCards from "../pages/departments/laboratries.jsx";
 // import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
 // import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx";
 import Placement_home from "../pages/Placement/Placement_home.jsx";
+import StaffMembers from "../pages/departments/StaffMembers.jsx";
+import Coedt from "../pages/departments/Coedt.jsx";
+import Raem from "../pages/departments/Raem.jsx";
 
 export default function AppRouter() {
   return (
@@ -192,15 +195,15 @@ export default function AppRouter() {
             {/* About Section */}
             <Route
               path="about/coeidrone"
-              element={<h1>COE Drone - Coming Soon</h1>}
+              element={<Coedt/>}
             />
             <Route path="about/dean" element={<Dean />} />
             <Route
               path="about/coeiraem"
-              element={<h1>COE IRAEM - Coming Soon</h1>}
+              element={<Raem/>}
             />
             <Route path="about/board" element={<BoardOfStudies />} />
-            <Route path="about/staff" element={<h1>Staff - Coming Soon</h1>} />
+            <Route path="about/staff" element={<StaffMembers/>} />
             <Route path="about/labs" element={<LaboratoryCards />} />
             <Route path="about/activities" element={<Conferences />} />
 
