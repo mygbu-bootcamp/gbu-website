@@ -1,6 +1,6 @@
  import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import iasc from "../../../assets/iasc.png";
+
 import omnipresent from "../../../assets/omnipresent.png";
 
 const Badge = ({ className = "", children }) => (
@@ -28,7 +28,7 @@ const PartnersCarousel = () => {
       type: "Training Partner",
       description:
         "IASC Sector Skill Council is committed to developing a skilled workforce in instrumentation, automation, and communication through specialized training programs.",
-      image: iasc,
+      image: "/assets/Iasc.png",
       year: "2020",
     },
   ];
