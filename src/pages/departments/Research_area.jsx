@@ -4,22 +4,17 @@ import { ArrowLeft, BookOpen, Users, Award, TrendingUp, Brain, Zap, Shield, Data
 const ResearchArea = () => {
   return (
 <>
- 
-{/* Hero Section */}
-      <section className="py-20   bg-gradient-to-br  from-green-50 to-blue-100">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
-            Research Excellence at TechVision
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
-              Our research ecosystem spans cutting-edge domains in engineering and technology, fostering innovation
+
+      {/* Hero Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Research Excellence at TechVision</h2>
+          <p className="text-xl text-gray-600 mb-12 max-w-4xl mx-auto">
+            Our research ecosystem spans cutting-edge domains in engineering and technology, fostering innovation
             that addresses global challenges and shapes the future of technology.
           </p>
-        </div>
-      </section>
-      {/* Stats Section */}
-      <section className="py-16 px-4 bg-white"> 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-lg">
               <BookOpen className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">150+</h3>
@@ -41,6 +36,7 @@ const ResearchArea = () => {
               <p className="text-gray-600">Research Funding</p>
             </div>
           </div>
+        </div>
       </section>
 
       {/* Major Research Areas */}
