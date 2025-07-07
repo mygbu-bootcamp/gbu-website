@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 // Utility: Conditional class join
 function cn(...args) {
@@ -189,35 +190,37 @@ const SearchFilter = ({
   const clearYear = () => { setYear('all'); onYearFilter && onYearFilter('all'); };
   const clearSearch = () => { setSearchQuery(''); onSearch(''); };
 
-  // ✅ UPDATED PART: only width/flex related tweaks done
 
-return (
-  <div className="bg-gradient-to-br from-blue-50 to-white p-2 rounded-2xl mb-2 shadow-2xl border border-blue-100">
-    <form onSubmit={handleSearch} className="space-y-2">
-      <div className="flex flex-col md:flex-row lg:gap-10 sm:gap-5 items-center w-full">
-        {/* Search Input */}
-        <div className="w-full md:w-3/6">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 " size={22} />
-            <Input
-              type="text"
-              placeholder={placeholder}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 text-md pr-10"
-              aria-label="Search"
-              autoFocus
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
-                aria-label="Clear search"
-                onClick={clearSearch}
-              >
-                <X size={18} />
-              </button>
-            )}
+  return (
+    <SearchableWrapper>
+    <div className="bg-gradient-to-br from-blue-50 to-white p-2 rounded-2xl mb-2 shadow-2xl border border-blue-100">
+      <form onSubmit={handleSearch} className="space-y-2">
+        <div className="flex flex-col md:flex-row gap-6 items-center">
+          {/* Search Input */}
+          <div className="w-3/6">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400" size={22} />
+              <Input
+                type="text"
+                placeholder={placeholder}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-12 text-md pr-10"
+                aria-label="Search"
+                autoFocus
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
+                  aria-label="Clear search"
+                  onClick={clearSearch}
+                >
+                  <X size={18} />
+                </button>
+              )}
+            </div>
+
           </div>
         </div>
 
@@ -254,38 +257,40 @@ return (
         {year !== 'all' && <FilterChip label={`Year: ${year}`} onRemove={clearYear} />}
       </div>
 
-      {/* Additional Filters */}
-      <div className="flex flex-col sm:flex-row gap-4 items-center w-full">
-        {types.length > 0 && onTypeFilter && (
-          <Select
-            value={type}
-            onValueChange={val => { setType(val); onTypeFilter(val); }}
-            aria-label="Filter by type"
-          >
-            <SelectValue placeholder="Select Type" />
-            <SelectItem value="all">All Types</SelectItem>
-            {types.map((t) => (
-              <SelectItem key={t} value={t}>{t}</SelectItem>
-            ))}
-          </Select>
-        )}
-        {years.length > 0 && onYearFilter && (
-          <Select
-            value={year}
-            onValueChange={val => { setYear(val); onYearFilter(val); }}
-            aria-label="Filter by year"
-          >
-            <SelectValue placeholder="Select Year" />
-            <SelectItem value="all">All Years</SelectItem>
-            {years.map((y) => (
-              <SelectItem key={y} value={y}>{y}</SelectItem>
-            ))}
-          </Select>
-        )}
-      </div>
-    </form>
-  </div>
-);
+     
+        {/* Additional Filters */}
+        <div className="flex -mt-8 flex-col sm:flex-row gap-4 items-center">
+          {types.length > 0 && onTypeFilter && (
+            <Select
+              value={type}
+              onValueChange={val => { setType(val); onTypeFilter(val); }}
+              aria-label="Filter by type"
+            >
+              <SelectValue placeholder="Select Type" />
+              <SelectItem value="all">All Types</SelectItem>
+              {types.map((t) => (
+                <SelectItem key={t} value={t}>{t}</SelectItem>
+              ))}
+            </Select>
+          )}
+          {years.length > 0 && onYearFilter && (
+            <Select
+              value={year}
+              onValueChange={val => { setYear(val); onYearFilter(val); }}
+              aria-label="Filter by year"
+            >
+              <SelectValue placeholder="Select Year" />
+              <SelectItem value="all">All Years</SelectItem>
+              {years.map((y) => (
+                <SelectItem key={y} value={y}>{y}</SelectItem>
+              ))}
+            </Select>
+          )}
+        </div>
+      </form>
+    </div>
+    </SearchableWrapper>
+  );
 
 };
 
