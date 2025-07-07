@@ -1,6 +1,8 @@
 
 import React, { createContext, useContext, useState } from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Minimal UI components defined inline for this file only
 
 // Button
@@ -379,6 +381,7 @@ const FacultyDashboard = () => {
   const escalatedCount = facultyComplaints.filter(c => c.escalationLevel > 0).length;
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
@@ -700,6 +703,7 @@ const FacultyDashboard = () => {
         </Tabs>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

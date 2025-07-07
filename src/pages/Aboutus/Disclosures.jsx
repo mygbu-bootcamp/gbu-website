@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
  
 import {
   CheckCircle,
@@ -72,7 +74,9 @@ const Disclosures = () => {
     setExpandedSection(expandedSection === index ? null : index);
   };
 
-  return ( <>
+  return ( 
+  <SearchableWrapper>
+  <>
       {/* Hero Section */}
       <section className="relative h-96 bg-gradient-to-r from-emerald-900 via-teal-800 to-blue-800">
         <div className="absolute inset-0 bg-black/50"></div>
@@ -199,6 +203,7 @@ const Disclosures = () => {
         </div>
       </section>
   </>
+  </SearchableWrapper>
   );
 };
 

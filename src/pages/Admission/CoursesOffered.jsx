@@ -17,6 +17,8 @@ import {
   Cpu
 } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Mock Navbar component
 
 
@@ -443,6 +445,7 @@ const CoursesOffered = () => {
   );
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
@@ -515,6 +518,7 @@ const CoursesOffered = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

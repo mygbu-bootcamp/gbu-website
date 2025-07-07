@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 // import * as React from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const TooltipContext = React.createContext();
 
 const TooltipProvider = ({ children }) => (
@@ -278,247 +280,248 @@ const AdminReports = () => {
   };
 
   return (
-    <div className="space-y-10 px-4 py-6 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50 to-slate-100 min-h-screen">
+    <SearchableWrapper>
+      <div className="space-y-10 px-4 py-6 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50 to-slate-100 min-h-screen">
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {quickStats.map((stat, index) => (
-          <Card key={index} className="bg-white border border-slate-200 hover:shadow-md transition-all rounded-2xl">
-            <CardContent className="p-6 text-center space-y-2">
-              <p className="text-sm font-medium text-slate-500 tracking-wide uppercase">{stat.label}</p>
-              <p className="text-3xl font-bold text-slate-800">{stat.value}</p>
-              <p className={`text-sm font-semibold ${stat.change.includes('-') ? 'text-red-600' : 'text-green-600'}`}>
-                {stat.change}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {/* Generate Report */}
-      <Card className="border-blue-100 shadow-md rounded-2xl">
-        <CardHeader>
-          <CardTitle className="text-xl font-semibold text-slate-800">Generate New Report</CardTitle>
-          <CardDescription>Create custom reports with preferred options</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Report Type */}
-            <div>
-              <label className="text-sm font-semibold text-slate-700 mb-2 block">Report Type</label>
-              <Select value={reportType} onValueChange={setReportType}>
-                <SelectTrigger className="rounded-lg border-slate-300 shadow-sm">
-                  <SelectValue placeholder="Select report type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {reportTypes.map((type) => (
-                    <SelectItem key={type.id} value={type.id}>
-                      {type.title}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Date Range */}
-            <div>
-              <label className="text-sm font-semibold text-slate-700 mb-2 block">Date Range</label>
-              <Select value={dateRange} onValueChange={setDateRange}>
-                <SelectTrigger className="rounded-lg border-slate-300 shadow-sm">
-                  <SelectValue placeholder="Select date range" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="current">Current Month</SelectItem>
-                  <SelectItem value="previous">Previous Month</SelectItem>
-                  <SelectItem value="quarter">Current Quarter</SelectItem>
-                  <SelectItem value="year">Current Year</SelectItem>
-                  <SelectItem value="custom">Custom Range</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Generate Button */}
-            <div className="flex items-end">
-              <Button
-                onClick={handleGenerateReport}
-                className="w-full bg-blue-600 text-white hover:bg-blue-700 transition rounded-lg"
-              >
-                <FileText className="w-5 h-5 mr-2" />
-                Generate Report
-              </Button>
-            </div>
-          </div>
-
-          {/* Report Description */}
-          {reportType && (
-            <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
-              <div className="p-2 bg-blue-100 rounded-full">
-                {(() => {
-                  const Icon = reportTypes.find(type => type.id === reportType)?.icon;
-                  return Icon ? <Icon className="w-5 h-5 text-blue-600" /> : null;
-                })()}
-              </div>
-              <div>
-                <h4 className="font-semibold text-blue-900">
-                  {reportTypes.find(type => type.id === reportType)?.title}
-                </h4>
-                <p className="text-sm text-blue-700">
-                  {reportTypes.find(type => type.id === reportType)?.description}
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {quickStats.map((stat, index) => (
+            <Card key={index} className="bg-white border border-slate-200 hover:shadow-md transition-all rounded-2xl">
+              <CardContent className="p-6 text-center space-y-2">
+                <p className="text-sm font-medium text-slate-500 tracking-wide uppercase">{stat.label}</p>
+                <p className="text-3xl font-bold text-slate-800">{stat.value}</p>
+                <p className={`text-sm font-semibold ${stat.change.includes('-') ? 'text-red-600' : 'text-green-600'}`}>
+                  {stat.change}
                 </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Generate Report */}
+        <Card className="border-blue-100 shadow-md rounded-2xl">
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold text-slate-800">Generate New Report</CardTitle>
+            <CardDescription>Create custom reports with preferred options</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Report Type */}
+              <div>
+                <label className="text-sm font-semibold text-slate-700 mb-2 block">Report Type</label>
+                <Select value={reportType} onValueChange={setReportType}>
+                  <SelectTrigger className="rounded-lg border-slate-300 shadow-sm">
+                    <SelectValue placeholder="Select report type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {reportTypes.map((type) => (
+                      <SelectItem key={type.id} value={type.id}>
+                        {type.title}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Date Range */}
+              <div>
+                <label className="text-sm font-semibold text-slate-700 mb-2 block">Date Range</label>
+                <Select value={dateRange} onValueChange={setDateRange}>
+                  <SelectTrigger className="rounded-lg border-slate-300 shadow-sm">
+                    <SelectValue placeholder="Select date range" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="current">Current Month</SelectItem>
+                    <SelectItem value="previous">Previous Month</SelectItem>
+                    <SelectItem value="quarter">Current Quarter</SelectItem>
+                    <SelectItem value="year">Current Year</SelectItem>
+                    <SelectItem value="custom">Custom Range</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Generate Button */}
+              <div className="flex items-end">
+                <Button
+                  onClick={handleGenerateReport}
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700 transition rounded-lg"
+                >
+                  <FileText className="w-5 h-5 mr-2" />
+                  Generate Report
+                </Button>
               </div>
             </div>
-          )}
-        </CardContent>
-      </Card>
 
-      {/* Available Report Types */}
-      <Card className="rounded-2xl shadow">
-        <CardHeader>
-          <CardTitle className="text-lg font-semibold text-slate-800">Available Report Types</CardTitle>
-          <CardDescription>Choose from predefined templates</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {reportTypes.map((type) => (
-              <div
-                key={type.id}
-                onClick={() => setReportType(type.id)}
-                className={`p-5 rounded-xl border transition cursor-pointer ${reportType === type.id
-                    ? "border-blue-500 bg-blue-50"
-                    : "hover:border-slate-300"
-                  }`}
-              >
-                <div className="flex items-start space-x-3">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    <type.icon className="w-5 h-5 text-gray-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-800">{type.title}</h4>
-                    <p className="text-sm text-slate-600">{type.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Recent Reports */}
-      <Card className="rounded-2xl shadow">
-        <CardHeader>
-          <CardTitle className="text-lg font-semibold text-slate-800">Recent Reports</CardTitle>
-          <CardDescription>Download previously generated reports</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {recentReports.map((report, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-between p-4 border rounded-xl hover:shadow transition"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-gray-100 rounded-full">
-                  <FileText className="w-5 h-5 text-gray-600" />
+            {/* Report Description */}
+            {reportType && (
+              <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                <div className="p-2 bg-blue-100 rounded-full">
+                  {(() => {
+                    const Icon = reportTypes.find(type => type.id === reportType)?.icon;
+                    return Icon ? <Icon className="w-5 h-5 text-blue-600" /> : null;
+                  })()}
                 </div>
                 <div>
-                  <h4 className="font-medium text-slate-800">{report.name}</h4>
-                  <div className="flex items-center flex-wrap gap-2 text-sm text-slate-500">
-                    <Badge variant="outline">{report.type}</Badge>
-                    <span>Generated: {report.generatedDate}</span>
-                    <span>Size: {report.size}</span>
-                  </div>
+                  <h4 className="font-semibold text-blue-900">
+                    {reportTypes.find(type => type.id === reportType)?.title}
+                  </h4>
+                  <p className="text-sm text-blue-700">
+                    {reportTypes.find(type => type.id === reportType)?.description}
+                  </p>
                 </div>
               </div>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => handleDownload(report)}
-                className="hover:bg-blue-50 transition"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Download
-              </Button>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Available Report Types */}
+        <Card className="rounded-2xl shadow">
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold text-slate-800">Available Report Types</CardTitle>
+            <CardDescription>Choose from predefined templates</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {reportTypes.map((type) => (
+                <div
+                  key={type.id}
+                  onClick={() => setReportType(type.id)}
+                  className={`p-5 rounded-xl border transition cursor-pointer ${reportType === type.id
+                    ? "border-blue-500 bg-blue-50"
+                    : "hover:border-slate-300"
+                    }`}
+                >
+                  <div className="flex items-start space-x-3">
+                    <div className="p-2 bg-gray-100 rounded-full">
+                      <type.icon className="w-5 h-5 text-gray-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-slate-800">{type.title}</h4>
+                      <p className="text-sm text-slate-600">{type.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      {/* Analytics Overview */}
-      <Card className="rounded-2xl shadow-xl border border-slate-200 bg-white/80 backdrop-blur-sm transition">
-  <CardHeader className="pb-2 border-b border-slate-100">
-    <CardTitle className="text-xl font-bold text-slate-800">📊 Analytics Overview</CardTitle>
-    <CardDescription className="text-slate-500">
-      Key insights based on complaint resolution data
-    </CardDescription>
-  </CardHeader>
+        {/* Recent Reports */}
+        <Card className="rounded-2xl shadow">
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold text-slate-800">Recent Reports</CardTitle>
+            <CardDescription>Download previously generated reports</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {recentReports.map((report, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between p-4 border rounded-xl hover:shadow transition"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 bg-gray-100 rounded-full">
+                    <FileText className="w-5 h-5 text-gray-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-slate-800">{report.name}</h4>
+                    <div className="flex items-center flex-wrap gap-2 text-sm text-slate-500">
+                      <Badge variant="outline">{report.type}</Badge>
+                      <span>Generated: {report.generatedDate}</span>
+                      <span>Size: {report.size}</span>
+                    </div>
+                  </div>
+                </div>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => handleDownload(report)}
+                  className="hover:bg-blue-50 transition"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download
+                </Button>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
 
-  <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 text-sm text-slate-700">
-    {/* Top Categories */}
-    <div className="bg-slate-50 rounded-lg p-4 hover:shadow-md transition">
-      <h4 className="font-semibold text-slate-800 mb-3 border-b pb-1 border-slate-200">
-        🏷️ Top Categories
-      </h4>
-      <div className="space-y-3">
-        <div className="flex justify-between items-center">
-          <span>🎓 Academic</span>
-          <span className="font-semibold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full text-xs">34%</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span>🏗️ Infrastructure</span>
-          <span className="font-semibold text-teal-600 bg-teal-100 px-2 py-0.5 rounded-full text-xs">28%</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span>📁 Administrative</span>
-          <span className="font-semibold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full text-xs">21%</span>
-        </div>
+        {/* Analytics Overview */}
+        <Card className="rounded-2xl shadow-xl border border-slate-200 bg-white/80 backdrop-blur-sm transition">
+          <CardHeader className="pb-2 border-b border-slate-100">
+            <CardTitle className="text-xl font-bold text-slate-800">📊 Analytics Overview</CardTitle>
+            <CardDescription className="text-slate-500">
+              Key insights based on complaint resolution data
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 text-sm text-slate-700">
+            {/* Top Categories */}
+            <div className="bg-slate-50 rounded-lg p-4 hover:shadow-md transition">
+              <h4 className="font-semibold text-slate-800 mb-3 border-b pb-1 border-slate-200">
+                🏷️ Top Categories
+              </h4>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span>🎓 Academic</span>
+                  <span className="font-semibold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full text-xs">34%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>🏗️ Infrastructure</span>
+                  <span className="font-semibold text-teal-600 bg-teal-100 px-2 py-0.5 rounded-full text-xs">28%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>📁 Administrative</span>
+                  <span className="font-semibold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full text-xs">21%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Resolution Trends */}
+            <div className="bg-slate-50 rounded-lg p-4 hover:shadow-md transition">
+              <h4 className="font-semibold text-slate-800 mb-3 border-b pb-1 border-slate-200">
+                ⏱️ Resolution Trends
+              </h4>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span>✅ Within SLA</span>
+                  <span className="font-semibold text-green-600 bg-green-100 px-2 py-0.5 rounded-full text-xs">87%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>⚠️ Escalated</span>
+                  <span className="font-semibold text-yellow-600 bg-yellow-100 px-2 py-0.5 rounded-full text-xs">9%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>❌ Overdue</span>
+                  <span className="font-semibold text-red-600 bg-red-100 px-2 py-0.5 rounded-full text-xs">4%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Department Performance */}
+            <div className="bg-slate-50 rounded-lg p-4 hover:shadow-md transition">
+              <h4 className="font-semibold text-slate-800 mb-3 border-b pb-1 border-slate-200">
+                🏢 Department Performance
+              </h4>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span>💻 IT Services</span>
+                  <span className="font-semibold text-indigo-600">4.7 / 5 ⭐</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>🧑‍💻 Computer Science</span>
+                  <span className="font-semibold text-indigo-600">4.2 / 5 ⭐</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>📋 Administration</span>
+                  <span className="font-semibold text-indigo-600">3.9 / 5 ⭐</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
       </div>
-    </div>
-
-    {/* Resolution Trends */}
-    <div className="bg-slate-50 rounded-lg p-4 hover:shadow-md transition">
-      <h4 className="font-semibold text-slate-800 mb-3 border-b pb-1 border-slate-200">
-        ⏱️ Resolution Trends
-      </h4>
-      <div className="space-y-3">
-        <div className="flex justify-between items-center">
-          <span>✅ Within SLA</span>
-          <span className="font-semibold text-green-600 bg-green-100 px-2 py-0.5 rounded-full text-xs">87%</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span>⚠️ Escalated</span>
-          <span className="font-semibold text-yellow-600 bg-yellow-100 px-2 py-0.5 rounded-full text-xs">9%</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span>❌ Overdue</span>
-          <span className="font-semibold text-red-600 bg-red-100 px-2 py-0.5 rounded-full text-xs">4%</span>
-        </div>
-      </div>
-    </div>
-
-    {/* Department Performance */}
-    <div className="bg-slate-50 rounded-lg p-4 hover:shadow-md transition">
-      <h4 className="font-semibold text-slate-800 mb-3 border-b pb-1 border-slate-200">
-        🏢 Department Performance
-      </h4>
-      <div className="space-y-3">
-        <div className="flex justify-between items-center">
-          <span>💻 IT Services</span>
-          <span className="font-semibold text-indigo-600">4.7 / 5 ⭐</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span>🧑‍💻 Computer Science</span>
-          <span className="font-semibold text-indigo-600">4.2 / 5 ⭐</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span>📋 Administration</span>
-          <span className="font-semibold text-indigo-600">3.9 / 5 ⭐</span>
-        </div>
-      </div>
-    </div>
-  </CardContent>
-</Card>
-
-    </div>
-
+    </SearchableWrapper>
   );
 };
 

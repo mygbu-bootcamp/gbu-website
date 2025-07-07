@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Upload, Shield, Award } from "lucide-react";
 import { useToast } from "../../hooks/use-toast";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Motion Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -198,6 +200,7 @@ const NCCRegistration = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -439,6 +442,7 @@ const NCCRegistration = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

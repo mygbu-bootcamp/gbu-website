@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, BookOpen, Users, Award, TrendingUp, Brain, Zap, Shield, Database } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const ResearchArea = () => {
   return (
+    <SearchableWrapper>
 <>
 
       {/* Hero Section */}
@@ -432,6 +435,7 @@ const ResearchArea = () => {
       </section>
 
     </>
+    </SearchableWrapper>
   );
 };
 

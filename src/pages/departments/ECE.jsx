@@ -1,6 +1,8 @@
 
 import { Users, Award, BookOpen, Lightbulb, Cpu, Zap, Radio, Microchip, GraduationCap, Brain, Beaker, Trophy, Star, User, Medal, Target } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-xl shadow-lg border ${className}`}>{children}</div>
 );
@@ -178,6 +180,7 @@ const ECE = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
 
 
@@ -541,6 +544,7 @@ const ECE = () => {
 
 
     </div>
+    </SearchableWrapper>
   );
 };
 

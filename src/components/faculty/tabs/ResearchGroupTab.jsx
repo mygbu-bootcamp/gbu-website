@@ -1,5 +1,8 @@
 
 import React from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Card Component
 const Card = ({ className = "", children }) => (
   <div className={`rounded-xl bg-white border shadow-sm ${className}`}>{children}</div>
@@ -126,6 +129,7 @@ export const ResearchGroupTab = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Research Group Overview */}
       <Card className="hover:shadow-lg transition-shadow duration-300">
@@ -299,5 +303,6 @@ export const ResearchGroupTab = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };

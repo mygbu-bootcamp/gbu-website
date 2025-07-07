@@ -1,3 +1,4 @@
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 const Card = ({ className = "", children, ...props }) => (
     <div
@@ -72,6 +73,7 @@ const FeatureCard = ({ title, description, icon: Icon, link }) => {
   const navigate = useNavigate();
 
   return (
+    <SearchableWrapper>
     <Card 
       className="h-full min-h-[200px] hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border-0 shadow-md bg-gradient-to-br from-white to-blue-50/50 group"
       onClick={() => navigate(link)}
@@ -90,6 +92,7 @@ const FeatureCard = ({ title, description, icon: Icon, link }) => {
         </CardDescription>
       </CardContent>
     </Card>
+    </SearchableWrapper>
   );
 };
 

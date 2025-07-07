@@ -1,6 +1,8 @@
 
 import { Users, Award, BookOpen, Lightbulb, Globe, Server, Smartphone, Shield, GraduationCap, Brain, Code, Trophy, Star, User, Medal, Target } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-xl shadow-lg border ${className}`}>{children}</div>
 );
@@ -51,6 +53,7 @@ const Button = ({ children, variant = "default", size = "md", className = "", ..
 const IT = () => {
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
 
 
@@ -412,6 +415,7 @@ const IT = () => {
 
 
     </div>
+    </SearchableWrapper>
   );
 };
 

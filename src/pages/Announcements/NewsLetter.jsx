@@ -6,6 +6,8 @@ import { Download, FileText } from 'lucide-react';
 import { format } from 'date-fns';
 import { useToast } from '../../hooks/use-toast';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card Component
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 border-solid hover:shadow-3xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 flex flex-col${className}`}>
@@ -134,6 +136,7 @@ const NewsLetter = () => {
   const latestId = mockNewsletters[0].id;
 
   return (
+    <SearchableWrapper>
     <>
       <section className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-20 text-center">
         <h1 className="text-5xl font-bold mb-4">GBU Newsletter</h1>
@@ -195,6 +198,7 @@ const NewsLetter = () => {
         </form>
       </div>
     </>
+    </SearchableWrapper>
   );
 };
 

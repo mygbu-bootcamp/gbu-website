@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Calendar, Users, Award, FileText, Camera, Upload, Share2, Mail } from 'lucide-react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Minimal UI components defined in this file for usage below
 
 const Button = ({ children, className = '', ...props }) => (
@@ -92,6 +95,7 @@ const NSS = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
       {/* Header */}
       <div className="bg-blue-600 text-white py-16">
@@ -172,6 +176,7 @@ const NSS = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

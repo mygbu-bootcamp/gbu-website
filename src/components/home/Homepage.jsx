@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 export default function WelcomePage() {
   const [bannerData, setBannerData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -87,6 +89,7 @@ export default function WelcomePage() {
   // Heights: primary navbar = 48px (py-2), secondary navbar = 48px (py-3 + logo height)
   // Total offset = 48px + 48px = 96px (adjust if your navbars are different)
   return (
+    <SearchableWrapper>
     <>
       {/* Main welcome section */}
       <div className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
@@ -282,5 +285,6 @@ export default function WelcomePage() {
         }
       `}</style>
     </>
+    </SearchableWrapper>
   );
 }

@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Globe, TrendingUp, Target, Lightbulb, ArrowRight } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const StrategicPerspective = () => {
   const [scrollY, setScrollY] = useState(0);
   const [currentQuote, setCurrentQuote] = useState(0);
@@ -66,6 +68,7 @@ const StrategicPerspective = () => {
   }, [quotes.length]);
 
   return (
+    <SearchableWrapper>
     <>
       {/* Hero Section with Parallax */}
       <section className="relative h-96 bg-gradient-to-r from-cyan-900 via-blue-800 to-purple-800 overflow-hidden">
@@ -219,6 +222,7 @@ const StrategicPerspective = () => {
         </div>
       </section>
 </>
+</SearchableWrapper>
   );
 };
 

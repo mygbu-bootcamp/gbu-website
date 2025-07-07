@@ -16,6 +16,8 @@ import {
   X,
 } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Navigation configuration data
 const NAVIGATION_CONFIG = [
   {
@@ -351,6 +353,7 @@ const Navbar = () => {
   };
 
   return (
+    <SearchableWrapper>
     <nav
       className={`fixed top-9 left-0 w-full z-40 bg-white transition-all duration-300 ${
         isScrolled ? "shadow-md" : "shadow"
@@ -416,6 +419,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
+    </SearchableWrapper>
   );
 };
 

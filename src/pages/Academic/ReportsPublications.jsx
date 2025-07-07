@@ -6,6 +6,8 @@ import {
   TrendingUp, Users
 } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const ReportsPublications = () => {
   const [hero, setHero] = useState(null);
   const [reports, setReports] = useState([]);
@@ -62,6 +64,7 @@ const ReportsPublications = () => {
   if (!hero) return <div className="text-center py-20">Loading...</div>;
 
   return (
+    <SearchableWrapper>
     <>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-600 text-white py-20">
@@ -225,6 +228,7 @@ const ReportsPublications = () => {
         </div>
       </section>
     </>
+    </SearchableWrapper>
   );
 };
 

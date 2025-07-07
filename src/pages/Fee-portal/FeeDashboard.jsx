@@ -5,6 +5,9 @@ import FeeSummaryCard from './FeeSummaryCard';
 import FeeDetailsSection from './FeeDetailsSection';
 import PaymentSection from './PaymentSection';
 import ImportantNotesCard from './ImportantNotesCard';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Custom Button component with modern UI and effects
 const Button = ({
   onClick,
@@ -60,6 +63,7 @@ const FeeDashboard = ({ onBackToLanding }) => {
   }
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -91,6 +95,7 @@ const FeeDashboard = ({ onBackToLanding }) => {
         <ImportantNotesCard />
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

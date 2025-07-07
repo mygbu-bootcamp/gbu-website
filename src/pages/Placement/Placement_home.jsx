@@ -5,8 +5,11 @@ import PlacementStatistics from './PlacementStatistics'
 import TrainingCareerServices from './TrainingCareerServices'
 import CampusRecruiters from './CampusRecruiters'
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 function Placement_home() {
   return (
+    <SearchableWrapper>
     <div>
        <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
@@ -22,6 +25,7 @@ function Placement_home() {
       <TrainingCareerServices/>
       <CampusRecruiters/>
     </div>
+    </SearchableWrapper>
   )
 }
 

@@ -1,6 +1,8 @@
 
 import React from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Button component
 export const Button = React.forwardRef(
     (
@@ -114,6 +116,7 @@ const FacultyComplaintsList = ({ complaints, onSelectComplaint }) => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-4">
       {complaints.map((complaint) => (
         <Card key={complaint.id} className="hover:shadow-md transition-shadow">
@@ -210,6 +213,7 @@ const FacultyComplaintsList = ({ complaints, onSelectComplaint }) => {
         </Card>
       )}
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -1,5 +1,8 @@
 
 import React from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Card, CardHeader, CardTitle, CardContent, and Badge components defined here for best UI/UX
 
 // Card container with subtle shadow and rounded corners
@@ -100,6 +103,7 @@ export const QualificationsTab = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-8">
       {/* Educational Qualifications */}
       <Card className="hover:shadow-lg transition-shadow duration-300">
@@ -184,5 +188,6 @@ export const QualificationsTab = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };

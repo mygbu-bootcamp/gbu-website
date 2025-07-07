@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
+import SearchableWrapper from '../components/Searchbar/SearchableWrapper';
+
 // Dummy alumni data for authentication
 const dummyAlumni = {
   id: 1,
@@ -46,6 +48,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
+    <SearchableWrapper>
     <AuthContext.Provider
       value={{
         user,
@@ -57,6 +60,7 @@ export const AuthProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
+    </SearchableWrapper>
   );
 };
 

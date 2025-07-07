@@ -10,8 +10,11 @@ import {
   Youtube,
 } from "lucide-react";
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const ContactUs = () => {
   return (
+    <SearchableWrapper>
     <section className="px-4 py-15 ">
        <h1 className="text-3xl font-bold text-center mb-8">CONTACT US</h1>
        
@@ -90,6 +93,7 @@ const ContactUs = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

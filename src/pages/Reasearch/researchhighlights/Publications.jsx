@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Eye, Download, Filter } from "lucide-react";
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const Publications = () => {
   const [activeTab, setActiveTab] = useState("publications");
   const [selectedSchool, setSelectedSchool] = useState("");
@@ -240,6 +242,7 @@ const Publications = () => {
       : Math.ceil(filteredPatents.length / itemsPerPage);
 
   return (
+    <SearchableWrapper>
     <div className="container mx-auto px-10 py-20">
       <div className="bg-gradient-to-b from-white to-blue-50">
         <div className="text-center mb-8">
@@ -588,6 +591,7 @@ const Publications = () => {
         </div>
       )}
     </div>
+    </SearchableWrapper>
   );
 };
 

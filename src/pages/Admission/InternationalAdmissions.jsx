@@ -15,6 +15,9 @@ import {
   Phone,
   Mail
 } from 'lucide-react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ children, className }) => (
   <div className={`rounded-lg shadow bg-white border ${className || ""}`}>{children}</div>
 );
@@ -244,6 +247,7 @@ const InternationalAdmissions = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
 
       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
@@ -521,6 +525,7 @@ const InternationalAdmissions = () => {
         </Tabs>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

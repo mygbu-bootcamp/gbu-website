@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 export default function CampusGallery() {
   const [galleryData, setGalleryData] = useState([]);
   const [mainImageIndex, setMainImageIndex] = useState(0);
@@ -50,6 +52,7 @@ export default function CampusGallery() {
   const currentImage = galleryData[mainImageIndex];
 
   return (
+    <SearchableWrapper>
     <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
       <div className="w-full py-6 sm:py-10 lg:py-16 mx-auto px-3 sm:px-6 lg:px-8">
         <style>{`
@@ -186,5 +189,6 @@ export default function CampusGallery() {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 }

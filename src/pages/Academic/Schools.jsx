@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Users, BookOpen, Award, Globe } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const GlobalStyles = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -187,6 +189,7 @@ const HoverCards = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       <GlobalStyles />
       
@@ -272,6 +275,7 @@ const HoverCards = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

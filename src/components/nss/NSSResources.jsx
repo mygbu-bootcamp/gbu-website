@@ -8,6 +8,8 @@ import {
   ExternalLink
 } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Local Card components
 const Card = ({ className = "", children, ...props }) => (
   <motion.div
@@ -178,7 +180,7 @@ const NSSResources = () => {
   };
 
   return (
-
+<SearchableWrapper>
     <motion.div
       className="space-y-12 mx-4 md:mx-20"
       initial="hidden"
@@ -344,6 +346,7 @@ const NSSResources = () => {
         </div>
       </motion.div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

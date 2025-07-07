@@ -2,6 +2,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, Filter, Eye, Download } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const NSSGallery = () => {
   const [selectedYear, setSelectedYear] = useState('2024');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -96,7 +98,7 @@ const NSSGallery = () => {
   };
 
   return (
-
+<SearchableWrapper>
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -355,6 +357,7 @@ const NSSGallery = () => {
         </div>
       </motion.div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaInstagram, FaFacebookF, FaXTwitter } from 'react-icons/fa6';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const entrepreneurs = [
   {
     name: 'Priyansh Goel',
@@ -34,6 +36,7 @@ const entrepreneurs = [
 
 const OurEntrepreneurs = () => {
   return (
+    <SearchableWrapper>
     <div className="bg-white py-12 px-4 text-center">
       <h2 className="text-3xl font-semibold mb-10">Our Entrepreneurs</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -68,6 +71,7 @@ const OurEntrepreneurs = () => {
         ))}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

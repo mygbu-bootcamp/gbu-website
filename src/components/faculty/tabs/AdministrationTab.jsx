@@ -1,5 +1,8 @@
 
 import React from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Card, CardHeader, CardTitle, CardContent, and Badge components defined here for best UI/UX
 
 const Card = ({ className = '', children }) => (
@@ -104,115 +107,117 @@ export const AdministrationTab = () => {
   ];
 
   const getStatusColor = (status) => {
-    return status === 'ongoing' 
-      ? 'bg-green-100 text-green-800' 
+    return status === 'ongoing'
+      ? 'bg-green-100 text-green-800'
       : 'bg-blue-100 text-blue-800';
   };
 
   return (
-    <div className="space-y-6">
-      {/* Administrative Roles */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-2xl text-gray-900 flex items-center">
-            <Settings className="w-6 h-6 mr-2 text-blue-600" />
-            Administrative Roles
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-6">
-            {administrativeRoles.map((role, index) => (
-              <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{role.role}</h3>
-                    <p className="text-blue-600 font-medium mb-1">{role.department}</p>
-                    <p className="text-gray-700 mb-2">{role.institution}</p>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {role.duration}
+    <SearchableWrapper>
+      <div className="space-y-6">
+        {/* Administrative Roles */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-2xl text-gray-900 flex items-center">
+              <Settings className="w-6 h-6 mr-2 text-blue-600" />
+              Administrative Roles
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {administrativeRoles.map((role, index) => (
+                <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{role.role}</h3>
+                      <p className="text-blue-600 font-medium mb-1">{role.department}</p>
+                      <p className="text-gray-700 mb-2">{role.institution}</p>
+                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                        <div className="flex items-center">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {role.duration}
+                        </div>
                       </div>
                     </div>
+                    <Badge className={getStatusColor(role.status)}>
+                      {role.status.charAt(0).toUpperCase() + role.status.slice(1)}
+                    </Badge>
                   </div>
-                  <Badge className={getStatusColor(role.status)}>
-                    {role.status.charAt(0).toUpperCase() + role.status.slice(1)}
-                  </Badge>
-                </div>
-                
-                <div>
-                  <h4 className="font-medium text-gray-900 mb-2">Key Responsibilities:</h4>
-                  <ul className="space-y-1">
-                    {role.responsibilities.map((responsibility, idx) => (
-                      <li key={idx} className="text-sm text-gray-700 flex items-start">
-                        <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        {responsibility}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
 
-      {/* Committee Memberships */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900 flex items-center">
-            <Users className="w-5 h-5 mr-2 text-blue-600" />
-            Committee Memberships
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4">
-            {committees.map((committee, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-100">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                   <div>
-                    <h3 className="font-semibold text-gray-900">{committee.name}</h3>
-                    <p className="text-sm text-blue-600">{committee.role}</p>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-600">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    {committee.period}
+                    <h4 className="font-medium text-gray-900 mb-2">Key Responsibilities:</h4>
+                    <ul className="space-y-1">
+                      {role.responsibilities.map((responsibility, idx) => (
+                        <li key={idx} className="text-sm text-gray-700 flex items-start">
+                          <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          {responsibility}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-      {/* Administrative Impact */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900">Administrative Impact</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
-              <div className="text-2xl font-bold text-green-600">{administrativeRoles.length}</div>
-              <div className="text-sm text-green-700">Total Roles</div>
+        {/* Committee Memberships */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900 flex items-center">
+              <Users className="w-5 h-5 mr-2 text-blue-600" />
+              Committee Memberships
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4">
+              {committees.map((committee, index) => (
+                <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-100">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                      <h3 className="font-semibold text-gray-900">{committee.name}</h3>
+                      <p className="text-sm text-blue-600">{committee.role}</p>
+                    </div>
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {committee.period}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
-              <div className="text-2xl font-bold text-blue-600">
-                {administrativeRoles.filter(role => role.status === 'ongoing').length}
+          </CardContent>
+        </Card>
+
+        {/* Administrative Impact */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900">Administrative Impact</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
+                <div className="text-2xl font-bold text-green-600">{administrativeRoles.length}</div>
+                <div className="text-sm text-green-700">Total Roles</div>
               </div>
-              <div className="text-sm text-blue-700">Current Roles</div>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
+                <div className="text-2xl font-bold text-blue-600">
+                  {administrativeRoles.filter(role => role.status === 'ongoing').length}
+                </div>
+                <div className="text-sm text-blue-700">Current Roles</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
+                <div className="text-2xl font-bold text-purple-600">{committees.length}</div>
+                <div className="text-sm text-purple-700">Committees</div>
+              </div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
+                <div className="text-2xl font-bold text-orange-600">3+</div>
+                <div className="text-sm text-orange-700">Years Service</div>
+              </div>
             </div>
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
-              <div className="text-2xl font-bold text-purple-600">{committees.length}</div>
-              <div className="text-sm text-purple-700">Committees</div>
-            </div>
-            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
-              <div className="text-2xl font-bold text-orange-600">3+</div>
-              <div className="text-sm text-orange-700">Years Service</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          </CardContent>
+        </Card>
+      </div>
+    </SearchableWrapper>
   );
 };

@@ -5,6 +5,9 @@ import Header from '../../components/announcement/Header';
 import SearchFilter from '../../components/announcement/SearchFilter';
 import SocialShare from '../../components/announcement/SocialShare';
 import Pagination from '../../components/announcement/Pagination';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card components
 const Card = ({ children, className = '' }) => (
   <div className={`bg-white rounded-lg border border-gray-200 border-solid${className}`}>{children}</div>
@@ -213,6 +216,7 @@ const Notice = () => {
   };
 
   return (
+    <SearchableWrapper>
     <>
       <div className="min-h-screen bg-gray-50 pb-10">
         {/* <Header /> */}
@@ -306,7 +310,9 @@ const Notice = () => {
       </div>
 
     </>
+    </SearchableWrapper>
   );
+
 };
 
 export default Notice;

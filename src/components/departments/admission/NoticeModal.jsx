@@ -1,5 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Simple Dialog components and Button for modal UI
 
 const Dialog = ({ open, onOpenChange, children }) => {
@@ -154,6 +157,7 @@ const NoticeModal = () => {
   const currentNotice = notices[currentNoticeIndex];
 
   return (
+    <SearchableWrapper>
     <>
       {/* Notice Bell Button */}
       <button
@@ -239,6 +243,7 @@ const NoticeModal = () => {
         </DialogContent>
       </Dialog>
     </>
+    </SearchableWrapper>
   );
 };
 

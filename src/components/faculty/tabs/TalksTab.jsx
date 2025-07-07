@@ -1,5 +1,7 @@
 
 import React from 'react';
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Minimal UI components with Tailwind CSS, matching usage and effects
 
 export const Card = ({ className = '', children, ...props }) => (
@@ -172,172 +174,174 @@ export const TalksTab = () => {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Talks Overview */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-2xl text-gray-900 flex items-center">
-            <Mic className="w-6 h-6 mr-2 text-blue-600" />
-            Invited Talks & Presentations
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
-              <div className="text-2xl font-bold text-blue-600">{invitedTalks.length}</div>
-              <div className="text-sm text-blue-700">Total Talks</div>
-            </div>
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
-              <div className="text-2xl font-bold text-purple-600">
-                {invitedTalks.filter(talk => talk.type === 'keynote').length}
+    <SearchableWrapper>
+      <div className="space-y-6">
+        {/* Talks Overview */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-2xl text-gray-900 flex items-center">
+              <Mic className="w-6 h-6 mr-2 text-blue-600" />
+              Invited Talks & Presentations
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
+                <div className="text-2xl font-bold text-blue-600">{invitedTalks.length}</div>
+                <div className="text-sm text-blue-700">Total Talks</div>
               </div>
-              <div className="text-sm text-purple-700">Keynote Speeches</div>
-            </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
-              <div className="text-2xl font-bold text-green-600">
-                {invitedTalks.filter(talk => talk.hasRecording).length}
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
+                <div className="text-2xl font-bold text-purple-600">
+                  {invitedTalks.filter(talk => talk.type === 'keynote').length}
+                </div>
+                <div className="text-sm text-purple-700">Keynote Speeches</div>
               </div>
-              <div className="text-sm text-green-700">Recorded Talks</div>
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
+                <div className="text-2xl font-bold text-green-600">
+                  {invitedTalks.filter(talk => talk.hasRecording).length}
+                </div>
+                <div className="text-sm text-green-700">Recorded Talks</div>
+              </div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
+                <div className="text-2xl font-bold text-orange-600">2024</div>
+                <div className="text-sm text-orange-700">Latest Year</div>
+              </div>
             </div>
-            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
-              <div className="text-2xl font-bold text-orange-600">2024</div>
-              <div className="text-sm text-orange-700">Latest Year</div>
-            </div>
-          </div>
-          
-          <p className="text-gray-700 leading-relaxed">
-            Dr. Kumar is a sought-after speaker in the fields of artificial intelligence, cybersecurity, 
-            and machine learning. His presentations combine cutting-edge research insights with practical 
-            applications, making complex topics accessible to diverse audiences.
-          </p>
-        </CardContent>
-      </Card>
 
-      {/* Talk Details */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900">Speaking Engagements</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-6">
-            {invitedTalks.map((talk, index) => (
-              <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{talk.title}</h3>
-                    <p className="text-gray-700 mb-4 leading-relaxed">{talk.description}</p>
-                    
-                    <div className="grid sm:grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
-                      <div className="space-y-2">
-                        <p className="font-medium text-blue-600">{talk.event}</p>
-                        <p className="flex items-center">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          {talk.date}
-                        </p>
-                        <p className="flex items-center">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          {talk.venue}
-                        </p>
+            <p className="text-gray-700 leading-relaxed">
+              Dr. Kumar is a sought-after speaker in the fields of artificial intelligence, cybersecurity,
+              and machine learning. His presentations combine cutting-edge research insights with practical
+              applications, making complex topics accessible to diverse audiences.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Talk Details */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900">Speaking Engagements</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {invitedTalks.map((talk, index) => (
+                <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{talk.title}</h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">{talk.description}</p>
+
+                      <div className="grid sm:grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
+                        <div className="space-y-2">
+                          <p className="font-medium text-blue-600">{talk.event}</p>
+                          <p className="flex items-center">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {talk.date}
+                          </p>
+                          <p className="flex items-center">
+                            <MapPin className="w-4 h-4 mr-1" />
+                            {talk.venue}
+                          </p>
+                        </div>
+                        <div className="space-y-2">
+                          <p><span className="font-medium">Host:</span> {talk.host}</p>
+                          <p><span className="font-medium">Role:</span> {talk.role}</p>
+                          <p className="flex items-center">
+                            <Users className="w-4 h-4 mr-1" />
+                            {talk.audience}
+                          </p>
+                        </div>
                       </div>
-                      <div className="space-y-2">
-                        <p><span className="font-medium">Host:</span> {talk.host}</p>
-                        <p><span className="font-medium">Role:</span> {talk.role}</p>
-                        <p className="flex items-center">
-                          <Users className="w-4 h-4 mr-1" />
-                          {talk.audience}
-                        </p>
+
+                      <div className="flex gap-2 mb-4">
+                        {talk.hasSlides && (
+                          <Button variant="outline" size="sm">
+                            <ExternalLink className="w-4 h-4 mr-1" />
+                            View Slides
+                          </Button>
+                        )}
+                        {talk.hasRecording && (
+                          <Button variant="outline" size="sm">
+                            <Play className="w-4 h-4 mr-1" />
+                            Watch Recording
+                          </Button>
+                        )}
                       </div>
                     </div>
-                    
-                    <div className="flex gap-2 mb-4">
-                      {talk.hasSlides && (
-                        <Button variant="outline" size="sm">
-                          <ExternalLink className="w-4 h-4 mr-1" />
-                          View Slides
-                        </Button>
-                      )}
+
+                    <div className="flex flex-col items-start lg:items-end gap-2">
+                      <Badge className={getTypeColor(talk.type)}>
+                        {formatType(talk.type)}
+                      </Badge>
                       {talk.hasRecording && (
-                        <Button variant="outline" size="sm">
-                          <Play className="w-4 h-4 mr-1" />
-                          Watch Recording
-                        </Button>
+                        <Badge variant="outline" className="text-xs">
+                          <Play className="w-3 h-3 mr-1" />
+                          Recorded
+                        </Badge>
+                      )}
+                      {talk.hasSlides && (
+                        <Badge variant="outline" className="text-xs">
+                          <ExternalLink className="w-3 h-3 mr-1" />
+                          Slides Available
+                        </Badge>
                       )}
                     </div>
-                  </div>
-                  
-                  <div className="flex flex-col items-start lg:items-end gap-2">
-                    <Badge className={getTypeColor(talk.type)}>
-                      {formatType(talk.type)}
-                    </Badge>
-                    {talk.hasRecording && (
-                      <Badge variant="outline" className="text-xs">
-                        <Play className="w-3 h-3 mr-1" />
-                        Recorded
-                      </Badge>
-                    )}
-                    {talk.hasSlides && (
-                      <Badge variant="outline" className="text-xs">
-                        <ExternalLink className="w-3 h-3 mr-1" />
-                        Slides Available
-                      </Badge>
-                    )}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-      {/* Speaking Topics */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900">Speaking Expertise</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              {
-                topic: "Artificial Intelligence & Machine Learning",
-                talks: 3,
-                color: "blue"
-              },
-              {
-                topic: "Cybersecurity & Privacy",
-                talks: 2,
-                color: "red"
-              },
-              {
-                topic: "Educational Technology",
-                talks: 1,
-                color: "green"
-              },
-              {
-                topic: "AI Ethics & Fairness",
-                talks: 1,
-                color: "purple"
-              },
-              {
-                topic: "IoT Security",
-                talks: 1,
-                color: "orange"
-              },
-              {
-                topic: "Research Methodology",
-                talks: 1,
-                color: "indigo"
-              }
-            ].map((expertise, index) => (
-              <div key={index} className={`bg-gradient-to-br from-${expertise.color}-50 to-${expertise.color}-100 rounded-lg p-4 border border-${expertise.color}-200`}>
-                <h3 className={`font-semibold text-${expertise.color}-900 mb-2`}>{expertise.topic}</h3>
-                <p className={`text-sm text-${expertise.color}-700`}>
-                  {expertise.talks} talk{expertise.talks > 1 ? 's' : ''}
-                </p>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+        {/* Speaking Topics */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900">Speaking Expertise</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                {
+                  topic: "Artificial Intelligence & Machine Learning",
+                  talks: 3,
+                  color: "blue"
+                },
+                {
+                  topic: "Cybersecurity & Privacy",
+                  talks: 2,
+                  color: "red"
+                },
+                {
+                  topic: "Educational Technology",
+                  talks: 1,
+                  color: "green"
+                },
+                {
+                  topic: "AI Ethics & Fairness",
+                  talks: 1,
+                  color: "purple"
+                },
+                {
+                  topic: "IoT Security",
+                  talks: 1,
+                  color: "orange"
+                },
+                {
+                  topic: "Research Methodology",
+                  talks: 1,
+                  color: "indigo"
+                }
+              ].map((expertise, index) => (
+                <div key={index} className={`bg-gradient-to-br from-${expertise.color}-50 to-${expertise.color}-100 rounded-lg p-4 border border-${expertise.color}-200`}>
+                  <h3 className={`font-semibold text-${expertise.color}-900 mb-2`}>{expertise.topic}</h3>
+                  <p className={`text-sm text-${expertise.color}-700`}>
+                    {expertise.talks} talk{expertise.talks > 1 ? 's' : ''}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </SearchableWrapper>
   );
 };

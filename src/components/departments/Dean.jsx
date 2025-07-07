@@ -1,5 +1,7 @@
 import React from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const LeadershipCard = () => {
   const leader = {
   name: "Dr. Arpit Bhardwaj",
@@ -12,6 +14,7 @@ I am more than confident to tell you that the best, most effective and finest we
 
 
   return (
+    <SearchableWrapper>
     <section className="py-12 sm:py-16 bg-gray-100">
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-10 sm:mb-12">
         Dean's <span className="text-blue-800">Message</span>
@@ -39,6 +42,7 @@ I am more than confident to tell you that the best, most effective and finest we
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

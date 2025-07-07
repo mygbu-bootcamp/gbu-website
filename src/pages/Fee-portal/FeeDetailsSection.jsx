@@ -1,5 +1,8 @@
 
 import React from 'react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card components
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-xl border border-gray-200 ${className}`}>{children}</div>
@@ -138,6 +141,7 @@ const FeeDetailsSection = () => {
   };
 
   return (
+    <SearchableWrapper>
     <Card className="shadow-lg">
       <CardHeader>
         <CardTitle className="text-xl">Fee Details</CardTitle>
@@ -227,6 +231,7 @@ const FeeDetailsSection = () => {
         </Tabs>
       </CardContent>
     </Card>
+    </SearchableWrapper>
   );
 };
 

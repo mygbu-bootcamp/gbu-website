@@ -4,6 +4,9 @@ import Header from '../../components/announcement/Header';
 import EventFilters from '../../components/announcement/EventFilters';
 import EventTabs from '../../components/announcement/EventTabs';
 import EnhancedPagination from '../../components/announcement/EnhancedPagination';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Mock event data
 const mockEvents = [
   {
@@ -237,6 +240,7 @@ const EventsPage = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen w-full bg-gray-50">
       {/* <Header /> */}
        <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
@@ -284,7 +288,7 @@ const EventsPage = () => {
           />
         )}
         </div>
-  
+  </SearchableWrapper>
   );
 };
 

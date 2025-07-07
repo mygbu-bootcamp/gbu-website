@@ -6,6 +6,8 @@ import {
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Mapping backend icon strings to Lucide icons
 const iconMap = {
   university: University,
@@ -43,6 +45,7 @@ const QuickAccess = () => {
   }, []);
 
   return (
+    <SearchableWrapper>
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-800">
@@ -78,6 +81,7 @@ const QuickAccess = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

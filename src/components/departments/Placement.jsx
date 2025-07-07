@@ -1,3 +1,5 @@
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const PlacementsSection = () => {
   const placementStats = [
   { label: "Placement Rate", value: "85‑90%", color: "bg-green-500" },
@@ -8,6 +10,7 @@ const PlacementsSection = () => {
 
 
   return (
+    <SearchableWrapper>
     <section
       id="placements"
       className="py-20 bg-gray-100"
@@ -54,6 +57,7 @@ const PlacementsSection = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

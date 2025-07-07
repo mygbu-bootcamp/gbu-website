@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const faculty = [
   {
     name: "Dr. Arpit Bhardwaj",
@@ -132,6 +134,7 @@ export default function FacultyResponsiveSlider() {
   };
 
   return (
+    <SearchableWrapper>
     <section className="py-10 bg-white overflow-hidden relative">
       <h2 className="text-2xl sm:text-3xl font-bold text-center text-blue-700 mb-8">
         Faculty of ICT
@@ -185,5 +188,6 @@ export default function FacultyResponsiveSlider() {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

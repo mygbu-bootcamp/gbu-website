@@ -1,12 +1,17 @@
 import React from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Footer = () => {
+
   return (
+    <SearchableWrapper>
     <footer
       className="bg-[#0e1626] text-white px-6 md:px-20 py-10"
       role="contentinfo"
       aria-label="Footer"
     >
+      
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo and About */}
         <div>
@@ -121,6 +126,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </SearchableWrapper>
   );
 };
 

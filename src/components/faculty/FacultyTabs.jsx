@@ -58,6 +58,8 @@ import {
   Heart
 } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Simple `cn` helper if you're not using a library
 const cn = (...classes) => classes.filter(Boolean).join(' ');
 
@@ -79,6 +81,7 @@ const tabs = [
 // ✅ Proper functional component with props
 const FacultyTabs = ({ activeTab, onTabChange }) => {
   return (
+    <SearchableWrapper>
     <div className="sticky w-5/6 mx-auto top-0 z-10 bg-white/80 backdrop-blur-sm border-b border-gray-200 border-solid mb-8">
       <div className="overflow-x-auto">
         <div className="flex space-x-1 min-w-max p-2">
@@ -103,6 +106,7 @@ const FacultyTabs = ({ activeTab, onTabChange }) => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

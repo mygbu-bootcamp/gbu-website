@@ -1,6 +1,9 @@
 
 import React from 'react';
 import { GraduationCap, Shield, CreditCard } from 'lucide-react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Custom Button component with effects and UI matching the usage in this file
 const Button = ({ children, className = '', ...props }) => (
   <button
@@ -18,6 +21,7 @@ import PropTypes from 'prop-types';
 
 const LandingPage = ({ onLoginClick }) => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full text-center">
         {/* Hero Section */}
@@ -90,6 +94,7 @@ const LandingPage = ({ onLoginClick }) => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

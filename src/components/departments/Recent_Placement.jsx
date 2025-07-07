@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Badge } from "../ui/badge";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const RecentPlacements = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -93,6 +95,7 @@ const RecentPlacements = () => {
   };
 
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
@@ -184,6 +187,7 @@ const RecentPlacements = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

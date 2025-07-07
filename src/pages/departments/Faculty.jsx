@@ -3,6 +3,8 @@ import {
   Mail, Phone, Search, Filter, X, BookOpen
 } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Faculty = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
@@ -864,6 +866,7 @@ const Faculty = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section with Dark Overlay */}
       <div className="relative h-[400px] bg-cover bg-center" style={{ backgroundImage: 'url(/assets/GBU.webp)' }}>
@@ -1050,6 +1053,7 @@ const Faculty = () => {
         })}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

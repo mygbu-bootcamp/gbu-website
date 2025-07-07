@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Target, Award, Users, CheckCircle, GraduationCap, Star } from 'lucide-react';
 import axios from 'axios';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // ✅ Load BASE_URL from .env
 const BASE_URL = import.meta.env.VITE_HOST;
 
@@ -40,6 +42,7 @@ const CBCSFramework = () => {
   if (!heroData) return <div className="text-center py-20">Loading CBCS Information...</div>;
 
   return (
+    <SearchableWrapper>
     <>
       {/* Hero Section */}
       <section className="text-white py-20" style={{ backgroundColor: heroData.background_color }}>
@@ -186,6 +189,7 @@ const CBCSFramework = () => {
         </section>
       )}
     </>
+    </SearchableWrapper>
   );
 };
 

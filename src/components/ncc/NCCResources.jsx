@@ -9,6 +9,8 @@ import {
   Shield
 } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Card Component (with hover scaling)
 const Card = ({ className = "", children }) => (
   <motion.div
@@ -107,6 +109,7 @@ const NCCResources = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-10 mx-20 px-4 md:px-8 pb-16">
       {/* Header */}
       <motion.div
@@ -352,6 +355,7 @@ const NCCResources = () => {
         </motion.div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

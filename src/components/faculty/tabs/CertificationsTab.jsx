@@ -1,4 +1,7 @@
 import React from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Minimal UI components with styles matching usage in this file
 
 export const Card = ({ className = '', children, ...props }) => (
@@ -179,6 +182,7 @@ export const CertificationsTab = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Certifications Overview */}
       <Card className="hover:shadow-lg transition-shadow duration-300">
@@ -331,5 +335,6 @@ export const CertificationsTab = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };

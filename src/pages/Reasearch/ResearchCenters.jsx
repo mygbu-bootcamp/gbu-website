@@ -1,5 +1,7 @@
  import React, { useState } from "react";
 
+ import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const ResearchCenters = () => {
   const centers = [
     {
@@ -182,6 +184,7 @@ const ResearchCenters = () => {
   });
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50 pb-16">
       {/* Hero Section */}
 
@@ -394,6 +397,7 @@ const ResearchCenters = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

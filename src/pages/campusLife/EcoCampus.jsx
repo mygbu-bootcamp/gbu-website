@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Leaf } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ className = "", children, ...props }) => (
   <div className={`rounded-lg border bg-white text-black shadow-sm ${className}`} {...props}>
     {children}
@@ -46,6 +48,7 @@ const EcoCampus = () => {
   if (!intro) return null;
 
   return (
+    <SearchableWrapper>
     <section id="eco-campus" className="py-20 bg-gradient-to-br from-green-50 to-emerald-100">
       <div className="container mx-auto px-4">
         {/* Title & Description */}
@@ -132,6 +135,7 @@ const EcoCampus = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

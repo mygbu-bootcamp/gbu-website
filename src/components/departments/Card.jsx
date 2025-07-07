@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const GlobalStyles = () => (
   <style>{`
     .perspective {
@@ -84,6 +86,7 @@ const HoverCards = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white text-black">
       <GlobalStyles />
 
@@ -115,6 +118,7 @@ const HoverCards = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

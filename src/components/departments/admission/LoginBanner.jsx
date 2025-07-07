@@ -1,6 +1,9 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 const Button = ({
   children,
   variant = "solid",
@@ -46,6 +49,7 @@ import { User, Users } from 'lucide-react';
 
 const LoginBanner = () => {
   return (
+    <SearchableWrapper>
     <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -69,6 +73,7 @@ const LoginBanner = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

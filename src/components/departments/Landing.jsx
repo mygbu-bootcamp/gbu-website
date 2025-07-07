@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Landing = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -39,6 +41,7 @@ const Landing = () => {
   };
 
   return (
+    <SearchableWrapper>
     <section
       id="home"
       className="relative h-[500px] overflow-hidden mt-10 rounded-xl shadow-lg"
@@ -100,6 +103,7 @@ const Landing = () => {
         ))}
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

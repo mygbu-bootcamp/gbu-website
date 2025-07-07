@@ -1,5 +1,7 @@
 import React from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const BoardOfStudies = () => {
   const departments = [
     {
@@ -137,6 +139,7 @@ const BoardOfStudies = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-12 px-6">
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
@@ -289,6 +292,7 @@ const BoardOfStudies = () => {
         }
       `}</style>
     </div>
+    </SearchableWrapper>
   );
 };
 

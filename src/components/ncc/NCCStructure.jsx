@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, Shield, Award } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i = 1) => ({
@@ -112,6 +114,7 @@ const NCCStructure = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-8 mx-20">
       {/* ANO Section */}
       <Card className="overflow-hidden mr-5 ml-5">
@@ -293,6 +296,7 @@ const NCCStructure = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

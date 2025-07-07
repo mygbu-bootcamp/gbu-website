@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const MeditationCenter = () => {
   const [hero, setHero] = useState(null);
   const [sessions, setSessions] = useState([]);
@@ -34,6 +36,7 @@ const MeditationCenter = () => {
   }
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen" style={{ backgroundColor: hero.background_color }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero */}
@@ -109,6 +112,7 @@ const MeditationCenter = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

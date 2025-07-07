@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { Users, Calendar, Award, Heart, Target, Globe } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Card = ({ className = '', children }) => (
   <div className={`bg-white rounded-lg shadow ${className}`}>{children}</div>
 );
@@ -59,6 +61,7 @@ const NSSIntroduction = () => {
   };
 
   return (
+    <SearchableWrapper>
     <motion.div
       initial="hidden"
       animate="visible"
@@ -147,6 +150,7 @@ const NSSIntroduction = () => {
         </Card>
       </motion.div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

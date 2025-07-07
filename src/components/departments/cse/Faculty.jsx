@@ -1,4 +1,6 @@
 
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Custom Card components with modern UI and subtle effects
 
 const Card = ({ children, className = "", ...props }) => (
@@ -81,6 +83,7 @@ const Faculty = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <section id="faculty" className="py-16 bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
@@ -165,6 +168,7 @@ const Faculty = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

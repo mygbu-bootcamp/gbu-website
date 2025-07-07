@@ -1,7 +1,10 @@
 import React from 'react';
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 export default function ContactDetails() {
   return (
+    <SearchableWrapper>
     <section className="py-16   to-white">
       <div className="container mx-auto px-4 max-w-3xl">
         
@@ -36,5 +39,6 @@ export default function ContactDetails() {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

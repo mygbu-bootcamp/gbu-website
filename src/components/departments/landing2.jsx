@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Landing = () => {
   const [birds, setBirds] = useState([]);
 
@@ -23,6 +25,7 @@ const Landing = () => {
   }, []);
 
   return (
+    <SearchableWrapper>
     <div className="relative w-full h-screen overflow-hidden">
       {/* Enhanced gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-sky-300 via-sky-200 to-sky-100"></div>
@@ -228,6 +231,7 @@ const Landing = () => {
         }
       `}</style>
     </div>
+    </SearchableWrapper>
   );
 };
 

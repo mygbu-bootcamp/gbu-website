@@ -1,6 +1,9 @@
 import React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 export function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }
@@ -41,11 +44,13 @@ const Button = React.forwardRef(({
   const Comp = asChild ? Slot : "button";
 
   return (
+    <SearchableWrapper>
     <Comp
       className={cn(buttonVariants({ variant, size, className }))}
       ref={ref}
       {...props}
     />
+    </SearchableWrapper>
   );
 });
 

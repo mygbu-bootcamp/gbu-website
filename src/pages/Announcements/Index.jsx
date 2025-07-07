@@ -3,6 +3,8 @@ import React from 'react';
 import AnnouncementHeader from '@/components/AnnouncementHeader';
 import AnnouncementCard from '@/components/AnnouncementCard';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Index = () => {
   const announcements = [
     {
@@ -59,7 +61,7 @@ const Index = () => {
       delay: 600,
       navigateTo: "/faculty-research"
     },
-{
+    {
       title: "Awards & Recognition",
       description: "  Celebrating outstanding achievements and contributions across academics, research, innovation, and cultural excellence.",
       emoji: "🏅",
@@ -71,26 +73,28 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50">
-      <AnnouncementHeader />
-      
-      <main className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {announcements.map((announcement, index) => (
-            <AnnouncementCard
-              key={announcement.title}
-              title={announcement.title}
-              description={announcement.description}
-              emoji={announcement.emoji}
-              bgClass={announcement.bgClass}
-              textColorClass={announcement.textColorClass}
-              delay={announcement.delay}
-              navigateTo={announcement.navigateTo}
-            />
-          ))}
-        </div>
-      </main>
-    </div>
+    <SearchableWrapper>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50">
+        <AnnouncementHeader />
+
+        <main className="max-w-6xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {announcements.map((announcement, index) => (
+              <AnnouncementCard
+                key={announcement.title}
+                title={announcement.title}
+                description={announcement.description}
+                emoji={announcement.emoji}
+                bgClass={announcement.bgClass}
+                textColorClass={announcement.textColorClass}
+                delay={announcement.delay}
+                navigateTo={announcement.navigateTo}
+              />
+            ))}
+          </div>
+        </main>
+      </div>
+    </SearchableWrapper>
   );
 };
 

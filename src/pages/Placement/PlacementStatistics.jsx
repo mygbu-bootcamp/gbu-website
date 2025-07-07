@@ -4,6 +4,8 @@ import { ArrowLeft, Download, TrendingUp, Users, Award, BarChart, PieChart } fro
 
 import { Link } from 'react-router-dom';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ children, className = '' }) => (
   <div className={`rounded-xl overflow-hidden ${className}`}>
     {children}
@@ -32,6 +34,7 @@ const Button = ({ children, className = '', variant = 'default', ...props }) => 
 
 const PlacementStatistics = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white">
 
 
@@ -329,6 +332,7 @@ const PlacementStatistics = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

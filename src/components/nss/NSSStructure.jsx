@@ -3,6 +3,8 @@ import React from "react";
 import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Card, Header, Title, Content, Badge Components
 const Card = ({ className = "", children }) => (
 
@@ -173,6 +175,7 @@ const NSSStructure = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-12 mx-20">
       {/* Program Officer Section */}
       <motion.div variants={fadeIn} initial="hidden" animate="visible">
@@ -435,6 +438,7 @@ const NSSStructure = () => {
         </Card>
       </motion.div>
     </div>
+    </SearchableWrapper>
   );
 };
 

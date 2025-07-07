@@ -1,6 +1,8 @@
- import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, ChevronLeft, ChevronRight, Clock, MapPin } from 'lucide-react';
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 // Reusable UI components
 const Card = ({ children, className = '', ...props }) => (
@@ -253,7 +255,7 @@ const NCCEvents = () => {
 
   const getDaysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   const getFirstDayOfMonth = (date) => new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-  const getEventsForDate = (day) => events.filter(e => 
+  const getEventsForDate = (day) => events.filter(e =>
     e.date.getDate() === day &&
     e.date.getMonth() === currentDate.getMonth() &&
     e.date.getFullYear() === currentDate.getFullYear()
@@ -271,8 +273,8 @@ const NCCEvents = () => {
     for (let day = 1; day <= daysInMonth; day++) {
       const dayEvents = getEventsForDate(day);
       const isToday = new Date().getDate() === day &&
-                      new Date().getMonth() === currentDate.getMonth() &&
-                      new Date().getFullYear() === currentDate.getFullYear();
+        new Date().getMonth() === currentDate.getMonth() &&
+        new Date().getFullYear() === currentDate.getFullYear();
       days.push(
         <motion.div
           whileHover={{ scale: 1.03 }}
@@ -286,13 +288,12 @@ const NCCEvents = () => {
             {dayEvents.slice(0, 2).map(event => (
               <div
                 key={event.id}
-                className={`text-xs px-1 py-0.5 rounded text-center truncate ${
-                  event.category === 'Training' ? 'bg-blue-500 text-white' :
-                  event.category === 'Camp' ? 'bg-green-500 text-white' :
-                  event.category === 'Competition' ? 'bg-orange-500 text-white' :
-                  event.category === 'Deadline' ? 'bg-red-500 text-white' :
-                  'bg-purple-500 text-white'
-                }`}
+                className={`text-xs px-1 py-0.5 rounded text-center truncate ${event.category === 'Training' ? 'bg-blue-500 text-white' :
+                    event.category === 'Camp' ? 'bg-green-500 text-white' :
+                      event.category === 'Competition' ? 'bg-orange-500 text-white' :
+                        event.category === 'Deadline' ? 'bg-red-500 text-white' :
+                          'bg-purple-500 text-white'
+                  }`}
                 title={event.title}
               >
                 {event.title}
@@ -310,149 +311,151 @@ const NCCEvents = () => {
   };
 
   return (
-    <div className="space-y-8 mx-20">
-      <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Events & Schedule</h2>
-        <p className="text-lg text-gray-600">
-          Stay updated with NCC training schedules, camps, and important deadlines
-        </p>
-      </div>
-
-      <div className="grid lg:grid-cols-4 gap-8">
-        <div className="lg:col-span-3">
-          <Card>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-2xl">
-                  {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-                </CardTitle>
-                <div className="flex space-x-2">
-                  <Button variant="outline" size="sm" onClick={() => navigateMonth(-1)}>
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={() => setCurrentDate(new Date())}>
-                    Today
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={() => navigateMonth(1)}>
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-7 gap-0 mb-4">
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                  <div key={day} className="h-8 flex items-center justify-center font-semibold text-gray-700 bg-gray-100">
-                    {day}
-                  </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-7 gap-0 border border-gray-200">
-                {renderCalendar()}
-              </div>
-            </CardContent>
-          </Card>
+    <SearchableWrapper>
+      <div className="space-y-8 mx-20">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Events & Schedule</h2>
+          <p className="text-lg text-gray-600">
+            Stay updated with NCC training schedules, camps, and important deadlines
+          </p>
         </div>
 
-        <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-xl text-red-600">Upcoming Deadlines</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {upcomingDeadlines.map((deadline, index) => (
+        <div className="grid lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-3">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-2xl">
+                    {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                  </CardTitle>
+                  <div className="flex space-x-2">
+                    <Button variant="outline" size="sm" onClick={() => navigateMonth(-1)}>
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => setCurrentDate(new Date())}>
+                      Today
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => navigateMonth(1)}>
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-7 gap-0 mb-4">
+                  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                    <div key={day} className="h-8 flex items-center justify-center font-semibold text-gray-700 bg-gray-100">
+                      {day}
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-7 gap-0 border border-gray-200">
+                  {renderCalendar()}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl text-red-600">Upcoming Deadlines</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {upcomingDeadlines.map((deadline, index) => (
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    key={index}
+                    className={`border rounded-lg p-3 ${getPriorityColor(deadline.priority)}`}
+                  >
+                    <h4 className="font-semibold mb-1">{deadline.title}</h4>
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Calendar className="h-3 w-3" />
+                      <span>{deadline.date}</span>
+                    </div>
+                    <div className="text-sm font-medium mt-1">
+                      {deadline.days} days remaining
+                    </div>
+                  </motion.div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <button className="w-full h-10 bg-blue-800 text-white rounded-md font-semibold">
+                  Apply for Camp
+                </button>
+                <button className="w-full h-10 border border-blue-600 text-blue-600 rounded-md font-semibold">
+                  View Training Schedule
+                </button>
+                <button className="w-full h-10 border border-blue-600 text-blue-600 rounded-md font-semibold">
+                  Download Calendar
+                </button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Upcoming Events</CardTitle>
+              <Select value={filterCategory} onValueChange={setFilterCategory}>
+                <SelectTrigger className="w-40">
+                  <SelectValue placeholder="Filter by category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Categories</SelectItem>
+                  <SelectItem value="Training">Training</SelectItem>
+                  <SelectItem value="Camp">Camps</SelectItem>
+                  <SelectItem value="Competition">Competitions</SelectItem>
+                  <SelectItem value="Deadline">Deadlines</SelectItem>
+                  <SelectItem value="Celebration">Celebrations</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {events
+              .filter(event => filterCategory === 'all' || event.category === filterCategory)
+              .sort((a, b) => a.date.getTime() - b.date.getTime())
+              .map(event => (
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  key={index}
-                  className={`border rounded-lg p-3 ${getPriorityColor(deadline.priority)}`}
+                  key={event.id}
+                  className="border border-gray-300 rounded-lg p-4 hover:shadow-md transition-shadow"
                 >
-                  <h4 className="font-semibold mb-1">{deadline.title}</h4>
-                  <div className="flex items-center space-x-2 text-sm">
-                    <Calendar className="h-3 w-3" />
-                    <span>{deadline.date}</span>
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-semibold text-gray-900">{event.title}</h3>
+                    <Badge className={
+                      event.category === 'Training' ? 'bg-blue-100 text-blue-800' :
+                        event.category === 'Camp' ? 'bg-green-100 text-green-800' :
+                          event.category === 'Competition' ? 'bg-orange-100 text-orange-800' :
+                            event.category === 'Deadline' ? 'bg-red-100 text-red-800' :
+                              'bg-purple-100 text-purple-800'
+                    }>
+                      {event.category}
+                    </Badge>
                   </div>
-                  <div className="text-sm font-medium mt-1">
-                    {deadline.days} days remaining
+                  <p className="text-sm text-gray-600 mb-3">{event.description}</p>
+                  <div className="flex items-center justify-between text-sm text-gray-500">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-1"><Calendar className="h-4 w-4" /><span>{event.date.toLocaleDateString('en-IN')}</span></div>
+                      <div className="flex items-center space-x-1"><Clock className="h-4 w-4" /><span>{event.time}</span></div>
+                      <div className="flex items-center space-x-1"><MapPin className="h-4 w-4" /><span>{event.venue}</span></div>
+                    </div>
+                    <Button variant="outline" size="sm">View Details</Button>
                   </div>
                 </motion.div>
               ))}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-xl">Quick Actions</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-                <button className="w-full h-10 bg-blue-800 text-white rounded-md font-semibold">
-    Apply for Camp
-  </button>
-  <button className="w-full h-10 border border-blue-600 text-blue-600 rounded-md font-semibold">
-    View Training Schedule
-  </button>
-  <button className="w-full h-10 border border-blue-600 text-blue-600 rounded-md font-semibold">
-    Download Calendar
-  </button>
-            </CardContent>
-          </Card>
-        </div>
+          </CardContent>
+        </Card>
       </div>
-
-      <Card>
-        <CardHeader>
-          <div className="flex justify-between items-center">
-            <CardTitle>Upcoming Events</CardTitle>
-            <Select value={filterCategory} onValueChange={setFilterCategory}>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Filter by category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
-                <SelectItem value="Training">Training</SelectItem>
-                <SelectItem value="Camp">Camps</SelectItem>
-                <SelectItem value="Competition">Competitions</SelectItem>
-                <SelectItem value="Deadline">Deadlines</SelectItem>
-                <SelectItem value="Celebration">Celebrations</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {events
-            .filter(event => filterCategory === 'all' || event.category === filterCategory)
-            .sort((a, b) => a.date.getTime() - b.date.getTime())
-            .map(event => (
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                key={event.id}
-                className="border border-gray-300 rounded-lg p-4 hover:shadow-md transition-shadow"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-semibold text-gray-900">{event.title}</h3>
-                  <Badge className={
-                    event.category === 'Training' ? 'bg-blue-100 text-blue-800' :
-                    event.category === 'Camp' ? 'bg-green-100 text-green-800' :
-                    event.category === 'Competition' ? 'bg-orange-100 text-orange-800' :
-                    event.category === 'Deadline' ? 'bg-red-100 text-red-800' :
-                    'bg-purple-100 text-purple-800'
-                  }>
-                    {event.category}
-                  </Badge>
-                </div>
-                <p className="text-sm text-gray-600 mb-3">{event.description}</p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-1"><Calendar className="h-4 w-4" /><span>{event.date.toLocaleDateString('en-IN')}</span></div>
-                    <div className="flex items-center space-x-1"><Clock className="h-4 w-4" /><span>{event.time}</span></div>
-                    <div className="flex items-center space-x-1"><MapPin className="h-4 w-4" /><span>{event.venue}</span></div>
-                  </div>
-                  <Button variant="outline" size="sm">View Details</Button>
-                </div>
-              </motion.div>
-            ))}
-        </CardContent>
-      </Card>
-    </div>
+    </SearchableWrapper>
   );
 };
 

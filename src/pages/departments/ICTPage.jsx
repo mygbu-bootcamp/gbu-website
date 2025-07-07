@@ -13,8 +13,11 @@ import ClubsAchievements from "../../components/departments/Clubs_activevment.js
 import StudentAchievements from "../../components/departments/Student_achievements.jsx";
 import StudentStartup from "../../components/departments/Startup.jsx";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Index = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white">
       <Landing />
       <AboutSection />
@@ -31,6 +34,7 @@ const Index = () => {
       <StudentStartup />
       <StudentAchievements />
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -3,6 +3,9 @@ import React from 'react';
 import Navbar from '../../components/Admission/Navbar';
 import LoginBanner from '../../components/Admission/LoginBanner';
 import NoticeModal from '../../components/Admission/NoticeModal';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Button component
 const Button = ({
   size = 'md',
@@ -111,6 +114,7 @@ const Index = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white">
       <LoginBanner />
       <Navbar />
@@ -335,6 +339,7 @@ const Index = () => {
         </div>
       </footer>
     </div>
+    </SearchableWrapper>
   );
 };
 

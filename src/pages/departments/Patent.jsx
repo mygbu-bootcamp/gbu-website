@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Award, Calendar, FileText, Users, TrendingUp, CheckCircle, Clock } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Patents = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100">
 
 
@@ -568,6 +571,7 @@ const Patents = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

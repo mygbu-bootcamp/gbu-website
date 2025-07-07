@@ -1,5 +1,7 @@
  import React from 'react';
 
+ import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 export default function Services() {
   const content = [
     {
@@ -20,6 +22,7 @@ export default function Services() {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="px-6 md:px-20 py-10 bg-gray-50">
       <h1 className="text-3xl font-bold text-center mb-8">SERVICES</h1>
       
@@ -45,5 +48,6 @@ export default function Services() {
         ))}
       </div>
     </div>
+    </SearchableWrapper>
   );
 }

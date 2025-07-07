@@ -1,5 +1,8 @@
 
 import { Download, FileText, Users, Clock, Phone, Mail } from 'lucide-react';
+
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const RTI = () => {
   const handleDownload = (formType) => {
     // Create a simple PDF-like content for demonstration
@@ -16,7 +19,9 @@ const RTI = () => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
-  return <div className="min-h-screen bg-gray-50 animate-fade-in">
+  return (
+  <SearchableWrapper>
+  <div className="min-h-screen bg-gray-50 animate-fade-in">
       {/* Header with simple gradient */}
       <header className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-8 shadow-lg">
         <div className="container mx-auto px-4">
@@ -311,6 +316,7 @@ const RTI = () => {
           <p className="mt-2 text-gray-300">Right to Information Act, 2005 - Promoting Transparency and Accountability</p>
         </div>
       </footer>
-    </div>;
+    </div>
+    </SearchableWrapper>)
 };
 export default RTI;

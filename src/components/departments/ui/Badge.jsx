@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cva } from "class-variance-authority"
 
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
 
 export function cn(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -25,7 +26,9 @@ const badgeVariants = cva(
 
 function Badge({ className, variant, ...props }) {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <SearchableWrapper>
+      <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    </SearchableWrapper >
   )
 }
 

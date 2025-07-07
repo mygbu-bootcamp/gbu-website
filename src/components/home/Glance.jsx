@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Glance = () => {
   const [glanceData, setGlanceData] = useState(null);
 
@@ -30,6 +32,7 @@ const Glance = () => {
   );
 
   return (
+    <SearchableWrapper>
     <section
       aria-label="GBU statistics overview"
       className="relative py-16 text-white bg-gradient-to-r from-green-800 via-blue-800 to-orange-800"
@@ -56,6 +59,7 @@ const Glance = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

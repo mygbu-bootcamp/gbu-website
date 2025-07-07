@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '../../utils/cn';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 function Landing() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
@@ -43,6 +45,7 @@ function Landing() {
   };
 
   return (
+    <SearchableWrapper>
     <div
       onMouseMove={handleMouseMove}
       className={cn(
@@ -83,6 +86,7 @@ function Landing() {
         style={transformStyle(30, 500)}
       />
     </div>
+    </SearchableWrapper>
   );
 }
 

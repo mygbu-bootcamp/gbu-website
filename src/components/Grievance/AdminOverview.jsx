@@ -1,4 +1,6 @@
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Card, CardContent, CardDescription, CardHeader, CardTitle, and Badge components
 
 import React from "react";
@@ -136,147 +138,148 @@ const AdminOverview = ({ stats }) => {
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {quickStats.map((stat, index) => (
-          <Card
-            key={index}
-            className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100"
-          >
-            <CardContent className="p-6 flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-500">{stat.title}</p>
-                <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
-                <p className="text-xs text-green-600 mt-1">{stat.change}</p>
-              </div>
-              <div className={`p-3 rounded-full shadow-inner ${stat.color}`}>
-                <stat.icon className="w-6 h-6 text-white" />
+    <SearchableWrapper>
+      <div className="space-y-8">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {quickStats.map((stat, index) => (
+            <Card
+              key={index}
+              className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100"
+            >
+              <CardContent className="p-6 flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-500">{stat.title}</p>
+                  <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-xs text-green-600 mt-1">{stat.change}</p>
+                </div>
+                <div className={`p-3 rounded-full shadow-inner ${stat.color}`}>
+                  <stat.icon className="w-6 h-6 text-white" />
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Charts Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Recent Activity */}
+          <Card className="hover:shadow-md transition">
+            <CardHeader>
+              <CardTitle>Recent Activity</CardTitle>
+              <CardDescription>Latest system events and notifications</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {recentActivity.map((activity, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
+                  >
+                    <div
+                      className={`w-2 h-2 rounded-full mt-2 ${activity.priority === "high" ? "bg-red-500" : "bg-blue-500"
+                        }`}
+                    ></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-gray-800">
+                        {activity.message}
+                      </p>
+                      <p className="text-xs text-gray-500">{activity.time}</p>
+                    </div>
+                    {activity.priority === "high" && (
+                      <AlertTriangle className="w-4 h-4 text-red-500" />
+                    )}
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
 
-      {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Recent Activity */}
-        <Card className="hover:shadow-md transition">
-          <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>Latest system events and notifications</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {recentActivity.map((activity, index) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
-                >
+          {/* Department Performance */}
+          <Card className="hover:shadow-md transition">
+            <CardHeader>
+              <CardTitle>Department Performance</CardTitle>
+              <CardDescription>Resolution rates by department</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {departmentPerformance.map((dept, index) => (
                   <div
-                    className={`w-2 h-2 rounded-full mt-2 ${activity.priority === "high" ? "bg-red-500" : "bg-blue-500"
-                      }`}
-                  ></div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-800">
-                      {activity.message}
-                    </p>
-                    <p className="text-xs text-gray-500">{activity.time}</p>
-                  </div>
-                  {activity.priority === "high" && (
-                    <AlertTriangle className="w-4 h-4 text-red-500" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Department Performance */}
-        <Card className="hover:shadow-md transition">
-          <CardHeader>
-            <CardTitle>Department Performance</CardTitle>
-            <CardDescription>Resolution rates by department</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {departmentPerformance.map((dept, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-between p-3 rounded-md border bg-gray-50 hover:bg-gray-100 transition"
-                >
-                  <div>
-                    <h4 className="font-medium text-gray-800">{dept.name}</h4>
-                    <p className="text-sm text-gray-600">
-                      {dept.resolved}/{dept.complaints} resolved
-                    </p>
-                  </div>
-                  <Badge
-                    className={`text-xs font-semibold ${parseInt(dept.rate) >= 90
+                    key={index}
+                    className="flex items-center justify-between p-3 rounded-md border bg-gray-50 hover:bg-gray-100 transition"
+                  >
+                    <div>
+                      <h4 className="font-medium text-gray-800">{dept.name}</h4>
+                      <p className="text-sm text-gray-600">
+                        {dept.resolved}/{dept.complaints} resolved
+                      </p>
+                    </div>
+                    <Badge
+                      className={`text-xs font-semibold ${parseInt(dept.rate) >= 90
                         ? "bg-green-100 text-green-800"
                         : "bg-yellow-100 text-yellow-800"
-                      }`}
-                  >
-                    {dept.rate}
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Alerts Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {[
-          {
-            title: "Pending Assignments",
-            value: 7,
-            icon: Clock,
-            textColor: "text-yellow-800",
-            iconColor: "text-yellow-600",
-            bg: "bg-yellow-50",
-            border: "border-yellow-200",
-          },
-          {
-            title: "SLA Breaches",
-            value: 3,
-            icon: AlertTriangle,
-            textColor: "text-red-800",
-            iconColor: "text-red-600",
-            bg: "bg-red-50",
-            border: "border-red-200",
-          },
-          {
-            title: "Escalations Today",
-            value: 5,
-            icon: TrendingUp,
-            textColor: "text-blue-800",
-            iconColor: "text-blue-600",
-            bg: "bg-blue-50",
-            border: "border-blue-200",
-          },
-        ].map((alert, i) => (
-          <Card
-            key={i}
-            className={`${alert.bg} ${alert.border} border hover:shadow-md transition`}
-          >
-            <CardContent className="p-4 flex items-center justify-between">
-              <div>
-                <p className={`text-sm font-medium ${alert.textColor}`}>
-                  {alert.title}
-                </p>
-                <p className={`text-2xl font-bold ${alert.textColor.replace("800", "900")}`}>
-                  {alert.value}
-                </p>
+                        }`}
+                    >
+                      {dept.rate}
+                    </Badge>
+                  </div>
+                ))}
               </div>
-              <alert.icon className={`w-8 h-8 ${alert.iconColor}`} />
             </CardContent>
           </Card>
-        ))}
-      </div>
-    </div>
+        </div>
 
+        {/* Alerts Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            {
+              title: "Pending Assignments",
+              value: 7,
+              icon: Clock,
+              textColor: "text-yellow-800",
+              iconColor: "text-yellow-600",
+              bg: "bg-yellow-50",
+              border: "border-yellow-200",
+            },
+            {
+              title: "SLA Breaches",
+              value: 3,
+              icon: AlertTriangle,
+              textColor: "text-red-800",
+              iconColor: "text-red-600",
+              bg: "bg-red-50",
+              border: "border-red-200",
+            },
+            {
+              title: "Escalations Today",
+              value: 5,
+              icon: TrendingUp,
+              textColor: "text-blue-800",
+              iconColor: "text-blue-600",
+              bg: "bg-blue-50",
+              border: "border-blue-200",
+            },
+          ].map((alert, i) => (
+            <Card
+              key={i}
+              className={`${alert.bg} ${alert.border} border hover:shadow-md transition`}
+            >
+              <CardContent className="p-4 flex items-center justify-between">
+                <div>
+                  <p className={`text-sm font-medium ${alert.textColor}`}>
+                    {alert.title}
+                  </p>
+                  <p className={`text-2xl font-bold ${alert.textColor.replace("800", "900")}`}>
+                    {alert.value}
+                  </p>
+                </div>
+                <alert.icon className={`w-8 h-8 ${alert.iconColor}`} />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </SearchableWrapper>
   );
 };
 

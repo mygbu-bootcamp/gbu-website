@@ -2,6 +2,8 @@ import React from 'react';
 import { FileText, Calendar, CheckCircle, Clock, Download, Users, GraduationCap, Upload } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const AdmissionProcess = () => {
   const processSteps = [
     { step: 1, title: "Online Application", description: "Fill out the online application form with personal and academic details", duration: "15-20 minutes", status: "active", icon: FileText },
@@ -33,6 +35,7 @@ const AdmissionProcess = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white text-gray-900">
       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
           <div className="container mx-auto px-4 text-center">
@@ -123,6 +126,7 @@ const AdmissionProcess = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

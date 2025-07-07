@@ -1,5 +1,8 @@
 
 import React, { useState } from 'react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card Components
 const Card = ({ className = '', children }) => (
   <div className={`rounded-xl border p-0 ${className}`}>{children}</div>
@@ -91,6 +94,7 @@ const ImportantNotesCard = () => {
   const [isHindiOpen, setIsHindiOpen] = useState(false);
 
   return (
+    <SearchableWrapper>
     <Card className="shadow-lg bg-gradient-to-r from-orange-50 to-yellow-50 border-orange-200">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-xl text-orange-800">
@@ -174,6 +178,7 @@ const ImportantNotesCard = () => {
         </div>
       </CardContent>
     </Card>
+    </SearchableWrapper>
   );
 };
 

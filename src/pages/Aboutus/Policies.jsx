@@ -3,6 +3,8 @@ import React, { useState } from 'react';
  
 import { FileText, Download, Search, Filter, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Policies = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -94,6 +96,7 @@ const Policies = () => {
   };
 
   return (
+    <SearchableWrapper>
       <>
       {/* Hero Section */}
       <section className="relative h-96 bg-gradient-to-r from-teal-900 via-blue-800 to-cyan-800">
@@ -244,6 +247,7 @@ const Policies = () => {
         </div>
       </section>
   </>
+  </SearchableWrapper>
   );
 };
 

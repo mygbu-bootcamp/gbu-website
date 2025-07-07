@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Users, FileText, Share2, Shield, Target } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Reusable card components
 const Card = ({ children, className = "", ...props }) => (
   <motion.div
@@ -197,6 +199,7 @@ const NCCTraining = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-8 mx-20">
       {/* Header */}
       <div className="text-center">
@@ -394,6 +397,7 @@ const NCCTraining = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

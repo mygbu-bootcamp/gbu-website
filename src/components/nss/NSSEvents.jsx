@@ -1,6 +1,8 @@
  import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
  
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-lg shadow  border-gray-300 ${className}`}>{children}</div>
@@ -222,7 +224,7 @@ const NSSEvents = () => {
   };
 
   return (
-
+<SearchableWrapper>
     <motion.div
       initial="hidden"
       animate="visible"
@@ -363,6 +365,7 @@ const NSSEvents = () => {
         </motion.div>
       </div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

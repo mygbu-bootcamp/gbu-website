@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Crown, Users, Building, GraduationCap, DollarSign, User } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const governanceData = {
   finance: {
     title: 'Finance Committee',
@@ -162,6 +164,7 @@ const UniversityGovernance = () => {
   const [activeTab, setActiveTab] = useState('finance');
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       {/* Header */}
       <div className="relative overflow-hidden bg-gradient-to-r from-indigo-900 via-blue-800 to-purple-900 text-white">
@@ -253,6 +256,7 @@ const UniversityGovernance = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

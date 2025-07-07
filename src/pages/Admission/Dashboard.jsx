@@ -9,6 +9,9 @@ import AdminStats from '../../components/Admission/AdminStats';
 import CourseApplications from '../../components/Admission/CourseApplications';
 import DocumentVerification from '../../components/Admission/DocumentVerification';
 import AdminActions from '../../components/Admission/AdminActions';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Simple Tabs implementation for this Dashboard page
 
 const Tabs = ({ defaultValue, children, className }) => {
@@ -152,6 +155,7 @@ const Dashboard = () => {
   );
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <NoticeModal />
@@ -172,6 +176,7 @@ const Dashboard = () => {
         {userType === 'admin' ? <AdminDashboard /> : <StudentDashboard />}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

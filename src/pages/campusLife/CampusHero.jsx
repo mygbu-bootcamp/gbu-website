@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ArrowDown, Map } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Button = ({ children, className = '', variant = 'default', ...props }) => {
   const baseStyle =
     'px-4 py-2 rounded-lg font-semibold transition-all duration-300 focus:outline-none';
@@ -56,6 +58,7 @@ const CampusHero = () => {
   if (heroData.length === 0) return null;
 
   return (
+    <SearchableWrapper>
     <section id="home" className="relative h-screen overflow-hidden">
       {/* Carousel Background */}
       <div className="absolute inset-0">
@@ -150,6 +153,7 @@ const CampusHero = () => {
         <ArrowDown className="text-white/70" size={32} />
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

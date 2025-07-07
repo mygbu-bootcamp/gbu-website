@@ -3,6 +3,8 @@ import {
   Globe, Users, BookOpen, MapPin, Plane
 } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Collaboration = () => {
   const [hero, setHero] = useState(null);
   const [partners, setPartners] = useState([]);
@@ -137,6 +139,7 @@ const Collaboration = () => {
   if (!hero || !cta) return <div className="text-center py-20">Loading...</div>;
 
   return (
+    <SearchableWrapper>
     <div>
       <section className="bg-gradient-to-br from-teal-600 via-blue-600 to-indigo-600 text-white py-16">
         <div className="text-center px-4">
@@ -226,6 +229,7 @@ const Collaboration = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

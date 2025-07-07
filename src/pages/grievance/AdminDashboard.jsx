@@ -1,5 +1,7 @@
 
 import React, { useState } from "react";
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // --- UI Components (in-file, Tailwind CSS based) ---
 
 // Tabs, TabsList, TabsTrigger, TabsContent
@@ -402,6 +404,7 @@ const AdminDashboard = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
@@ -894,6 +897,7 @@ const AdminDashboard = () => {
         </Tabs>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

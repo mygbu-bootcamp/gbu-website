@@ -14,6 +14,8 @@ import {
 import ImportantLinks from "./ImportantLinks";
 import ContactDetails from "./ContactDetails";
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const Ipr = () => {
   const policies = [
     {
@@ -27,6 +29,7 @@ const Ipr = () => {
     },
   ];
   return (
+    <SearchableWrapper>
     <div>
       {/* Banner Section */}
       <section className="relative h-96 bg-gradient-to-r from-cyan-900 via-blue-800 to-purple-800 overflow-hidden">
@@ -163,6 +166,7 @@ const Ipr = () => {
       <ImportantLinks />
       <ContactDetails/>
     </div>
+    </SearchableWrapper>
   );
 };
 

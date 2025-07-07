@@ -1,5 +1,8 @@
 
 import React from 'react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card Components
 const Card = ({ className = '', children }) => (
   <div className={`rounded-2xl bg-white ${className}`}>{children}</div>
@@ -54,6 +57,7 @@ const FeeSummaryCard = ({ onMakePayment }) => {
   const progressPercent = (paidAmount / totalFee) * 100;
 
   return (
+    <SearchableWrapper>
     <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-br from-blue-50 to-indigo-100">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2 text-xl">
@@ -115,6 +119,7 @@ const FeeSummaryCard = ({ onMakePayment }) => {
         </Button>
       </CardContent>
     </Card>
+    </SearchableWrapper>
   );
 };
 

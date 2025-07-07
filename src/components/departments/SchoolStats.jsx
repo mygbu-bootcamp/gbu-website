@@ -2,18 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Building2, GraduationCap, Users, BookOpen, Trophy, BriefcaseIcon } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const CounterValue = ({ end, isInView }) => {
   const [count, setCount] = useState(0);
-  
+
   useEffect(() => {
     if (isInView) {
       let startTime;
       const duration = 2000; // 2 seconds duration
-      
+
       const animate = (currentTime) => {
         if (!startTime) startTime = currentTime;
         const progress = (currentTime - startTime) / duration;
-        
+
         if (progress < 1) {
           setCount(Math.min(Math.floor(end * progress), end));
           requestAnimationFrame(animate);
@@ -21,7 +23,7 @@ const CounterValue = ({ end, isInView }) => {
           setCount(end);
         }
       };
-      
+
       requestAnimationFrame(animate);
     }
   }, [end, isInView]);
@@ -67,41 +69,43 @@ const SchoolStats = () => {
   ];
 
   return (
-    <section className="py-10" ref={containerRef}>
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8"
-        >
-          <h3 className="text-xl font-medium text-gray-800">
-            Our numbers speak for themselves
-          </h3>
-        </motion.div>
-        
-        <motion.div 
-          className="flex justify-center items-center flex-wrap gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          {stats.map((stat, index) => (
-            <React.Fragment key={index}>
-              <Counter
-                value={stat.value}
-                label={stat.label}
-                suffix={stat.suffix}
-                isInView={isInView}
-              />
-              {index < stats.length - 1 && (
-                <div className="h-12 w-px bg-gray-200" />
-              )}
-            </React.Fragment>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+    <SearchableWrapper>
+      <section className="py-10" ref={containerRef}>
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-xl font-medium text-gray-800">
+              Our numbers speak for themselves
+            </h3>
+          </motion.div>
+
+          <motion.div
+            className="flex justify-center items-center flex-wrap gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {stats.map((stat, index) => (
+              <React.Fragment key={index}>
+                <Counter
+                  value={stat.value}
+                  label={stat.label}
+                  suffix={stat.suffix}
+                  isInView={isInView}
+                />
+                {index < stats.length - 1 && (
+                  <div className="h-12 w-px bg-gray-200" />
+                )}
+              </React.Fragment>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+    </SearchableWrapper>
   );
 };
 

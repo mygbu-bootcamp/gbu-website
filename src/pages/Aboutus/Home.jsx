@@ -12,8 +12,12 @@ import ExcellenceSection from "../../components/home/Education.jsx";
 import CampusLifeSection from "../../components/home/Campus.jsx";
 import HiringSection from "../../components/home/Placement.jsx";
 import VirtualTour from "../../components/home/VirtualTour.jsx";
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 function Home() {
  return (
+  <SearchableWrapper>
     <div className="min-h-screen flex flex-col">
 
       <WelcomePage />
@@ -30,6 +34,7 @@ function Home() {
       <VirtualTour/>
 
     </div>
+    </SearchableWrapper>
   );
 }
 

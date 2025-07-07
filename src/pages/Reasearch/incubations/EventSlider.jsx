@@ -2,6 +2,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const categories = ["All", "Workshops", "Seminars", "Hackathons"];
 
 const events = [
@@ -92,6 +94,7 @@ export default function EventsGrid() {
       : events.filter((e) => e.category === selectedCategory);
 
   return (
+    <SearchableWrapper>
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-5">
         <h1 className="text-3xl font-bold text-center mb-8">EVENT GALLERY</h1>
@@ -215,5 +218,6 @@ export default function EventsGrid() {
         )}
       </AnimatePresence>
     </div>
+    </SearchableWrapper>
   );
 }

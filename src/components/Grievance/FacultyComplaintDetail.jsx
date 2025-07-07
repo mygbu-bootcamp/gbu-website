@@ -1,5 +1,8 @@
 
 import { useState } from "react";
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Button
 const Button = ({ children, variant = "default", className = "", disabled = false, ...props }) => (
     <button
@@ -202,6 +205,7 @@ const FacultyComplaintDetail = ({ complaintId, complaint }) => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Header */}
       <Card>
@@ -388,6 +392,7 @@ const FacultyComplaintDetail = ({ complaintId, complaint }) => {
         </Card>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

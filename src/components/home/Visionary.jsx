@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const cardVariants = {
   enter: { opacity: 0, x: 100 },
   center: { opacity: 1, x: 0 },
@@ -64,6 +66,7 @@ useEffect(() => {
     : `${BASE_URL}/${current.photo.startsWith("media") ? "" : "media/"}${current.photo}`;
 
   return (
+    <SearchableWrapper>
     <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-100 via-white to-green-100">
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-10 sm:mb-12">
         Visionary <span className="text-blue-800">Leadership</span>
@@ -114,6 +117,7 @@ useEffect(() => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

@@ -2,6 +2,8 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { useEffect, useState } from 'react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const { isLoggedIn, userRole, isLoading } = useAuth();
   const [hasCheckedAuth, setHasCheckedAuth] = useState(false);
@@ -51,7 +53,11 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   }
 
   console.log('ProtectedRoute: Access granted');
-  return <>{children}</>;
+  return (
+    <SearchableWrapper>
+      <>{children}</>
+    </SearchableWrapper>
+  );
 };
 
 export default ProtectedRoute;

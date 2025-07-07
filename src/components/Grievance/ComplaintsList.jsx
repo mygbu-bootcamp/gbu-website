@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { useToast } from "../../hooks/use-toast";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // ----- UI Components -----
 
 const Button = ({ children, className = "", size = "md", variant = "default", ...props }) => {
@@ -187,6 +189,7 @@ const ComplaintsList = ({ complaints, onViewDetails }) => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Filters */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -359,6 +362,7 @@ const ComplaintsList = ({ complaints, onViewDetails }) => {
         )}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

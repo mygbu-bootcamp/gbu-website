@@ -3,6 +3,9 @@ import React, {useState } from 'react';
 
 import { Calendar, MapPin, Users, Clock, Camera, Plus, Heart, Star } from 'lucide-react';
 import { toast } from '../../hooks/use-toast';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Minimal Select component implementation for usage in this file
 // Minimal Dialog component implementation for usage in this file
 const Dialog = ({ open, onOpenChange, children }) => {
@@ -267,6 +270,7 @@ const EventsReunions = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
 
       
@@ -717,6 +721,7 @@ const EventsReunions = () => {
         </DialogContent>
       </Dialog>
     </div>
+    </SearchableWrapper>
   );
 };
 

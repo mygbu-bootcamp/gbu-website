@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { useToast } from '../../hooks/use-toast';
 
-
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 // Minimal UI replacements
 const Button = ({ children, className = '', ...props }) => (
@@ -298,6 +298,7 @@ const HostelLife = () => {
   if (!sectionData || hostels.length === 0) return <div className="text-center py-20">Loading...</div>;
 
   return (
+    <SearchableWrapper>
     <section
       id="hostel-life"
       className="py-20"
@@ -373,6 +374,7 @@ const HostelLife = () => {
         />
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 
