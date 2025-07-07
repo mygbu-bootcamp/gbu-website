@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+ import { useState, useEffect } from "react";
 import { Badge } from "../ui/badge";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -75,6 +75,7 @@ const RecentPlacements = () => {
       },
     ],
   };
+
 
   const [currentSlide, setCurrentSlide] = useState(0);
 const fallbackImage = "https://cdn-icons-png.flaticon.com/512/847/847969.png";

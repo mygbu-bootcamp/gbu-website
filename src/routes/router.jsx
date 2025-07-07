@@ -1,4 +1,4 @@
-import Home from "../pages/Aboutus/Home.jsx";
+ import Home from "../pages/Aboutus/Home.jsx";
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import InternshipProgrammes from "../pages/Placement/InternshipProgrammes.jsx";
@@ -8,9 +8,6 @@ const PlacementBrochure = React.lazy(() =>
   import("../pages/Placement/PlacementBrochure")
 );
 import TrainingCareerServices from "../pages/Placement/TrainingCareerServices.jsx";
-
-import RecruitMain from "../pages/recruitments/RecruitMain.jsx";
-
 import AdmissionProcess from "../pages/Admission/AdmissionProcess.jsx";
 import CoursesOffered from "../pages/Admission/CoursesOffered.jsx";
 import EligibilityReservation from "../pages/Admission/EligibilityReservation.jsx";
@@ -98,7 +95,7 @@ const Index = lazy(() =>
 const Publications = lazy(() =>
   import("../pages/Reasearch/researchhighlights/Publications.jsx")
 );
-
+ 
 const ResearchCenters = lazy(() =>
   import("../pages/Reasearch/ResearchCenters.jsx")
 );
@@ -129,8 +126,9 @@ import LaboratoryCards from "../pages/departments/laboratries.jsx";
 // import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
 // import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx";
 import Placement_home from "../pages/Placement/Placement_home.jsx";
-
-import RTI from "../pages/RTI.jsx";
+import StaffMembers from "../pages/departments/StaffMembers.jsx";
+import Coedt from "../pages/departments/Coedt.jsx";
+import Raem from "../pages/departments/Raem.jsx";
 
 export default function AppRouter() {
   return (
@@ -145,7 +143,7 @@ export default function AppRouter() {
         <Routes>
           {/* About Us Routes */}
           <Route path="/" element={<Home />} />
-          <Route path="/about-us/About GBU" element={<Vision />} />
+        <Route path="/about-us/About GBU" element={<Vision />} />
           <Route path="/about-us/chancellor-message" element={<Chancellor />} />
           <Route
             path="/about-us/vice-chancellor-message"
@@ -199,15 +197,15 @@ export default function AppRouter() {
             {/* About Section */}
             <Route
               path="about/coeidrone"
-              element={<h1>COE Drone - Coming Soon</h1>}
+              element={<Coedt/>}
             />
             <Route path="about/dean" element={<Dean />} />
             <Route
               path="about/coeiraem"
-              element={<h1>COE IRAEM - Coming Soon</h1>}
+              element={<Raem/>}
             />
             <Route path="about/board" element={<BoardOfStudies />} />
-            <Route path="about/staff" element={<h1>Staff - Coming Soon</h1>} />
+            <Route path="about/staff" element={<StaffMembers/>} />
             <Route path="about/labs" element={<LaboratoryCards />} />
             <Route path="about/activities" element={<Conferences />} />
 
@@ -315,7 +313,7 @@ export default function AppRouter() {
             path="/campus-life/clubs-societies"
             element={<ClubsCouncils />}
           />
-          <Route path="/club/:clubId" element={<ClubDetail />} />
+           <Route path="/club/:clubId" element={<ClubDetail />} />
           <Route path="/campus-life/NSS" element={<NSS />} />
           <Route path="/campus-life/NCC" element={<NCC />} />
 
@@ -341,8 +339,8 @@ export default function AppRouter() {
             path="/announcements/event-calendar/:id"
             element={<EventDetail />}
           />
-          <Route path="/announcements/notices" element={<Notice />} />
-          <Route path="/announcements/notices/:id" element={<NoticeDetail />} />
+          <Route path="/announcements/notices" element={<Notice/>} />
+          <Route path="/announcements/notices/:id" element={<NoticeDetail/>} />
           <Route
             path="/announcements/media-gallery"
             element={<MediaGallery />}
@@ -350,7 +348,7 @@ export default function AppRouter() {
 
           <Route
             path="/announcements/newsletter"
-            element={<NewsLetter />}
+            element={<NewsLetter/>}
           />
 
           {/* Placements Routes */}
@@ -403,17 +401,11 @@ export default function AppRouter() {
               </ProtectedRoute>
             }
           />
-
-          <Route path="recruitments" element={<RecruitMain />} />
-
           <Route path="/complaint/:id" element={<ComplaintDetail />} />
           <Route path="/track" element={<TrackComplaint />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
-
-          <Route path="/rti" element={<RTI />} />
-
         </Routes>
       </AuthProvider>
     </Suspense>
