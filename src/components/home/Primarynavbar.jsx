@@ -12,11 +12,13 @@ import {
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
+import SearchableWrapper from "../Searchbar/SearchableWrapper";
 
 const Primarynavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    <SearchableWrapper>
     <nav
       className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 text-white text-sm shadow"
       role="navigation"
@@ -37,7 +39,7 @@ const Primarynavbar = () => {
             <a href="/tender" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Tenders
             </a>
-            <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
+            <a href="/recruitments" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Recruitments
             </a>
             <a href="https://mygbu-smart-booking.vercel.app" className="hover:underline">Booking</a>
@@ -107,7 +109,7 @@ const Primarynavbar = () => {
                 <a href="/tender" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Tenders
                 </a>
-                <a href="https://recruit-hub-display.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="/recruitments" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Recruitments
                 </a>
                 <a href="https://gbu-facility-bookings-39.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
@@ -158,6 +160,7 @@ const Primarynavbar = () => {
         </div>
       </div>
     </nav>
+    </SearchableWrapper>
   );
 };
 
