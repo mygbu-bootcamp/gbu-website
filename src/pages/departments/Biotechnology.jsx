@@ -1,17 +1,18 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 
+// Component Map for dynamic rendering
 const componentsMap = {
-  Landing: lazy(() => import("../../components/departments/Landing")),
-  AboutSection: lazy(() => import("../../components/departments/AboutIct")),
-  SchoolStats: lazy(() => import("../../components/departments/SchoolStats")),
-  LeadershipCard: lazy(() => import("../../components/departments/Dean")),
-  DepartmentsSection: lazy(() => import("../../components/departments/Deptcard")),
-  ProgramsShowcase: lazy(() => import("../../components/departments/Program")),
+  Landing: lazy(() => import("../../components/departments/Landing.jsx")),
+  AboutSection: lazy(() => import("../../components/departments/AboutIct.jsx")),
+  SchoolStats: lazy(() => import("../../components/departments/SchoolStats.jsx")),
+  LeadershipCard: lazy(() => import("../../components/departments/Dean.jsx")),
+  DepartmentsSection: lazy(() => import("../../components/departments/Deptcard.jsx")),
+  ProgramsShowcase: lazy(() => import("../../components/departments/Program.jsx")),
   FacultyCarousel: lazy(() => import("../../components/departments/faculty_rotating.jsx")),
   NoticeEvents: lazy(() => import("../../components/departments/Notice.jsx")),
   PlacementsSection: lazy(() => import("../../components/departments/Placement.jsx")),
   RecentPlacements: lazy(() => import("../../components/departments/Recent_Placement.jsx")),
-  RecruitersShowcase: lazy(() => import("../../components/departments/Recuritor_showcase")),
+  RecruitersShowcase: lazy(() => import("../../components/departments/Recuritor_showcase.jsx")),
   ClubsAchievements: lazy(() => import("../../components/departments/Clubs_activevment.jsx")),
   StudentAchievements: lazy(() => import("../../components/departments/Student_achievements.jsx")),
   StudentStartup: lazy(() => import("../../components/departments/Startup.jsx")),
