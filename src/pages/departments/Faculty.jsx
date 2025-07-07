@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Mail, Phone, Search, Filter, X, BookOpen
 } from 'lucide-react';
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
