@@ -181,7 +181,7 @@ const NoticeEvents = () => {
           <div className="grid lg:grid-cols-10 gap-10">
             {/* Notice Board */}
             <div className="lg:col-span-3">
-              <div className="rounded-xl shadow-lg border border-gray-200 bg-white p-6 h-[600px] flex flex-col">
+              <div className="rounded-xl shadow-lg border border-gray-200 bg-white p-6 h-[37.5rem] flex flex-col">
                 <div className="text-blue-800 text-lg font-bold flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <Calendar size={20} />
@@ -206,7 +206,7 @@ const NoticeEvents = () => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 pt-4 border-t border-gray-200 flex-shrink-0">
+                <div className="mt-8 pt-4 border-t border-gray-200 flex-shrink-0">
                   <button
                     onClick={() => setShowAllNotices(!showAllNotices)}
                     className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
@@ -217,41 +217,40 @@ const NoticeEvents = () => {
               </div>
             </div>
 
-            {/* Event Gallery */}
-            <div className="lg:col-span-7">
-              <div className="rounded-xl shadow-lg border border-gray-200 bg-white p-6 h-[600px]">
-                <h3 className="text-blue-800 text-lg font-bold mb-4">
-                  Event Gallery
-                </h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto h-[calc(100%-80px)] pr-2 custom-scrollbar">
-                  {events.map((event, index) => (
-                    <div key={index} className="group cursor-pointer">
-                      <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100">
-                        <img
-                          src={event.image}
-                          alt={event.title}
-                          className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                          loading="lazy"
-                        />
-                      </div>
-                      <h4 className="font-semibold text-blue-900 text-sm mb-1">
-                        {event.title}
-                      </h4>
-                      <p className="text-xs text-gray-600 mb-1">
-                        {event.description}
-                      </p>
-                      <p className="text-xs text-blue-600 font-medium">
-                        {event.date}
-                      </p>
+          {/* Event Gallery */}
+          <div className="lg:col-span-7">
+            <div className="rounded-xl shadow-lg border border-gray-200 bg-white p-6 h-[37.5rem]">
+              <h3 className="text-blue-800 text-lg font-bold mb-4">
+                Event Gallery
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto h-[calc(100%-30px)] pr-2 custom-scrollbar">
+                {events.map((event, index) => (
+                  <div key={index} className="group cursor-pointer">
+                    <div className="relative overflow-hidden rounded-lg mb-3 bg-gray-100">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <h4 className="font-semibold text-blue-900 text-sm mb-1">
+                      {event.title}
+                    </h4>
+                    <p className="text-xs text-gray-600 mb-1">
+                      {event.description}
+                    </p>
+                    <p className="text-xs text-blue-600 font-medium">
+                      {event.date}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </SearchableWrapper>
+      </div>
+    </section>
   );
 };
 

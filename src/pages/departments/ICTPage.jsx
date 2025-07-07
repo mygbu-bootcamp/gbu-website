@@ -12,30 +12,22 @@ import RecruitersShowcase from "../../components/departments/Recuritor_showcase"
 import ClubsAchievements from "../../components/departments/Clubs_activevment.jsx";
 import StudentAchievements from "../../components/departments/Student_achievements.jsx";
 import StudentStartup from "../../components/departments/Startup.jsx";
-
 import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 const Index = () => {
   return (
     <SearchableWrapper>
     <div className="min-h-screen bg-white">
-      <Landing />
-      <AboutSection />
-      <SchoolStats />
-      <LeadershipCard />
-      <DepartmentsSection />
-      <ProgramsShowcase />
-      <FacultyCarousel />
-      <NoticeEvents />
-      <ClubsAchievements />
-      <PlacementsSection />
-      <RecentPlacements />
-      <RecruitersShowcase />
-      <StudentStartup />
-      <StudentAchievements />
+      {sections.map((section, idx) => {
+        const Component = componentsMap[section.componentName];
+        if (!Component) return null;
+        return (
+          <Suspense fallback={<Loader />} key={idx}>
+            <Component />
+          </Suspense>
+        );
+      })}
     </div>
     </SearchableWrapper>
   );
-};
-
-export default Index;
+}
