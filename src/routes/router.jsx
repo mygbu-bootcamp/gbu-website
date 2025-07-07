@@ -51,6 +51,8 @@ import Contact from "../pages/grievance/Contact";
 import EscalationPolicy from "../pages/grievance/EscalationPolicy";
 import ComplaintDetail from "../pages/grievance/ComplaintDetail";
 import FacultyDashboard from "../pages/grievance/FacultyDashboard";
+import BiotechnologyLayout from "../components/departments/BiotechnologyLayout.jsx";
+import Biotechnology from "../pages/departments/Biotechnology.jsx";
 
 const AcademicCalendar = React.lazy(() =>
   import("../pages/Academic/AcademicCalendar.jsx")
@@ -190,6 +192,47 @@ export default function AppRouter() {
           <Route path="/schools/ict" element={<ICTLayout />}>
             {/* ICT Home Page */}
             <Route index element={<ICTPage />} />
+
+            {/* Faculty */}
+            <Route path="faculty" element={<ICTFaculty />} />
+
+            {/* About Section */}
+            <Route
+              path="about/coeidrone"
+              element={<h1>COE Drone - Coming Soon</h1>}
+            />
+            <Route path="about/dean" element={<Dean />} />
+            <Route
+              path="about/coeiraem"
+              element={<h1>COE IRAEM - Coming Soon</h1>}
+            />
+            <Route path="about/board" element={<BoardOfStudies />} />
+            <Route path="about/staff" element={<h1>Staff - Coming Soon</h1>} />
+            <Route path="about/labs" element={<LaboratoryCards />} />
+            <Route path="about/activities" element={<Conferences />} />
+
+            {/* Departments */}
+            <Route path="departments/cse" element={<CSE />} />
+            <Route path="departments/it" element={<IT />} />
+            <Route path="departments/ece" element={<ECE />} />
+
+            {/* Research Section */}
+            <Route path="research/profile" element={<ResearchArea />} />
+            <Route
+              path="research/consultancy"
+              element={<TrainingConsultancy />}
+            />
+            <Route path="research/scholars" element={<ResearchScholars />} />
+            <Route path="research/projects" element={<ResearchProjects />} />
+            <Route path="research/patents" element={<Patents />} />
+
+            {/* Contact Page */}
+            <Route path="contact" element={<ICTContact />} />
+          </Route>
+
+          <Route path="/schools/Biotechnology" element={<BiotechnologyLayout />}>
+            {/* Biotechnology Home Page */}
+            <Route index element={<Biotechnology/>} />
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
