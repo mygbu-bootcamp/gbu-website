@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { Award, Trophy, Medal, Star, Share2 } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Basic UI components
 const Card = ({ children, className = '', ...props }) => (
   <motion.div
@@ -185,7 +187,7 @@ const NSSAchievements = () => {
   };
 
   return (
-
+<SearchableWrapper>
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -384,6 +386,7 @@ const NSSAchievements = () => {
         </CardContent>
       </Card>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

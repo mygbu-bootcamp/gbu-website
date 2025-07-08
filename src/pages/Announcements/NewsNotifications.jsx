@@ -5,6 +5,8 @@ import SearchFilter from '../../components/announcement/SearchFilter';
 import SocialShare from '../../components/announcement/SocialShare';
 import EnhancedPagination from '../../components/announcement/EnhancedPagination';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card, CardContent, CardDescription, CardHeader, CardTitle
 const Card = ({ children, className = '', ...props }) => (
   <div
@@ -297,6 +299,7 @@ const NewsNotifications = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
 
       <div className="container mx-auto pb-5">
@@ -405,6 +408,7 @@ const NewsNotifications = () => {
         )}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

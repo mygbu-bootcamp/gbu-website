@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import axios from "axios"; // <-- Added axios import
+import axios from "axios"; 
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 // Helper to safely build image URLs
 const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
@@ -78,6 +80,7 @@ const HiringSection = () => {
   const first = companyData[0];
 
   return (
+    <SearchableWrapper>
     <section className="relative bg-[#f5f9ff] py-24 sm:py-32 overflow-hidden">
       {/* Heading */}
       <div className="absolute top-4 left-0 w-full text-center px-4 z-10">
@@ -175,6 +178,7 @@ const HiringSection = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

@@ -1,6 +1,9 @@
 
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/home/Navbar';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Button component
 const Button = ({ children, className = '', variant = 'default', size = 'md', ...props }) => {
   const base =
@@ -71,6 +74,7 @@ import { Users, FileText, Calendar, UserCheck, Star, ArrowRight, Briefcase, Mess
 
 const Index = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       
@@ -501,6 +505,7 @@ const Index = () => {
         </div>
       </footer>
     </div>
+    </SearchableWrapper>
   );
 };
 

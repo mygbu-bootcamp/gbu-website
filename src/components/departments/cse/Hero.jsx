@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight, Code, Cpu, Database } from "lucide-react";
 
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Custom Button component with gradient and outline variants
 const Button = ({
   children,
@@ -41,6 +43,7 @@ const Button = ({
 
 const HeroSection = () => {
   return (
+    <SearchableWrapper>
     <section id="home" className="relative bg-gradient-to-br from-blue-50 via-background to-purple-50 py-20 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
@@ -109,6 +112,7 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

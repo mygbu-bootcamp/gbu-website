@@ -1,6 +1,8 @@
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
 
 const HodMessage = () => {
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gradient-to-r from-slate-50 to-blue-50">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
@@ -71,6 +73,7 @@ const HodMessage = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

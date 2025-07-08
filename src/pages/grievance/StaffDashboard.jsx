@@ -1,3 +1,4 @@
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 // ---------- Card ----------
 const Card = ({ children, className = "" }) => (
@@ -304,6 +305,7 @@ const StaffDashboard = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
@@ -911,6 +913,7 @@ const StaffDashboard = () => {
         </Tabs>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

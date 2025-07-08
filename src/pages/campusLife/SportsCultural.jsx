@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Carousel Components
 const Carousel = ({ className = "", children }) => (
   <div className={`relative ${className}`}>{children}</div>
@@ -126,6 +128,7 @@ const SportsWellness = () => {
   };
 
   return (
+    <SearchableWrapper>
     <section id="sports-wellness" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
@@ -229,6 +232,7 @@ const SportsWellness = () => {
         )}
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

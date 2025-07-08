@@ -1,5 +1,7 @@
 import { Users, Award, BookOpen, Lightbulb } from "lucide-react";
 
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 const AboutDepartment = () => {
   const stats = [
     { icon: Users, label: "Students", value: "800+" },
@@ -9,6 +11,7 @@ const AboutDepartment = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <section id="about" className="py-16 bg-primary/5">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
@@ -82,6 +85,7 @@ const AboutDepartment = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

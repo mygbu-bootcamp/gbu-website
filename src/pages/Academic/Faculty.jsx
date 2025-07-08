@@ -5,6 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 import TabContent from '../../components/faculty/TabContent';
 import { Mail, Phone, Globe, Award, BookOpen, Users, Search, Filter, X } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const VITE_HOST = import.meta.env.VITE_HOST; 
 
 const Faculty = () => {
@@ -114,6 +116,7 @@ const Faculty = () => {
   const selectedFaculty = facultyMembers.find(faculty => faculty.id == id);
 
   return (
+    <SearchableWrapper>
     <SimpleLayout>
       {id ? (
         selectedFaculty ? (
@@ -378,6 +381,7 @@ const Faculty = () => {
         </>
       )}
     </SimpleLayout>
+    </SearchableWrapper>
   );
 };
 

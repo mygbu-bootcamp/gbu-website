@@ -1,5 +1,8 @@
 
 import React, { useState } from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Card component
 const Card = ({ children }) => (
   <div className="bg-white rounded-xl shadow-md border border-gray-200">{children}</div>
@@ -157,6 +160,7 @@ const DocumentVerification = () => {
   const pendingDocuments = documents.filter(doc => doc.status === 'pending');
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       <Card>
         <CardHeader>
@@ -226,6 +230,7 @@ const DocumentVerification = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

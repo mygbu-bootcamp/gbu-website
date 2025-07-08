@@ -1,5 +1,8 @@
 
 import React, { useState } from "react";
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Button component
 const Button = ({ variant = "default", size = "md", className = "", children, ...props }) => {
     const base =
@@ -134,6 +137,7 @@ const Header = () => {
   };
 
   return (
+    <SearchableWrapper>
     <header className="bg-white shadow-sm border-b">
       <div className="container mx-auto px-4">
          <div className="flex items-center justify-between h-11">
@@ -271,6 +275,7 @@ const Header = () => {
         </DialogContent>
       </Dialog>
     </header>
+    </SearchableWrapper>
   );
 };
 

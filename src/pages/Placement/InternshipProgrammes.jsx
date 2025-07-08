@@ -4,6 +4,8 @@ import { ArrowLeft, Users, Building, Calendar, MapPin, Clock, Star, Target, Awar
 
 import { Link } from 'react-router-dom';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ children, className = '' }) => (
   <div className={`rounded-xl overflow-hidden ${className}`}>
     {children}
@@ -98,6 +100,7 @@ const InternshipProgrammes = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white">
 
 
@@ -243,6 +246,7 @@ const InternshipProgrammes = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

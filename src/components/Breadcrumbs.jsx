@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+import SearchableWrapper from './Searchbar/SearchableWrapper';
+
+
 // Optional: Map URL segments to readable names
 const pathNameMap = {
   'about-us': 'About Us',
@@ -26,6 +29,7 @@ const Breadcrumbs = () => {
   });
 
   return (
+    <SearchableWrapper>
     <nav className="text-sm text-gray-700 p-4">
       <ol className="flex flex-wrap gap-2 items-center">
         <li>
@@ -45,6 +49,7 @@ const Breadcrumbs = () => {
         ))}
       </ol>
     </nav>
+    </SearchableWrapper>
   );
 };
 

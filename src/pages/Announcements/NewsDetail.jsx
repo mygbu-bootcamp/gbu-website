@@ -3,6 +3,8 @@ import Header from '../../components/announcement/Header';
 import SocialShare from '../../components/announcement/SocialShare';
 import { ArrowLeft, ArrowRight, Calendar, User } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Button component
 const Button = ({
   children,
@@ -239,6 +241,7 @@ const nextNews = currentIndex < mockNews.length - 1 ? mockNews[currentIndex + 1]
 
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
       {/* <Header />/ */}
 
@@ -339,6 +342,7 @@ const nextNews = currentIndex < mockNews.length - 1 ? mockNews[currentIndex + 1]
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

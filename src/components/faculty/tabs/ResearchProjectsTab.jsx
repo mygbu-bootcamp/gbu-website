@@ -1,5 +1,7 @@
 
 import React, { useState } from 'react';
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Minimal custom UI components for Card, Badge, and Button with Tailwind CSS
 
 // Card Component
@@ -131,6 +133,7 @@ export const ResearchProjectsTab = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Filter Section */}
       <Card className="hover:shadow-lg transition-shadow duration-300">
@@ -254,5 +257,6 @@ export const ResearchProjectsTab = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };

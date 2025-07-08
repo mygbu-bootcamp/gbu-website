@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // 🔁 Future: Replace with fetched data from API or CMS
 const leaderData = {
   name: "Dr. Arpit Bhardwaj",
@@ -19,6 +21,7 @@ const LeadershipCard = () => {
   } = leaderData || {};
 
   return (
+    <SearchableWrapper>
     <section className="py-12 sm:py-16 bg-gray-100">
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-10 sm:mb-12">
         Dean's <span className="text-blue-800">Message</span>
@@ -46,6 +49,7 @@ const LeadershipCard = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

@@ -15,6 +15,8 @@ const statsData = {
   ],
 };
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const CounterValue = ({ end, isInView }) => {
   const [count, setCount] = useState(0);
 

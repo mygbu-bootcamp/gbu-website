@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Search, MapPin, Briefcase, Calendar, ExternalLink } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-lg shadow border ${className}`}>{children}</div>
 );
@@ -161,6 +163,7 @@ const AlumniNetwork = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
 
 
@@ -322,6 +325,7 @@ const AlumniNetwork = () => {
         )}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

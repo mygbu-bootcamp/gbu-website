@@ -1,6 +1,8 @@
 import React from 'react';
 import { Lightbulb, Search, Calendar, Users, Send, Link2 } from 'lucide-react';
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const objectives = [
   {
     icon: <Lightbulb className="text-orange-500 w-8 h-8" />,
@@ -36,6 +38,7 @@ const objectives = [
 
 const IPRObjectives = () => {
   return (
+    <SearchableWrapper>
     <section className="container mx-auto px-10 py-10">
        
        <h1 className="text-3xl font-bold text-center mb-8">Objectives of IPR Cell</h1>
@@ -52,6 +55,7 @@ const IPRObjectives = () => {
         ))}
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

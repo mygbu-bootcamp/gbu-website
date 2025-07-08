@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import gbuFull from "../../assets/gbuFull.png";
 import gbuHalf from "../../assets/gbuHalf.png";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Load Saira Condensed font
 const loadFont = () => {
   if (!document.querySelector('link[href*="Saira+Condensed"]')) {
@@ -44,6 +46,7 @@ const PreLoad = ({ onComplete }) => {
   if (!isVisible) return null;
 
   return (
+    <SearchableWrapper>
     <motion.div
       className="fixed inset-0 w-full h-screen overflow-hidden z-50"
       initial={{ opacity: 1 }}
@@ -136,6 +139,7 @@ const PreLoad = ({ onComplete }) => {
         </motion.div>
       </div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

@@ -1,5 +1,8 @@
 
 import React, { useState } from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Card Components
 const Card = ({ className = '', children }) => (
   <div className={`rounded-xl bg-white border shadow-sm ${className}`}>{children}</div>
@@ -141,8 +144,8 @@ export const PublicationsTab = () => {
   });
 
   const getTypeColor = (type) => {
-    return type === 'journal' 
-      ? 'bg-blue-100 text-blue-800' 
+    return type === 'journal'
+      ? 'bg-blue-100 text-blue-800'
       : 'bg-green-100 text-green-800';
   };
 
@@ -163,138 +166,140 @@ export const PublicationsTab = () => {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Filters */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <CardTitle className="text-2xl text-gray-900 flex items-center">
-              <FileText className="w-6 h-6 mr-2 text-blue-600" />
-              Publications
-            </CardTitle>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-gray-500" />
-                <select
-                  value={selectedYear}
-                  onChange={(e) => setSelectedYear(e.target.value)}
-                  className="border border-gray-300 border-solid rounded px-3 py-1 text-sm"
-                >
-                  <option value="all">All Years</option>
-                  {years.map(year => (
-                    <option key={year} value={year}>{year}</option>
-                  ))}
-                </select>
-                <select
-                  value={selectedType}
-                  onChange={(e) => setSelectedType(e.target.value)}
-                  className="border border-gray-300 border-solid rounded px-3 py-1 text-sm"
-                >
-                  <option value="all">All Types</option>
-                  {types.map(type => (
-                    <option key={type} value={type}>
-                      {type.charAt(0).toUpperCase() + type.slice(1)}
-                    </option>
-                  ))}
-                </select>
+    <SearchableWrapper>
+      <div className="space-y-6">
+        {/* Filters */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <CardTitle className="text-2xl text-gray-900 flex items-center">
+                <FileText className="w-6 h-6 mr-2 text-blue-600" />
+                Publications
+              </CardTitle>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Filter className="w-4 h-4 text-gray-500" />
+                  <select
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="border border-gray-300 border-solid rounded px-3 py-1 text-sm"
+                  >
+                    <option value="all">All Years</option>
+                    {years.map(year => (
+                      <option key={year} value={year}>{year}</option>
+                    ))}
+                  </select>
+                  <select
+                    value={selectedType}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                    className="border border-gray-300 border-solid rounded px-3 py-1 text-sm"
+                  >
+                    <option value="all">All Types</option>
+                    {types.map(type => (
+                      <option key={type} value={type}>
+                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {filteredPublications.map((publication, index) => (
-              <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 leading-tight">
-                      {publication.title}
-                    </h3>
-                    
-                    <p className="text-sm text-gray-600 mb-2">{publication.authors}</p>
-                    <p className="text-blue-600 font-medium mb-3">{publication.venue}</p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      <Badge className={getTypeColor(publication.type)}>
-                        {publication.type.charAt(0).toUpperCase() + publication.type.slice(1)}
-                      </Badge>
-                      
-                      {publication.quartile && (
-                        <Badge className={getQuartileColor(publication.quartile)}>
-                          {publication.quartile}
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {filteredPublications.map((publication, index) => (
+                <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2 leading-tight">
+                        {publication.title}
+                      </h3>
+
+                      <p className="text-sm text-gray-600 mb-2">{publication.authors}</p>
+                      <p className="text-blue-600 font-medium mb-3">{publication.venue}</p>
+
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <Badge className={getTypeColor(publication.type)}>
+                          {publication.type.charAt(0).toUpperCase() + publication.type.slice(1)}
                         </Badge>
-                      )}
-                      
-                      {publication.ranking && (
-                        <Badge className={getRankingColor(publication.ranking)}>
-                          {publication.ranking}
+
+                        {publication.quartile && (
+                          <Badge className={getQuartileColor(publication.quartile)}>
+                            {publication.quartile}
+                          </Badge>
+                        )}
+
+                        {publication.ranking && (
+                          <Badge className={getRankingColor(publication.ranking)}>
+                            {publication.ranking}
+                          </Badge>
+                        )}
+
+                        <Badge variant="outline" className="text-xs">
+                          <Calendar className="w-3 h-3 mr-1" />
+                          {publication.year}
                         </Badge>
-                      )}
-                      
-                      <Badge variant="outline" className="text-xs">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        {publication.year}
-                      </Badge>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
-                      <span><strong>Citations:</strong> {publication.citations}</span>
-                      {publication.impactFactor && (
-                        <span><strong>Impact Factor:</strong> {publication.impactFactor}</span>
-                      )}
-                      <span><strong>DOI:</strong> {publication.doi}</span>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
-                        <ExternalLink className="w-4 h-4 mr-1" />
-                        View Paper
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Download className="w-4 h-4 mr-1" />
-                        Download PDF
-                      </Button>
+                      </div>
+
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+                        <span><strong>Citations:</strong> {publication.citations}</span>
+                        {publication.impactFactor && (
+                          <span><strong>Impact Factor:</strong> {publication.impactFactor}</span>
+                        )}
+                        <span><strong>DOI:</strong> {publication.doi}</span>
+                      </div>
+
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm">
+                          <ExternalLink className="w-4 h-4 mr-1" />
+                          View Paper
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          <Download className="w-4 h-4 mr-1" />
+                          Download PDF
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-      {/* Publication Statistics */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900">Publication Statistics</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
-              <div className="text-2xl font-bold text-blue-600">{publications.length}</div>
-              <div className="text-sm text-blue-700">Total Publications</div>
-            </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
-              <div className="text-2xl font-bold text-green-600">
-                {publications.filter(p => p.type === 'journal').length}
+        {/* Publication Statistics */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900">Publication Statistics</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
+                <div className="text-2xl font-bold text-blue-600">{publications.length}</div>
+                <div className="text-sm text-blue-700">Total Publications</div>
               </div>
-              <div className="text-sm text-green-700">Journal Papers</div>
-            </div>
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
-              <div className="text-2xl font-bold text-purple-600">
-                {publications.reduce((sum, pub) => sum + pub.citations, 0)}
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
+                <div className="text-2xl font-bold text-green-600">
+                  {publications.filter(p => p.type === 'journal').length}
+                </div>
+                <div className="text-sm text-green-700">Journal Papers</div>
               </div>
-              <div className="text-sm text-purple-700">Total Citations</div>
-            </div>
-            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
-              <div className="text-2xl font-bold text-orange-600">
-                {(publications.reduce((sum, pub) => sum + pub.citations, 0) / publications.length).toFixed(1)}
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
+                <div className="text-2xl font-bold text-purple-600">
+                  {publications.reduce((sum, pub) => sum + pub.citations, 0)}
+                </div>
+                <div className="text-sm text-purple-700">Total Citations</div>
               </div>
-              <div className="text-sm text-orange-700">Citations per Paper</div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
+                <div className="text-2xl font-bold text-orange-600">
+                  {(publications.reduce((sum, pub) => sum + pub.citations, 0) / publications.length).toFixed(1)}
+                </div>
+                <div className="text-sm text-orange-700">Citations per Paper</div>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          </CardContent>
+        </Card>
+      </div>
+    </SearchableWrapper>
   );
 };

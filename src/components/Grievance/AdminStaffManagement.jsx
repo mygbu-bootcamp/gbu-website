@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Search, Users, Mail, Phone, Star, TrendingUp } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Button component
 const Button = ({ children, size = "md", variant = "default", className = "", ...props }) => {
     const base =
@@ -161,6 +163,7 @@ const AdminStaffManagement = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Search */}
       <div className="flex items-center space-x-4">
@@ -285,6 +288,7 @@ const AdminStaffManagement = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

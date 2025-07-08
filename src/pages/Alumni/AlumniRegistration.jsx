@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { Upload, CheckCircle , AlertCircle} from 'lucide-react';
 import { toast } from '../../hooks/use-toast';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
+
 // Minimal versions of reused UI components
 const Button = ({ children, ...props }) => (
   <button {...props} className={`rounded-md font-medium ${props.className}`}>
@@ -175,6 +178,7 @@ const AlumniRegistration = () => {
     );
   }
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
 
       
@@ -429,6 +433,7 @@ const AlumniRegistration = () => {
         </Card>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

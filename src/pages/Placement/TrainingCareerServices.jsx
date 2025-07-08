@@ -3,6 +3,8 @@ import { ArrowLeft, BookOpen, Users, TrendingUp, Award, Calendar, Clock, Target 
 
 import { Link } from 'react-router-dom';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Card = ({ children, className = '' }) => (
   <div className={`rounded-xl overflow-hidden ${className}`}>
     {children}
@@ -140,6 +142,7 @@ const TrainingCareerServices = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white">
       {/* Navigation */}
 
@@ -309,6 +312,7 @@ const TrainingCareerServices = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

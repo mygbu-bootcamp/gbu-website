@@ -1,7 +1,10 @@
 import React from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Chancellor = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div
@@ -89,6 +92,7 @@ const Chancellor = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

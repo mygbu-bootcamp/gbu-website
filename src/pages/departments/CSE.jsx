@@ -5,8 +5,11 @@ import HodMessage from "../../components/departments/cse/Hod";
 import Programs from "../../components/departments/cse/Program";
 import Faculty from "../../components/departments/cse/Faculty";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Cse = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
 
       <HeroSection />
@@ -17,6 +20,7 @@ const Cse = () => {
       <Research />
 
     </div>
+    </SearchableWrapper>
   );
 };
 

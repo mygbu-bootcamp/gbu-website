@@ -1,5 +1,7 @@
 import React from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 export function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -7,6 +9,7 @@ export function cn(...classes) {
 const Card = React.forwardRef((props, ref) => {
   const { className, ...rest } = props;
   return (
+    <SearchableWrapper>
     <div
       ref={ref}
       className={cn(
@@ -15,6 +18,7 @@ const Card = React.forwardRef((props, ref) => {
       )}
       {...rest}
     />
+    </SearchableWrapper>
   );
 });
 Card.displayName = "Card";

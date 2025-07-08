@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Input Component
 const Input = ({ className = "", ...props }) => (
   <input
@@ -158,6 +160,7 @@ const ComplaintTimeline = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Track Input */}
       <Card>
@@ -326,6 +329,7 @@ const ComplaintTimeline = () => {
         </Card>
       )}
     </div>
+    </SearchableWrapper>
   );
 };
 

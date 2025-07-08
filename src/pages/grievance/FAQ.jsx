@@ -1,3 +1,4 @@
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 // Card Components
 const Card = ({ children, className = "" }) => (
@@ -110,6 +111,7 @@ const FAQ = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       <Header />
       
@@ -179,6 +181,7 @@ const FAQ = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

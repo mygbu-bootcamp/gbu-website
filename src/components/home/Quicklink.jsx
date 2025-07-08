@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const quickLinks = [
   {
     title: "Schools",
@@ -58,6 +60,7 @@ const quickLinks = [
 
 export default function QuickAccess() {
   return (
+    <SearchableWrapper>
     <section
       className="bg-gray-50 py-12 mt-24"
       role="region"
@@ -103,5 +106,6 @@ export default function QuickAccess() {
         })}
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

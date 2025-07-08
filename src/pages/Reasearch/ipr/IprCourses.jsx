@@ -1,5 +1,7 @@
  import React from 'react';
 
+ import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const iprCourses = [
   {
     school: 'School of Biotechnology',
@@ -41,6 +43,7 @@ const iprCourses = [
 
 export default function IprCourses() {
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gradient-to-r   to-white">
       <div className="container mx-auto px-4">
        
@@ -65,5 +68,6 @@ export default function IprCourses() {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

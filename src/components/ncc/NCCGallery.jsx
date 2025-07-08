@@ -1,6 +1,8 @@
  import React, { useState } from 'react';
 import { motion, AnimatePresence  } from 'framer-motion';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 import {
   Camera,
   Filter,
@@ -239,7 +241,7 @@ const NCCGallery = () => {
   };
 const [dialogImage, setDialogImage] = useState(null);
   return (
-
+<SearchableWrapper>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -622,6 +624,7 @@ const [dialogImage, setDialogImage] = useState(null);
         </Card>
       </motion.div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

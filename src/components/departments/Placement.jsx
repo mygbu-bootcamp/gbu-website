@@ -1,5 +1,7 @@
 import React from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const PlacementsSection = () => {
   // 🔹 Dynamic Placement Data (can be moved to API or MongoDB later)
   const data = {
@@ -59,6 +61,7 @@ const PlacementsSection = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

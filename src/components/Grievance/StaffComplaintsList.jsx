@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Search, Filter, Clock, User, Calendar, AlertTriangle } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // ----------- Button -----------
 const Button = ({ children, className = "", size = "md", ...props }) => {
   const sizeStyles = {
@@ -138,8 +140,8 @@ const StaffComplaintsList = ({ complaints, onSelectComplaint }) => {
   });
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
-      {/* Filters */}
       {/* Filters */}
       <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4">
         {/* Search Box */}
@@ -253,6 +255,7 @@ const StaffComplaintsList = ({ complaints, onSelectComplaint }) => {
         )}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

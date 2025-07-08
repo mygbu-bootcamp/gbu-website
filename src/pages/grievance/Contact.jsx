@@ -1,6 +1,8 @@
 
 import React from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card Component
 export const Card = ({ children, className = "" }) => (
     <div className={`bg-white rounded-xl shadow-md border border-gray-200 ${className}`}>
@@ -60,6 +62,7 @@ import Header from "../../components/Grievance/Header";
 
 const Contact = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       <Header />
       
@@ -245,6 +248,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -1,5 +1,8 @@
 
 import React from 'react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card Components
 const Card = ({ className = '', children }) => (
   <div className={`bg-white rounded-xl border border-gray-200 ${className}`}>{children}</div>
@@ -34,6 +37,7 @@ import { GraduationCap, Mail, Phone, Calendar } from 'lucide-react';
 
 const StudentProfileCard = () => {
   return (
+    <SearchableWrapper>
     <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2 text-xl">
@@ -109,6 +113,7 @@ const StudentProfileCard = () => {
         </div>
       </CardContent>
     </Card>
+    </SearchableWrapper>
   );
 };
 

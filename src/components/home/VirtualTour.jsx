@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import gbuimage from '../../assets/gbu.jpg';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, '');
 const VIRTUAL_TOUR_API = `${BASE}/landing/virtual-experience/`;
 
@@ -33,6 +35,7 @@ function VirtualTour() {
   }
 
   return (
+    <SearchableWrapper>
     <section
       className="relative bg-cover bg-center text-white"
       style={{
@@ -59,6 +62,7 @@ function VirtualTour() {
         </a>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 export default function LatestUpdates() {
   const [isVisible, setIsVisible] = useState(false);
   const [data, setData] = useState([]);
@@ -151,6 +153,7 @@ export default function LatestUpdates() {
   );
 
   return (
+    <SearchableWrapper>
     <section className="px-4 md:px-8 lg:px-16 py-12 bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30 min-h-screen">
       <style jsx>{`
         @keyframes slide-in {
@@ -226,5 +229,6 @@ export default function LatestUpdates() {
         })}
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

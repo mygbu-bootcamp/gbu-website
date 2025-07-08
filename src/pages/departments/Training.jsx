@@ -11,6 +11,8 @@ import {
   Briefcase,
 } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const TrainingConsultancy = () => {
   return (
     <div className="min-h-screen  ">
@@ -574,6 +576,7 @@ const TrainingConsultancy = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

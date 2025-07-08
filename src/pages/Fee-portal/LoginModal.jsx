@@ -1,5 +1,8 @@
 
 import React, { useState } from 'react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Dialog, DialogContent, DialogHeader, DialogTitle, Button, Input, Label components defined below
 
 // Dialog Root
@@ -141,6 +144,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, loginType }) => {
   const IconComponent = icon;
 
   return (
+    <SearchableWrapper>
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md mx-auto">
         <DialogHeader className="text-center">
@@ -246,6 +250,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, loginType }) => {
         </form>
       </DialogContent>
     </Dialog>
+    </SearchableWrapper>
   );
 };
 

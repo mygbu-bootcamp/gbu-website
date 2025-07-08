@@ -1,3 +1,5 @@
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Button component
 const Button = ({ children, className = "", size = "md", ...props }) => {
   const sizeClasses = {
@@ -54,6 +56,7 @@ import {
 
 const Vison = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-white">
       {/* Section 1: Hero Banner */}
       <div className="relative h-[60vh] md:h-[50vh] sm:h-[40vh] flex items-center justify-center">
@@ -629,6 +632,7 @@ const Vison = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

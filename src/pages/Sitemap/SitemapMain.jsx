@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 // Button component defined locally for this file
 const Button = ({
   children,
@@ -69,6 +72,7 @@ import {
 
 const SitemapMain = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         {/* Hero Section */}
@@ -225,6 +229,7 @@ const SitemapMain = () => {
         </Card>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

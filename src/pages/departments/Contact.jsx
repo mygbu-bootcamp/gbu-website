@@ -2,6 +2,7 @@
 // Custom Card components with modern UI, shadow, and smooth transitions
 import React from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 import { Phone, Mail, MapPin, Clock, User, Building } from "lucide-react";
 
@@ -109,6 +110,7 @@ const Contact = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
 
 
@@ -297,6 +299,7 @@ const Contact = () => {
 
 
     </div>
+    </SearchableWrapper>
   );
 };
 

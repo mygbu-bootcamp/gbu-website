@@ -4,6 +4,8 @@ import { User, Shield, Users, GraduationCap } from "lucide-react";
 import { useToast } from "../../hooks/use-toast";
 import { useAuth } from "../../components/Grievance/contexts/AuthContext";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Custom Button
 const Button = ({ children, className = "", ...props }) => {
   return (
@@ -125,6 +127,7 @@ const Login = () => {
   const Icon = config.icon;
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
@@ -182,6 +185,7 @@ const Login = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -4,6 +4,8 @@ import {
   ArrowLeft, Trophy
 } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const StudentAchievements = () => {
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -159,6 +161,7 @@ const StudentAchievements = () => {
     });
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50/20 to-yellow-50/20">
       <header className="bg-white/90 backdrop-blur-md border-b border-gray-200/50 border-solid sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-6">
@@ -250,6 +253,7 @@ const StudentAchievements = () => {
         </div>
       </main>
     </div>
+    </SearchableWrapper>
   );
 };
 

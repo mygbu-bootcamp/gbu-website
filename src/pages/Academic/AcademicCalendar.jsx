@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, BookOpen, FileText, Download, Bell, Search } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const AcademicCalendar = () => {
   const [events, setEvents] = useState([]);
   const [regulations, setRegulations] = useState([]);
@@ -142,6 +144,7 @@ const AcademicCalendar = () => {
   };
 
   return (
+    <SearchableWrapper>
     <>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
@@ -334,6 +337,7 @@ const AcademicCalendar = () => {
         </section>
       )}
     </>
+    </SearchableWrapper>
   );
 };
 
