@@ -130,6 +130,9 @@ import StaffMembers from "../pages/departments/StaffMembers.jsx";
 import Coedt from "../pages/departments/Coedt.jsx";
 import Raem from "../pages/departments/Raem.jsx";
 
+import DAC from "../pages/dac/DAC.jsx";
+import DACmain from "../pages/dac/DACmain.jsx";
+
 export default function AppRouter() {
   return (
     <Suspense
@@ -406,6 +409,9 @@ export default function AppRouter() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
+
+          <Route path="/dacMain" element={<DACmain/>}/>
+          <Route path="/dac" element={<DAC/>}/>
         </Routes>
       </AuthProvider>
     </Suspense>
