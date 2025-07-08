@@ -162,8 +162,8 @@ const Footer = () => {
             <Link to="/" className="hover:text-white font-semibold">
               DAC
             </Link>{" "}
-            and maintained by{" "}
-            <Link to="/" className="hover:text-white font-semibold">
+            and supported by{" "}
+            <Link to="https://www.gbu.ac.in/page/ccc" className="hover:text-white font-semibold">
               CCC
             </Link>
           </p>
