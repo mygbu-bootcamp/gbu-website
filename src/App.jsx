@@ -13,7 +13,7 @@ function App() {
   });
 
   const location = useLocation();
-  const isICTPage = location.pathname.startsWith("/schools/ict");
+  const isICTPage = location.pathname.startsWith("/schools");
 
   useEffect(() => {
     if (isPreloadComplete) {
