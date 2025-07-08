@@ -163,7 +163,7 @@ const Footer = () => {
               DAC
             </Link>{" "}
             and supported by{" "}
-            <Link to="https://www.gbu.ac.in/page/ccc" className="hover:text-white font-semibold">
+            <Link to="https://ccc.gbu.ac.in/" className="hover:text-white font-semibold">
               CCC
             </Link>
           </p>
