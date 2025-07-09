@@ -1,177 +1,70 @@
 import { Calendar } from "lucide-react";
 import { useState } from "react";
 
-// Card Components
-const Card = ({ children, className = "", ...props }) => {
-  return (
-    <div
-      className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
+// Reusable Card components
+export const Card = ({ children, className = "", ...props }) => (
+  <div
+    className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
 
-const CardHeader = ({ children, className = "", ...props }) => {
-  return (
-    <div className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>
-      {children}
-    </div>
-  );
-};
+export const CardHeader = ({ children, className = "", ...props }) => (
+  <div className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>
+    {children}
+  </div>
+);
 
-const CardTitle = ({ children, className = "", ...props }) => {
-  return (
-    <h3
-      className={`text-2xl font-semibold leading-none tracking-tight ${className}`}
-      {...props}
-    >
-      {children}
-    </h3>
-  );
-};
+export const CardTitle = ({ children, className = "", ...props }) => (
+  <h3
+    className={`text-2xl font-semibold leading-none tracking-tight ${className}`}
+    {...props}
+  >
+    {children}
+  </h3>
+);
 
-const CardContent = ({ children, className = "", ...props }) => {
-  return (
-    <div className={`p-6 pt-0 ${className}`} {...props}>
-      {children}
-    </div>
-  );
-};
+export const CardContent = ({ children, className = "", ...props }) => (
+  <div className={`p-6 pt-0 ${className}`} {...props}>
+    {children}
+  </div>
+);
 
-// Badge Component
-const Badge = ({ children, className = "", ...props }) => {
-  return (
-    <div
-      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${className}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
+// Reusable Badge
+export const Badge = ({ children, className = "", ...props }) => (
+  <div
+    className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
 
-const NoticeEvents = () => {
+// ✅ Fully prop-based NoticeEvents
+const NoticeEvents = ({
+  notices = [],
+  events = [],
+  initialNoticeCount = 5,
+  sectionTitle = "Notices and Events",
+  sectionSubtitle = "Stay updated with latest notices and events",
+}) => {
   const [showAllNotices, setShowAllNotices] = useState(false);
-  const initialNoticeCount = 5;
 
-  const notices = [
-    {
-      title: "Back Paper Examination Date Sheet – Even Semester 2024–25",
-      date: "2025-05-16",
-      type: "Important",
-    },
-    {
-      title: "Notice for Aadhaar e‑kyc through UPDESCO",
-      date: "2025-06-03",
-      type: "Administrative",
-    },
-    {
-      title: "Tablet Distribution Program Scheduled",
-      date: "2025-05-24",
-      type: "General",
-    },
-    {
-      title: "Office Order for Hostel & Mess Exemption",
-      date: "2025-05-13",
-      type: "Administrative",
-    },
-    {
-      title: "Office Order for Hostel & Mess2 Exemption",
-      date: "2025-05-13",
-      type: "Administrative",
-    },
-    {
-      title: "PhD Thesis Submission Guidelines Update",
-      date: "2025-05-12",
-      type: "Academic",
-    },
-    {
-      title: "Summer Internship Opportunities 2025",
-      date: "2025-05-10",
-      type: "Placement",
-    },
-    {
-      title: "Library Working Hours Extended",
-      date: "2025-05-09",
-      type: "General",
-    },
-    {
-      title: "Research Grant Applications Open",
-      date: "2025-05-08",
-      type: "Research",
-    },
-    {
-      title: "Campus Recruitment Drive - TCS",
-      date: "2025-05-07",
-      type: "Placement",
-    },
-    {
-      title: "Student Council Elections Schedule",
-      date: "2025-05-06",
-      type: "Important",
-    },
-    {
-      title: "Student Council Elections Schedule",
-      date: "2025-05-06",
-      type: "Important",
-    },
-    
-  ];
-
-  const displayedNotices = showAllNotices ? notices : notices.slice(0, initialNoticeCount);
-
-  const events = [
-    {
-      title: "Online National Article Writing Competition (GST)",
-      date: "2025-06-30",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK2NnCSPRdgMAEkEafMhZojs0fdgEv6hFY0A&s",
-      description: "Organized by School of Law, extended submission date.",
-    },
-    {
-      title: "Six‑Day Residential Vipassana Program",
-      date: "2025-06-09",
-      image: "https://data.gbu.ac.in/Events/1714148988_FIVE%20DAY%20VIPASSANA%20COURSE%20FEB2024_page-0001.jpg", 
-      description: "Well‑being retreat by School of Buddhist Studies.",
-    },
-    {
-      title: "World Environment Day Report",
-      date: "2025-06-05",
-      image: "https://images.timesnownews.com/thumb/msid-151788925,thumbsize-1151391,width-1280,height-720,resizemode-75/151788925.jpg",
-      description: "Activities report by Department of Environmental Science.",
-    },
-    {
-      title: "SOBSC Vesak Day Celebrations",
-      date: "2025-05-03",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCwXCDOopXvx7WxXSEcJJJ86SzCi_HjeITTQ&s", 
-      description: "Celebration at School of Buddhist Studies & Civilization.",
-    },
-    {
-      title: "ICSSR‑Sponsored AI Research Methodology Course",
-      date: "2024-12-03",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvQud5sjoe92WQkeO2ddUOccbSRysoFo6K5GvgRZzSeMy1a2DsromFso3Hp7ctE8W-e94&usqp=CAU",
-      description: "10‑day course on integrating AI in research, sponsored by ICSSR.",
-    },
-    {
-      title: "Digital India Talk Show",
-      date: "2024-11-20",
-      image: "https://negd.gov.in/wp-content/uploads/2025/01/gatishakti.jpeg", 
-      description: "Awareness session on e‑governance chaired by VC Prof. R.K. Sinha.",
-    },
-  ];
+  const displayedNotices = showAllNotices
+    ? notices
+    : notices.slice(0, initialNoticeCount);
 
   return (
     <section className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16">
-<h2 className="text-4xl font-bold text-blue-900 mb-3">
-  Notices and Events
-</h2>
-          <p className="text-xl text-gray-600">
-            Stay updated with latest notices and events
-          </p>
+          <h2 className="text-4xl font-bold text-blue-900 mb-3">
+            {sectionTitle}
+          </h2>
+          <p className="text-xl text-gray-600">{sectionSubtitle}</p>
         </div>
 
         {/* Main Grid */}
@@ -185,7 +78,13 @@ const NoticeEvents = () => {
                   Notice Board
                 </div>
               </div>
-              <div className={`space-y-4 flex-grow ${showAllNotices ? 'overflow-y-auto pr-2 custom-scrollbar' : ''}`} style={{ maxHeight: 'calc(100% - 110px)' }}>
+
+              <div
+                className={`space-y-4 flex-grow ${
+                  showAllNotices ? "overflow-y-auto pr-2 custom-scrollbar" : ""
+                }`}
+                style={{ maxHeight: "calc(100% - 110px)" }}
+              >
                 {displayedNotices.map((notice, index) => (
                   <div
                     key={index}
@@ -203,12 +102,13 @@ const NoticeEvents = () => {
                   </div>
                 ))}
               </div>
+
               <div className="mt-8 pt-4 border-t border-gray-200 flex-shrink-0">
-                <button 
+                <button
                   onClick={() => setShowAllNotices(!showAllNotices)}
                   className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                 >
-                  {showAllNotices ? 'Show Less' : 'View More'}
+                  {showAllNotices ? "Show Less" : "View More"}
                 </button>
               </div>
             </div>
@@ -252,4 +152,3 @@ const NoticeEvents = () => {
 };
 
 export default NoticeEvents;
-
