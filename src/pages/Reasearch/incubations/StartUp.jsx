@@ -141,7 +141,7 @@ const StartUp = () => {
         {["Apply Online", "Evaluation", "Pitch Presentation", "Incubation"].map(
           (step, index) => {
             const colors = [
-              "bg-primary",
+              "bg-pink-400",
               "bg-green-600",
               "bg-sky-500",
               "bg-yellow-500",
