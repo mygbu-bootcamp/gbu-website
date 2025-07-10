@@ -132,9 +132,18 @@ import LaboratoryCards from "../pages/departments/laboratries.jsx";
 // import NewsLetter from "../pages/Announcements/NewsLetter.jsx";
 // import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx";
 import Placement_home from "../pages/Placement/Placement_home.jsx";
+
+
+
+import TenderMain from "../pages/tenders/TenderMain.jsx";
+
+import RTI from "../pages/RTI.jsx";
+
 import StaffMembers from "../pages/departments/StaffMembers.jsx";
 import Coedt from "../pages/departments/Coedt.jsx";
 import Raem from "../pages/departments/Raem.jsx";
+
+
 
 export default function AppRouter() {
   return (
@@ -690,11 +699,22 @@ export default function AppRouter() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
+
+
+
+
+          <Route path="/tender" element={<TenderMain />} />
+
+          <Route path="/rti" element={<RTI />} />
+
+
+
+
           <Route path="/sitemapMain" element={<SitemapMain />} />
           <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/sitemapAbout" element={<SitemapAbout />} />
           <Route path="/sitemapContact" element={<SitemapContact />} />
-          <Route path="/sitemapAcademics" element={<SitemapAcademics />} />
+          <Route path="/sitemapAcademics" element={<SitemapAcademics />} /> 
         </Routes>
       </AuthProvider>
     </Suspense>
