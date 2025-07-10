@@ -68,7 +68,7 @@
 //   );
 // }
 
-"use client";
+
 
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { Code, Lightbulb, Rocket, Target, Trophy } from "lucide-react";
