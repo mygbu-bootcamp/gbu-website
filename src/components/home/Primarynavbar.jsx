@@ -44,9 +44,9 @@ const Primarynavbar = () => {
             </a>
 
             <a href="/booking" className="hover:underline">Booking</a>
-            <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
+            
 
-            <a href="https://mygbu-smart-booking.vercel.app" className="hover:underline">Booking</a>
+          
             <a href="/rti" className="flex items-center gap-1 hover:underline">
 
               <Info size={14} /> RTI
