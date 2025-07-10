@@ -8,7 +8,10 @@ import Programs from "../../components/departments/cse/Program";
 import Faculty from "../../components/departments/cse/Faculty";
 import StudentAchievers from "../../components/departments/cse/StudentAchievers";
 
-import { Code, Cpu, Database, Users, Award, BookOpen, Lightbulb, Brain, Shield, Cloud, Smartphone, Globe } from "lucide-react";
+import {
+  Code, Cpu, Database, Users, Award, BookOpen, Lightbulb, Brain, Shield, Cloud, Smartphone,
+  GraduationCap, Globe
+} from "lucide-react";
 
 import researchBg from "../../assets/research.jpg";
 
@@ -317,6 +320,62 @@ const Cse = () => {
     { value: "15+", label: "Patents Filed", bg: "bg-emerald-500/20" },
   ];
 
+  const topAchievers = [
+    {
+      name: "Ananya Sharma",
+      year: "B.Tech CSE 2024",
+      achievement:
+        "Winner of Smart India Hackathon, Internship at Google, ACM Student Researcher",
+      image:
+        "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      skills: ["Full Stack Development", "React", "Node.js", "Problem Solving"],
+    },
+    {
+      name: "Karan Mehta",
+      year: "M.Tech CSE 2023",
+      achievement:
+        "Published 3 papers in AI, Patent filed for AI-based Health Monitoring",
+      image:
+        "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      skills: ["Machine Learning", "Python", "Deep Learning", "Data Science"],
+    },
+    {
+      name: "Sneha Gupta",
+      year: "B.Tech CSE 2024",
+      achievement:
+        "Winner of National Coding Olympiad, Founder of EdTech Startup",
+      image:
+        "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      skills: ["Competitive Programming", "Java", "Startups", "UX/UI Design"],
+    },
+  ];
+const achievements = [
+  {
+    title: "ACM Student Chapter",
+    description: "Active ACM chapter with 300+ CSE students",
+    icon: Award,
+    color: "text-blue-600",
+  },
+  {
+    title: "Research Publications",
+    description: "200+ papers in top-tier CS conferences and journals",
+    icon: BookOpen,
+    color: "text-indigo-600",
+  },
+  {
+    title: "Industry Collaborations",
+    description: "MoUs with Google, Microsoft, and IBM for projects & training",
+    icon: Lightbulb,
+    color: "text-purple-600",
+  },
+  {
+    title: "Placement Record",
+    description: "98% placements in FAANG & top product companies",
+    icon: GraduationCap,
+    color: "text-emerald-600",
+  },
+];
+
   return (
     <div className="min-h-screen bg-background">
       <HeroSection {...heroProps} />
@@ -341,7 +400,14 @@ const Cse = () => {
         researchAreas={researchAreas}
         stats={researchStats}
       />
-      <StudentAchievers />
+      <StudentAchievers
+        topAchievers={topAchievers}
+        achievements={achievements}
+        achieversHeading="Top Student Achievers"
+        achieversSubheading="Students making us proud globally"
+        achievementsHeading="Key Achievements"
+        achievementsSubheading="Excellence and recognition"
+      />
     </div>
   );
 };
