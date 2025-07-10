@@ -156,8 +156,8 @@ const Primarynavbar = () => {
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </div> {/* Mobile overlay & sidebar container */}
+    </nav>  
   );
 };
 
