@@ -1,4 +1,4 @@
- import Home from "../pages/Aboutus/Home.jsx";
+import Home from "../pages/Aboutus/Home.jsx";
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import InternshipProgrammes from "../pages/Placement/InternshipProgrammes.jsx";
@@ -28,7 +28,7 @@ import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
 
 import HostelDining from "../pages/campusLife/HostelDining.jsx";
 import SportsCultural from "../pages/campusLife/SportsCultural.jsx";
-import ClubsCouncils from "../pages/clubs/ClubsMain.jsx";
+import ClubsMain from "../pages/clubs/ClubsMain.jsx";
 
 import NSS from "../pages/campusLife/NSS.jsx";
 import NCC from "../pages/campusLife/NCC.jsx";
@@ -95,7 +95,7 @@ const Index = lazy(() =>
 const Publications = lazy(() =>
   import("../pages/Reasearch/researchhighlights/Publications.jsx")
 );
- 
+
 const ResearchCenters = lazy(() =>
   import("../pages/Reasearch/ResearchCenters.jsx")
 );
@@ -143,7 +143,7 @@ export default function AppRouter() {
         <Routes>
           {/* About Us Routes */}
           <Route path="/" element={<Home />} />
-        <Route path="/about-us/About GBU" element={<Vision />} />
+          <Route path="/about-us/About GBU" element={<Vision />} />
           <Route path="/about-us/chancellor-message" element={<Chancellor />} />
           <Route
             path="/about-us/vice-chancellor-message"
@@ -197,15 +197,15 @@ export default function AppRouter() {
             {/* About Section */}
             <Route
               path="about/coeidrone"
-              element={<Coedt/>}
+              element={<Coedt />}
             />
             <Route path="about/dean" element={<Dean />} />
             <Route
               path="about/coeiraem"
-              element={<Raem/>}
+              element={<Raem />}
             />
             <Route path="about/board" element={<BoardOfStudies />} />
-            <Route path="about/staff" element={<StaffMembers/>} />
+            <Route path="about/staff" element={<StaffMembers />} />
             <Route path="about/labs" element={<LaboratoryCards />} />
             <Route path="about/activities" element={<Conferences />} />
 
@@ -587,11 +587,12 @@ export default function AppRouter() {
             path="/campus-life/sports-fitness"
             element={<SportsCultural />}
           />
+          
           <Route
             path="/campus-life/clubs-societies"
-            element={<ClubsCouncils />}
+            element={<ClubsMain />}
           />
-           <Route path="/club/:clubId" element={<ClubDetail />} />
+          <Route path="/club/:clubId" element={<ClubDetail />} />
           <Route path="/campus-life/NSS" element={<NSS />} />
           <Route path="/campus-life/NCC" element={<NCC />} />
 
@@ -617,8 +618,8 @@ export default function AppRouter() {
             path="/announcements/event-calendar/:id"
             element={<EventDetail />}
           />
-          <Route path="/announcements/notices" element={<Notice/>} />
-          <Route path="/announcements/notices/:id" element={<NoticeDetail/>} />
+          <Route path="/announcements/notices" element={<Notice />} />
+          <Route path="/announcements/notices/:id" element={<NoticeDetail />} />
           <Route
             path="/announcements/media-gallery"
             element={<MediaGallery />}
@@ -626,7 +627,7 @@ export default function AppRouter() {
 
           <Route
             path="/announcements/newsletter"
-            element={<NewsLetter/>}
+            element={<NewsLetter />}
           />
 
           {/* Placements Routes */}
