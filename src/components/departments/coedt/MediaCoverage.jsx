@@ -1,52 +1,67 @@
  import React from "react";
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
-
+import project1 from "../../../assets/project1.png"
 const MediaCoverage = () => {
   const mediaItems = [
-    {
-      title: "Design Thinking Bootcamp",
-      date: "2024-09-10",
-      image: "",
-      description: "Hands-on workshop on design thinking methodology and rapid prototyping.",
-      link: ""
-    },
-    {
-      title: "Drone Assembly Training Program",
-      date: "2024-08-25",
-      image: "",
-      description: "Students learn to assemble multirotor drone platforms from scratch.",
-      link: ""
-    },
-    {
-      title: "AI & Robotics Seminar",
-      date: "2024-07-15",
-      image: "",
-      description: "Expert talk series covering AI applications in drone navigation.",
-      link: ""
-    },
-    {
-      title: "Drone Aerodynamics Workshop",
-      date: "2024-06-20",
-      image: "",
-      description: "Workshop on flight dynamics and aerodynamics of UAVs.",
-      link: ""
-    },
-    {
-      title: "Drone Pilot Training & Certification",
-      date: "2024-05-10",
-      image: "",
-      description: "Professional training program for drone pilots with certification.",
-      link: ""
-    },
-    {
-      title: "Industry Interaction Session",
-      date: "2024-04-05",
-      image: " ",
-      description: "Interactive session with drone tech startups and industry mentors.",
-      link: ""
-    }
-  ];
+  {
+    title: "Drone Pilot Course at Gautam Buddha University",
+    date: "2022-04-23",
+    image: "https://static.wixstatic.com/media/bc6a73_ed122f7cc89e48619d459f4272eba491~mv2.jpg/v1/fill/w_815,h_358,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpg",  
+    description: "Gautam Buddha University to launch drone pilot training courses with short-term modules for aspiring drone operators.",
+    link: "https://www.navodayatimes.in/news/khabre/drone-pilot-will-also-now-have-a-course-in-gautam-buddha-university/197826/"
+  },
+  {
+    title: "Drone Excellence Centre to be Set Up in Uttar Pradesh",
+    date: "2022-08-04",
+    image: "https://static.wixstatic.com/media/bc6a73_3a580ea9fffa4ccda74d33dc382573c9~mv2.jpg/v1/fill/w_815,h_358,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpg",
+    description: "Omnipresent Robot Technologies in partnership with GBU and Skill Council of India will establish a drone excellence centre in Uttar Pradesh.",
+    link: "https://economictimes.indiatimes.com/industry/transportation/airlines-/-aviation/drone-excellence-centre-to-be-set-up-in-uttar-pradesh/articleshow/91593956.cms?from=mdr"
+  },
+  {
+    title: "Drone Courses to Boost Youth Employment at GBU",
+    date: "2022-05-01",
+    image: "https://static.wixstatic.com/media/bc6a73_009334d175304d4485f3f7eabe50dad5~mv2.jpeg/v1/fill/w_815,h_358,al_c,lg_1,q_80,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpeg",
+    description: "Three new drone technology programs launching at GBU to support youth employment and skilling in drone manufacturing, piloting, and technology.",
+    link: "https://www.patrika.com/noida-news/gautam-buddha-university-will-conduct-3-type-short-term-drone-course-7470045"
+  },
+  {
+    title: "GBU to Become Smart Campus with Drone Manufacturing & Training",
+    date: "2022-06-01",
+    image: "https://static.wixstatic.com/media/bc6a73_d4a5adff6b184bd39773f481faab5635~mv2.jpg/v1/fill/w_815,h_358,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpg",
+    description: "New developments at GBU to open employment avenues through drone manufacturing and pilot training initiatives.",
+    link: ""
+  },
+  {
+    title: "GBU at Bharat Drone Mahotsav 2022",
+    date: "2022-05-27",
+    image: "https://static.wixstatic.com/media/bc6a73_39c8b7fad71449f4814235f25c45bf6f~mv2.jpg/v1/fill/w_792,h_347,al_c,lg_1,q_80,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpg",
+    description: "Gautam Buddha University showcased its drone technology centre at the Bharat Drone Mahotsav 2022 with student participation.",
+    link: "https://www.grenonews.com/?p=57408"
+  },
+  {
+    title: "Students at GBU Building Delivery Drones",
+    date: "2022-07-01",
+    image: "https://static.wixstatic.com/media/bc6a73_c395997f244f43d5bccd5310bd8deae2~mv2.jpeg/v1/fill/w_749,h_329,al_c,q_80,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpeg",
+    description: "GBU students actively engaged in drone manufacturing projects including delivery drones for smart solutions.",
+    link: "https://www.amarujala.com/delhi-ncr/noida/gbu-students-are-making-delivery-drones-noida-news-noi6522566115"
+  },
+  {
+    title: "GBU to Make History with First Drone Course in UP",
+    date: "2022-05-20",
+    image:project1 ,
+    description: "Gautam Buddha University to launch UP’s first-ever drone certification course, marking a significant milestone.",
+    link: ""
+  },
+  {
+    title: "Centre for Drone Studies Established at GBU",
+    date: "2022-06-15",
+    image: "https://static.wixstatic.com/media/bc6a73_069991b6d1a843e8a6867111d103a6ab~mv2.jpeg/v1/fill/w_815,h_358,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpeg",
+    description: "Gautam Buddha University sets up a dedicated Centre for Drone Studies focusing on research, training, and development.",
+    link: "https://www.shiksha.com/news/college-gautam-buddha-university-establishes-centre-for-drone-studies-blogId-86279"
+  }
+];
+
 
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
