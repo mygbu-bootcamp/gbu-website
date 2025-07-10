@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import {
   Send,
   Info,
@@ -12,11 +12,13 @@ import {
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
+import SearchableWrapper from "../Searchbar/SearchableWrapper";
 
 const Primarynavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    <SearchableWrapper>
     <nav
       className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 text-white text-sm shadow"
       role="navigation"
@@ -34,17 +36,22 @@ const Primarynavbar = () => {
         <div className="hidden xl:flex w-full justify-between">
           {/* Left links */}
           <div className="flex flex-wrap gap-4 items-center">
-            <a href="https://tender-navigator-portal.vercel.app/" className="flex items-center gap-1 hover:underline">
+            <a href="/tender" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Tenders
             </a>
-            <a href="https://recruit-hub-display.lovable.app/" className="flex items-center gap-1 hover:underline">
+            <a href="/recruitments" className="flex items-center gap-1 hover:underline">
               <Send size={14} /> Recruitments
             </a>
+
             <a href="/booking" className="hover:underline">Booking</a>
             <a href="https://rti-page-rebuild-50.lovable.app/" className="flex items-center gap-1 hover:underline">
+
+            <a href="https://mygbu-smart-booking.vercel.app" className="hover:underline">Booking</a>
+            <a href="/rti" className="flex items-center gap-1 hover:underline">
+
               <Info size={14} /> RTI
             </a>
-            <a href="https://site-scape-navigator.lovable.app" className="hover:underline">Sitemap</a>
+            <a href="/sitemapMain" className="hover:underline">Sitemap</a>
 
           </div>
 
@@ -60,7 +67,7 @@ const Primarynavbar = () => {
               <LogIn size={14} /> Faculty Login
             </a>
 
- <a href="https://mygbu-admin.vercel.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://mygbu-admin.vercel.app/" className="flex items-center gap-1 hover:underline">
               <LogIn size={14} /> Admin Login
             </a>
             <Link
@@ -104,21 +111,23 @@ const Primarynavbar = () => {
             <div>
               <p className="text-gray-500 uppercase tracking-wider text-xs mb-2">Quick Links</p>
               <div className="space-y-2">
-                <a href="https://tender-navigator-portal.vercel.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="/tender" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Tenders
                 </a>
-                <a href="https://recruit-hub-display.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="/recruitments" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Recruitments
                 </a>
                 <a href="/booking" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   Booking
                 </a>
-                <a href="https://rti-page-rebuild-50.lovable.app/" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+                <a href="/rti" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   RTI
                 </a>
-                <a href="https://site-scape-navigator.lovable.app" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+
+                <a href="/sitemapMain" className="block px-3 py-2 rounded-md hover:bg-gray-100">
   Sitemap
 </a>
+
 
 
               </div>
@@ -158,6 +167,7 @@ const Primarynavbar = () => {
         </div>
       </div> {/* Mobile overlay & sidebar container */}
     </nav>  
+    </SearchableWrapper>
   );
 };
 
