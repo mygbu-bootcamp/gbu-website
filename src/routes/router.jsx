@@ -144,6 +144,11 @@ import Coedt from "../pages/departments/Coedt.jsx";
 import Raem from "../pages/departments/Raem.jsx";
 
 
+import DAC from "../pages/dac/DAC.jsx";
+import DACmain from "../pages/dac/DACmain.jsx";
+
+
+
 
 export default function AppRouter() {
   return (
@@ -701,6 +706,10 @@ export default function AppRouter() {
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
 
 
+          <Route path="/dacMain" element={<DACmain/>}/>
+          <Route path="/dac" element={<DAC/>}/>
+
+
 
 
           <Route path="/tender" element={<TenderMain />} />
@@ -715,6 +724,7 @@ export default function AppRouter() {
           <Route path="/sitemapAbout" element={<SitemapAbout />} />
           <Route path="/sitemapContact" element={<SitemapContact />} />
           <Route path="/sitemapAcademics" element={<SitemapAcademics />} /> 
+
         </Routes>
       </AuthProvider>
     </Suspense>
