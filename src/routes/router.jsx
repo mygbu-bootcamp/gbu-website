@@ -135,7 +135,11 @@ import Placement_home from "../pages/Placement/Placement_home.jsx";
 
 
 
+
+import BookingMain from "../pages/booking/BookingMain.jsx";
+import FacilityBookingPage from "../components/booking/FacilityBookingPage.jsx";
 import TenderMain from "../pages/tenders/TenderMain.jsx";
+
 
 import RTI from "../pages/RTI.jsx";
 
@@ -713,9 +717,19 @@ export default function AppRouter() {
 
 
 
+          <Route path="/booking" element={<BookingMain />} />
+          <Route path="/booking/:facilityId" element={<FacilityBookingPage />} />
+    
+
+           
+
+
           <Route path="/tender" element={<TenderMain />} />
 
+
           <Route path="/rti" element={<RTI />} />
+
+
 
 
 
