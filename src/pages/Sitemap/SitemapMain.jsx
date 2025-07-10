@@ -38,7 +38,7 @@ const Button = ({
 const Card = ({ className = "", children }) => (
   <div
     className={`rounded-2xl bg-white overflow-hidden shadow ${className}`}
-    
+
   >
     {children}
   </div>
@@ -153,6 +153,7 @@ const SitemapMain = () => {
           </Card>
 
           {/* Events Card */}
+
 <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white/80 backdrop-blur-sm">
   <CardHeader className="text-center pb-2 bg-white">
     <div className="mx-auto w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
@@ -174,6 +175,7 @@ const SitemapMain = () => {
     </Link>
   </CardContent>
 </Card>
+
 
 
           {/* Contact Card */}
