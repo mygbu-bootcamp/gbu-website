@@ -18,14 +18,14 @@ const teamMembers = [
   {
     name: 'Dr. Vinay Kumar Litoria',
     position: 'Nodal Officer',
-    linkedin: 'https://www.linkedin.com/in/dr-vinay-kumar-litoria',
-    image: ''
+    linkedin: 'https://www.linkedin.com/in/vinay-kumar-litoria/',
+    image: 'https://summit.careerguide.com/wp-content/uploads/2022/06/vinay-litoria.jpeg'
   },
   {
     name: 'Mr. Raj Kumar',
     position: 'Manager',
     linkedin: 'https://www.linkedin.com/in/raj-kumar-manager',
-    image: ''
+    image: 'https://gburif.org/mentors/raj_kumar_edit.jpg'
   },
   {
     name: 'Mr. Manish Bhardwaj',
