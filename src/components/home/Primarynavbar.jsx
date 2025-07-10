@@ -46,7 +46,7 @@ const Primarynavbar = () => {
             <a href="/rti" className="flex items-center gap-1 hover:underline">
               <Info size={14} /> RTI
             </a>
-            <a href="https://site-scape-navigator.lovable.app" className="hover:underline">Sitemap</a>
+            <a href="/sitemapMain" className="hover:underline">Sitemap</a>
 
           </div>
 
@@ -118,9 +118,11 @@ const Primarynavbar = () => {
                 <a href="/rti" className="block px-3 py-2 rounded-md hover:bg-gray-100">
                   RTI
                 </a>
-                <a href="https://site-scape-navigator.lovable.app" className="block px-3 py-2 rounded-md hover:bg-gray-100">
-                  Sitemap
-                </a>
+
+                <a href="/sitemapMain" className="block px-3 py-2 rounded-md hover:bg-gray-100">
+  Sitemap
+</a>
+
 
 
               </div>
