@@ -118,7 +118,7 @@ const ECE = () => {
       description:
         "A rigorous undergraduate program covering core areas of electronics and modern communication technologies.",
       image:
-        "https://images.unsplash.com/photo-1581093588401-016ccaf23562?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1684430598623-e04d754cec59?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JTIyQW5hbG9nJTIwJTI2JTIwRGlnaXRhbCUyMEVsZWN0cm9uaWNzJTIyJTJDJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIyTWljcm9wcm9jZXNzb3JzJTIwJTI2JTIwTWljcm9jb250cm9sbGVycyUyMiUyQyUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMkNvbW11bmljYXRpb24lMjBTeXN0ZW1zJTIyJTJDJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIyVkxTSSUyMERlc2lnbiUyMiUyQyUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMkVtYmVkZGVkJTIwU3lzdGVtcyUyMiUyQyUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMlNpZ25hbCUyMFByb2Nlc3NpbmclMjIlMkMlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjJJb1QlMjBBcHBsaWNhdGlvbnMlMjIlMkMlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjJXaXJlbGVzcyUyME5ldHdvcmtzJTIyJTJDfGVufDB8fDB8fHww",
       gradient: "from-pink-500 to-pink-600",
       highlights: [
         "Analog & Digital Electronics",
@@ -158,7 +158,7 @@ const ECE = () => {
       description:
         "Doctoral program focused on pioneering research in electronics, communication systems, and allied technologies.",
       image:
-        "https://images.unsplash.com/photo-1581091215369-15cb0f6f9868?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1628582453226-a0027de09af1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fCUyMkluZGVwZW5kZW50JTIwUmVzZWFyY2glMjIlMkMlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjJJbnRlcmRpc2NpcGxpbmFyeSUyMFByb2plY3RzJTIyJTJDJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIyUGFwZXIlMjBQdWJsaWNhdGlvbnMlMjIlMkMlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjJJbnRlcm5hdGlvbmFsJTIwQ29uZmVyZW5jZXMlMjIlMkMlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjJJbmR1c3RyeSUyMFJlc2VhcmNoJTIwQ29sbGFib3JhdGlvbiUyMiUyQyUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMlBhdGVudCUyMEZpbGluZyUyMiUyQyUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMlRlYWNoaW5nJTIwQXNzaXN0YW50c2hpcCUyMiUyQyUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMlRoZXNpcyUyMERlZmVuc2UlMjIlMkMlMjAlMjAlMjAlMjAlMjAlMjAlMjAlNUQlMkN8ZW58MHx8MHx8fDA%3D",
       gradient: "from-green-500 to-green-600",
       highlights: [
         "Independent Research",
@@ -175,41 +175,41 @@ const ECE = () => {
 
   const facultyMembers = [
     {
-      name: "Dr. Ravi Kumar",
-      position: "Professor",
-      specialization: "Wireless Communication",
-      email: "ravikumar@gbu.ac.in",
-      achievements: "70+ Publications, ISRO Project Lead",
-      image: "https://images.unsplash.com/photo-1603415526960-f7e0328e48b1?crop=faces&fit=crop&w=400&h=400&q=80", // Male Professor
+      name: "Dr. Mangal Das",
+      position: "Assistant Professor",
+      specialization: "Semiconductor Fabrication Nanotechnology Robotics AI/ML",
+      email: "mangal.das@gbu.ac.in",
+      achievements: "Indian Institute of Technology Indore",
+      image: "https://faculty.gbu.ac.in/uploads/photos/676049327abf5_Mangal_Das_2024-min.JPG", 
       color: "from-pink-500 to-pink-600",
       extraIcon: Award,
     },
     {
-      name: "Dr. Shalini Singh",
-      position: "Associate Professor",
-      specialization: "Embedded Systems",
-      email: "shalini@gbu.ac.in",
-      achievements: "50+ Publications, Intel Research Grant",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=faces&fit=crop&w=400&h=400&q=80", // Female Professor
+      name: "Dr. Navaid Zafar Rizvi",
+      position: "Assistant Professor",
+      specialization: "Machine Intelligence for ICs, MEMS/VLSI Design, Antenna & Microwave Techniques & RF Technology, Microsystems Fabrication",
+      email: "navaid@gbu.ac.in",
+      achievements: "PhD , M.S- Inf. & Comm. Engg. (TUD-Darmstadt, Germany), M.S- Microsystems Engg. (HFU, Germany)",
+      image: "https://faculty.gbu.ac.in/uploads/photos/66066a93789f0_navaid-rizvi.jpg", 
       color: "from-yellow-500 to-yellow-600",
       extraIcon: Award,
     },
     {
-      name: "Dr. Amit Verma",
+      name: "Dr. Priyanka Goyal",
       position: "Assistant Professor",
-      specialization: "VLSI & Signal Processing",
-      email: "amitverma@gbu.ac.in",
-      achievements: "40+ Publications, Reviewer IEEE Journals",
-      image: "https://images.unsplash.com/photo-1590080876794-52f58d8e8c8b?crop=faces&fit=crop&w=400&h=400&q=80", // Male Assistant Prof
+      specialization: "Field of teaching- Basic electronics, Analog Communication, Network Analysis and Synthesis, VHDL, Verilog, Low Power VLSI, Automation and Physical Design, Principles",
+      email: "priyankag@gbu.ac.in",
+      achievements: "PhD (2018) in Optoelectronics and VLSI (On-chip optical interconnects)",
+      image: "https://faculty.gbu.ac.in/uploads/photos/66052fa591258_priyankag.jpg", 
       color: "from-green-500 to-green-600",
     },
     {
-      name: "Dr. Neha Gupta",
+      name: "Dr. Rajesh Mishra",
       position: "Assistant Professor",
-      specialization: "Microwave & Antenna Engineering",
-      email: "nehagupta@gbu.ac.in",
-      achievements: "35+ Publications, DRDO Project Coordinator",
-      image: "https://images.unsplash.com/photo-1590080877038-fc9dc827b722?crop=faces&fit=crop&w=400&h=400&q=80", // Female Assistant Prof
+      specialization: "Networks, Signal Processing, Communication Systems, Reliability Engineering, RAMS",
+      email: "rmishra@gbu.ac.in",
+      achievements: "B.E. (Electronics Engineering), M. Tech. & Ph.D. (IIT Kharagpur)",
+      image: "https://faculty.gbu.ac.in/uploads/photos/67c341c729a98_rajesh%20photo.jpg",
       color: "from-orange-500 to-orange-600",
     },
   ];
