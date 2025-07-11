@@ -13,7 +13,7 @@ const AboutUs = ({ data }) => {
   // Framer Motion Animations
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.3 } },
+    visible: { opacity: 1, transition: { duration: 0.5, staggerChildren: 0.3 } },
   };
   const itemVariants = {
     hidden: { opacity: 0, y: 30, filter: "blur(10px)" },

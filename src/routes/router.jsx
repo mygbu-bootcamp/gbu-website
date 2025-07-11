@@ -81,7 +81,7 @@ const Schools = React.lazy(() => import("../pages/Academic/Schools.jsx"));
 
 const Disclosures = lazy(() => import("../pages/Aboutus/Disclosures.jsx"));
 const Policies = lazy(() => import("../pages/Aboutus/Policies.jsx"));
-const Vision = lazy(() => import("../pages/Aboutus/Vison.jsx"));
+const AboutGbu = lazy(() => import("../pages/Aboutus/AboutGbu.jsx"));
 
 const Chancellor = lazy(() => import("../pages/Aboutus/Chancellor.jsx"));
 const Governance = lazy(() => import("../pages/Aboutus/Governance.jsx"));
@@ -167,7 +167,7 @@ export default function AppRouter() {
         <Routes>
           {/* About Us Routes */}
           <Route path="/" element={<Home />} />
-          <Route path="/about-us/About GBU" element={<Vision />} />
+          <Route path="/about-us/About GBU" element={<AboutGbu/>} />
           <Route path="/about-us/chancellor-message" element={<Chancellor />} />
           <Route
             path="/about-us/vice-chancellor-message"
