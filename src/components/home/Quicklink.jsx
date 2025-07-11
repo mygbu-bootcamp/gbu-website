@@ -59,7 +59,7 @@ const quickLinks = [
 export default function QuickAccess() {
   return (
     <section
-      className="bg-gray-50 py-12 mt-24"
+      className="bg-gray-50 pb-12"
       role="region"
       aria-labelledby="quick-access-heading"
     >
