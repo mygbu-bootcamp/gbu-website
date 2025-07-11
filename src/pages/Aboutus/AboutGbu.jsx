@@ -266,7 +266,7 @@ const AboutGbu = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       {/* Hero Section */}
-      <div className="relative h-[55vh] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-indigo-900/80 z-10"></div>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"
@@ -283,20 +283,6 @@ const AboutGbu = () => {
             {aboutData.hero.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <Button size="lg" className="group">
-              Explore Our Journey
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button size="lg" variant="ghost" className="group">
-              <Play className="mr-2 w-5 h-5" />
-              Watch Video Tour
-            </Button>
-          </div>
-
-          <div className="animate-bounce">
-            <ChevronDown className="w-8 h-8 mx-auto opacity-70" />
-          </div>
         </div>
       </div>
 

@@ -214,7 +214,7 @@ const NoticeEvents = () => {
                 </div>
               </div>
 
-              {/* Auto-Scrolling Notice List */}
+             
               {/* Auto-Scrolling Notice List */}
               <div
                 ref={scrollRef}
