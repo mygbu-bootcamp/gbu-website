@@ -1,12 +1,16 @@
  import React from "react";
 import { motion } from "framer-motion";
-
+import project1 from "../../../assets/project1.png"
+import project2 from "../../../assets/project2.png"
+import project3 from "../../../assets/project3.png"
+import project4 from "../../../assets/project4.png"
+import project5 from "../../../assets/project5.png"
 const projects = [
   {
     name: "X8 Drones",
     description:
       "X8 PRO multirotor frame is a professional UAV platform designed to be lightweight, rigid, and powerful for various aerial applications.",
-    image: "/images/projects/x8-drone.jpg",
+    image: project1,
     category: "UAV Platform",
     year: "2023",
     status: "Prototype",
@@ -16,7 +20,7 @@ const projects = [
     name: "Talon to VTOL Drone",
     description:
       "Transforming the Talon fixed-wing drone into a VTOL aircraft capable of vertical take-off, hover, and landing for enhanced operational flexibility.",
-    image: "/images/projects/talon-vtol.jpg",
+    image:  project2,
     category: "R&D",
     year: "2024",
     status: "Ongoing",
@@ -26,7 +30,7 @@ const projects = [
     name: "GCS Team (Ground Control System)",
     description:
       "Developing a web application providing mission planning and control functionality similar to ArduPilot, accessible from any device.",
-    image: "/images/projects/gcs-team.jpg",
+    image:project3,
     category: "Software",
     year: "2024",
     status: "Ongoing",
@@ -36,7 +40,7 @@ const projects = [
     name: "Battery Management System",
     description:
       "Designing an intelligent battery management system to monitor and optimize drone power performance and safety.",
-    image: "/images/projects/bms.jpg",
+    image:project4,
     category: "Electronics",
     year: "2023",
     status: "Prototype",
@@ -46,7 +50,7 @@ const projects = [
     name: "Anti-Drone Systems",
     description:
       "Creating a system to detect, track, and neutralize unauthorized drones, ensuring secure airspace for critical infrastructure and drone fleets.",
-    image: "/images/projects/anti-drone.jpg",
+    image: project5,
     category: "Security",
     year: "2024",
     status: "Research",

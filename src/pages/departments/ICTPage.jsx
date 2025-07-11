@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Code, Lightbulb, Rocket, Target, Trophy } from "lucide-react";
-
-// Regular imports instead of lazy loading
 import Landing from "../../components/departments/Landing";
 import AboutSection from "../../components/departments/AboutIct";
 import SchoolStats from "../../components/departments/SchoolStats";
@@ -17,7 +15,10 @@ import ClubsAchievements from "../../components/departments/Clubs_activevment.js
 import StudentAchievements from "../../components/departments/Student_achievements.jsx";
 import StudentStartup from "../../components/departments/Startup.jsx";
 
-// Map components to their names
+import tcc from "../../assets/tcc.png";
+import GDSC from "../../assets/gdsc.png";
+
+
 const componentsMap = {
   Landing,
   AboutSection,
@@ -40,6 +41,7 @@ export default function DepartmentDynamicPage() {
 
   useEffect(() => {
     const fetchSections = async () => {
+
      const response = [
              { componentName: "Landing", enabled: true, position: 1 },
      
@@ -381,6 +383,7 @@ export default function DepartmentDynamicPage() {
              },
            ];
 
+
       const enabledSorted = response
         .filter((sec) => sec.enabled)
         .sort((a, b) => a.position - b.position);
@@ -395,8 +398,11 @@ export default function DepartmentDynamicPage() {
       {sections.map((section, idx) => {
         const Component = componentsMap[section.componentName];
         if (!Component) return null;
+
         return <Component key={idx} {...(section.props || {})} />;
+
       })}
     </div>
   );
+
 }
