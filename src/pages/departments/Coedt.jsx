@@ -9,7 +9,7 @@ import DroneCourseCard from '../../components/departments/coedt/DroneCourseCard'
 import FacilitiesSwiper from '../../components/departments/coedt/FacilitiesSwiper'
 import RecentTalks from '../../components/departments/coedt/RecentTalks'
 import MediaCoverage from '../../components/departments/coedt/MediaCoverage'
-import ContactUs from '../../components/departments/coedt/ContactUs'
+ 
 
 const Coedt = () => {
   return (
@@ -24,7 +24,7 @@ const Coedt = () => {
       <FacilitiesSwiper/>
       <RecentTalks/>
       <MediaCoverage/>
-      <ContactUs/>
+       
     </div>
   )
 }
