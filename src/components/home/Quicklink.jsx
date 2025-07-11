@@ -56,7 +56,7 @@ const quickLinks = [
   },
 ];
 
-export default function QuickAccess() {
+export default function QuickLinks() {
   return (
     <section
       className="bg-gray-50 py-12"
