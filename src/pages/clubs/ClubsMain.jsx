@@ -2,12 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Calendar, Trophy, ExternalLink } from 'lucide-react';
-<<<<<<< HEAD
+
 
 import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
-=======
 import { clubsData } from '../../components/clubs/data/clubsData';
->>>>>>> acaaa6d9bf534dd7a03d3e1c9b4f18f2452c83cb
+
 
 // Card component
 const Card = ({ children, className = "" }) => (
