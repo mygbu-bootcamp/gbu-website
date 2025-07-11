@@ -4,53 +4,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
-const achievements = [
-  {
-    title: "Smart India Hackathon 2024 (USICT Internal Round)",
-    achievement: "224 Participants",
-    year: "2024",
-    student: "USICT Students",
-    department: "CSE/IT/ECE",
-    image: "https://i.ytimg.com/vi/znMbKz6ZPno/maxresdefault.jpg?w=400&h=250&fit=crop",
-    description:
-      "GBU hosted the internal SIH 2024 with 224 participants from USICT solving real-world challenges.",
-  },
-  {
-    title: "Shell Eco-Marathon, Manila",
-    achievement: "India Representation",
-    year: "2018",
-    student: "Sachin Mishra & Team (Mechanical)",
-    department: "Mechanical",
-    image: "https://www.shellecomarathon.com/_jcr_content/root/main/section/simple_1063219968/promo_copy_copy.shellimg.jpeg/1706575524878/shell-eco-marathon-banner-home.jpeg?imwidth=301&impolicy=amidala-image&imdensity=1.25?w=400&h=250&fit=crop",
-    description:
-      "GBU's Mechanical team designed a hydrogen-powered Eco-Kart and represented India.",
-  },
-  {
-    title: "Elite Women's National Boxing Championship 2023",
-    achievement: "Hosted Event",
-    year: "2023",
-    student: "58 States & Club Athletes",
-    department: "Sports",
-    image: "https://img.olympics.com/images/image/private/t_s_16_9_g_auto/t_s_w2440/f_auto/primary/cmgu8jns1geqgoyzmvll?w=400&h=250&fit=crop",
-    description:
-      "GBU hosted the 7th Elite Women's National Boxing Championship in Dec 2023.",
-  },
-  {
-    title: "AI Centre of Excellence Establishment",
-    achievement: "₹50 Cr UP Govt Funding",
-    year: "2024",
-    student: "USICT Researchers",
-    department: "CSE/IT",
-    image: "https://pg-p.ctme.caltech.edu/wp-content/uploads/sites/4/2023/03/future_of_ai.jpg?w=400&h=250&fit=crop",
-    description:
-      "UP Govt & industry partners funded AI CoE at GBU to boost advanced tech research.",
-  }
-];
 
-
-const StudentAchievements = () => {
+const StudentAchievements = ({achievements=[]}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % achievements.length);
@@ -140,23 +96,24 @@ const StudentAchievements = () => {
               </button>
             </div>
 
-            {/* Indicators */}
-            <div className="flex justify-center py-6 space-x-2 bg-gray-50">
-              {achievements.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
-                      ? "bg-blue-600 shadow-lg scale-125"
-                      : "bg-gray-300 hover:bg-gray-400"
-                    }`}
-                />
-              ))}
-            </div>
+          {/* Indicators */}
+          <div className="flex justify-center py-6 space-x-2 bg-gray-50">
+            {achievements.map((achievement, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-blue-600 shadow-lg scale-125"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+              />
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
     </SearchableWrapper>
   );
 };

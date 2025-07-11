@@ -58,11 +58,11 @@ const quickLinks = [
   },
 ];
 
-export default function QuickAccess() {
+export default function QuickLinks() {
   return (
     <SearchableWrapper>
     <section
-      className="bg-gray-50 py-12 mt-24"
+      className="bg-gray-50 py-12"
       role="region"
       aria-labelledby="quick-access-heading"
     >

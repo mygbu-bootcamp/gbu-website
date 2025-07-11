@@ -42,7 +42,7 @@ const Button = ({ children, className = "", variant = "default", size = "md", ..
   );
 };
 
-const Collapsible = ({ open, onOpenChange, children }) => {
+const LocalCollapsible = ({ open, onOpenChange, children }) => {
   const [internalOpen, setInternalOpen] = useState(open);
   useEffect(() => setInternalOpen(open), [open]);
   return Children.map(children, child =>
@@ -56,19 +56,13 @@ const Collapsible = ({ open, onOpenChange, children }) => {
   );
 };
 
-const CollapsibleTrigger = ({ children, asChild = false, onOpenChange, open }) =>
-  asChild
-    ? cloneElement(children, {
-        onClick: onOpenChange,
-        'aria-expanded': open,
-        role: "button",
-        tabIndex: 0,
-      })
-    : (
-      <button onClick={onOpenChange} aria-expanded={open}>{children}</button>
-    );
+const LocalCollapsibleTrigger = ({ children, onOpenChange, open }) => (
+  <button onClick={onOpenChange} aria-expanded={open} style={{ width: '100%', background: 'none', border: 'none', padding: 0, textAlign: 'inherit' }}>
+    {children}
+  </button>
+);
 
-const CollapsibleContent = ({ children, open }) => open ? <div>{children}</div> : null;
+const LocalCollapsibleContent = ({ children, open }) => open ? <div>{children}</div> : null;
 
 const ClubPolicies = ({ club }) => {
   const [openSections, setOpenSections] = useState({
@@ -104,8 +98,8 @@ const ClubPolicies = ({ club }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {policyData.map((policy) => (
           <Card key={policy.id}  className=" border border-gray-200 hover:shadow-lg transition-all duration-300">
-            <Collapsible open={openSections[policy.id]} onOpenChange={() => toggleSection(policy.id)}>
-              <CollapsibleTrigger asChild>
+            <LocalCollapsible open={openSections[policy.id]} onOpenChange={() => toggleSection(policy.id)}>
+              <LocalCollapsibleTrigger>
                 <div className="cursor-pointer transition-colors" role="button" tabIndex={0} aria-expanded={openSections[policy.id]}>
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -117,8 +111,8 @@ const ClubPolicies = ({ club }) => {
                     </div>
                   </CardHeader>
                 </div>
-              </CollapsibleTrigger>
-              <CollapsibleContent open={openSections[policy.id]}>
+              </LocalCollapsibleTrigger>
+              <LocalCollapsibleContent open={openSections[policy.id]}>
                 <CardContent className="pt-0 rounded-b-xl">
                   <ul className="space-y-3 ">
                     {policy.items.map((item, index) => (
@@ -129,8 +123,8 @@ const ClubPolicies = ({ club }) => {
                     ))}
                   </ul>
                 </CardContent>
-              </CollapsibleContent>
-            </Collapsible>
+              </LocalCollapsibleContent>
+            </LocalCollapsible>
           </Card>
         ))}
 

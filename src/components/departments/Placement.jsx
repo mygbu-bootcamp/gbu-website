@@ -1,25 +1,13 @@
 import React from "react";
-
 import SearchableWrapper from '../Searchbar/SearchableWrapper';
-
-const PlacementsSection = () => {
+const PlacementsSection = ({data}) => {
   // 🔹 Dynamic Placement Data (can be moved to API or MongoDB later)
-  const data = {
-    title: "Placements",
-    subTitle: "Connecting talent with opportunities",
-    heroImage:
-      "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1200&h=300&fit=crop",
-    placementStats: [
-      { label: "Placement Rate", value: "85‑90%", color: "bg-green-500" },
-      { label: "Highest Package", value: "₹51 LPA", color: "bg-blue-500" },
-      { label: "Average Package", value: "₹6 LPA", color: "bg-purple-500" },
-      { label: "Companies Visited", value: "150+", color: "bg-yellow-500" },
-    ],
-  };
+ 
 
   const { title, subTitle, heroImage, placementStats } = data;
 
   return (
+    <SearchableWrapper>
     <section id="placements" className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}

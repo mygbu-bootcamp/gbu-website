@@ -2,8 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Calendar, Trophy, ExternalLink } from 'lucide-react';
+<<<<<<< HEAD
 
 import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+=======
+import { clubsData } from '../../components/clubs/data/clubsData';
+>>>>>>> acaaa6d9bf534dd7a03d3e1c9b4f18f2452c83cb
 
 // Card component
 const Card = ({ children, className = "" }) => (
@@ -63,7 +67,7 @@ const Badge = ({ children, className = "" }) => (
     {children}
   </span>
 );
-  import { clubsData } from '../../components/clubs/data/clubsData';
+  // import { clubsData } from '../../components/clubs/data/clubsData';
 
 const ClubsMain = () => {
   const getCategoryColor = (category) => {
@@ -140,6 +144,7 @@ const ClubsMain = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
             {clubsData.map((club) => (
               <Card key={club.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
                 <div className="relative">

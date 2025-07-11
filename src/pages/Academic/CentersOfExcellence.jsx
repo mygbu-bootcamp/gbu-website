@@ -49,6 +49,7 @@ const CentersOfExcellence = () => {
             alt: img.title,
           }))
         );
+        
         setCtaData(joinRes.data[0]);
       } catch (error) {
         console.error('Error fetching Centers of Excellence data:', error);
