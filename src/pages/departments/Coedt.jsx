@@ -16,7 +16,7 @@ const Coedt = () => {
     <div>
       <Hero/>
       <AboutCEDT/>
-      <VcMessage/>
+      {/* <VcMessage/> */}
       <Mentors/>
       <PartnersCarousel/>
       <ProjectsSection/>
