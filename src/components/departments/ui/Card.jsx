@@ -1,14 +1,19 @@
 import React from "react";
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 export function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const Card = React.forwardRef(({ className, ...props }, ref) => (
+  <SearchableWrapper>
   <div
     ref={ref}
     className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)}
     {...props}
   />
+  </SearchableWrapper>
 ));
 Card.displayName = "Card";
 

@@ -4,6 +4,8 @@ import { Facebook, Instagram, Twitter, Linkedin, Mail } from "lucide-react";
 import tcc from "../../assets/tcc.png";
 import GDSC from "../../assets/GDSC.png";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const ClubsAchievements = () => {
   const clubs = [
     {
@@ -161,6 +163,7 @@ const ClubsAchievements = () => {
   };
 
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
@@ -200,6 +203,7 @@ const ClubsAchievements = () => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const fallbackLogo = "https://upload.wikimedia.org/wikipedia/commons/9/99/User_icon.png";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 const RecruitersShowcase = ({recruitersData=[]}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [recruiters, setRecruiters] = useState([]);
@@ -36,6 +37,7 @@ const RecruitersShowcase = ({recruitersData=[]}) => {
   };
 
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
@@ -110,6 +112,7 @@ const RecruitersShowcase = ({recruitersData=[]}) => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

@@ -1,4 +1,7 @@
 import React from 'react';
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 // Card, CardHeader, CardTitle, CardContent, and Badge components defined locally
 
 // Card container with subtle shadow and rounded corners
@@ -153,149 +156,151 @@ export const AwardsTab = () => {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Awards Overview */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-2xl text-gray-900 flex items-center">
-            <Trophy className="w-6 h-6 mr-2 text-blue-600" />
-            Awards & Achievements
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
-              <div className="text-2xl font-bold text-blue-600">{awards.length}</div>
-              <div className="text-sm text-blue-700">Total Awards</div>
-            </div>
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
-              <div className="text-2xl font-bold text-purple-600">
-                {awards.filter(award => award.level === 'international' || award.level === 'national').length}
+    <SearchableWrapper>
+      <div className="space-y-6">
+        {/* Awards Overview */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-2xl text-gray-900 flex items-center">
+              <Trophy className="w-6 h-6 mr-2 text-blue-600" />
+              Awards & Achievements
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
+                <div className="text-2xl font-bold text-blue-600">{awards.length}</div>
+                <div className="text-sm text-blue-700">Total Awards</div>
               </div>
-              <div className="text-sm text-purple-700">National/International</div>
-            </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
-              <div className="text-2xl font-bold text-green-600">
-                {awards.filter(award => award.year >= 2022).length}
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200 border-solid">
+                <div className="text-2xl font-bold text-purple-600">
+                  {awards.filter(award => award.level === 'international' || award.level === 'national').length}
+                </div>
+                <div className="text-sm text-purple-700">National/International</div>
               </div>
-              <div className="text-sm text-green-700">Recent Awards</div>
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200 border-solid">
+                <div className="text-2xl font-bold text-green-600">
+                  {awards.filter(award => award.year >= 2022).length}
+                </div>
+                <div className="text-sm text-green-700">Recent Awards</div>
+              </div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
+                <div className="text-2xl font-bold text-orange-600">{Math.max(...awards.map(a => a.year))}</div>
+                <div className="text-sm text-orange-700">Latest Year</div>
+              </div>
             </div>
-            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4 text-center border border-orange-200 border-solid">
-              <div className="text-2xl font-bold text-orange-600">{Math.max(...awards.map(a => a.year))}</div>
-              <div className="text-sm text-orange-700">Latest Year</div>
-            </div>
-          </div>
-          
-          <p className="text-gray-700 leading-relaxed">
-            Dr. Kumar's excellence in research, teaching, and service has been recognized through numerous 
-            prestigious awards and honors at institutional, national, and international levels. These 
-            accolades reflect his significant contributions to the academic and research community.
-          </p>
-        </CardContent>
-      </Card>
 
-      {/* Awards List */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900">Award Recognition</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-6">
-            {awards.map((award, index) => {
-              const IconComponent = getCategoryIcon(award.category);
-              return (
-                <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-start gap-3 mb-4">
-                        <div className="bg-yellow-500 text-white p-2 rounded-lg">
-                          <IconComponent className="w-5 h-5" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-1">{award.title}</h3>
-                          <p className="text-blue-600 font-medium mb-2">{award.awardingBody}</p>
-                          <p className="text-gray-700 leading-relaxed mb-3">{award.description}</p>
-                          <p className="text-sm text-gray-600 italic">{award.significance}</p>
+            <p className="text-gray-700 leading-relaxed">
+              Dr. Kumar's excellence in research, teaching, and service has been recognized through numerous
+              prestigious awards and honors at institutional, national, and international levels. These
+              accolades reflect his significant contributions to the academic and research community.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Awards List */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900">Award Recognition</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {awards.map((award, index) => {
+                const IconComponent = getCategoryIcon(award.category);
+                return (
+                  <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 border-solid hover:shadow-md transition-shadow">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="bg-yellow-500 text-white p-2 rounded-lg">
+                            <IconComponent className="w-5 h-5" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-1">{award.title}</h3>
+                            <p className="text-blue-600 font-medium mb-2">{award.awardingBody}</p>
+                            <p className="text-gray-700 leading-relaxed mb-3">{award.description}</p>
+                            <p className="text-sm text-gray-600 italic">{award.significance}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    
-                    <div className="flex flex-col items-start lg:items-end gap-2">
-                      <Badge className={getCategoryColor(award.category)}>
-                        {award.category.charAt(0).toUpperCase() + award.category.slice(1)}
-                      </Badge>
-                      <Badge className={getLevelColor(award.level)}>
-                        {award.level.charAt(0).toUpperCase() + award.level.slice(1)}
-                      </Badge>
-                      <span className="text-sm text-gray-600 flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {award.year}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </CardContent>
-      </Card>
 
-      {/* Additional Achievements */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900">Notable Achievements</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-100">
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-600 text-white p-2 rounded-lg">
-                    <Star className="w-4 h-4" />
+                      <div className="flex flex-col items-start lg:items-end gap-2">
+                        <Badge className={getCategoryColor(award.category)}>
+                          {award.category.charAt(0).toUpperCase() + award.category.slice(1)}
+                        </Badge>
+                        <Badge className={getLevelColor(award.level)}>
+                          {award.level.charAt(0).toUpperCase() + award.level.slice(1)}
+                        </Badge>
+                        <span className="text-sm text-gray-600 flex items-center">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {award.year}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">{achievement.title}</h3>
-                    <p className="text-sm text-gray-700 mb-2">{achievement.description}</p>
-                    <Badge variant="outline" className="text-xs">
-                      {achievement.count}
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
 
-      {/* Awards Timeline */}
-      <Card className="hover:shadow-lg transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-900">Awards Timeline</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {awards.sort((a, b) => b.year - a.year).map((award, index) => (
-              <div key={index} className="relative pl-8 pb-4 border-l-2 border-yellow-300 border-solid last:border-l-0 last:pb-0">
-                <div className="absolute left-0 top-0 w-4 h-4 bg-yellow-500 rounded-full transform -translate-x-2"></div>
-                <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg p-4 border border-yellow-200 border-solid">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <div>
-                      <h3 className="font-semibold text-gray-900 text-sm">{award.title}</h3>
-                      <p className="text-xs text-gray-600">{award.awardingBody}</p>
+        {/* Additional Achievements */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900">Notable Achievements</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {achievements.map((achievement, index) => (
+                <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-100">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-blue-600 text-white p-2 rounded-lg">
+                      <Star className="w-4 h-4" />
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Badge className={getLevelColor(award.level)}>
-                        {award.level}
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 mb-1">{achievement.title}</h3>
+                      <p className="text-sm text-gray-700 mb-2">{achievement.description}</p>
+                      <Badge variant="outline" className="text-xs">
+                        {achievement.count}
                       </Badge>
-                      <span className="text-xs text-gray-600">{award.year}</span>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Awards Timeline */}
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-xl text-gray-900">Awards Timeline</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {awards.sort((a, b) => b.year - a.year).map((award, index) => (
+                <div key={index} className="relative pl-8 pb-4 border-l-2 border-yellow-300 border-solid last:border-l-0 last:pb-0">
+                  <div className="absolute left-0 top-0 w-4 h-4 bg-yellow-500 rounded-full transform -translate-x-2"></div>
+                  <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg p-4 border border-yellow-200 border-solid">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <div>
+                        <h3 className="font-semibold text-gray-900 text-sm">{award.title}</h3>
+                        <p className="text-xs text-gray-600">{award.awardingBody}</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge className={getLevelColor(award.level)}>
+                          {award.level}
+                        </Badge>
+                        <span className="text-xs text-gray-600">{award.year}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </SearchableWrapper>
   );
 };

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
 const AboutDepartment = ({
   heading = "About the Department",
   subheading = "Established in 1995, our department has been at the forefront of computer science education and research for over two decades.",
@@ -9,6 +9,7 @@ const AboutDepartment = ({
   missionPoints = [],
 }) => {
   return (
+    <SearchableWrapper>
     <section
       id="about"
       className="py-24 bg-gradient-to-br from-[#eef2f7] via-[#f1f5f9] to-[#eef2f7]"
@@ -115,6 +116,7 @@ const AboutDepartment = ({
         </motion.div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

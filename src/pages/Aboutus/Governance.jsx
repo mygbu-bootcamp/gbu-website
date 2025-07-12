@@ -114,6 +114,8 @@ const data = {
   ],
 };
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const governanceData = {
   executive: {
     title: "Academic Council",
@@ -501,6 +503,7 @@ const UniversityGovernance = () => {
   const paginatedData = fullData.slice(startIndex, startIndex + itemsPerPage);
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 ">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-indigo-900 via-blue-800 to-purple-900 text-white py-20">
@@ -697,6 +700,7 @@ const UniversityGovernance = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -11,6 +11,7 @@ import StudentAchievers from "../../components/departments/cse/StudentAchievers"
 import {
   Cpu, Radio, Waves, Satellite, Users, Award, BookOpen, Lightbulb, GraduationCap, Shield, Cloud, Smartphone, Globe
 } from "lucide-react";
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 import researchBg from "../../assets/research.jpg";
 
@@ -359,6 +360,7 @@ const ECE = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
       <HeroSection {...heroProps} />
       <HodMessage {...hodProps} />
@@ -395,6 +397,7 @@ const ECE = () => {
         achievementsSubheading="Recognitions and accolades"
       />
     </div>
+    </SearchableWrapper>
   );
 };
 

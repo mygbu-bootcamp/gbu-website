@@ -1,5 +1,5 @@
 import React from "react";
-
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 const LeadershipCard = ({ name, title, image, description }) => {
   const safeName = name || "Unknown Leader";
   const safeTitle = title || "Designation not available";
@@ -7,6 +7,7 @@ const LeadershipCard = ({ name, title, image, description }) => {
   const safeDescription = description || "No description available";
 
   return (
+    <SearchableWrapper>
     <section className="py-12 sm:py-16 bg-gray-100">
       <div className="text-center mb-10 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-blue-800">
@@ -36,6 +37,7 @@ const LeadershipCard = ({ name, title, image, description }) => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

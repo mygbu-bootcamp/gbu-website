@@ -1,6 +1,7 @@
  import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor = 'black' }) => {
 
@@ -12,6 +13,7 @@ const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor
     'hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:text-indigo-100 transition-all duration-300 px-4 py-2 rounded-lg';
 
   return (
+    <SearchableWrapper>
     <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 h-20 w-[80%] bg-white/10 backdrop-blur-md border border-white/20 flex justify-between items-center px-6 rounded-xl z-50 shadow-xl">
       {/* University Logo + Name */}
       <div className="flex items-center gap-4">
@@ -119,6 +121,7 @@ const Navbar = ({ hoverColor = '#c7d2fe', neighborColor = '#a5b4fc', normalColor
         </Link>
       </div>
     </nav>
+    </SearchableWrapper>
   );
 };
 

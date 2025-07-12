@@ -247,7 +247,7 @@
 
 // export default TabContent;
 
-
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 import React from 'react';
 import  OverviewTab  from './tabs/OverviewTab';
@@ -297,9 +297,11 @@ const TabContent = ({ activeTab , profile}) => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="animate-fade-in w-5/6 mx-auto">
       {renderContent()}
     </div>
+    </SearchableWrapper>
   );
 };
 

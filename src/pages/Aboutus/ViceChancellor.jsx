@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const ViceChancellor = () => {
   const [activeTab, setActiveTab] = useState('Overview');
 
@@ -113,6 +115,7 @@ const tabContent = {
 };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div 
@@ -325,6 +328,7 @@ const tabContent = {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

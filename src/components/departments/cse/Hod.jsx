@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
 
 const HodMessage = ({
   title = "From the Desk of HOD",
@@ -10,6 +11,7 @@ const HodMessage = ({
   contact = null,
 }) => {
   return (
+    <SearchableWrapper>
     <section className="py-20 bg-gradient-to-r from-slate-50 to-blue-50 relative overflow-hidden">
       {/* Optional decorative background */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
@@ -87,6 +89,7 @@ const HodMessage = ({
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

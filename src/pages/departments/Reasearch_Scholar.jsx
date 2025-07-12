@@ -11,8 +11,11 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const ResearchScholars = () => {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20   bg-gradient-to-br from-purple-50 to-indigo-100">
@@ -688,6 +691,7 @@ const ResearchScholars = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Badge } from './ui/Badge';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const StudentStartup = ( {startupData={startups: [], stats: {}}}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -44,6 +46,7 @@ const StudentStartup = ( {startupData={startups: [], stats: {}}}) => {
   };
 
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
@@ -131,6 +134,7 @@ const StudentStartup = ( {startupData={startups: [], stats: {}}}) => {
 
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

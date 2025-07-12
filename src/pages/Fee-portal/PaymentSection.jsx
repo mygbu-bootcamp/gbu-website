@@ -1,5 +1,8 @@
 
 import React, { useState } from 'react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Card, CardContent, CardHeader, CardTitle
 const Card = ({ className = '', children }) => (
   <div className={`bg-white rounded-2xl shadow ${className}`}>{children}</div>
@@ -110,6 +113,7 @@ const PaymentSection = ({ amount, onBack, onComplete }) => {
   const progressValue = (currentStep / steps.length) * 100;
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
@@ -292,6 +296,7 @@ const PaymentSection = ({ amount, onBack, onComplete }) => {
         </Card>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

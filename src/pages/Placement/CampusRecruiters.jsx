@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowLeft, Building, Users, Calendar, MapPin } from "lucide-react";
-
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 const CampusRecruiters = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [hoveredCompany, setHoveredCompany] = useState(null);
@@ -148,6 +148,7 @@ const CampusRecruiters = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen  pt-3 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* Hero Section */}
       <section className="py-16">
@@ -345,6 +346,7 @@ const CampusRecruiters = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

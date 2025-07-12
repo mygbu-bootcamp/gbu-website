@@ -1,5 +1,7 @@
  import React from "react";
 
+ import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const importantLinks = [
   {
     id: 1,
@@ -35,6 +37,7 @@ const importantLinks = [
 
 export default function ImportantLinks() {
   return (
+    <SearchableWrapper>
     <section className="py-16  px-8   to-white">
       <div className="container mx-auto px-4">
         <h1 className="text-3xl font-bold text-center mb-8">
@@ -69,5 +72,6 @@ export default function ImportantLinks() {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

@@ -1,6 +1,8 @@
 // Custom Card components with modern UI, shadow, and smooth transitions
 import React from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 import {
   Phone,
   Mail,
@@ -108,6 +110,7 @@ const Contact = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-20">
@@ -377,6 +380,7 @@ PIN: 201312
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

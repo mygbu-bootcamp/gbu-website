@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 export default function CampusLifeSection() {
   const [testimonials, setTestimonials] = useState([]);
   const BASE = import.meta.env.VITE_HOST?.replace(/\/$/, "");
@@ -80,6 +82,7 @@ export default function CampusLifeSection() {
   };
 
   return (
+    <SearchableWrapper>
     <div className="px-6 md:px-20 py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header Section */}
       <motion.div
@@ -248,5 +251,6 @@ export default function CampusLifeSection() {
         </div>
       </motion.div>
     </div>
+    </SearchableWrapper>
   );
 }

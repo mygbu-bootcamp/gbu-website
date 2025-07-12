@@ -12,7 +12,8 @@ import {
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
-import SearchableWrapper from "../Searchbar/SearchableWrapper";
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 const Primarynavbar = () => {
   const [isOpen, setIsOpen] = useState(false);

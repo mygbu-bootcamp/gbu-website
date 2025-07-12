@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const cards = [
   {
     title: 'Drone Technologies',
@@ -30,6 +32,7 @@ const CenterOfExcellence = () => {
   };
 
  return (
+  <SearchableWrapper>
   <div className="relative h-[500px] overflow-hidden bg-white text-center flex flex-col items-center justify-start pt-5">
     <h2 className="text-3xl font-semibold mb-4">Center of Excellence</h2>
 
@@ -68,6 +71,7 @@ const CenterOfExcellence = () => {
       </div>
     </div>
   </div>
+  </SearchableWrapper>
 );
 }
 

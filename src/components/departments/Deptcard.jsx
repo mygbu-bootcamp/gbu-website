@@ -1,9 +1,12 @@
 "use client";
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 
 const DepartmentsSection = ({ departments = [] }) => {
   return (
+    <SearchableWrapper>
     <section className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
@@ -101,6 +104,7 @@ const DepartmentsSection = ({ departments = [] }) => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

@@ -16,6 +16,8 @@ import Header from '../../components/announcement/Header';
 import SocialShare from '../../components/announcement/SocialShare';
 import RelatedEvents from '../../components/announcement/RelatedEvents';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // --- Solid Color Button ---
 const Button = ({
   children,
@@ -462,6 +464,7 @@ const getModeColor = () => 'bg-blue-600 text-white';
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="container mx-auto px-2 md:px-8 pt-2 pb-10">
         <div className="mb-4">
@@ -684,6 +687,7 @@ const getModeColor = () => 'bg-blue-600 text-white';
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

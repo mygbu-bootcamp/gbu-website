@@ -1,8 +1,11 @@
 import React from 'react'
 import { Award, BookOpen, Download, TrendingUp, Users } from 'lucide-react'
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 function PlacementBrochure() {
   return (
+    <SearchableWrapper>
     <div className="min-h-screen pt-3 bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Hero Section */}
       <section className="py-16 ">
@@ -142,6 +145,7 @@ function PlacementBrochure() {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   )
 }
 

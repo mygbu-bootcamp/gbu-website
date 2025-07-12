@@ -2,6 +2,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, Users, FileText, Camera, Share2, Upload, Download } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // === UI COMPONENTS ===
 const Card = ({ children, className = '', ...props }) => (
   <motion.div
@@ -235,7 +237,7 @@ const NSSActivities = () => {
   };
 
   return (
-
+<SearchableWrapper>
     <motion.div
       className="space-y-8 py-10 px-4 mx-20 sm:px-6 lg:px-8 bg-gray-50"
       initial="hidden"
@@ -388,6 +390,7 @@ const NSSActivities = () => {
         </motion.div>
       </div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

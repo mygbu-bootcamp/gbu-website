@@ -6,6 +6,8 @@ import axios from 'axios';
 // ✅ Define BASE_URL once at the top
 const BASE_URL = 'https://meow.tilchattaas.com/academic';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const AcademicCalendar = () => {
   const [events, setEvents] = useState([]);
   const [regulations, setRegulations] = useState([]);
@@ -66,6 +68,7 @@ const AcademicCalendar = () => {
 
 
   return (
+    <SearchableWrapper>
     <>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
@@ -266,6 +269,7 @@ const AcademicCalendar = () => {
         </section>
       )}
     </>
+    </SearchableWrapper>
   );
 };
 

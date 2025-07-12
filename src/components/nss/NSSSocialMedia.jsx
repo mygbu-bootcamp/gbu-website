@@ -8,6 +8,8 @@ import {
   MessageCircle,
 } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Card = ({ className = '', children }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -110,6 +112,7 @@ const NSSSocialMedia = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-8 mx-20">
       {/* Header */}
       <motion.div
@@ -182,6 +185,7 @@ const NSSSocialMedia = () => {
       </div>
 
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -7,6 +7,8 @@ import {
   Shield,
 } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const NCCAchievements = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -115,6 +117,7 @@ const NCCAchievements = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-12 px-4 mx-20 md:px-8 pb-16">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -294,6 +297,7 @@ const NCCAchievements = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

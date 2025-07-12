@@ -10,6 +10,8 @@ import {
 import { motion } from "framer-motion";
 import SuccessStoriesCarousel from "./SuccessStoriesCarousel";
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const StartUp = () => {
   const supportServices = [
     {
@@ -59,6 +61,7 @@ const StartUp = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="max-w-7xl mx-auto mt-15 mb-12 px-4">
       {/* Stats */}
       <div className="py-12 mb-10 bg-gradient-to-b from-white to-gray-50">
@@ -174,6 +177,7 @@ const StartUp = () => {
         )}
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

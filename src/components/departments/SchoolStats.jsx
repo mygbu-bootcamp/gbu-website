@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 const CounterValue = ({ end, isInView }) => {
   const [count, setCount] = useState(0);
 
@@ -55,6 +55,7 @@ const SchoolStats = ({ title, stats }) => {
   const isInView = useInView(containerRef, { once: true, margin: "-50px" });
 
   return (
+    <SearchableWrapper>
     <section className="py-10" ref={containerRef}>
       <div className="container mx-auto">
         {title && (
@@ -94,6 +95,7 @@ const SchoolStats = ({ title, stats }) => {
         )}
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

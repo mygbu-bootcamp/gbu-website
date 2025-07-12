@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const laboratories = [
   {
     name: "Advance Analog and Digital Communication Lab",
@@ -188,6 +190,7 @@ const LaboratoryCards = () => {
   }, []);
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen relative overflow-hidden">
       {/* Dynamic Background */}
       <div className="fixed inset-0 bg-white">
@@ -467,6 +470,7 @@ const LaboratoryCards = () => {
         }
       `}</style>
     </div>
+    </SearchableWrapper>
   );
 };
 

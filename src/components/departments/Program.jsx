@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // Reusable Badge
 const Badge = ({ children, className = '', variant = 'default', ...props }) => {
   const baseStyle = 'inline-block rounded-full font-medium text-sm px-2 py-1';
@@ -54,6 +56,7 @@ export default function ProgramsShowcase({ programs: externalPrograms = [] }) {
   };
 
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gradient-to-br from-indigo-50 to-cyan-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
@@ -146,5 +149,6 @@ export default function ProgramsShowcase({ programs: externalPrograms = [] }) {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

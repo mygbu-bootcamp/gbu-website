@@ -6,6 +6,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const teamMembers = [
   {
     name: 'Dr. Shakti Sahi',
@@ -59,6 +61,7 @@ const teamMembers = [
 
 export default function Team() {
   return (
+    <SearchableWrapper>
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
          
@@ -103,6 +106,7 @@ export default function Team() {
         </Swiper>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }
 

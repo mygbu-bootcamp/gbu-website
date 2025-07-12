@@ -15,6 +15,8 @@ import {
 
 import researchBg from "../../assets/research.jpg";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Cse = () => {
   const heroProps = {
     title: "Department of",
@@ -378,6 +380,7 @@ const achievements = [
 ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
       <HeroSection {...heroProps} />
       <HodMessage {...hodProps} />
@@ -410,6 +413,7 @@ const achievements = [
         achievementsSubheading="Excellence and recognition"
       />
     </div>
+    </SearchableWrapper>
   );
 };
 

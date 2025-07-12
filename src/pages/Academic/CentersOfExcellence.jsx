@@ -10,6 +10,8 @@ import {
   BookOpen,
 } from 'lucide-react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // ✅ Local icon map for dynamic matching
 const iconMap = {
   'cyber security': Shield,
@@ -60,6 +62,7 @@ const CentersOfExcellence = () => {
   if (!heroData || !ctaData) return <div className="text-center py-10">Loading...</div>;
 
   return (
+    <SearchableWrapper>
     <>
       {/* Hero Section */}
       <section
@@ -229,6 +232,7 @@ const CentersOfExcellence = () => {
         </div>
       </section>
     </>
+    </SearchableWrapper>
   );
 };
 

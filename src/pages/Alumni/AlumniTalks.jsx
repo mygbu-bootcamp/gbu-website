@@ -1,6 +1,9 @@
 
 import { useState } from 'react';
 import Navbar from '../../components/home/Navbar';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // Minimal UI components for demo purposes, styled with Tailwind CSS
 
 export const Button = ({ children, className = '', variant, size, ...props }) => {
@@ -296,6 +299,7 @@ const AlumniTalks = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       
@@ -615,6 +619,7 @@ const AlumniTalks = () => {
         </DialogContent>
       </Dialog>
     </div>
+    </SearchableWrapper>
   );
 };
 

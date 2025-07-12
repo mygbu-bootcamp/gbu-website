@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const BASE = (import.meta.env.VITE_HOST || '').replace(/\/$/, '');
 const EXCELLENCE_API = `${BASE}/landing/excellence-in-education/`;
 
@@ -79,6 +81,7 @@ export default function ExcellenceSection() {
   };
 
   return (
+    <SearchableWrapper>
     <div className="relative bg-gray-50 overflow-hidden">
       {/* Animated Background Elements */}
       {/* <div className="absolute inset-0">
@@ -184,5 +187,6 @@ export default function ExcellenceSection() {
         }
       `}</style>
     </div>
+    </SearchableWrapper>
   );
 }

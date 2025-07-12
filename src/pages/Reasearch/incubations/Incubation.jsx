@@ -2,19 +2,18 @@
 import Focus from "./Focus";
 import Services from "./Services";
 import StartupsCarousel from "./StartupsCarousel";
-
 import StartUp from "./StartUp";
-
-
-
 import Team from "./Team";
 import ImageGallery from "./ImageGallery";
 import EventSlider from "./EventSlider";
 import ContactUs from "./ContactUs";
 import IncubationNav from "./IncubationNav";
 
+import SearchableWrapper from '../../../components/Searchbar/SearchableWrapper';
+
 const Incubation = () => {
   return (
+    <SearchableWrapper>
     <div>
       {/* Banner Section */}
       <section className="relative h-96 bg-gradient-to-r from-cyan-900 via-blue-800 to-purple-800 overflow-hidden">
@@ -104,6 +103,7 @@ const Incubation = () => {
       <div id="events"><EventSlider /></div>
       <div id="contact"><ContactUs /></div>
     </div>
+    </SearchableWrapper>
   );
 };
 

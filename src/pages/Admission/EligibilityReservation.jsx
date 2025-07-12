@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const EligibilityReservation = () => {
   const [activeTab, setActiveTab] = useState('eligibility');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -240,6 +242,7 @@ const EligibilityReservation = () => {
   );
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
 
       <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-20">
@@ -386,6 +389,7 @@ const EligibilityReservation = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

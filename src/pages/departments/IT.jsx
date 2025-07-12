@@ -25,6 +25,8 @@ import {
   Server,
 } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 import researchBg from "../../assets/research.jpg";
 
 const IT = () => {
@@ -354,6 +356,7 @@ const IT = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-background">
       <HeroSection {...heroProps} />
       <HodMessage {...hodProps} />
@@ -390,6 +393,7 @@ const IT = () => {
         achievementsSubheading="Milestones and accolades"
       />
     </div>
+    </SearchableWrapper>
   );
 };
 

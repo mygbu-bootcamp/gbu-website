@@ -2,7 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Calendar, Trophy, ExternalLink } from 'lucide-react';
+
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 import { clubsData } from '../../components/clubs/data/clubsData';
+
 
 // Card component
 const Card = ({ children, className = "" }) => (
@@ -76,6 +80,7 @@ const ClubsMain = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       {/* Header */}
      
@@ -222,6 +227,7 @@ const ClubsMain = () => {
       {/* Footer */}
      
     </div>
+    </SearchableWrapper>
   );
 };
 

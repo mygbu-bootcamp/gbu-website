@@ -3,6 +3,9 @@ import axios from 'axios';
 import {
   Globe, Users, BookOpen, MapPin, Plane
 } from 'lucide-react';
+
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 import { motion } from 'framer-motion';
 
 const BASE_URL = import.meta.env.VITE_HOST;
@@ -75,6 +78,7 @@ const Collaboration = () => {
   if (!hero || !cta) return <div className="text-center py-20 text-lg">Loading...</div>;
 
   return (
+    <SearchableWrapper>
     <div className="font-sans">
       {/* HERO */}
       <motion.section
@@ -281,6 +285,7 @@ const Collaboration = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

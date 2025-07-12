@@ -11,6 +11,8 @@ import NCCResources from '../../components/ncc/NCCResources';
 import NCCGallery from '../../components/ncc/NCCGallery';
 import NCCSocialMedia from '../../components/ncc/NCCSocialMedia';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
  const Tabs = ({ value, onValueChange, children, className = '', ...props }) => {
    // Pass value and onValueChange via context
    const [active, setActive] = React.useState(value);
@@ -55,6 +57,7 @@ const NCC = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white">
     {/* Header */}
       <div className="bg-blue-600 text-white py-16">
@@ -109,6 +112,7 @@ const NCC = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

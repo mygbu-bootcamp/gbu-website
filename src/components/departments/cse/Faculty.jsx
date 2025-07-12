@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
 
 // Reusable Card
 const Card = ({ children, className = "", ...props }) => (
@@ -49,6 +50,7 @@ const Faculty = ({
   },
 }) => {
   return (
+    <SearchableWrapper>
     <section
       id="faculty"
       className="py-20 bg-gradient-to-br from-purple-50 via-white to-blue-50"
@@ -176,6 +178,7 @@ const Faculty = ({
         </motion.div>
       </motion.div>
     </section>
+    </SearchableWrapper>
   );
 };
 

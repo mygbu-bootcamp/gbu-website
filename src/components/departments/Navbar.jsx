@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ChevronDown, ChevronUp, Search, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -189,6 +191,7 @@ const Navbar = () => {
   };
 
   return (
+    <SearchableWrapper>
     <motion.nav
       className={`fixed top-9 left-0 w-full z-30 transition-all duration-300 ${
         isScrolled
@@ -439,6 +442,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
     </motion.nav>
+    </SearchableWrapper>
   );
 };
 

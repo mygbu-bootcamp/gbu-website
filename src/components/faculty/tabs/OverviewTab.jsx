@@ -1,4 +1,4 @@
-
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
 
 import {useState} from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -56,6 +56,7 @@ const {
 
 
   return (
+    <SearchableWrapper>
     <div className="space-y-6">
       {/* Bio Section */}
       <Card className="hover:shadow-lg transition-shadow duration-300">
@@ -129,6 +130,7 @@ const {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

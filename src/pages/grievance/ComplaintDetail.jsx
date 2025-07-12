@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 // --- UI COMPONENTS IMPLEMENTATION ---
 
 // Button: Primary, outline, disabled, loading, etc.
@@ -199,6 +201,7 @@ const ComplaintDetail = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
@@ -380,6 +383,7 @@ const ComplaintDetail = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

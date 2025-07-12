@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowRight } from "lucide-react";
-import { Code, Cpu, Database } from "lucide-react";
+import { ArrowRight, Code, Cpu, Database } from "lucide-react";
+
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
 
 // Reusable Button
 const Button = ({
@@ -50,6 +51,7 @@ const HeroSection = ({
   backgroundImage
 }) => {
   return (
+    <SearchableWrapper>
     <section id="home" className="relative bg-gradient-to-br from-blue-50 via-background to-purple-50 py-20 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
@@ -111,6 +113,7 @@ const HeroSection = ({
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

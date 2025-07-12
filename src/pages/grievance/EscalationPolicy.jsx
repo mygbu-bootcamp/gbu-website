@@ -1,3 +1,4 @@
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
 function cn(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -175,6 +176,7 @@ const EscalationPolicy = () => {
   ];
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       <Header />
       
@@ -401,6 +403,7 @@ const EscalationPolicy = () => {
         </div>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -10,6 +10,8 @@ import {
   Award
 } from 'lucide-react';
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 const Card = ({ className = '', children }) => (
   <div className={`rounded-xl shadow bg-white ${className}`}>{children}</div>
 );
@@ -75,6 +77,7 @@ const NCCSocialMedia = () => {
   };
 
   return (
+    <SearchableWrapper>
     <motion.div
       className="space-y-12 mx-20"
       initial={{ opacity: 0 }}
@@ -159,6 +162,7 @@ const NCCSocialMedia = () => {
         </div>
       </div>
     </motion.div>
+    </SearchableWrapper>
   );
 };
 

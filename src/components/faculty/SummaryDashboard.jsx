@@ -1,5 +1,8 @@
 
 import React from 'react';
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 // import { LucideIcon } from 'lucide-react';
 
 /**
@@ -18,6 +21,7 @@ import React from 'react';
 
 const SummaryDashboard = ({ summaryStats }) => {
   return (
+    <SearchableWrapper>
     <section className="bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
@@ -39,6 +43,7 @@ const SummaryDashboard = ({ summaryStats }) => {
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

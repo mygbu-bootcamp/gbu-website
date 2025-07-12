@@ -1,6 +1,8 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
+import SearchableWrapper from '../../Searchbar/SearchableWrapper';
+
 /**
  * @typedef {Object} AuthContextType
  * @property {boolean} isLoggedIn
@@ -156,6 +158,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
+    <SearchableWrapper>
     <AuthContext.Provider value={{ 
       isLoggedIn: authState.isLoggedIn, 
       userRole: authState.userRole, 
@@ -165,5 +168,6 @@ export const AuthProvider = ({ children }) => {
     }}>
       {children}
     </AuthContext.Provider>
+    </SearchableWrapper>
   );
 };

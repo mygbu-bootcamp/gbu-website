@@ -10,6 +10,8 @@ import {
   Clock,
 } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const Patents = () => {
   return (
     <div className="min-h-screen">
@@ -732,6 +734,7 @@ const Patents = () => {
         </div>
       </section>
     </div>
+    </SearchableWrapper>
   );
 };
 

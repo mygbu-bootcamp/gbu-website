@@ -1,6 +1,8 @@
 
 import React, { useState, createContext, useContext } from "react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const TabsContext = createContext();
 
 const Tabs = ({ defaultValue, children, className = "" }) => {
@@ -260,6 +262,7 @@ const StudentDashboard = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
@@ -779,6 +782,7 @@ const StudentDashboard = () => {
         </Tabs>
       </div>
     </div>
+    </SearchableWrapper>
   );
 };
 

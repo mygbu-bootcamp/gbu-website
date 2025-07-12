@@ -1,8 +1,11 @@
  import { Link } from "react-router-dom";
 import { ArrowLeft, Award, Calendar, DollarSign, Users, CheckCircle, Clock, Target } from "lucide-react";
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 const ResearchProjects = () => {
   return (
+    <SearchableWrapper>
 <>
  <div className="min-h-sceen">
  {/* Hero Section */}
@@ -624,6 +627,7 @@ const ResearchProjects = () => {
       </section>
    </div>
       </>
+      </SearchableWrapper>
   );
 };
 

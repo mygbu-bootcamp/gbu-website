@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
 export default function FacultyResponsiveSlider({
   title = "Faculty",
   subTitle = "",
@@ -59,6 +61,7 @@ export default function FacultyResponsiveSlider({
   };
 
   return (
+    <SearchableWrapper>
     <section className="py-10 bg-white overflow-hidden relative">
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-blue-700">
@@ -117,5 +120,6 @@ export default function FacultyResponsiveSlider({
         </div>
       </div>
     </section>
+    </SearchableWrapper>
   );
 }

@@ -1,5 +1,8 @@
 // Minimal Card components for local use, styled for responsiveness
 import { motion } from "framer-motion";
+
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
  // Minimal Card components
 const Card = ({ className = "", children }) => (
   <motion.div
@@ -66,6 +69,7 @@ const NCCIntroduction = () => {
   };
 
   return (
+    <SearchableWrapper>
     <div className="space-y-8 mx-20">
       {/* Mission Statement */}
       <Card className="border-l-4 border-l-orange-600">
@@ -188,6 +192,7 @@ const NCCIntroduction = () => {
         </CardContent>
       </Card>
     </div>
+    </SearchableWrapper>
   );
 };
 

@@ -1,6 +1,9 @@
 import { Calendar } from "lucide-react";
 import { useRef, useEffect } from "react";
 
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
+
+
 // Card Components
 const Card = ({ children, className = "", ...props }) => {
   return (

@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
+
 
 // Badge component
 const Badge = ({ children, className = '', variant = '', ...props }) => {
@@ -250,6 +252,7 @@ const CafesFood = () => {
   };
 
   return (
+    <SearchableWrapper>
     <section id="cafes-food" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
@@ -394,6 +397,7 @@ const CafesFood = () => {
         )}
       </div>
     </section>
+    </SearchableWrapper>
   );
 };
 

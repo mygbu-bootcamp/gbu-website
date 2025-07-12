@@ -1,4 +1,6 @@
 import React from "react";
+import backgroundImage from "../../assets/research.jpg";
+import SearchableWrapper from '../Searchbar/SearchableWrapper';
 
 const HeroBanner = ({
   backgroundImage,
@@ -9,6 +11,7 @@ const HeroBanner = ({
   showDecorations = true,
 }) => {
   return (
+    <SearchableWrapper>
     <div className="relative h-[40vh] w-full overflow-hidden">
       {/* Background Image with Blur */}
       <div
@@ -95,6 +98,7 @@ const HeroBanner = ({
         </>
       )}
     </div>
+    </SearchableWrapper>
   );
 };
 
