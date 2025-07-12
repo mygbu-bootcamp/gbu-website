@@ -142,10 +142,10 @@ const EventGallery = () => {
                   <span className="text-sm text-gray-600">
                     {event.images.length} photos
                   </span>
-                  <button className="flex items-center gap-2 px-4 py-2 text-sm rounded border text-gray-700 bg-white hover:bg-gray-50">
+                  {/* <button className="flex items-center gap-2 px-4 py-2 text-sm rounded border text-gray-700 bg-white hover:bg-gray-50">
                     <Download className="h-4 w-4" />
                     Download All
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </motion.div>
@@ -203,10 +203,10 @@ const EventGallery = () => {
                   <p className="text-gray-700 text-center sm:text-left">
                     {dialogImage.caption}
                   </p>
-                  <button className="flex items-center gap-2 px-4 py-2 text-sm rounded bg-blue-600 text-white hover:bg-blue-700 transition">
+                  {/* <button className="flex items-center gap-2 px-4 py-2 text-sm rounded bg-blue-600 text-white hover:bg-blue-700 transition">
                     <Download className="h-4 w-4" />
                     Download
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </motion.div>

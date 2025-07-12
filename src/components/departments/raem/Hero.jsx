@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowRight, PenTool, Wrench, Send, Rocket } from "lucide-react";
 
-// Reusable Button component
 const Button = ({
   children,
   size = "md",
@@ -64,8 +63,8 @@ const Hero = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-2xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
             Center for
             <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
               Rapid and Alternative Energy Mobility
@@ -77,7 +76,7 @@ const Hero = () => {
           </p>
 
           {/* Tagline with Icons */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-lg font-semibold text-gray-800 mb-10">
+          {/* <div className="flex flex-wrap items-center justify-center gap-6 text-lg font-semibold text-gray-800 mb-10">
             <div className="flex items-center gap-2 transition-transform hover:scale-105">
               <PenTool className="w-6 h-6 text-blue-600" />
               <span>Research</span>
@@ -94,10 +93,10 @@ const Hero = () => {
               <Rocket className="w-6 h-6 text-purple-600" />
               <span>Transform Mobility</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Call to Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
               className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
@@ -108,7 +107,7 @@ const Hero = () => {
             <Button variant="outline" size="lg">
               Projects
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

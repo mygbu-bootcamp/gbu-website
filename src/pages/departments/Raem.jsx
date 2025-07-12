@@ -11,7 +11,7 @@ const Raem = () => {
     <div>
       <Hero/>
       <AboutRAEM/>
-      <VcMessage/>
+      {/* <VcMessage/> */}
       <FunctionalAreasSwiper/>
       <CoursesOffered/>
       <EventGallery/>
