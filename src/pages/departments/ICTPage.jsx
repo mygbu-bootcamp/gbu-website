@@ -15,8 +15,6 @@ import ClubsAchievements from "../../components/departments/Clubs_activevment.js
 import StudentAchievements from "../../components/departments/Student_achievements.jsx";
 import StudentStartup from "../../components/departments/Startup.jsx";
 
-import tcc from "../../assets/tcc.png";
-import GDSC from "../../assets/gdsc.png";
 
 
 const componentsMap = {
