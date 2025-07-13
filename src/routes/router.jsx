@@ -48,8 +48,13 @@ import Contact from "../pages/grievance/Contact";
 import EscalationPolicy from "../pages/grievance/EscalationPolicy";
 import ComplaintDetail from "../pages/grievance/ComplaintDetail";
 import FacultyDashboard from "../pages/grievance/FacultyDashboard";
-import BiotechnologyLayout from "../components/departments/BiotechnologyLayout.jsx";
 import Biotechnology from "../pages/departments/Biotechnology.jsx";
+import Engineering from "../pages/departments/Engineering.jsx";
+import Law from "../pages/departments/Law.jsx";
+import Management from "../pages/departments/Management.jsx";
+import Humanities from "../pages/departments/Humanities.jsx";
+import Vocational from "../pages/departments/Vocational.jsx";
+import Buddhist from "../pages/departments/Buddhist.jsx";
 
 import SitemapMain from "../pages/Sitemap/SitemapMain.jsx";
 import Sitemap from "../pages/Sitemap/Sitemap.jsx";
@@ -125,7 +130,7 @@ const ResearchScholars = lazy(() =>
 const TrainingConsultancy = lazy(() => import("../pages/departments/Training"));
 const Patents = lazy(() => import("../pages/departments/Patent"));
 const BoardOfStudies = lazy(() => import("../pages/departments/BoardOfStudy"));
-import ICTLayout from "../components/departments/ICTlayout.jsx";
+import SchoolsLayout from "../components/departments/SchoolsLayout.jsx";
 import Dean from "../components/departments/Dean.jsx";
 import Conferences from "../pages/departments/Usict_activities.jsx";
 import LaboratoryCards from "../pages/departments/laboratries.jsx";
@@ -211,7 +216,7 @@ export default function AppRouter() {
           />
           <Route path="/academics/schools" element={<Schools />} />
 
-          <Route path="/schools/ict" element={<ICTLayout />}>
+          <Route path="/schools/ict" element={<SchoolsLayout />}>
             {/* ICT Home Page */}
             <Route index element={<ICTPage />} />
 
@@ -252,7 +257,7 @@ export default function AppRouter() {
             <Route path="contact" element={<ICTContact />} />
           </Route>
 
-          <Route path="/schools/biotechnology" element={<BiotechnologyLayout />}>
+          <Route path="/schools/biotechnology" element={<SchoolsLayout />}>
             {/* Biotechnology Home Page */}
             <Route index element={<Biotechnology />} />
 
@@ -296,9 +301,9 @@ export default function AppRouter() {
 
           {/* ------------------------------------------------------------------------------------------------------------------ */}
 
-          <Route path="/schools/engineering" element={<BiotechnologyLayout />}>
+          <Route path="/schools/engineering" element={<SchoolsLayout />}>
             {/* Engineering Home Page */}
-            <Route index element={<Biotechnology />} />
+            <Route index element={<Engineering />} />
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
@@ -341,9 +346,9 @@ export default function AppRouter() {
 
 
 
-          <Route path="/schools/buddhist" element={<BiotechnologyLayout />}>
-            {/* buddhist Home Page */}
-            <Route index element={<Biotechnology />} />
+          <Route path="/schools/buddhist" element={<SchoolsLayout />}>
+            {/* Buddhist Home Page */}
+            <Route index element={<Buddhist />} />
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
@@ -386,9 +391,9 @@ export default function AppRouter() {
 
 
 
-          <Route path="/schools/law" element={<BiotechnologyLayout />}>
+          <Route path="/schools/law" element={<SchoolsLayout />}>
             {/* Law Home Page */}
-            <Route index element={<Biotechnology />} />
+            <Route index element={<Law />} />
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
@@ -433,9 +438,9 @@ export default function AppRouter() {
 
 
 
-          <Route path="/schools/management" element={<BiotechnologyLayout />}>
+          <Route path="/schools/management" element={<SchoolsLayout />}>
             {/* Management Home Page */}
-            <Route index element={<Biotechnology />} />
+            <Route index element={<Management />} />
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
@@ -478,9 +483,9 @@ export default function AppRouter() {
 
 
 
-          <Route path="/schools/humanities" element={<BiotechnologyLayout />}>
+          <Route path="/schools/humanities" element={<SchoolsLayout />}>
             {/* Humanities Home Page */}
-            <Route index element={<Biotechnology />} />
+            <Route index element={<Humanities />} />
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
@@ -523,9 +528,9 @@ export default function AppRouter() {
 
 
 
-          <Route path="/schools/vocational" element={<BiotechnologyLayout />}>
+          <Route path="/schools/vocational" element={<SchoolsLayout />}>
             {/* Vocational Home Page */}
-            <Route index element={<Biotechnology />} />
+            <Route index element={<Vocational />} />
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
