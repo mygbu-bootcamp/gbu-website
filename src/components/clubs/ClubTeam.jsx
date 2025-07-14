@@ -91,40 +91,42 @@ const ClubTeam = ({ club }) => {
             <span className="text-2xl"></span> Office Bearers
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {officeBarers.map((member) => (
-              <Card
-                key={member.id}
-                className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-              >
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <div className="relative mb-4">
-                      <FallbackAvatar
-                        src={member.photo}
-                        alt={member.name}
-                        className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-gray-100"
-                      />
-                      <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
+            {officeBarers.map((member, idx) =>
+              member ? (
+                <Card
+                  key={member.id || idx}
+                  className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <div className="relative mb-4">
+                        <FallbackAvatar
+                          src={member.photo}
+                          alt={member.name}
+                          className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-gray-100"
+                        />
+                        <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1">{member.name}</h4>
+                      <p className="text-sm text-gray-600 mb-2">{member.department}</p>
+                      <Badge
+                        className={`text-xs ${member.role === 'President'
+                            ? 'bg-purple-100 text-purple-800'
+                            : member.role === 'Vice President'
+                              ? 'bg-indigo-100 text-indigo-800'
+                              : member.role === 'Secretary'
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-orange-100 text-orange-800'
+                          }`}
+                      >
+                        {member.role}
+                      </Badge>
                     </div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">{member.name}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{member.department}</p>
-                    <Badge
-                      className={`text-xs ${
-                        member.role === 'President'
-                          ? 'bg-purple-100 text-purple-800'
-                          : member.role === 'Vice President'
-                          ? 'bg-indigo-100 text-indigo-800'
-                          : member.role === 'Secretary'
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-orange-100 text-orange-800'
-                      }`}
-                    >
-                      {member.role}
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ) : null
+            )}
+
           </div>
         </div>
 
@@ -167,8 +169,9 @@ const ClubTeam = ({ club }) => {
                 Have questions? Want to collaborate? Our team is always ready to help!
               </p>
               <p className="text-sm text-gray-500">
-                Contact our Secretary: <span className="font-medium">{club.team.secretary.name}</span>
-              </p>
+  Contact our Secretary:{" "}
+  <span className="font-medium">{club.team?.secretary?.name || "Not Available"}</span>
+</p>
             </div>
           </CardContent>
         </Card>
