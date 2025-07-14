@@ -174,7 +174,7 @@ const laboratories = [
   },
 ];
 
-const LaboratoryCards = () => {
+const LaboratoryCards = ({ laboratories }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -469,5 +469,9 @@ const LaboratoryCards = () => {
     </div>
   );
 };
+ 
+const Laboratory = () => {
+  return <LaboratoryCards laboratories={laboratories} />;
+};
 
-export default LaboratoryCards;
+export default Laboratory;

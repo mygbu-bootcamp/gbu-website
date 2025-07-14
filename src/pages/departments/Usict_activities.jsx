@@ -15,7 +15,7 @@ const ConferenceCard = ({ title, details, date, index }) => {
         duration: 0.6,
         delay: index * 0.1,
         type: "spring",
-        stiffness: 100
+        stiffness: 100,
       }}
       viewport={{ once: true, margin: "-50px" }}
       whileHover={{ y: -8, scale: 1.02 }}
@@ -30,12 +30,12 @@ const ConferenceCard = ({ title, details, date, index }) => {
           className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-xl"
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3]
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
             duration: 3,
             repeat: Infinity,
-            delay: index * 0.5
+            delay: index * 0.5,
           }}
         />
 
@@ -92,7 +92,9 @@ const ConferenceCard = ({ title, details, date, index }) => {
                       transition={{ delay: idx * 0.1 }}
                       className="text-sm"
                     >
-                      {sentence.trim().endsWith('.') ? sentence.trim() : sentence.trim() + '.'}
+                      {sentence.trim().endsWith(".")
+                        ? sentence.trim()
+                        : sentence.trim() + "."}
                     </motion.p>
                   ))}
                 </motion.div>
@@ -143,46 +145,8 @@ const ConferenceCard = ({ title, details, date, index }) => {
   );
 };
 
-const Conferences = () => {
-  const conferenceData = [
-    {
-      title: "1st International Conference on Artificial Intelligence and Sustainable Computing for Smart Cities (AIS2C2: 2021)",
-      details:
-        "This conference brought together researchers and industry professionals to discuss cutting-edge developments in AI and sustainable urban infrastructure. It featured keynote speeches, paper presentations, and panel discussions on smart city frameworks, IoT, green computing, and ethical AI deployment.",
-      date: "March 22nd - 23rd, 2021",
-    },
-    {
-      title: "Two-Day Online International Conference on Rebuilding Bharat with Artificial Intelligence",
-      details:
-        "Focused on harnessing AI for nation-building post-pandemic, this event included sessions on AI in healthcare, agriculture, education, and governance. Participants shared case studies and innovations with potential to transform India's development landscape.",
-      date: "July 15th - 16th, 2021",
-    },
-    {
-      title: "National Conference on Emerging Trends in Computing and Communication",
-      details:
-        "This event highlighted emerging technologies in computing and telecommunications. Topics included 5G deployment, blockchain applications, quantum computing fundamentals, and the evolution of cybersecurity measures.",
-      date: "October 12th, 2021",
-    },
-    {
-      title: "International Symposium on Women in Data Science (WiDS)",
-      details:
-        "Part of the global WiDS initiative, this symposium featured inspiring talks from women leaders in data science, practical workshops, and networking sessions to promote diversity and mentorship in tech.",
-      date: "March 8th, 2022",
-    },
-    {
-      title: "TechXplore: Student Innovation Showcase",
-      details:
-        "TechXplore was a student-led event celebrating innovation in software and hardware projects. Final year students presented prototypes and demos, with mentorship from faculty and industry experts.",
-      date: "May 3rd, 2022",
-    },
-    {
-      title: "Global AI Ethics and Governance Forum",
-      details:
-        "This conference brought international scholars together to address policy and governance challenges in artificial intelligence. The event included expert panels, regulatory framework discussions, and cross-cultural AI ethics dialogues.",
-      date: "December 5th - 6th, 2022",
-    },
-  ];
-
+const Conferences = ({conferenceData}) => {
+ 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-indigo-50/30 relative overflow-hidden">
       {/* Background decorations */}
@@ -191,24 +155,24 @@ const Conferences = () => {
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-indigo-200/40 to-purple-200/40 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
-            rotate: [0, 180, 360]
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
         <motion.div
           className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-pink-200/40 to-indigo-200/40 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0]
+            rotate: [360, 180, 0],
           }}
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
       </div>
@@ -235,19 +199,13 @@ const Conferences = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <span className="font-semibold">USICT</span> • Fostering Innovation Through Knowledge Exchange
+          <span className="font-semibold">USICT</span> • Fostering Innovation
+          Through Knowledge Exchange
         </motion.p>
 
-        <motion.div
-          className="w-32 h-1 bg-gradient-to-r from-pink-950 via-green-300 to-gray-950 rounded-full mx-auto"
-          initial={{ width: 0 }}
-          animate={{ width: 128 }}
-          transition={{ duration: 1, delay: 0.6 }}
-        />
+         
       </motion.div>
       <div className="relative px-4 py-16 md:px-8 lg:px-12 xl:px-16 mx-25 ">
-
-
         {/* Conference Grid */}
         <motion.div
           className="grid lg:grid-cols-2 gap-8 lg:gap-12"
@@ -286,12 +244,12 @@ const Conferences = () => {
             className="inline-block w-2 h-2 bg-indigo-600 rounded-full"
             animate={{
               scale: [1, 1.5, 1],
-              opacity: [0.5, 1, 0.5]
+              opacity: [0.5, 1, 0.5],
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
         </motion.div>
@@ -299,5 +257,50 @@ const Conferences = () => {
     </div>
   );
 };
+ const conferenceData = [
+    {
+      title:
+        "1st International Conference on Artificial Intelligence and Sustainable Computing for Smart Cities (AIS2C2: 2021)",
+      details:
+        "This conference brought together researchers and industry professionals to discuss cutting-edge developments in AI and sustainable urban infrastructure. It featured keynote speeches, paper presentations, and panel discussions on smart city frameworks, IoT, green computing, and ethical AI deployment.",
+      date: "March 22nd - 23rd, 2021",
+    },
+    {
+      title:
+        "Two-Day Online International Conference on Rebuilding Bharat with Artificial Intelligence",
+      details:
+        "Focused on harnessing AI for nation-building post-pandemic, this event included sessions on AI in healthcare, agriculture, education, and governance. Participants shared case studies and innovations with potential to transform India's development landscape.",
+      date: "July 15th - 16th, 2021",
+    },
+    {
+      title:
+        "National Conference on Emerging Trends in Computing and Communication",
+      details:
+        "This event highlighted emerging technologies in computing and telecommunications. Topics included 5G deployment, blockchain applications, quantum computing fundamentals, and the evolution of cybersecurity measures.",
+      date: "October 12th, 2021",
+    },
+    {
+      title: "International Symposium on Women in Data Science (WiDS)",
+      details:
+        "Part of the global WiDS initiative, this symposium featured inspiring talks from women leaders in data science, practical workshops, and networking sessions to promote diversity and mentorship in tech.",
+      date: "March 8th, 2022",
+    },
+    {
+      title: "TechXplore: Student Innovation Showcase",
+      details:
+        "TechXplore was a student-led event celebrating innovation in software and hardware projects. Final year students presented prototypes and demos, with mentorship from faculty and industry experts.",
+      date: "May 3rd, 2022",
+    },
+    {
+      title: "Global AI Ethics and Governance Forum",
+      details:
+        "This conference brought international scholars together to address policy and governance challenges in artificial intelligence. The event included expert panels, regulatory framework discussions, and cross-cultural AI ethics dialogues.",
+      date: "December 5th - 6th, 2022",
+    },
+  ];
 
-export default Conferences;
+ const App = () => {
+  return <Conferences conferenceData={conferenceData} />;
+};
+
+export default App;
