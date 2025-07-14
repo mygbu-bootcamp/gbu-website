@@ -292,18 +292,18 @@ const ApplicationProcess = ({ timeline, fee }) => (
 
 // Contact
 const ContactSection = ({ contacts }) => (
-  <section className="py-16 px-4 bg-gray-900 text-white">
+  <section className="py-16 px-4 text-gray-900 bg-white">
     <div className="max-w-7xl mx-auto text-center">
       <h2 className="text-3xl font-bold mb-8">
         Connect with Our Research Community
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {contacts.map((c, i) => (
-          <div key={i}>
+          <div key={i} className="shadow-2xl p-5 rounded-2xl border-gray-300 border-[1px] border-solid">
             <c.icon className={`h-12 w-12 ${c.color} mx-auto mb-4`} />
             <h3 className="text-xl font-semibold mb-2">{c.title}</h3>
-            <p className="text-gray-300">{c.email}</p>
-            <p className="text-gray-300">{c.phone}</p>
+            <p >{c.email}</p>
+            <p >{c.phone}</p>
           </div>
         ))}
       </div>
