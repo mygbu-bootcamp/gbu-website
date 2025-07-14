@@ -61,6 +61,7 @@ import Sitemap from "../pages/Sitemap/Sitemap.jsx";
 import SitemapAbout from "../pages/Sitemap/SitemapAbout.jsx";
 import SitemapContact from "../pages/Sitemap/SitemapContact.jsx";
 import SitemapAcademics from "../pages/Sitemap/SitemapAcademics.jsx";
+import InstitutionInnovation from "../pages/Reasearch/InstitutionInnovation.jsx";
 
 const AcademicCalendar = React.lazy(() =>
   import("../pages/Academic/AcademicCalendar.jsx")
@@ -604,6 +605,7 @@ export default function AppRouter() {
           />
           <Route path="/research/publications-patents" element={<Index />} />
           <Route path="/research/incubation" element={<Incubation />} />
+          <Route path="/research/institution-innovation" element={<InstitutionInnovation />} />
           <Route path="/research/ipr-cell" element={<Ipr />} />
 
           {/* Campus Life Routes */}
