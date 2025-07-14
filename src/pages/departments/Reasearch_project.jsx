@@ -337,7 +337,7 @@ const ResearchProjects = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Recently Completed Projects</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-xl border-l-4 border-green-500">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-xl border-l-4 border-green-500 border-solid">
               <div className="flex items-center mb-4">
                 <CheckCircle className="h-8 w-8 text-green-500 mr-3" />
                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
@@ -376,7 +376,7 @@ const ResearchProjects = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-xl border-l-4 border-green-500">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-xl border-l-4 border-green-500 border-solid">
               <div className="flex items-center mb-4">
                 <CheckCircle className="h-8 w-8 text-green-500 mr-3" />
                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
@@ -564,21 +564,21 @@ const ResearchProjects = () => {
                     healthcare centers, improving early disease detection by 40%.
                   </p>
                 </div>
-                <div className="border-l-4 border-green-500 pl-6">
+                <div className="border-l-4 border-green-500 border-solid pl-6">
                   <h4 className="font-semibold text-gray-900 mb-2">Smart Agriculture</h4>
                   <p className="text-sm text-gray-600">
                     IoT-based crop monitoring systems have helped 500+ farmers increase crop
                     yield by 25% while reducing water consumption by 30%.
                   </p>
                 </div>
-                <div className="border-l-4 border-purple-500 pl-6">
+                <div className="border-l-4 border-purple-500 border-solid pl-6">
                   <h4 className="font-semibold text-gray-900 mb-2">Education Technology</h4>
                   <p className="text-sm text-gray-600">
                     Personalized learning platforms developed for K-12 education are being
                     used by 10,000+ students across 50 schools.
                   </p>
                 </div>
-                <div className="border-l-4 border-orange-500 pl-6">
+                <div className="border-l-4 border-orange-500 border-solid pl-6">
                   <h4 className="font-semibold text-gray-900 mb-2">Environmental Monitoring</h4>
                   <p className="text-sm text-gray-600">
                     Air quality monitoring network deployed in 3 cities provides real-time
