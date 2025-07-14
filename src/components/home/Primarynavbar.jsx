@@ -60,7 +60,7 @@ const Primarynavbar = () => {
             <a href="https://gbu-smart-fee.vercel.app/" className="flex items-center gap-1 hover:underline">
               <CreditCard size={14} /> Online Fee Payment
             </a>
-            <a href="https://mygbu-student.vercel.app/" className="flex items-center gap-1 hover:underline">
+            <a href="https://student-dashboard-gules-rho.vercel.app/" className="flex items-center gap-1 hover:underline">
               <User size={14} /> Student Portal
             </a>
             <a href="https://mygbu-faculty-smart-dashboard-77.vercel.app/" className="flex items-center gap-1 hover:underline">
