@@ -126,7 +126,7 @@ function PlacementBrochure() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-16">
+          {/* <div className="text-center mt-16">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Explore?</h2>
               <p className="text-gray-600 mb-6">Download our comprehensive placement brochure and discover endless career opportunities</p>
@@ -138,7 +138,7 @@ function PlacementBrochure() {
                 Download Full Brochure
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
