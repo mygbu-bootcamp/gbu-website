@@ -85,7 +85,7 @@ export default function TeamSlider() {
               style={{ width: `${cardWidth}px` }}
             >
               <img
-                src={member.image || "https://via.placeholder.com/100/6B7280/FFFFFF?text=No+Image"}
+                src={member.image || "https://cdn-icons-png.flaticon.com/512/21/21104.png"}
                 alt={member.name}
                 className="w-24 h-28 object-cover rounded-md shadow mb-3"
               />

@@ -155,7 +155,7 @@ import Raem from "../pages/departments/Raem.jsx";
 
 
 import DAC from "../pages/dac/DAC.jsx";
-import DACmain from "../pages/dac/DACmain.jsx";
+// import DACmain from "../pages/dac/DACmain.jsx";
 
 
 
@@ -718,7 +718,7 @@ export default function AppRouter() {
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
 
 
-          <Route path="/dacMain" element={<DACmain/>}/>
+          {/* <Route path="/dacMain" element={<DACmain/>}/> */}
           <Route path="/dac" element={<DAC/>}/>
 
 
