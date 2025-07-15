@@ -100,8 +100,8 @@ const Incubation = () => {
       <div id="team"><Team /></div>
       <div id="startups"><StartupsCarousel /></div>
       <StartUp />
-      <div id="gallery"><ImageGallery /></div>
       <div id="events"><EventSlider /></div>
+      <div id="gallery"><ImageGallery /></div>
       <div id="contact"><ContactUs /></div>
     </div>
   );
