@@ -115,7 +115,7 @@ const ClubPolicies = ({ club }) => {
               <LocalCollapsibleContent open={openSections[policy.id]}>
                 <CardContent className="pt-0 rounded-b-xl">
                   <ul className="space-y-3 ">
-                    {policy.items.map((item, index) => (
+                    {(Array.isArray(policy.items) ? policy.items : []).map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <div className={`mt-2 w-2 h-2 rounded-full flex-shrink-0 ${colorMap[policy.color].split(' ')[1]}`} />
                         <span className="  text-sm leading-relaxed">{item}</span>
