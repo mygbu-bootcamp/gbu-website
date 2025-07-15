@@ -83,8 +83,8 @@ const ResearchArea = ({
         </div>
       </section>
 
-      {/* Centers */}
-      <section className="py-16 px-4 bg-gray-50">
+      
+      {/* <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Specialized Research Centers</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -101,7 +101,7 @@ const ResearchArea = ({
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Funding & Collaboration */}
       <section className="py-16 px-4 bg-white">
@@ -136,7 +136,7 @@ const ResearchArea = ({
       </section>
 
       {/* Impact */}
-      <section className="py-16 px-4 bg-gray-50">
+      {/* <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Research Impact & Recognition</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -149,10 +149,10 @@ const ResearchArea = ({
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Quick Links */}
-      <section className="py-16 px-4 bg-white text-gray-950">
+      
+      {/* <section className="py-16 px-4 bg-white text-gray-950">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8">Explore More Research</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-white ">
@@ -165,7 +165,7 @@ const ResearchArea = ({
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
