@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 
-const ICTLayout = () => (
+const SchoolsLayout = () => (
   <div className="min-h-screen">
     <Navbar />
     <div>
@@ -10,4 +10,4 @@ const ICTLayout = () => (
   </div>
 );
 
-export default ICTLayout;
+export default SchoolsLayout;
