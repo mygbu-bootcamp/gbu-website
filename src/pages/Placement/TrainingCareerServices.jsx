@@ -356,7 +356,7 @@ const TrainingCareerServices = () => {
           </div>
 
           {/* Registration CTA */}
-          <div className="text-center">
+          {/* <div className="text-center">
             <Card className="bg-white rounded-2xl w-4/5 pt-5 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl inline-block">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -379,7 +379,7 @@ const TrainingCareerServices = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

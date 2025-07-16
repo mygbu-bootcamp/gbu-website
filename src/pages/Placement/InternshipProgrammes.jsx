@@ -289,7 +289,7 @@ const InternshipProgrammes = () => {
           </div>
 
           {/* Application Process */}
-          <div className="mb-16">
+          <div className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">
               Application Process
             </h2>
@@ -317,7 +317,7 @@ const InternshipProgrammes = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center">
+          {/* <div className="text-center">
             <Card className=" bg-white mt-5 rounded-2xl w-4/5 backdrop-blur-sm border-0 shadow-xl inline-block">
               <CardContent className="p-8 pt-5">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -340,7 +340,7 @@ const InternshipProgrammes = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

@@ -148,7 +148,7 @@ const CampusRecruiters = () => {
   };
 
   return (
-    <div className="min-h-screen  pt-3 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen  pt-3 bg-gray-50">
       {/* Hero Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -252,7 +252,7 @@ const CampusRecruiters = () => {
                   </div>
 
                   {/* Hover Details */}
-                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="mt-4 text-bg-50 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white/50 rounded-lg p-3">
                       <h4 className="font-semibold text-gray-900 mb-2">
                         Roles Offered:

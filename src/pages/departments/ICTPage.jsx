@@ -26,10 +26,10 @@ const componentsMap = {
   ProgramsShowcase,
   FacultyCarousel,
   NoticeEvents,
+  ClubsAchievements,
   PlacementsSection,
   RecentPlacements,
   RecruitersShowcase,
-  ClubsAchievements,
   StudentAchievements,
   StudentStartup,
 };
