@@ -18,7 +18,8 @@ const Primarynavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <SearchableWrapper>
+    <SearchableWrapper>    
+
     <nav
       className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 text-white text-sm shadow"
       role="navigation"
@@ -53,6 +54,8 @@ const Primarynavbar = () => {
             </a>
             <a href="/sitemapMain" className="hover:underline">Sitemap</a>
 
+
+
           </div>
 
           {/* Right links */}
@@ -81,28 +84,42 @@ const Primarynavbar = () => {
             </a>
 
 
-            <a href="http://gbu-contact-hub-banner.vercel.app" className="flex items-center gap-1 hover:underline">
-              <Phone size={14} /> Contact Us
-            </a>
+         
+
+              <a
+                href="http://gbu-contact-hub-banner.vercel.app"
+                className="flex items-center gap-1 hover:underline"
+              >
+                <Phone size={14} /> Contact Us
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Mobile slide-in sidebar and overlay */}
-      <div className={`fixed inset-0 z-[9999] transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        {/* Overlay */}
+        {/* Mobile slide-in sidebar and overlay */}
         <div
-          className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"
-          onClick={() => setIsOpen(false)}
-        />
-
-        {/* Sidebar */}
-        <div className={`absolute left-0 top-0 h-full w-80 bg-white text-black p-6 shadow-2xl transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-          <button
-            className="absolute top-4 right-4 text-gray-600"
+          className={`fixed inset-0 z-[9999] transition-opacity duration-300 ease-in-out ${
+            isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
             aria-label="Close menu"
-          >
+
+          />
+
+          {/* Sidebar */}
+          <div className="relative bg-white w-64 h-full p-6 overflow-y-auto">
+            {/* Close button */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 text-gray-600"
+              aria-label="Close sidebar"
+            >
+
+          
             <X size={24} />
           </button>
 
@@ -165,10 +182,13 @@ const Primarynavbar = () => {
             </div>
           </div>
         </div>
+
       </div> {/* Mobile overlay & sidebar container */}
     </nav>  
+
     </SearchableWrapper>
   );
 };
 
 export default Primarynavbar;
+

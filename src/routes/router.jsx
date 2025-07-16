@@ -61,6 +61,7 @@ import Sitemap from "../pages/Sitemap/Sitemap.jsx";
 import SitemapAbout from "../pages/Sitemap/SitemapAbout.jsx";
 import SitemapContact from "../pages/Sitemap/SitemapContact.jsx";
 import SitemapAcademics from "../pages/Sitemap/SitemapAcademics.jsx";
+import InstitutionInnovation from "../pages/Reasearch/InstitutionInnovation.jsx";
 
 const AcademicCalendar = React.lazy(() =>
   import("../pages/Academic/AcademicCalendar.jsx")
@@ -154,7 +155,7 @@ import Raem from "../pages/departments/Raem.jsx";
 
 
 import DAC from "../pages/dac/DAC.jsx";
-import DACmain from "../pages/dac/DACmain.jsx";
+// import DACmain from "../pages/dac/DACmain.jsx";
 
 
 
@@ -604,6 +605,7 @@ export default function AppRouter() {
           />
           <Route path="/research/publications-patents" element={<Index />} />
           <Route path="/research/incubation" element={<Incubation />} />
+          <Route path="/research/institution-innovation" element={<InstitutionInnovation />} />
           <Route path="/research/ipr-cell" element={<Ipr />} />
 
           {/* Campus Life Routes */}
@@ -716,7 +718,7 @@ export default function AppRouter() {
           <Route path="/escalation-policy" element={<EscalationPolicy />} />
 
 
-          <Route path="/dacMain" element={<DACmain/>}/>
+          {/* <Route path="/dacMain" element={<DACmain/>}/> */}
           <Route path="/dac" element={<DAC/>}/>
 
 

@@ -85,6 +85,7 @@ const Incubation = () => {
       <StartupsCarousel />
 
       <StartUp />
+ 
 <div class="text-center mb-15">
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSc2dX1NwPluJ1A1-2cHY39ck3CYhrdCskgIQZUxCj981eDwew/viewform" 
      target="_blank"
@@ -98,6 +99,7 @@ const Incubation = () => {
       <EventSlider />
 
       <ContactUs />
+ 
     </div>
   );
 };
