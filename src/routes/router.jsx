@@ -27,6 +27,7 @@ import EventsReunions from "../pages/Alumni/EventsReunions.jsx";
 import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
 
 import HostelDining from "../pages/campusLife/HostelDining.jsx";
+import HostelDetailed from "../pages/campusLife/HostelDetailed.jsx";
 import SportsCultural from "../pages/campusLife/SportsCultural.jsx";
 import ClubsMain from "../pages/clubs/ClubsMain.jsx";
 
@@ -152,7 +153,7 @@ import RTI from "../pages/RTI.jsx";
 import StaffMembers from "../pages/departments/StaffMembers.jsx";
 import Coedt from "../pages/departments/Coedt.jsx";
 import Raem from "../pages/departments/Raem.jsx";
-
+import CyberSecurity from "../pages/departments/CyberSecurity.jsx";
 
 import DAC from "../pages/dac/DAC.jsx";
 // import DACmain from "../pages/dac/DACmain.jsx";
@@ -229,6 +230,7 @@ export default function AppRouter() {
               path="about/coeidrone"
               element={<Coedt />}
             />
+            <Route path="about/cyber" element={<CyberSecurity/>}/>
             <Route path="about/dean" element={<Dean />} />
             <Route
               path="about/coeiraem"
@@ -404,6 +406,7 @@ export default function AppRouter() {
               path="about/coeidrone"
               element={<h1>COE Drone - Coming Soon</h1>}
             />
+            
             <Route path="about/dean" element={<Dean />} />
             <Route
               path="about/coeiraem"
@@ -613,6 +616,7 @@ export default function AppRouter() {
             path="/campus-life/hostel-facilities"
             element={<HostelDining />}
           />
+          <Route path="/campus-life/hostel-detailed" element={<HostelDetailed/>}/>
           <Route path="/campus-life/hero" element={<Overview />} />
           <Route
             path="/campus-life/sports-fitness"
