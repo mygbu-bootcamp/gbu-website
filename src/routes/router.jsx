@@ -153,7 +153,7 @@ import RTI from "../pages/RTI.jsx";
 import StaffMembers from "../pages/departments/StaffMembers.jsx";
 import Coedt from "../pages/departments/Coedt.jsx";
 import Raem from "../pages/departments/Raem.jsx";
-
+import CyberSecurity from "../pages/departments/CyberSecurity.jsx";
 
 import DAC from "../pages/dac/DAC.jsx";
 // import DACmain from "../pages/dac/DACmain.jsx";
@@ -230,6 +230,7 @@ export default function AppRouter() {
               path="about/coeidrone"
               element={<Coedt />}
             />
+            <Route path="about/cyber" element={<CyberSecurity/>}/>
             <Route path="about/dean" element={<Dean />} />
             <Route
               path="about/coeiraem"
@@ -405,6 +406,7 @@ export default function AppRouter() {
               path="about/coeidrone"
               element={<h1>COE Drone - Coming Soon</h1>}
             />
+            
             <Route path="about/dean" element={<Dean />} />
             <Route
               path="about/coeiraem"
