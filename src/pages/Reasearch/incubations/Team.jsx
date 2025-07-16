@@ -1,6 +1,6 @@
  import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Linkedin } from "lucide-react";
+import { Linkedin, ChevronLeft, ChevronRight } from "lucide-react";
 
 const teamMembers = [
   {
@@ -53,22 +53,45 @@ export default function TeamSlider() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setX((prevX) => {
-        const nextX = prevX - moveBy;
-        const maxOffset = -moveBy * teamMembers.length;
-        return nextX <= maxOffset ? 0 : nextX;
-      });
+      handleNext();
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
+  const handleNext = () => {
+    setX((prevX) => {
+      const nextX = prevX - moveBy;
+      const maxOffset = -moveBy * teamMembers.length;
+      return nextX <= maxOffset ? 0 : nextX;
+    });
+  };
+
+  const handlePrev = () => {
+    setX((prevX) => {
+      const maxOffset = -moveBy * (teamMembers.length - 1);
+      const nextX = prevX + moveBy;
+      return nextX > 0 ? maxOffset : nextX;
+    });
+  };
+
   return (
     <section className="py-10 bg-gray-50 overflow-hidden">
-       
-         <h1 className="text-3xl font-bold text-center mb-8">MEET OUR TEAM</h1>
-         
-    
+      <h1 className="text-3xl font-bold text-center mb-8">MEET OUR TEAM</h1>
+
       <div className="relative w-full max-w-7xl mx-auto px-4 overflow-hidden">
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
+        >
+          <ChevronRight size={20} />
+        </button>
+
         <motion.div
           animate={{ x }}
           transition={{ ease: "easeInOut", duration: 0.6 }}
