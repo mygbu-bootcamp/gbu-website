@@ -31,8 +31,16 @@ import {
   Zap,
   Shield,
   Smile,
-  MessageCircle, Send
+  MessageCircle, 
+  Send,
+   Home, 
+  Info, 
+  Settings
 } from 'lucide-react';
+import BannerSection from '../../components/HeroBanner';
+import { FaUser, FaCog, FaEnvelope } from "react-icons/fa";
+import StatsCard from '../../components/StatsCard';
+import ButtonGroup from '../../components/TabsData';
 
 const MeditationCenter = () => {
   // State
@@ -48,6 +56,14 @@ const MeditationCenter = () => {
     videoUrl: "https://www.youtube.com/embed/8VwufJrUhic"
   };
 
+const [activeButton, setActiveButton] = useState("home");
+  
+  const navigationButtons = [
+    { id: "home", label: "Home", icon: <Home size={18} />, tooltip: "Go to home" },
+    { id: "about", label: "About", icon: <Info size={18} />, tooltip: "About us" },
+    { id: "services", label: "Services", icon: <Settings size={18} />, tooltip: "Our services", badge: "New" },
+    { id: "contact", label: "Contact", icon: <Mail size={18} />, tooltip: "Contact us" }
+  ];
   const scheduleData = [
     {
       id: 1,
@@ -297,92 +313,44 @@ const MeditationCenter = () => {
     }
   ];
 
-  const statistics = [
-    { label: "Students Benefited", value: "1000+", icon: Users, color: "#4ade80" },
-    { label: "Years of Experience", value: "20+", icon: Award, color: "#60a5fa" },
-    { label: "Research Papers", value: "60+", icon: BookOpen, color: "#f59e0b" },
-    { label: "Years Running", value: "11+", icon: Calendar, color: "#ef4444" }
+  const statsData = [
+    {
+      title: "Students Benefited",
+      numberText: "1000+",
+      icon: Users,
+      iconColor: "#4ade80", // Green
+    },
+    {
+      title: "Years of Experience",
+      numberText: "20+",
+      icon: Award,
+      iconColor: "#60a5fa", // Blue
+    },
+    {
+      title: "Research Papers",
+      numberText: "60+",
+      icon: BookOpen,
+      iconColor: "#f59e0b", // Amber
+    },
+    {
+      title: "Years Running",
+      numberText: "11+",
+      icon: Calendar,
+      iconColor: "#ef4444", // Red
+    },
   ];
+
 
   // Effects
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  // Scroll to top
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
-  // Hero Banner Component
-  const HeroBanner = () => (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-blue-200/30 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-32 w-24 h-24 bg-purple-200/30 rounded-full animate-bounce"></div>
-        <div className="absolute bottom-32 left-32 w-40 h-40 bg-indigo-200/30 rounded-full animate-ping"></div>
-        <div className="absolute bottom-20 right-20 w-20 h-20 bg-pink-200/30 rounded-full animate-pulse"></div>
-      </div>
-
-      {/* Hero Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="relative">
-            <h1 className="text-4xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              {heroData.title}
-            </h1>
-            <p className="text-xl md:text-3xl text-blue-600 mb-8 font-medium">
-              {heroData.subtitle}
-            </p>
-            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
-              {heroData.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' })}
-                className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
-                <Calendar size={20} /> Join Our Classes
-              </button>
-              <button
-                onClick={() => document.getElementById('techniques').scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 border-2 border-blue-600 flex items-center gap-2"
-              >
-                <Sparkles size={20} /> Learn Techniques
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-
-  // Statistics Section
-  const StatisticsSection = () => (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {statistics.map((stat, index) => (
-            <div key={index} className={`transition-all duration-1000 ease-out delay-${index * 100} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: stat.color + '20' }}>
-                  <stat.icon size={32} style={{ color: stat.color }} />
-                </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   // Vision & Mission Section
   const VisionMissionSection = () => (
-    <section id="about" className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-100">
+    <section id="about" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-16">
@@ -708,11 +676,15 @@ const MeditationCenter = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Banner */}
-      <HeroBanner />
 
+      <BannerSection
+        title="Mahatma Jyotiba Phule Dhyan Kendra"
+        subtitle="A Sacred Space for Inner Peace and Mindful Living"
+        bgTheme={10}
+      />
 
       {/* Statistics Section */}
-      <StatisticsSection />
+      <StatsCard stats={statsData} />
       {/* Vision & Mission Section */}
       <VisionMissionSection />
       {/* Benefits Section */}
@@ -888,9 +860,6 @@ const MeditationCenter = () => {
           </div>
         </div>
       </section>
-
-
-
     </div>
   );
 };
