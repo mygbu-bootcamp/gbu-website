@@ -141,7 +141,7 @@ import LaboratoryCards from "../pages/departments/laboratries.jsx";
 // import MediaCoverage from "../pages/Announcements/MediaCoverage.jsx";
 import Placement_home from "../pages/Placement/Placement_home.jsx";
 
-
+import RecruitMain from "../pages/recruitments/RecruitMain.jsx";
 
 
 import BookingMain from "../pages/booking/BookingMain.jsx";
@@ -743,7 +743,7 @@ export default function AppRouter() {
 
 
 
-
+        <Route path="/recruitments" element={<RecruitMain/>}/>
 
 
           <Route path="/sitemapMain" element={<SitemapMain />} />
