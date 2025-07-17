@@ -25,6 +25,7 @@ import NoticeDetail from "../pages/Announcements/NoticeDetail.jsx";
 import AlumniNetwork from "../pages/Alumni/AlumniNetwork.jsx";
 import EventsReunions from "../pages/Alumni/EventsReunions.jsx";
 import AlumniRegistration from "../pages/Alumni/AlumniRegistration.jsx";
+import SuccessStories from "../pages/Alumni/SuccessStories.jsx";
 
 import HostelDining from "../pages/campusLife/HostelDining.jsx";
 import HostelDetailed from "../pages/campusLife/HostelDetailed.jsx";
@@ -672,8 +673,8 @@ export default function AppRouter() {
           <Route path="/alumni/alumni-network" element={<AlumniNetwork />} />
           <Route path="/alumni/alumni-events" element={<EventsReunions />} />
           <Route
-            path="/alumni/alumni-achievements"
-            element={<h1>Alumni Achievements</h1>}
+            path="/alumni/success-stories"
+            element={<SuccessStories/>}
           />
           <Route
             path="/alumni/become-mentor"
