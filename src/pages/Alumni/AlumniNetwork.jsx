@@ -89,7 +89,9 @@ const Button = ({ children, size = "md", variant = "default", className = "", ..
 // Input Component
 const Input = ({ className = "", ...props }) => (
   <input
+
     className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-150 ${className}`}
+
     {...props}
   />
 );
