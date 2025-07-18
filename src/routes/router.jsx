@@ -156,7 +156,8 @@ import Coedt from "../pages/departments/Coedt.jsx";
 import Raem from "../pages/departments/Raem.jsx";
 import CyberSecurity from "../pages/departments/CyberSecurity.jsx";
 
-import DAC from "../pages/dac/DAC.jsx";
+import DAC from "../pages/dac/DAC.jsx"; 
+import PlacementDashboard from "../pages/departments/PlacementDashboard.jsx";
 // import DACmain from "../pages/dac/DACmain.jsx";
 
 
@@ -225,7 +226,7 @@ export default function AppRouter() {
 
             {/* Faculty */}
             <Route path="faculty" element={<ICTFaculty />} />
-
+ <Route path="placement" element={<PlacementDashboard/>} />
             {/* About Section */}
             <Route
               path="about/coeidrone"
