@@ -1,7 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../components/announcement/Header';
-import SearchFilter from '../../components/announcement/SearchFilter';
 import SocialShare from '../../components/announcement/SocialShare';
 import EnhancedPagination from '../../components/announcement/EnhancedPagination';
 import { format } from 'date-fns';
@@ -928,54 +926,9 @@ const NewsNotifications = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Professional Header Section */}
-      {/* <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                GBU News Center
-              </h1>
-              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                Stay informed with the latest developments, achievements, and announcements from Gautam Buddha University
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-8 flex flex-wrap justify-center gap-6 text-sm"
-            >
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {filteredAndSortedNews.length} Articles Available
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                </svg>
-                Updated Daily
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z" clipRule="evenodd" />
-                </svg>
-                Advanced Filtering
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
-
       <BannerSection
-        title="Gautam Buddha University News Center"
-        subtitle="Stay informed with the latest developments, achievements, and announcements from Gautam Buddha University"
+        title="News and Notifications"
+        subtitle="Stay updated with the latest news, announcements, and events from our institution."
         bgTheme={7}
         />
 
