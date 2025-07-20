@@ -1082,9 +1082,9 @@ const Badge = ({ children, className = '', variant = 'default' }) => {
 // Enhanced Button component
 const Button = ({ children, size = 'md', variant = 'default', className = '', icon, disabled = false, ...props }) => {
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
+    sm: 'px-2 py-2 text-sm',
+    md: 'px-3 py-3 text-base',
+    lg: 'px-4 py-4 text-lg'
   };
   const variantClasses = {
     default: 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl',
@@ -1670,16 +1670,16 @@ const Notice = () => {
     >
       <Card className="h-full group overflow-hidden relative">
         {/* Priority & New Badge */}
-        <div className="absolute top-4 right-4 z-10 flex gap-2">
+        <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
           {notice.isNew && (
             <Badge variant="event" className="animate-pulse">
-              <Star size={12} className="mr-1" />
+              <Star size={10} className="mr-1" />
               NEW
             </Badge>
           )}
           {notice.priority === 'high' && (
             <Badge variant="exam">
-              <AlertCircle size={12} className="mr-1" />
+              <AlertCircle size={10} className="mr-1" />
               HIGH
             </Badge>
           )}
@@ -1718,7 +1718,7 @@ const Notice = () => {
               <Button 
                 size="sm" 
                 variant="outline"
-                icon={<Download size={16} />}
+                icon={<Download size={14} />}
                 onClick={() => window.open(notice.pdfUrl, '_blank')}
               >
                 Download
@@ -1728,7 +1728,7 @@ const Notice = () => {
             <Link to={`/announcements/notices/${notice.id}`}>
               <Button 
                 size="sm"
-                icon={<FileText size={16} />}
+                icon={<FileText size={14} />}
               >
                 Read More
               </Button>
@@ -1737,7 +1737,7 @@ const Notice = () => {
             <Button 
               size="sm" 
               variant="ghost"
-              icon={<Share2 size={16} />}
+              icon={<Share2 size={14} />}
               className="hover:bg-blue-50 hover:text-blue-600"
             >
               Share
