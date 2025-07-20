@@ -1038,6 +1038,7 @@ import {
   ChevronRight,
   MoreHorizontal
 } from 'lucide-react';
+import BannerSection from '../../components/HeroBanner';
 
 // Enhanced Card components with modern styling
 const Card = ({ children, className = '', hover = true }) => (
@@ -1284,7 +1285,7 @@ const EnhancedSearchFilter = ({
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className="bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl mx-4 lg:mx-8 -mt-10 relative z-10 p-8 border border-gray-200/50">
+    <div className="bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl mx-4 lg:mx-8 mt-5 relative z-10 p-4 border border-gray-200/50">
       <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
         {/* Search Bar */}
         <div className="relative flex-1 max-w-2xl">
@@ -1292,7 +1293,7 @@ const EnhancedSearchFilter = ({
           <input
             type="text"
             placeholder="Search notices, announcements, circulars..."
-            className="w-full pl-12 pr-4 py-4 bg-gray-50/80 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 transition-all duration-300"
+            className="w-full pl-12 pr-4 py-2 bg-gray-50/80 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 transition-all duration-300"
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -1317,7 +1318,7 @@ const EnhancedSearchFilter = ({
           <motion.button
             whileHover={{ scale: 1.05 }}
             onClick={() => setIsFilterOpen(!isFilterOpen)}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="flex items-center gap-2 px-6 py-2 bg-indigo-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Filter size={18} />
             Filters
@@ -1748,55 +1749,15 @@ const Notice = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-
+     
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-20 h-20 border border-white/20 rounded-full"></div>
-          <div className="absolute top-40 right-20 w-16 h-16 border border-white/20 rounded-full"></div>
-          <div className="absolute bottom-20 left-1/3 w-24 h-24 border border-white/20 rounded-full"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-              Notices & Announcements
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-              Stay updated with the latest official notices, circulars, and important announcements
-            </p>
-            
-            {/* Stats */}
-            <div className="flex justify-center gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white">{mockNotices.length}</div>
-                <div className="text-blue-200">Total Notices</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white">{mockNotices.filter(n => n.isNew).length}</div>
-                <div className="text-blue-200">New Today</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white">{allTypes.length}</div>
-                <div className="text-blue-200">Categories</div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
+      <BannerSection
+        title="Notices & Announcements"
+        subtitle="Stay updated with the latest notices, announcements, and circulars from GBU."
+        bgTheme={5}
+/>
       {/* Enhanced Search Filter */}
       <EnhancedSearchFilter 
         onSearch={setSearchQuery}
