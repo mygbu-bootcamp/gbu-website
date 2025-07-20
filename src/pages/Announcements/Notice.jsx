@@ -1285,7 +1285,7 @@ const EnhancedSearchFilter = ({
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className="bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl mx-4 lg:mx-8 mt-5 relative z-10 p-4 border border-gray-200/50">
+    <div className="container bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl mx-auto mt-5 relative z-10 p-4 border border-gray-200/50">
       <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
         {/* Search Bar */}
         <div className="relative flex-1 max-w-2xl">
@@ -1783,13 +1783,13 @@ const Notice = () => {
       />
 
       {/* Results Summary */}
-      <div className="container mx-auto px-4 mt-8">
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <h2 className="text-2xl font-bold text-gray-800">
-              {filteredAndSortedNews.length} Notice{filteredAndSortedNews.length !== 1 ? 's' : ''} Found
-            </h2>
-            {(selectedType !== 'all' || selectedYear !== 'all' || searchQuery) && (
+      {(selectedType !== 'all' || selectedYear !== 'all' || searchQuery || startDate || endDate) && (
+        <div className="container mx-auto px-4 mt-8">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <h2 className="text-2xl font-bold text-gray-800">
+                {filteredAndSortedNews.length} Notice{filteredAndSortedNews.length !== 1 ? 's' : ''} Found
+              </h2>
               <Button
                 size="sm"
                 variant="ghost"
@@ -1805,17 +1805,17 @@ const Notice = () => {
               >
                 Clear Filters
               </Button>
-            )}
-          </div>
-          
-          <div className="text-sm text-gray-500">
-            Showing {((currentPage - 1) * itemsPerPage) + 1}-{Math.min(currentPage * itemsPerPage, filteredAndSortedNews.length)} of {filteredAndSortedNews.length}
+            </div>
+            
+            <div className="text-sm text-gray-500">
+              Showing {((currentPage - 1) * itemsPerPage) + 1}-{Math.min(currentPage * itemsPerPage, filteredAndSortedNews.length)} of {filteredAndSortedNews.length}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Notices Grid/List */}
-      <div className="container mx-auto px-4 pb-16 notices-container">
+      <div className="container mx-auto mt-16 px-4 pb-16 notices-container">
         <motion.div
           variants={container}
           initial="hidden"
