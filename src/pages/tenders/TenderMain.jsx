@@ -12,7 +12,7 @@ const TenderMain = () => {
   ];
 
   return (
-    <SearchableWrapper>
+    // <SearchableWrapper>
       <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 font-sans">
         <div className="container mx-auto px-6 py-12 max-w-7xl">
 
@@ -25,7 +25,7 @@ const TenderMain = () => {
           >
             <Breadcrumb items={breadcrumbItems} />
 
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-6">
               Tenders / RFPs / RFE / RFQ
             </h1>
 
@@ -77,7 +77,7 @@ const TenderMain = () => {
         </div>
       </div>
 
-    </SearchableWrapper>
+    // </SearchableWrapper>
   );
 };
 
