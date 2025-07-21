@@ -159,12 +159,13 @@ const SportsWellness = () => {
   return (
     <SearchableWrapper>
     <section id="sports-wellness" className=" bg-white">
-      <div className="container mx-auto px-4">
         <HeroBanner
           title="Sports and Wellness Facilities"
           subtitle="Discover our world-class sports facilities designed for excellence in athletics and wellness."
           bgTheme={10}
         />
+      <div className="container mx-auto px-4">
+      
         <div className="max-w-7xl mx-auto  m-10">
           <Carousel className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
