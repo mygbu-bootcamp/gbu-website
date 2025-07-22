@@ -1,19 +1,11 @@
-import React from 'react';
-import Breadcrumb from '../../components/tenders/BreadcrumbTender';
 import TendersTable from '../../components/tenders/TendersTable';
 import { motion } from "framer-motion";
-
-import SearchableWrapper from "../../components/Searchbar/SearchableWrapper.jsx";
 import BannerSection from '../../components/HeroBanner.jsx';
 
 const TenderMain = () => {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Tenders / RFPs / RFE / RFQ' }
-  ];
 
   return (
-    // <SearchableWrapper>
+    <SearchableWrapper>
       <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 font-sans">
         <BannerSection
       title="Tenders / RFPs / RFE / RFQ"
@@ -63,27 +55,10 @@ const TenderMain = () => {
             <TendersTable />
           </motion.div>
 
-          {/* Footer */}
-          <div className="border-t border-gray-400 pt-10">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-700">
-              <div>
-                Looking for past opportunities?
-                <a
-                  href="#"
-                  className="text-teal-600 hover:text-teal-800 underline ml-1 transition-colors duration-200 font-medium"
-                >
-                  View Archived Tenders
-                </a>
-              </div>
-              <div>
-                © 2025 Procurement Portal. All rights reserved.
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
-    // </SearchableWrapper>
+    </SearchableWrapper>
   );
 };
 
