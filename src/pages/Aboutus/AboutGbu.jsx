@@ -84,7 +84,7 @@ const Button = ({ children, className = "", size = "md", variant = "primary", ..
 // Enhanced Card component with hover effects
 const Card = ({ children, className = "", hover = true, ...props }) => (
   <div
-    className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100/50 transition-all duration-300 ${hover ? 'hover:shadow-2xl hover:scale-105 hover:bg-white/90' : ''} ${className}`}
+    className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100/50 border-solid transition-all duration-300${hover ? 'hover:shadow-2xl hover:scale-105 hover:bg-white/90' : ''} ${className}`}
     {...props}
   >
     {children}
@@ -151,8 +151,8 @@ const aboutData = {
 
   statistics: [
     { icon: MapPin, number: 511, numberText: "511+", title: "Acres Campus", iconColor: "#3b82f6" },
-    { icon: Users, number: 6500, numberText: "6500+", title: "Students", iconColor: "#10b981" },
-    { icon: Award, number: 200, title: "Faculty Members", iconColor: "#8b5cf6" },
+    { icon: Users, numberText: "4K+", title: "Students", iconColor: "#10b981" },
+    { icon: Award, numberText: "200+", title: "Faculty Members", iconColor: "#8b5cf6" },
     { icon: BookOpen, number: 150, title: "Programs", iconColor: "#f97316" },
 
   ],
@@ -210,7 +210,6 @@ const aboutData = {
   hostelFeatures: [
     { text: "18+ Modern Hostels", icon: "Home" },
     { text: "Wi-Fi Enabled Campus", icon: "Wifi" },
-    { text: "Biometric Access Control", icon: "Shield" },
     { text: "In-house Dining Facilities", icon: "Utensils" },
     { text: "24×7 Medical Support", icon: "Heart" },
     { text: "Banking & ATM Services", icon: "CreditCard" }
@@ -232,7 +231,7 @@ const aboutData = {
   ],
 
   researchStats: [
-    { value: 700, suffix: "+", label: "Publications", color: "blue" },
+    { value: 3500, suffix: "+", label: "Publications", color: "blue" },
     { value: 82, suffix: "", label: "Ph.D.s Awarded", color: "green" },
     { label: "DST, CSIR", sublabel: "Sponsored Research", color: "purple" },
     { label: "AI, Cyber", sublabel: "Centers of Excellence", color: "orange" }
@@ -629,7 +628,7 @@ const AboutGbu = () => {
           <div className="max-w-7xl mx-auto px-4">
             {/* Header */}
             <div className="text-center mb-16">
-              <Badge color="purple" className="mb-4 bg-purple-100 text-purple-700 border border-purple-200">
+              <Badge color="purple" className="mb-4 bg-purple-100 text-purple-700 border border-purple-200 border-solid">
                 <Trophy className="w-4 h-4 mr-2" />
                 Athletics Excellence
               </Badge>
@@ -646,7 +645,7 @@ const AboutGbu = () => {
               {aboutData.sportsFeatures.map((sport, index) => (
                 <Card
                   key={index}
-                  className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 group rounded-lg"
+                  className="bg-white border border-gray-200 border-solid shadow-sm hover:shadow-md transition-all duration-300 group rounded-lg"
                 >
                   <CardContent className="p-8 text-center">
                     <div className="mb-6 flex justify-center">
@@ -668,7 +667,7 @@ const AboutGbu = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="group border-purple-500 text-purple-600 hover:bg-purple-50 transition-all"
+                className="group border-purple-500 border-[1px] border-solid text-purple-600 hover:bg-purple-50 transition-all"
               >
                 Explore Sports Programs
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
