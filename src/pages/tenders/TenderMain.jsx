@@ -4,6 +4,7 @@ import TendersTable from '../../components/tenders/TendersTable';
 import { motion } from "framer-motion";
 
 import SearchableWrapper from "../../components/Searchbar/SearchableWrapper.jsx";
+import BannerSection from '../../components/HeroBanner.jsx';
 
 const TenderMain = () => {
   const breadcrumbItems = [
@@ -14,6 +15,11 @@ const TenderMain = () => {
   return (
     // <SearchableWrapper>
       <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 font-sans">
+        <BannerSection
+      title="Tenders / RFPs / RFE / RFQ"
+      subtitle="Welcome to our procurement portal. Explore active opportunities and submit your bids before deadlines."
+      bgTheme={9}
+    />
         <div className="container mx-auto px-6 py-12 max-w-7xl">
 
           {/* Page Header */}
@@ -23,7 +29,7 @@ const TenderMain = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Breadcrumb items={breadcrumbItems} />
+            {/* <Breadcrumb items={breadcrumbItems} /> */}
 
             <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-6">
               Tenders / RFPs / RFE / RFQ
