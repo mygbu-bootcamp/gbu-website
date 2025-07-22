@@ -158,6 +158,7 @@ import CyberSecurity from "../pages/departments/CyberSecurity.jsx";
 
 import DAC from "../pages/dac/DAC.jsx"; 
 import PlacementDashboard from "../pages/departments/PlacementDashboard.jsx";
+import ContactBanner from "../pages/Contact/ContactBanner.jsx";
 // import DACmain from "../pages/dac/DACmain.jsx";
 
 
@@ -741,7 +742,7 @@ export default function AppRouter() {
 
 
           <Route path="/rti" element={<RTI />} />
-
+<Route path="/contactUs" element={<ContactBanner/>}/>
 
 
         <Route path="/recruitments" element={<RecruitMain/>}/>
