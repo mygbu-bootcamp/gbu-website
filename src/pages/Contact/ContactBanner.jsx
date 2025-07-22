@@ -94,7 +94,7 @@ const ContactBanner = () => (
   <SearchableWrapper>
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <BannerSection title="Contact Us" subtitle=" " bgTheme={1} />
+      <BannerSection title="Contact Us" subtitle="Connecting you with GBU." bgTheme={1} />
       {/* Content Section */}
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
