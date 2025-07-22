@@ -5,11 +5,11 @@ import SearchableWrapper from '../../components/Searchbar/SearchableWrapper.jsx'
 const TenderMain = () => {
 
   return (
-    <SearchableWrapper>
+    <SearchableWrapper exclude={['#footer', '.no-search']}>
       <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 font-sans">
         <BannerSection
       title="Tenders / RFPs / RFE / RFQ"
-      subtitle="Welcome to our procurement portal. Explore active opportunities and submit your bids before deadlines."
+      subtitle="Explore active opportunities and submit your bids before deadlines."
       bgTheme={9}
     />
         <div className="container mx-auto px-6 py-12 max-w-7xl">
