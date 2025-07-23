@@ -35,7 +35,7 @@ const organizationalStructure = [
           // 8 DEANS BELOW 👇
           {
             name: "Dean, School of Management",
-            person: "Dr. Anjali Arora",
+            person: "Dr. Indu Uprety",
             icon: <School className="text-sky-600" size={22} />,
             color: "border-sky-300 bg-sky-50",
           },
