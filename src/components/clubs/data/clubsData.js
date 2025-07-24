@@ -768,20 +768,20 @@ export const clubsData = [
         photo: '',
         department: ''
       },
-      president: {
-        id: '',
-        name: '',
-        role: '',
-        photo: '',
-        department: ''
-      },
-      vicePresident: {
-        id: '',
-        name: '',
-        role: '',
-        photo: '',
-        department: ''
-      },
+      // president: {
+      //   id: '',
+      //   name: '',
+      //   role: '',
+      //   photo: '',
+      //   department: ''
+      // },
+      // vicePresident: {
+      //   id: '',
+      //   name: '',
+      //   role: '',
+      //   photo: '',
+      //   department: ''
+      // },
       secretary: {
         id: 's1',
         name: 'Anupam Tiwari',
@@ -789,13 +789,13 @@ export const clubsData = [
         photo: '',
         department: ''
       },
-      treasurer: {
-        id: '',
-        name: '',
-        role: '',
-        photo: '',
-        department: ''
-      },
+      // treasurer: {
+      //   id: '',
+      //   name: '',
+      //   role: '',
+      //   photo: '',
+      //   department: ''
+      // },
       members: [
         {
           id: 'm1',
@@ -915,7 +915,7 @@ export const clubsData = [
           role: 'Faculty Coordinator',
           photo: '',
           
-          department: '—'
+          department: ''
         }
       ],
       president: null,
@@ -926,7 +926,7 @@ export const clubsData = [
         role: 'General Secretary',
         photo: '',
         
-        department: '—'
+        department: ''
       },
       treasurer: null,
       members: [
@@ -936,7 +936,7 @@ export const clubsData = [
           role: 'General Secretary',
           photo: '',
           
-          department: '—'
+          department: ''
         },
         {
           id: 'm2',
@@ -944,7 +944,7 @@ export const clubsData = [
           role: 'Ex-General Secretary',
           photo: '',
           
-          department: '—'
+          department: ''
         },
         {
           id: 'm3',
@@ -952,7 +952,7 @@ export const clubsData = [
           role: 'Ex-General Secretary',
           photo: '',
           
-          department: '—'
+          department: ''
         }
       ]
     },
@@ -1097,7 +1097,7 @@ export const clubsData = [
         role: 'Secretary',
         photo: '',
        
-        department: '—'
+        department: ''
       },
       treasurer: null,
       members: [
@@ -1107,7 +1107,7 @@ export const clubsData = [
           role: 'General Secretary',
           photo: '',
           
-          department: '—'
+          department: ''
         }
       ]
     },
