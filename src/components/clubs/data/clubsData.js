@@ -596,7 +596,7 @@ export const clubsData = [
     meetingFrequency: 'Weekly meetings every Wednesday at 4:00 PM in the Literary Hall'
   },
   team: {
-    facultyCoordinator: 
+    facultyCoordinator: [
       {
         id: 'fc1',
         name: 'Dr. Om Prakash',
@@ -606,7 +606,7 @@ export const clubsData = [
         department: ''
       },
       
-    president: {
+    {
         id: 'fc2',
         name: 'Ms. Priyanka Singh',
         role: 'Faculty Coordinator',
@@ -614,7 +614,7 @@ export const clubsData = [
         phone: '+919650845746',
         department: ''
       },
-    vicePresident: {
+    {
         id: 'fc3',
         name: 'Dr. Bipasha Som Gune',
         role: 'Faculty Coordinator',
@@ -622,6 +622,7 @@ export const clubsData = [
         phone: '+919560965071',
         department: ''
       },
+    ],
     secretary: {
       id: 's1',
       name: 'Moh. Shoaib Khan',
