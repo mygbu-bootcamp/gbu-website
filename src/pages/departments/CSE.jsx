@@ -20,7 +20,7 @@ import { number } from "framer-motion";
 
 const Cse = () => {
   const heroProps = {
-    title: "Department of",
+    title: "Department of Computer Science & Engineering",
     highlight: "Computer Science & Engineering",
     subtitle:
       "Pioneering innovation in technology education. Empowering students to become tomorrow's digital leaders and problem solvers.",
