@@ -61,8 +61,6 @@ import Vocational from "../pages/departments/Vocational.jsx";
 import Buddhist from "../pages/departments/Buddhist.jsx";
 import CourseDetails from "../components/departments/courseDetailed.jsx";
 
-import CourseListing from "../components/departments/CourseListing.jsx";
-
 import SitemapMain from "../pages/Sitemap/SitemapMain.jsx";
 import Sitemap from "../pages/Sitemap/Sitemap.jsx";
 import SitemapAbout from "../pages/Sitemap/SitemapAbout.jsx";
@@ -765,7 +763,6 @@ export default function AppRouter() {
           <Route path="/contactDirectory" element={<ContactDirectory/>}/>
 
           {/* Course Details Routes - Dynamic Course Pages */}
-          <Route path="/courses" element={<CourseListing />} />
           <Route path="/schools/departments/courseDetailed" element={<CourseDetails />} />
           <Route path="/schools/departments/courseDetailed/:school/:course" element={<CourseDetails />} />
 

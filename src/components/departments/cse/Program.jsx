@@ -2,48 +2,9 @@ import { GraduationCap, BookOpen, Users, Clock, ChevronLeft, ChevronRight } from
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Helper function to map program titles to course slugs and determine school
+// Helper function to map program title to course parameter
 const mapProgramToCourse = (programTitle) => {
-  const mapping = {
-    // Computer Science Engineering
-    "B.Tech Computer Science & Engineering": { school: "engineering", course: "computer-science" },
-    "M.Tech Computer Science & Engineering": { school: "engineering", course: "computer-science" },
-    "PhD Computer Science": { school: "engineering", course: "computer-science" },
-    
-    // Information Technology
-    "B.Tech Information Technology": { school: "engineering", course: "information-technology" },
-    "M.Tech Information Technology": { school: "engineering", course: "information-technology" },
-    
-    // Electronics & Communication
-    "B.Tech Electronics & Communication Engineering": { school: "engineering", course: "electronics-communication" },
-    "M.Tech Electronics & Communication Engineering": { school: "engineering", course: "electronics-communication" },
-    "PhD Electronics & Communication": { school: "engineering", course: "electronics-communication" },
-    
-    // Management
-    "Master of Business Administration": { school: "management", course: "mba" },
-    "MBA": { school: "management", course: "mba" },
-    "Bachelor of Business Administration": { school: "management", course: "bba" },
-    "BBA": { school: "management", course: "bba" },
-    
-    // Biotechnology
-    "B.Sc Biotechnology": { school: "biotechnology", course: "bsc-biotech" },
-    "M.Sc Biotechnology": { school: "biotechnology", course: "bsc-biotech" },
-    
-    // Law
-    "Bachelor of Laws": { school: "law", course: "llb" },
-    "LLB": { school: "law", course: "llb" },
-    
-    // Humanities
-    "Bachelor of Arts in English": { school: "humanities", course: "ba-english" },
-    "BA English": { school: "humanities", course: "ba-english" }
-  };
-  
-  return mapping[programTitle] || { school: "engineering", course: "computer-science" }; // Default fallback
-};
-
-const buildCourseUrl = (programTitle) => {
-  const { school, course } = mapProgramToCourse(programTitle);
-  return `/schools/departments/courseDetailed?school=${school}&course=${course}`;
+  return programTitle?.toLowerCase().replace(/\s+/g, '-') || '';
 };
 
 // Custom Card components
@@ -193,7 +154,7 @@ const Programs = ({
                     className="px-2 sm:px-3 lg:px-4 flex-shrink-0 py-2"
                     style={{ width: `${100 / programs.length}%` }}
                   >
-                    <Link to={buildCourseUrl(program.title)}>
+                    <Link to={`/schools/departments/courseDetailed?school=engineering&course=${mapProgramToCourse(program.title)}`}>
                     <Card className="hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 overflow-hidden border-0 shadow-lg h-full min-h-[400px] sm:min-h-[450px] lg:min-h-[500px]">
                       {/* Image Section with fixed height to prevent clipping */}
                       <div className="relative h-28 sm:h-32 md:h-36 lg:h-40 overflow-hidden flex-shrink-0">

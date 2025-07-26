@@ -1,94 +1,109 @@
-import { useEffect, useState } from 'react';
-import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
-import CourseDetailedLayout from './courseDetailedLayout.jsx';
-import { getCourseData, getAllSchools, getSchoolCourses } from '../../Data/coursesData.js';
+import React from 'react';
+import CourseDetailedLayout from './courseDetailedLayout';
 
 const CourseDetails = () => {
-  const { school, course } = useParams();
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const [courseData, setCourseData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // Get course data from URL params or search params
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    let schoolParam = school;
-    let courseParam = course;
-
-    // If no URL params, try search params
-    if (!schoolParam) {
-      schoolParam = searchParams.get('school');
-    }
-    if (!courseParam) {
-      courseParam = searchParams.get('course');
-    }
-
-    // Default to engineering/computer-science if no params provided (for backward compatibility)
-    if (!schoolParam || !courseParam) {
-      schoolParam = schoolParam || 'engineering';
-      courseParam = courseParam || 'computer-science';
-    }
-
-    const data = getCourseData(schoolParam, courseParam);
-    
-    if (data) {
-      setCourseData(data);
-    } else {
-      setError(`Course not found: ${schoolParam}/${courseParam}`);
-    }
-    
-    setLoading(false);
-  }, [school, course, searchParams]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading course details...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !courseData) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto p-6">
-          <div className="text-red-500 text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Course Not Found</h1>
-          <p className="text-gray-600 mb-6">{error || 'The requested course could not be found.'}</p>
-          
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Available Schools:</h3>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {getAllSchools().map(schoolName => (
-                  <button
-                    key={schoolName}
-                    onClick={() => navigate(`/schools/departments/courseDetailed?school=${schoolName}&course=${Object.keys(getSchoolCourses(schoolName))[0]}`)}
-                    className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors"
-                  >
-                    {schoolName.charAt(0).toUpperCase() + schoolName.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            <button
-              onClick={() => navigate('/')}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Go to Homepage
-            </button>
-          </div>
-        </div>
-      </div>
-    );
+   const courseData = {
+    id: "cs101",
+    title: "B.Tech Computer Science & Engineering",
+    subtitle: "Bachelor of Technology in Computer Science & Engineering",
+    description: "Comprehensive undergraduate program designed to provide students with strong foundation in computer science principles, programming, software engineering, and emerging technologies.",
+    duration: "4 Years",
+    level: "Undergraduate",
+    mode: "Full-time",
+    intake: "120 Students",
+    fee: "₹2,50,000 per year",
+    rating: 4.8,
+    reviews: 1247,
+    accreditation: "AICTE Approved, NBA Accredited",
+    image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800",
+    gallery: [
+      "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400"
+    ],
+    highlights: [
+      "Industry-aligned curriculum",
+      "100% placement assistance",
+      "State-of-the-art labs",
+      "Expert faculty",
+      "Research opportunities",
+      "International exposure"
+    ],
+    eligibility: [
+      "10+2 with Physics, Chemistry, Mathematics",
+      "Minimum 75% aggregate marks",
+      "Valid JEE Main/Advanced score",
+      "Age limit: 17-25 years"
+    ],
+    career_prospects: [
+      "Software Engineer",
+      "Data Scientist", 
+      "System Analyst",
+      "Product Manager",
+      "Research Scientist",
+      "Entrepreneur"
+    ],
+    curriculum: [
+      {
+        semester: "Semester 1",
+        subjects: ["Mathematics I", "Physics", "Chemistry", "Engineering Graphics", "Programming Fundamentals"]
+      },
+      {
+        semester: "Semester 2", 
+        subjects: ["Mathematics II", "Data Structures", "Digital Logic", "Communication Skills", "Environmental Science"]
+      },
+      {
+        semester: "Semester 3",
+        subjects: ["Computer Organization", "Database Systems", "Object-Oriented Programming", "Mathematics III", "Economics"]
+      },
+      {
+        semester: "Semester 4",
+        subjects: ["Operating Systems", "Software Engineering", "Computer Networks", "Algorithm Analysis", "Statistics"]
+      }
+    ],
+    faculty: [
+      {
+        name: "Dr. Rajesh Kumar",
+        designation: "Professor & Head",
+        specialization: "Machine Learning, AI",
+        experience: "15 years",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150"
+      },
+      {
+        name: "Dr. Priya Sharma", 
+        designation: "Associate Professor",
+        specialization: "Data Science, Analytics",
+        experience: "12 years",
+        image: "https://images.unsplash.com/photo-1494790108755-2616b332b692?w=150"
+      }
+    ],
+    facilities: [
+      "Advanced Computing Labs",
+      "AI/ML Research Center", 
+      "24/7 Library Access",
+      "High-speed Internet",
+      "Modern Classrooms",
+      "Innovation Hub"
+    ],
+    testimonials: [
+      {
+        name: "Amit Patel",
+        batch: "2023 Graduate",
+        company: "Google",
+        review: "The program provided excellent foundation in computer science. The faculty support and industry exposure helped me land my dream job.",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80"
+      },
+      {
+        name: "Sneha Reddy",
+        batch: "2022 Graduate", 
+        company: "Microsoft",
+        review: "Outstanding curriculum and research opportunities. The practical approach to learning made complex concepts easy to understand.",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80"
+      }
+    ]
   }
 
   const handleApplyClick = (courseId) => {
