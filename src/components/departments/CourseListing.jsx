@@ -1,187 +1,228 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAllSchools, getSchoolCourses, searchCourses } from '../../Data/coursesData.js';
-import { Search, Users, Clock, Star, ChevronRight } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Search, Filter, GraduationCap, Clock, Users, MapPin } from 'lucide-react';
+import { getAllSchools, getSchoolCourses, getAllCourses } from '../../Data/coursesData.js';
 
 const CourseListing = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSchool, setSelectedSchool] = useState('all');
-  
-  const schools = getAllSchools();
-  
-  // Get courses based on selected school and search term
-  const getFilteredCourses = () => {
+  const [selectedDuration, setSelectedDuration] = useState('all');
+
+  // Get all courses from all schools
+  const allCourses = useMemo(() => {
+    return getAllCourses();
+  }, []);
+
+  // Filter courses based on search and filters
+  const filteredCourses = useMemo(() => {
+    let filtered = allCourses;
+
+    // Filter by search term
     if (searchTerm) {
-      return searchCourses(searchTerm);
+      filtered = filtered.filter(course => 
+        course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.school.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
-    
-    if (selectedSchool === 'all') {
-      const allCourses = [];
-      schools.forEach(school => {
-        const schoolCourses = getSchoolCourses(school);
-        Object.entries(schoolCourses).forEach(([courseKey, courseData]) => {
-          allCourses.push({
-            school,
-            courseKey,
-            ...courseData
-          });
-        });
+
+    // Filter by school
+    if (selectedSchool !== 'all') {
+      filtered = filtered.filter(course => course.school === selectedSchool);
+    }
+
+    // Filter by duration
+    if (selectedDuration !== 'all') {
+      filtered = filtered.filter(course => {
+        const duration = course.duration.toLowerCase();
+        if (selectedDuration === '2-years') return duration.includes('2');
+        if (selectedDuration === '3-years') return duration.includes('3');
+        if (selectedDuration === '4-years') return duration.includes('4');
+        return true;
       });
-      return allCourses;
-    } else {
-      const schoolCourses = getSchoolCourses(selectedSchool);
-      return Object.entries(schoolCourses).map(([courseKey, courseData]) => ({
-        school: selectedSchool,
-        courseKey,
-        ...courseData
-      }));
     }
+
+    return filtered;
+  }, [allCourses, searchTerm, selectedSchool, selectedDuration]);
+
+  const handleCourseClick = (course) => {
+    navigate(`/schools/departments/courseDetailed?school=${course.school}&course=${course.slug}`);
   };
 
-  const filteredCourses = getFilteredCourses();
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Explore Our Courses</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover the perfect program for your academic and career goals across our different schools.
-          </p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <GraduationCap className="h-16 w-16 mx-auto mb-4" />
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Explore Our Courses
+            </h1>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+              Discover a wide range of academic programs designed to shape your future
+            </p>
+          </div>
         </div>
+      </div>
 
-        {/* Search and Filter */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="flex flex-col md:flex-row gap-4">
-            {/* Search Input */}
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+      {/* Search and Filters */}
+      <div className="bg-white shadow-md">
+        <div className="container mx-auto px-6 py-6">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+            {/* Search */}
+            <div className="lg:col-span-2 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search courses..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             {/* School Filter */}
-            <div className="md:w-64">
+            <div className="relative">
+              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <select
                 value={selectedSchool}
                 onChange={(e) => setSelectedSchool(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
               >
                 <option value="all">All Schools</option>
-                {schools.map(school => (
+                {getAllSchools().map(school => (
                   <option key={school} value={school}>
-                    {school.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                    {school.charAt(0).toUpperCase() + school.slice(1)}
                   </option>
                 ))}
               </select>
             </div>
+
+            {/* Duration Filter */}
+            <div className="relative">
+              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <select
+                value={selectedDuration}
+                onChange={(e) => setSelectedDuration(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
+              >
+                <option value="all">All Durations</option>
+                <option value="2-years">2 Years</option>
+                <option value="3-years">3 Years</option>
+                <option value="4-years">4 Years</option>
+              </select>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Results */}
-        <div className="mb-6">
+      {/* Results */}
+      <div className="container mx-auto px-6 py-12">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            {filteredCourses.length} Course{filteredCourses.length !== 1 ? 's' : ''} Found
+          </h2>
           <p className="text-gray-600">
-            Showing {filteredCourses.length} course{filteredCourses.length !== 1 ? 's' : ''}
-            {selectedSchool !== 'all' && ` in ${selectedSchool.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`}
-            {searchTerm && ` matching "${searchTerm}"`}
+            Choose from our diverse range of academic programs
           </p>
         </div>
 
         {/* Course Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course, index) => (
-            <CourseCard 
-              key={`${course.school}-${course.courseKey}-${index}`} 
-              course={course} 
-            />
+            <div
+              key={index}
+              onClick={() => handleCourseClick(course)}
+              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+            >
+              {/* Course Image */}
+              <div className="relative h-48 bg-gradient-to-r from-blue-500 to-purple-600 rounded-t-lg overflow-hidden">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute bottom-4 left-4">
+                  <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+                    {course.school.charAt(0).toUpperCase() + course.school.slice(1)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Course Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                  {course.title}
+                </h3>
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {course.description}
+                </p>
+
+                {/* Course Details */}
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center text-sm text-gray-500">
+                    <Clock className="h-4 w-4 mr-2" />
+                    <span>{course.duration}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <Users className="h-4 w-4 mr-2" />
+                    <span>{course.intake}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <MapPin className="h-4 w-4 mr-2" />
+                    <span>{course.location}</span>
+                  </div>
+                </div>
+
+                {/* Key Highlights */}
+                {course.highlights && course.highlights.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-900 mb-2 text-sm">Key Areas:</h4>
+                    <div className="flex flex-wrap gap-1">
+                      {course.highlights.slice(0, 3).map((highlight, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                      {course.highlights.length > 3 && (
+                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                          +{course.highlights.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Action Button */}
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors font-medium">
+                  Learn More
+                </button>
+              </div>
+            </div>
           ))}
         </div>
 
+        {/* No Results */}
         {filteredCourses.length === 0 && (
           <div className="text-center py-12">
-            <div className="text-gray-400 text-6xl mb-4">🔍</div>
+            <GraduationCap className="h-16 w-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-900 mb-2">No courses found</h3>
-            <p className="text-gray-600">Try adjusting your search criteria or browse all courses.</p>
+            <p className="text-gray-600 mb-6">
+              Try adjusting your search terms or filters
+            </p>
+            <button
+              onClick={() => {
+                setSearchTerm('');
+                setSelectedSchool('all');
+                setSelectedDuration('all');
+              }}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
+            >
+              Clear Filters
+            </button>
           </div>
         )}
-      </div>
-    </div>
-  );
-};
-
-const CourseCard = ({ course }) => {
-  return (
-    <div className="bg-white rounded-2xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-      {/* Course Image */}
-      <div className="relative">
-        <img
-          src={course.image || course.gallery?.[0] || 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400&auto=format&fit=crop'}
-          alt={course.title}
-          className="w-full h-48 object-cover rounded-t-2xl"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-t-2xl" />
-        
-        {/* School Badge */}
-        <div className="absolute top-4 left-4">
-          <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-            {course.school.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-          </span>
-        </div>
-
-        {/* Level Badge */}
-        <div className="absolute top-4 right-4">
-          <span className="bg-white/90 text-gray-900 text-xs font-semibold px-3 py-1 rounded-full">
-            {course.level}
-          </span>
-        </div>
-      </div>
-
-      {/* Course Content */}
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
-          {course.title}
-        </h3>
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-          {course.description}
-        </p>
-
-        {/* Course Stats */}
-        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-          <div className="flex items-center">
-            <Clock className="h-4 w-4 mr-1" />
-            {course.duration}
-          </div>
-          <div className="flex items-center">
-            <Users className="h-4 w-4 mr-1" />
-            {course.intake}
-          </div>
-          {course.rating && (
-            <div className="flex items-center">
-              <Star className="h-4 w-4 mr-1 fill-current text-yellow-400" />
-              {course.rating}
-            </div>
-          )}
-        </div>
-
-        {/* Fee */}
-        <div className="mb-4">
-          <span className="text-lg font-bold text-blue-600">{course.fee}</span>
-        </div>
-
-        {/* View Details Button */}
-        <Link
-          to={`/schools/departments/courseDetailed?school=${course.school}&course=${course.courseKey}`}
-          className="block w-full bg-blue-600 text-white text-center font-semibold py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors group"
-        >
-          View Details
-          <ChevronRight className="inline-block h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-        </Link>
       </div>
     </div>
   );

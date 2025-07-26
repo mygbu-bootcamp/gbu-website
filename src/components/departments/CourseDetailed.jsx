@@ -93,20 +93,14 @@ const CourseDetails = () => {
 
   const handleApplyClick = (courseId) => {
     console.log('Apply clicked for course:', courseId);
-    // You can implement actual application logic here
-    // For example: navigate to application form, open modal, etc.
   };
 
   const handleDownloadBrochure = (courseId) => {
     console.log('Download brochure for course:', courseId);
-    // You can implement actual download logic here
-    // For example: trigger file download, open PDF, etc.
   };
 
   const handleScheduleCall = (courseId) => {
     console.log('Schedule call for course:', courseId);
-    // You can implement actual scheduling logic here
-    // For example: open calendar widget, navigate to booking page, etc.
   };
 
   return (
