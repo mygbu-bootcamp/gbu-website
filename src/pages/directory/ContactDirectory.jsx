@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Search, Users, Filter } from 'lucide-react';
+import { Search, Users, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import ContactCard from '../../components/directory/ContactCard';
 import CategoryDropdown from '../../components/directory/CategoryDropdown';
 import { contactsData } from './contactsData';
@@ -7,31 +7,18 @@ import { contactsData } from './contactsData';
 import BannerSection from '../../components/HeroBanner';
 import SearchableWrapper from '../../components/Searchbar/SearchableWrapper';
 
+const ITEMS_PER_PAGE = 15;
+
 const ContactDirectory = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    let ticking = false;
+    setCurrentPage(1); // Reset to first page on filter/search change
+  }, [searchTerm, selectedCategory]);
 
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          setIsScrolled(scrollY > 50);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // ✅ SAFE FILTER
   const filteredContacts = useMemo(() => {
     let filtered = contactsData;
 
@@ -55,6 +42,12 @@ const ContactDirectory = () => {
     return filtered;
   }, [searchTerm, selectedCategory]);
 
+  const totalPages = Math.ceil(filteredContacts.length / ITEMS_PER_PAGE);
+  const paginatedContacts = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredContacts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [filteredContacts, currentPage]);
+
   const clearFilters = () => {
     setSearchTerm('');
     setSelectedCategory('');
@@ -62,142 +55,117 @@ const ContactDirectory = () => {
 
   return (
     <SearchableWrapper>
-      <div className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-emerald-50/20 min-h-screen smooth-transition">
-        <BannerSection
+       <BannerSection
           title="Contact Directory"
           subtitle="Gautam Buddha University"
-          bgTheme={4} // or any theme number you want
+          bgTheme={4}
         />
+      <div className="relative mx-20 mb-20 bg-white min-h-screen smooth-transition">
+       
 
-        <div
-          className={`sticky top-0 z-50 bg-white/95 backdrop-blur-enhanced border-b border-slate-200/60 shadow-lg transition-all duration-500 ease-out ${
-            isScrolled
-              ? 'shadow-2xl backdrop-blur-enhanced'
-              : 'shadow-md'
-          }`}
-        >
-          <div className="container mx-auto px-4 py-4 md:py-6 animate-slide-down">
-            <div className="space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-around lg:gap-6">
-              <div className="flex items-center justify-between lg:flex-col lg:items-start lg:justify-start lg:min-w-0">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 bg-gradient-to-r from-blue-50 to-emerald-50 px-5 py-4.5 rounded-full border border-blue-100 smooth-hover animate-scale-in">
-                    <Users className="h-4 w-4 text-blue-600 smooth-transition" />
-                    <span className="text-blue-700 smooth-transition">
-                      {filteredContacts.length}
-                    </span>
-                    <span className="hidden sm:inline text-slate-600 smooth-transition">
-                      contacts
-                    </span>
-                  </div>
-
-                  {(searchTerm || selectedCategory) && (
-                    <button
-                      onClick={clearFilters}
-                      className="text-md font-medium text-slate-600 hover:text-blue-600 transition-all duration-300 px-3 py-4 rounded-xl hover:bg-blue-50 btn-smooth animate-fade-in-up"
-                    >
-                      Clear filters
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3 lg:flex-1 lg:max-w-4xl lg:justify-between">
-                {/* Search Input */}
-                <div className="relative flex-1 lg:flex-[0.5] lg:max-w-full animate-fade-in-up stagger-delay-1">
-                  <Search
-                    className={`absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 transition-all duration-300 ${
-                      isSearchFocused
-                        ? 'text-blue-500 scale-110'
-                        : 'text-slate-400'
-                    }`}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Search contacts..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onFocus={() => setIsSearchFocused(true)}
-                    onBlur={() => setIsSearchFocused(false)}
-                    className={`w-full pl-12 pr-4 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400 bg-white/80 text-slate-700 placeholder-slate-500 input-smooth hover:shadow-lg ${
-                      isSearchFocused
-                        ? 'bg-white shadow-xl ring-2 ring-blue-400/30'
-                        : ''
-                    }`}
-                  />
-                </div>
-
-                {/* Category Filter */}
-                <div className="flex items-center flex-1 lg:flex-[0.5] gap-2 sm:min-w-0 animate-fade-in-up stagger-delay-2">
-                  <Filter className="h-4 w-4 text-slate-500 sm:hidden smooth-transition hover:scale-110" />
-                  <CategoryDropdown
-                    selectedCategory={selectedCategory}
-                    onCategoryChange={setSelectedCategory}
-                  />
-                </div>
-              </div>
+        {/* Search & Filter Section */}
+        <div className="container mx-auto px-4 py-6 md:py-10">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center justify-between bg-white shadow-lg border border-slate-100 rounded-xl p-6 animate-fade-in-up">
+            {/* Search */}
+            <div className="relative w-full md:w-1/2">
+              <Search
+                className={`absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 transition-all ${
+                  isSearchFocused ? 'text-blue-500' : 'text-slate-400'
+                }`}
+              />
+              <input
+                type="text"
+                placeholder="Search by name, department, phone..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all bg-white text-slate-700 placeholder:text-slate-400 hover:shadow-md"
+              />
             </div>
+
+            {/* Category Filter */}
+            <div className="w-full md:w-1/2 flex items-center gap-2">
+              {/* <Filter className="h-5 w-5 text-slate-500" /> */}
+              <CategoryDropdown
+                selectedCategory={selectedCategory}
+                onCategoryChange={setSelectedCategory}
+              />
+            </div>
+          </div>
+
+          {/* Filter Count + Clear */}
+          <div className="flex justify-between mt-4 px-1">
+            <div className="text-sm text-slate-600 font-medium flex items-center gap-2">
+              <Users className="h-4 w-4 text-blue-600" />
+              {filteredContacts.length} contact(s) found
+            </div>
+            {(searchTerm || selectedCategory) && (
+              <button
+                onClick={clearFilters}
+                className="text-blue-600 hover:text-blue-800 font-medium text-sm px-3 py-2 rounded-md hover:bg-blue-50 transition"
+              >
+                Clear filters
+              </button>
+            )}
           </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8 md:py-12">
+        {/* Contacts Section */}
+        <div className="container mx-auto px-4">
           {filteredContacts.length === 0 ? (
             <div className="text-center py-16 md:py-24 animate-fade-in">
-              <div className="max-w-md mx-auto">
-                <div className="text-slate-400 mb-6 animate-scale-in">
-                  <Search className="h-20 w-20 mx-auto mb-6 opacity-50 smooth-transition hover:scale-110 hover:rotate-3" />
-                </div>
-                <h3 className="text-xl md:text-2xl font-semibold text-slate-600 mb-3 animate-fade-in-up stagger-delay-1">
-                  No contacts found
-                </h3>
-                <p className="text-slate-500 mb-6 leading-relaxed animate-fade-in-up stagger-delay-2">
-                  {searchTerm || selectedCategory
-                    ? "Try adjusting your search terms or category filter to find what you're looking for."
-                    : 'No contacts are available at the moment.'}
-                </p>
-                {(searchTerm || selectedCategory) && (
-                  <button
-                    onClick={clearFilters}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-xl btn-smooth animate-fade-in-up stagger-delay-3"
-                  >
-                    <Filter className="h-4 w-4 smooth-transition" />
-                    Clear all filters
-                  </button>
-                )}
-              </div>
+              <Search className="h-20 w-20 mx-auto mb-6 text-slate-300" />
+              <h3 className="text-xl md:text-2xl font-semibold text-slate-600 mb-3">
+                No contacts found
+              </h3>
+              <p className="text-slate-500 mb-6 leading-relaxed">
+                {searchTerm || selectedCategory
+                  ? "Try adjusting your search or category filters."
+                  : 'No contacts available currently.'}
+              </p>
+              {(searchTerm || selectedCategory) && (
+                <button
+                  onClick={clearFilters}
+                  className="inline-flex items-center gap-2 px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                >
+                  <Filter className="h-4 w-4" />
+                  Clear all
+                </button>
+              )}
             </div>
           ) : (
             <>
-              {(searchTerm || selectedCategory) &&
-                filteredContacts.length > 0 && (
-                  <div className="mb-8 text-center animate-fade-in-up">
-                    <p className="text-slate-600 text-lg text-reveal">
-                      {searchTerm && (
-                        <>
-                          Showing results for{' '}
-                          <span className="font-semibold text-blue-700">
-                            "{searchTerm}"
-                          </span>
-                          {selectedCategory && (
-                            <span className="text-slate-500"> in </span>
-                          )}
-                        </>
-                      )}
-                      {selectedCategory && (
-                        <span className="font-semibold text-emerald-700">
-                          {selectedCategory}
+              {/* Search Summary */}
+              {(searchTerm || selectedCategory) && (
+                <div className="text-center mb-6 animate-fade-in-up">
+                  <p className="text-slate-600">
+                    {searchTerm && (
+                      <>
+                        Showing results for{' '}
+                        <span className="text-blue-700 font-semibold">
+                          "{searchTerm}"
                         </span>
-                      )}
-                    </p>
-                  </div>
-                )}
+                        {selectedCategory && <span> in </span>}
+                      </>
+                    )}
+                    {selectedCategory && (
+                      <span className="text-emerald-700 font-semibold">
+                        {selectedCategory}
+                      </span>
+                    )}
+                  </p>
+                </div>
+              )}
 
-              <div className="grid grid-cols-1 mx-30 sm:grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-                {filteredContacts.map((contact, index) => (
+              {/* Contact Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {paginatedContacts.map((contact, index) => (
                   <div
                     key={contact.id}
-                    className="animate-fade-in smooth-transition"
+                    className="animate-fade-in"
                     style={{
-                      animationDelay: `${Math.min(index * 80, 800)}ms`,
+                      animationDelay: `${Math.min(index * 100, 800)}ms`,
                       animationFillMode: 'both',
                     }}
                   >
@@ -205,6 +173,43 @@ const ContactDirectory = () => {
                   </div>
                 ))}
               </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="flex justify-center mt-10 gap-4 items-center animate-fade-in-up">
+                  <button
+                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                    disabled={currentPage === 1}
+                    className={`flex items-center gap-1 px-4 py-2 border rounded-md ${
+                      currentPage === 1
+                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                        : 'bg-white hover:bg-blue-50 text-blue-600'
+                    }`}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Prev
+                  </button>
+
+                  <span className="text-slate-600 font-medium">
+                    Page {currentPage} of {totalPages}
+                  </span>
+
+                  <button
+                    onClick={() =>
+                      setCurrentPage((p) => Math.min(p + 1, totalPages))
+                    }
+                    disabled={currentPage === totalPages}
+                    className={`flex items-center gap-1 px-4 py-2 border rounded-md ${
+                      currentPage === totalPages
+                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                        : 'bg-white hover:bg-blue-50 text-blue-600'
+                    }`}
+                  >
+                    Next
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
             </>
           )}
         </div>
