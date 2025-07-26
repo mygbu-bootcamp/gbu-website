@@ -60,6 +60,7 @@ import Humanities from "../pages/departments/Humanities.jsx";
 import Vocational from "../pages/departments/Vocational.jsx";
 import Buddhist from "../pages/departments/Buddhist.jsx";
 import CourseDetails from "../components/departments/courseDetailed.jsx";
+
 import CourseListing from "../components/departments/CourseListing.jsx";
 
 import SitemapMain from "../pages/Sitemap/SitemapMain.jsx";
