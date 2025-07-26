@@ -59,7 +59,7 @@ import Management from "../pages/departments/Management.jsx";
 import Humanities from "../pages/departments/Humanities.jsx";
 import Vocational from "../pages/departments/Vocational.jsx";
 import Buddhist from "../pages/departments/Buddhist.jsx";
-
+import CourseDetails from "../components/departments/CourseDetailed.jsx"; 
 import SitemapMain from "../pages/Sitemap/SitemapMain.jsx";
 import Sitemap from "../pages/Sitemap/Sitemap.jsx";
 import SitemapAbout from "../pages/Sitemap/SitemapAbout.jsx";
@@ -760,6 +760,10 @@ export default function AppRouter() {
           <Route path="/sitemapAcademics" element={<SitemapAcademics />} />
 
           <Route path="/contactDirectory" element={<ContactDirectory/>}/>
+
+          {/* Course Details Routes - Dynamic Course Pages */}
+          <Route path="/schools/departments/courseDetailed" element={<CourseDetails />} />
+          {/* <Route path="/schools/departments/courseDetailed/:school/:course" element={<CourseDetails />} /> */}
 
         </Routes>
       </AuthProvider>

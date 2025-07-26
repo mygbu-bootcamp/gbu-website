@@ -89,20 +89,6 @@ const HodMessage = ({
                   No message available.
                 </p>
               )}
-
-              {/* Contact Info */}
-              {contact && (
-                <div className="pt-6 border-t border-gray-300">
-                  <p className="font-semibold text-blue-900">{contact.name}</p>
-                  <p className="text-sm text-gray-600">{contact.designation}</p>
-                  {contact.email && (
-                    <p className="text-sm text-blue-700">Email: {contact.email}</p>
-                  )}
-                  {contact.phone && (
-                    <p className="text-sm text-blue-700">Phone: {contact.phone}</p>
-                  )}
-                </div>
-              )}
             </motion.div>
           </div>
         </div>

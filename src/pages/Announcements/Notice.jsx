@@ -738,7 +738,7 @@ const Notice = () => {
      
       {/* Hero Section */}
       <BannerSection
-        title="Notices & Announcements"
+        title="Notices & Circulars"
         subtitle="Stay updated with the latest notices, announcements, and circulars from GBU."
         bgTheme={5}
 />
