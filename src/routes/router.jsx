@@ -764,7 +764,7 @@ export default function AppRouter() {
 
           {/* Course Details Routes - Dynamic Course Pages */}
           <Route path="/schools/departments/courseDetailed" element={<CourseDetails />} />
-          <Route path="/schools/departments/courseDetailed/:school/:course" element={<CourseDetails />} />
+          {/* <Route path="/schools/departments/courseDetailed/:school/:course" element={<CourseDetails />} /> */}
 
         </Routes>
       </AuthProvider>
