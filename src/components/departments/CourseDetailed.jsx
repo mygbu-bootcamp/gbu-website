@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseDetailedLayout from './courseDetailedLayout';
+import CourseDetailedLayout from './CourseDetailedLayout.jsx';
 
 const CourseDetails = () => {
    const courseData = {
